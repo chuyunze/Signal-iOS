@@ -32,6 +32,10 @@ jobs:
       with:
         xcode-version: '26.6'
 
+    # libsignal 的 Rust 依赖（spqr / prost-build）在构建时需要 protoc
+    - name: Install protoc
+      run: brew install protobuf
+
     - name: Setup Rust toolchain
       uses: dtolnay/rust-toolchain@stable
 
