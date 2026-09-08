@@ -1,16 +1,76 @@
 # This file contains the fastlane.tools configuration
 # You can find the documentation at https://docs.fastlane.tools
 #
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
-
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
 default_platform(:ios)
+
+# 从 mobileprovision 中读取 App 的 Bundle ID
+# （application-identifier 格式为 <TeamID>.<BundleID>，去掉 TeamID 前缀）
+def bundle_id_from_profile(path)
+  require 'securerandom'
+  tmp = "/tmp/profile_#{SecureRandom.hex(4)}.plist"
+  sh("security cms -D -i \"#{path}\" -o \"#{tmp}\"")
+  app_id = sh("/usr/libexec/PlistBuddy -c 'Print :Entitlements:application-identifier' \"#{tmp}\"").strip
+  app_id.sub(/^[A-Z0-9]+\./, '')
+end
+
+platform :ios do
+  desc "Build and export an Ad-Hoc IPA (manual signing)"
+  lane :build_adhoc do
+    # setup_ci 会创建临时钥匙串，无需 KEYCHAIN_PASSWORD
+    setup_ci
+
+    team_id          = ENV.fetch('TEAM_ID')
+    signing_identity = ENV.fetch('CODE_SIGNING_IDENTITY')
+
+    # 1. 导入发布证书（一个 p12 可签所有 target）
+    import_certificate(
+      certificate_path:     ENV.fetch('CERTIFICATE_PATH'),
+      certificate_password: ENV.fetch('CERTIFICATE_PASSWORD')
+    )
+
+    # 2. 安装三个 provisioning profile（主 App / NSE / ShareExtension），
+    #    并自动建立 Bundle ID => Profile UUID 的映射
+    profiles = {
+      'App'            => ENV.fetch('PP_APP_PATH'),
+      'SignalNSE'      => ENV.fetch('PP_NSE_PATH'),
+      'ShareExtension' => ENV.fetch('PP_SHAREEXT_PATH'),
+    }
+
+    provisioning_mapping = {}
+    profiles.each do |label, path|
+      uuid      = install_provisioning_profile(path: path)
+      bundle_id = bundle_id_from_profile(path)
+      provisioning_mapping[bundle_id] = uuid
+      UI.success("Profile [#{label}] #{bundle_id} => #{uuid}")
+    end
+
+    # 3. 打包并导出 Ad-Hoc IPA
+    #    scheme 为 Signal（archive 使用 "App Store Release" 配置），
+    #    工程通过 CocoaPods 集成，必须使用 workspace
+    gym(
+      workspace:       'Signal.xcworkspace',
+      scheme:          'Signal',
+      configuration:   'App Store Release',
+      export_method:   'ad-hoc',
+      clean:           true,
+      output_directory: './build',
+      output_name:     'Signal.ipa',
+      xcargs: {
+        'DEVELOPMENT_TEAM'   => team_id,
+        'CODE_SIGN_STYLE'    => 'Manual',
+        'CODE_SIGN_IDENTITY' => signing_identity,
+      },
+      export_options: {
+        method:               'ad-hoc',
+        teamID:               team_id,
+        signingStyle:         'manual',
+        provisioningProfiles: provisioning_mapping,
+      }
+    )
+
+    UI.success("IPA 已生成: #{File.expand_path('./build/Signal.ipa')}")
+  end
+end

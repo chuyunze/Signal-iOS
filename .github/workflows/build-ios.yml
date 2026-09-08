@@ -1,0 +1,92 @@
+name: Build Ad-Hoc IPA
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ selfhost-patch ]
+
+jobs:
+  build:
+    # Xcode 26.x 需要 macOS 26 (Tahoe) runner；若该 label 不可用可改 macos-15
+    runs-on: macos-26
+
+    steps:
+    - name: Checkout Signal-iOS
+      uses: actions/checkout@v4
+      with:
+        path: app
+        fetch-depth: 1
+
+    # Podfile 以 :path => '../libsignal' 引用打了补丁的 libsignal，
+    # 因此必须把补丁版 libsignal 检出为 app 的兄弟目录
+    - name: Checkout patched libsignal
+      uses: actions/checkout@v4
+      with:
+        repository: chuyunze/libsignal   # 需提前把补丁版 libsignal push 到该仓库
+        ref: selfhost                    # 补丁所在分支
+        path: libsignal
+        fetch-depth: 1
+
+    - name: Select Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '26.6'
+
+    - name: Setup Rust toolchain
+      uses: dtolnay/rust-toolchain@stable
+
+    # 本地开发版 libsignal pod 不会下载预编译产物，
+    # 需要先用 Rust 交叉编译出 target/aarch64-apple-ios/release/libsignal_ffi.a
+    - name: Build libsignal-ffi for iOS (arm64 device)
+      working-directory: libsignal
+      run: |
+        set -euo pipefail
+        PINNED=$(tr -d '[:space:]' < rust-toolchain)
+        rustup toolchain install "$PINNED" --profile minimal --target aarch64-apple-ios
+        rustup override set "$PINNED"
+        CARGO_BUILD_TARGET=aarch64-apple-ios ./swift/build_ffi.sh --release
+        ls -lh target/aarch64-apple-ios/release/libsignal_ffi.a
+
+    - name: Setup Ruby and Fastlane
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.4.9'          # 与仓库 .ruby-version 一致
+        bundler-cache: true
+        working-directory: app
+
+    - name: Install CocoaPods dependencies
+      working-directory: app
+      run: bundle exec pod install
+
+    - name: Decode signing files
+      working-directory: app
+      env:
+        P12_BASE64: ${{ secrets.P12_BASE64 }}
+        PP_APP_BASE64: ${{ secrets.PP_APP_BASE64 }}
+        PP_NSE_BASE64: ${{ secrets.PP_NSE_BASE64 }}
+        PP_SHAREEXT_BASE64: ${{ secrets.PP_SHAREEXT_BASE64 }}
+      run: |
+        set -euo pipefail
+        echo "$P12_BASE64"          | base64 -D > cert.p12
+        echo "$PP_APP_BASE64"       | base64 -D > app.mobileprovision
+        echo "$PP_NSE_BASE64"       | base64 -D > nse.mobileprovision
+        echo "$PP_SHAREEXT_BASE64"  | base64 -D > shareext.mobileprovision
+
+    - name: Build IPA with Fastlane
+      working-directory: app
+      env:
+        CERTIFICATE_PATH:    ${{ github.workspace }}/app/cert.p12
+        CERTIFICATE_PASSWORD: ${{ secrets.P12_PASSWORD }}
+        PP_APP_PATH:         ${{ github.workspace }}/app/app.mobileprovision
+        PP_NSE_PATH:         ${{ github.workspace }}/app/nse.mobileprovision
+        PP_SHAREEXT_PATH:    ${{ github.workspace }}/app/shareext.mobileprovision
+        TEAM_ID:             ${{ secrets.TEAM_ID }}
+        CODE_SIGNING_IDENTITY: ${{ secrets.CODE_SIGNING_IDENTITY }}
+      run: bundle exec fastlane build_adhoc
+
+    - name: Upload IPA
+      uses: actions/upload-artifact@v4
+      with:
+        name: Signal-ad-hoc-ipa
+        path: app/build/Signal.ipa
+        retention-days: 30
