@@ -263,22 +263,30 @@ def copy_acknowledgements
   acknowledgements_files = targets.map do |target|
     "Pods/Target Support Files/Pods-#{target}/Pods-#{target}-acknowledgements.plist"
   end
-  acknowledgements_files << "Pods/LibSignalClient/acknowledgments/acknowledgments-ios.plist"
+  acknowledgements_files << "Pods/LibSignalClient/acknowledgments/acknowledgments-ios.plist" if File.exist?("Pods/LibSignalClient/acknowledgments/acknowledgments-ios.plist")
+  # 自建构建: LibSignalClient 以 :path => '../libsignal' 本地开发 pod 引入，
+  # CocoaPods 不会把源码复制进 Pods/，致谢文件需直接引用源码目录
+  acknowledgements_files << "../libsignal/acknowledgments/acknowledgments-ios.plist" if File.exist?("../libsignal/acknowledgments/acknowledgments-ios.plist")
   acknowledgements_files << "Pods/SignalRingRTC/acknowledgments/acknowledgments.plist"
   acknowledgements_files << "Pods/SignalRingRTC/out/release/acknowledgments-webrtc-ios.plist"
 
   def get_specifier_groups(acknowledgements_files)
     acknowledgements_files.map do |file|
+      unless File.exist?(file)
+        puts "Skipping missing acknowledgements file: #{file}"
+        next nil
+      end
+
       extract_cmd = ['plutil', '-extract', 'PreferenceSpecifiers', 'json', '-o', '-', file]
 
       io = IO.popen(extract_cmd, unsetenv_others: true, exception: true)
-      result = JSON.parse(io.read)
+      output = io.read
       io.close
       status = $?
       raise status unless status.exitstatus == 0
 
-      result
-    end
+      JSON.parse(output)
+    end.compact
   end
 
   def get_acknowledgements_specifiers(group)
