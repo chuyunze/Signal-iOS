@@ -26,9 +26,13 @@ platform :ios do
     signing_identity = ENV.fetch('CODE_SIGNING_IDENTITY')
 
     # 1. 导入发布证书（一个 p12 可签所有 target）
+    #    setup_ci 已创建临时钥匙串并把名称/密码写入 MATCH_KEYCHAIN_NAME/PASSWORD，
+    #    新版 fastlane 的 import_certificate 必须显式传入这两个参数
     import_certificate(
       certificate_path:     ENV.fetch('CERTIFICATE_PATH'),
-      certificate_password: ENV.fetch('CERTIFICATE_PASSWORD')
+      certificate_password: ENV.fetch('CERTIFICATE_PASSWORD'),
+      keychain_name:        ENV.fetch('MATCH_KEYCHAIN_NAME'),
+      keychain_password:    ENV.fetch('MATCH_KEYCHAIN_PASSWORD')
     )
 
     # 2. 安装三个 provisioning profile（主 App / NSE / ShareExtension），
