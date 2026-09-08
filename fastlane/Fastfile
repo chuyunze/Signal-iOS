@@ -22,8 +22,7 @@ platform :ios do
     # setup_ci 会创建临时钥匙串，无需 KEYCHAIN_PASSWORD
     setup_ci
 
-    team_id          = ENV.fetch('TEAM_ID')
-    signing_identity = ENV.fetch('CODE_SIGNING_IDENTITY')
+    team_id = ENV.fetch('TEAM_ID')
 
     # 1. 导入发布证书（一个 p12 可签所有 target）
     #    setup_ci 已创建临时钥匙串并把名称/密码写入 MATCH_KEYCHAIN_NAME/PASSWORD，
@@ -65,7 +64,8 @@ platform :ios do
       xcargs: {
         'DEVELOPMENT_TEAM'   => team_id,
         'CODE_SIGN_STYLE'    => 'Manual',
-        'CODE_SIGN_IDENTITY' => signing_identity,
+        # Ad-Hoc 分发必须使用发布证书；用通用名让 Xcode 在钥匙串中匹配
+        'CODE_SIGN_IDENTITY' => 'Apple Distribution',
       },
       export_options: {
         method:               'ad-hoc',
