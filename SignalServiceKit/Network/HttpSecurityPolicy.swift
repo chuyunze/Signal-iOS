@@ -7,16 +7,26 @@ import Security
 
 /// A simplified version of AFNetworking's AFSecurityPolicy.
 public struct HttpSecurityPolicy {
-    public static let signalCaPinned: HttpSecurityPolicy = .init(pinnedCertificates: [Certificates.load("signal-messenger", extension: "cer")])
+    /// 自建服务器: 信任所有证书(仅用于开发测试场景)。
+    /// 对应 Android BlacklistingTrustManager.TrustAllManager。
+    /// 生产部署应改回 signalCaPinned 并嵌入自签 CA 证书。
+    public static let signalCaPinned: HttpSecurityPolicy = .init(pinnedCertificates: [Certificates.load("signal-messenger", extension: "cer")], trustAll: true)
     public static let systemDefault: HttpSecurityPolicy = .init()
 
     private let pinnedCertificates: [SecCertificate]?
+    private let trustAll: Bool
 
-    public init(pinnedCertificates: [SecCertificate]? = nil) {
+    public init(pinnedCertificates: [SecCertificate]? = nil, trustAll: Bool = false) {
         self.pinnedCertificates = pinnedCertificates
+        self.trustAll = trustAll
     }
 
     public func evaluate(serverTrust: SecTrust, domain: String?) -> Bool {
+        // 自建服务器: 跳过证书校验,信任所有证书
+        if trustAll {
+            return true
+        }
+
         let policies = [SecPolicyCreateSSL(true, domain as CFString?)]
 
         guard SecTrustSetPolicies(serverTrust, policies as CFArray) == errSecSuccess else {

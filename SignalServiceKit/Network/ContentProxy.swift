@@ -9,7 +9,7 @@ public enum ContentProxy {
 
     public static func sessionConfiguration() -> URLSessionConfiguration {
         let configuration = URLSessionConfiguration.ephemeral
-        let proxyHost = "contentproxy.signal.org"
+        let proxyHost = "chat.i201314.cn"
         let proxyPort = 443
         configuration.connectionProxyDictionary = [
             "HTTPEnable": 1,

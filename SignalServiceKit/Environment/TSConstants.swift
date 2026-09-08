@@ -154,17 +154,18 @@ public class TSConstantsProduction: TSConstantsProtocol {
 
     public init() {}
 
-    public let mainServiceURL = "https://chat.signal.org"
-    public let textSecureCDN0ServerURL = "https://cdn.signal.org"
-    public let textSecureCDN2ServerURL = "https://cdn2.signal.org"
-    public let textSecureCDN3ServerURL = "https://cdn3.signal.org"
-    public let storageServiceURL = "https://storage.signal.org"
-    public let sfuURL = "https://sfu.voip.signal.org"
-    public let sfuTestURL = "https://sfu.test.voip.signal.org"
-    public let svr2URL = "wss://svr2.signal.org"
+    public let mainServiceURL = "https://chat.i201314.cn"
+    public let textSecureCDN0ServerURL = "https://cdn.i201314.cn"
+    public let textSecureCDN2ServerURL = "https://cdn.i201314.cn"
+    public let textSecureCDN3ServerURL = "https://cdn.i201314.cn"
+    public let storageServiceURL = "https://chat.i201314.cn"
+    public let sfuURL = "https://chat.i201314.cn"
+    public let sfuTestURL = "https://chat.i201314.cn"
+    public let svr2URL = "wss://chat.i201314.cn"
     public let registrationCaptchaURL = "https://signalcaptchas.org/registration/generate.html"
     public let challengeCaptchaURL = "https://signalcaptchas.org/challenge/generate.html"
-    public let kUDTrustRoots = ["BXu6QIKVz5MA8gstzfOgRQGqyLqOwNKHL6INkv3IHWMF", "BUkY0I+9+oPgDCn4+Ac6Iu813yvqkDr/ga8DzLxFxuk6"]
+    // 自建服务器: 添加 Caddy 自签 CA 作为未知发送者(Sealed Sender)信任根
+    public let kUDTrustRoots = ["BXu6QIKVz5MA8gstzfOgRQGqyLqOwNKHL6INkv3IHWMF", "BUkY0I+9+oPgDCn4+Ac6Iu813yvqkDr/ga8DzLxFxuk6", "BS/lfaNHzWJDFSjarF+7KQcw//aEr8TPwu2QmV9Yyzt0"]
     public let updatesURL = "https://updates.signal.org"
     public let updates2URL = "https://updates2.signal.org"
 
@@ -197,7 +198,9 @@ public class TSConstantsProduction: TSConstantsProtocol {
     /// We *might* need to clear credentials (or perform some other migration)
     /// when this value changes, depending on how it's changing. If you do need
     /// to perform a migration, check out `ZkParamsMigrator`.
-    public let serverPublicParams = Data(base64Encoded: "AMhf5ywVwITZMsff/eCyudZx9JDmkkkbV6PInzG4p8x3VqVJSFiMvnvlEKWuRob/1eaIetR31IYeAbm0NdOuHH8Qi+Rexi1wLlpzIo1gstHWBfZzy1+qHRV5A4TqPp15YzBPm0WSggW6PbSn+F4lf57VCnHF7p8SvzAA2ZZJPYJURt8X7bbg+H3i+PEjH9DXItNEqs2sNcug37xZQDLm7X36nOoGPs54XsEGzPdEV+itQNGUFEjY6X9Uv+Acuks7NpyGvCoKxGwgKgE5XyJ+nNKlyHHOLb6N1NuHyBrZrgtY/JYJHRooo5CEqYKBqdFnmbTVGEkCvJKxLnjwKWf+fEPoWeQFj5ObDjcKMZf2Jm2Ae69x+ikU5gBXsRmoF94GXTLfN0/vLt98KDPnxwAQL9j5V1jGOY8jQl6MLxEs56cwXN0dqCnImzVH3TZT1cJ8SW1BRX6qIVxEzjsSGx3yxF3suAilPMqGRp4ffyopjMD1JXiKR2RwLKzizUe5e8XyGOy9fplzhw3jVzTRyUZTRSZKkMLWcQ/gv0E4aONNqs4P+NameAZYOD12qRkxosQQP5uux6B2nRyZ7sAV54DgFyLiRcq1FvwKw2EPQdk4HDoePrO/RNUbyNddnM/mMgj4FW65xCoT1LmjrIjsv/Ggdlx46ueczhMgtBunx1/w8k8V+l8LVZ8gAT6wkU5J+DPQalQguMg12Jzug3q4TbdHiGCmD9EunCwOmsLuLJkz6EcSYXtrlDEnAM+hicw7iergYLLlMXpfTdGxJCWJmP4zqUFeTTmsmhsjGBt7NiEB/9pFFEB3pSbf4iiUukw63Eo8Aqnf4iwob6X1QviCWuc8t0LUlT9vALgh/f2DPVOOmR0RW6bgRvc7DSF20V/omg+YBw==")!
+    /// 自建服务器: 使用自托管 zkgroup ServerPublicParams
+    /// (需与服务端 prod-secrets-bundle.yml 的 zkConfig.serverSecret 配对)
+    public let serverPublicParams = Data(base64Encoded: "APLtDznymhWijXmeJ8LriWEAtBICoswycr1Epq/jmuoylNaEa3wU+LLu3fSysLY0FBLpn5vtKWKC00GV+WuXQj10ZNqZlaSxn6P5XZ65lYXwtOvYmXkdAgrn7GTB9zdtKNSqVGNX2SA+CspDohZlbOo7pce1QNLSNt2Ms7i+FZ803rMFb3700LL5VEeQg+4jpjamT4/ktWDV3V4y+lmjOHXsj2KONOVgwrEXpydjOs/RIZjk5yHnS14fDlaUFC7WQRJVj+gA1tdLkEcaeLZfOKZG57+IhZ9BfMAGFWHgCVED7BQnut1yWBp0t2IiKSuhbo0jS/ByRg0FSD+cjVzA+2ZYqnC7IR6py092HvhdZwmP2RgpEHZHCf/RWSBvsCTyWM70IDRlNmFYq/vLp+aXJuyNt7sw8ei4Hwfm6hRSxmFJ7iUaltHEi7QiWLhAHVzGi+kiEiG2yK6RYYwczB3BQSJWa22q7x6BVjzBlkn75WH+rIs/6XV7y9BTWH+2cDv0JmbvVjORZplmQmXNjRSaa2xr6W4eJoFAQnN51rZX1fo5EokvdDjf/gxWKIFJAwqWqgs9HpelfDg/ld6qg+h+7lH68Yfn/LrLx2N3f6iiuB1zrwrZVWQVbYYgrGYUz5luZLwJTMjilfCFXwbU1pIjb9So2BtEGv09kkAGLdJj1St93AFQrMjpYuDBUMHBaQJ5BJz/5UA7nAA02YOc6EEQZycWBNkIAdSzacXHFjD2kc4jTQg38iaTwFAwg5oB3XmXdgwyt5pDT7Lq2LDhT6SvEiOifaMypF/H51ofWAFJlkkAMuTdPghSxllwwisywXAwWkhNP/mVQokhH35Gywez0xdQFjJKFsq36LMUmUz3IOZJ9CMW/Z1q1f68sDl/5AcIFg==")!
 
     public let callLinkPublicParams = Data(base64Encoded: "AByD873dTilmOSG0TjKrvpeaKEsUmIO8Vx9BeMmftwUs9v7ikPwM8P3OHyT0+X3EUMZrSe9VUp26Wai51Q9I8mdk0hX/yo7CeFGJyzoOqn8e/i4Ygbn5HoAyXJx5eXfIbqpc0bIxzju4H/HOQeOpt6h742qii5u/cbwOhFZCsMIbElZTaeU+BWMBQiZHIGHT5IE0qCordQKZ5iPZom0HeFa8Yq0ShuEyAl0WINBiY6xE3H/9WnvzXBbMuuk//eRxXgzO8ieCeK8FwQNxbfXqZm6Ro1cMhCOF3u7xoX83QhpN")!
 

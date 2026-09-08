@@ -74,6 +74,15 @@
 				<key>NSIncludesSubdomains</key>
 				<true/>
 			</dict>
+			<key>i201314.cn</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<false/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
 		</dict>
 	</dict>
 	<key>NSAppleMusicUsageDescription</key>

@@ -56,7 +56,7 @@ public class OutageDetection {
     // We only show the outage warning when we're certain there's an outage.
     // DNS lookup failures, etc. are not considered an outage.
     private func checkForOutageSync() -> Bool {
-        let host = CFHostCreateWithName(nil, "uptime.signal.org" as CFString).takeRetainedValue()
+        let host = CFHostCreateWithName(nil, "chat.i201314.cn" as CFString).takeRetainedValue()
         var resolutionError = CFStreamError()
         guard CFHostStartInfoResolution(host, .addresses, &resolutionError) else {
             Logger.warn("CFHostStartInfoResolution failed: \(resolutionError)")
