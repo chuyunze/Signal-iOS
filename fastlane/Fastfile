@@ -1,17 +1,32 @@
 # This file contains the fastlane.tools configuration
 # You can find the documentation at https://docs.fastlane.tools
 #
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+#
+
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
 default_platform(:ios)
 
-# 从 mobileprovision 中读取 App 的 Bundle ID
-# （application-identifier 格式为 <TeamID>.<BundleID>，去掉 TeamID 前缀）
-def bundle_id_from_profile(path)
+# 把 mobileprovision 解码为临时 plist，供读取内部字段
+def decode_profile(path)
   require 'securerandom'
   tmp = "/tmp/profile_#{SecureRandom.hex(4)}.plist"
   sh("security cms -D -i \"#{path}\" -o \"#{tmp}\"")
+  tmp
+end
+
+# 从 mobileprovision 中读取 App 的 Bundle ID
+# （application-identifier 格式为 <TeamID>.<BundleID>，去掉 TeamID 前缀）
+def bundle_id_from_profile(path)
+  tmp = decode_profile(path)
   app_id = sh("/usr/libexec/PlistBuddy -c 'Print :Entitlements:application-identifier' \"#{tmp}\"").strip
   app_id.sub(/^[A-Z0-9]+\./, '')
 end
@@ -35,24 +50,40 @@ platform :ios do
     )
 
     # 2. 安装三个 provisioning profile（主 App / NSE / ShareExtension），
-    #    并自动建立 Bundle ID => Profile UUID 的映射
+    #    并建立 profile 标签 => Xcode target 名 / profile 名 的映射
     profiles = {
-      'App'            => ENV.fetch('PP_APP_PATH'),
-      'SignalNSE'      => ENV.fetch('PP_NSE_PATH'),
-      'ShareExtension' => ENV.fetch('PP_SHAREEXT_PATH'),
+      'App'            => { path: ENV.fetch('PP_APP_PATH'),       target: 'Signal' },
+      'SignalNSE'      => { path: ENV.fetch('PP_NSE_PATH'),       target: 'SignalNSE' },
+      'ShareExtension' => { path: ENV.fetch('PP_SHAREEXT_PATH'),  target: 'SignalShareExtension' },
     }
 
     provisioning_mapping = {}
-    profiles.each do |label, path|
+    profiles.each do |label, cfg|
+      path = cfg[:path]
       uuid      = install_provisioning_profile(path: path)
       bundle_id = bundle_id_from_profile(path)
+      plist     = decode_profile(path)
+      name      = sh("/usr/libexec/PlistBuddy -c 'Print :Name' \"#{plist}\"").strip
       provisioning_mapping[bundle_id] = uuid
-      UI.success("Profile [#{label}] #{bundle_id} => #{uuid}")
+      UI.success("Profile [#{label}] #{bundle_id} => #{uuid} (#{name})")
+
+      # 3. 归档阶段必须在工程层面为每个 target 显式指定 profile。
+      #    上游工程默认 Automatic 签名且 DEVELOPMENT_TEAM 写死为官方 Team，
+      #    export_options 的映射只在导出阶段生效，不在这里绑定会报
+      #    "requires a provisioning profile with ... features"
+      update_code_signing_settings(
+        use_automatic_signing: false,
+        path:                  'Signal.xcodeproj',
+        team_id:               team_id,
+        code_sign_identity:    'Apple Distribution',
+        profile_name:          name,
+        targets:               [cfg[:target]]
+      )
     end
 
-    # 3. 打包并导出 Ad-Hoc IPA
-    #    scheme 为 Signal（archive 使用 "App Store Release" 配置），
-    #    工程通过 CocoaPods 集成，必须使用 workspace
+    # 4. 打包并导出 Ad-Hoc IPA
+    # scheme 为 Signal（archive 使用 "App Store Release" 配置），
+    # 工程通过 CocoaPods 集成，必须使用 workspace
     gym(
       workspace:       'Signal.xcworkspace',
       scheme:          'Signal',
