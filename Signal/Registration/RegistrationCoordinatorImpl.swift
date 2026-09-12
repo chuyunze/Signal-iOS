@@ -4786,7 +4786,10 @@ public class RegistrationCoordinatorImpl: RegistrationCoordinator {
         guard !inMemoryState.isManualMessageFetchEnabled else {
             return .pushUnsupported(description: "Manual fetch pre-enabled")
         }
-        return await self.deps.pushRegistrationManager.requestPushToken()
+        // self-host: 自建服务器未配置 APNs Auth Key, 强制走手动消息拉取(manual message fetch),
+        // 不再等待 APNs token(等待失败/超时会在验证码通过后直接报 "Something went wrong")。
+        // 与 Android 端禁用 FCM 的处理一致; 前台消息走 WebSocket, 后台推送待服务端配置 APNs 后再开启。
+        return .pushUnsupported(description: "Self-host: APNs not configured, use manual message fetch")
     }
 
     private func generateServerAuthToken() -> String {
