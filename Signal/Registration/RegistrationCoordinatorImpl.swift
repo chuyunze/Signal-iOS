@@ -2952,14 +2952,10 @@ public class RegistrationCoordinatorImpl: RegistrationCoordinator {
     ) async -> RegistrationStep {
         let maxAutomaticRetries = Constants.networkErrorRetries
 
-        let tokenResult = await deps.pushRegistrationManager.requestPushToken()
-        let apnsToken: String?
-        switch tokenResult {
-        case .success(let tokens):
-            apnsToken = tokens.apnsToken
-        case .pushUnsupported, .timeout, .genericError:
-            apnsToken = nil
-        }
+        // self-host: 自建服务器未配置 APNs, 不请求推送 token(与 Android 端禁用 FCM 一致)。
+        // 带 token 会让服务器下发 pushChallenge, 设备永远收不到推送挑战, 客户端干等超时
+        // (甚至重置会话报错)后才回退到验证码网页。
+        let apnsToken: String? = nil
         let response = await deps.sessionManager.beginOrRestoreSession(
             e164: e164,
             apnsToken: apnsToken,
