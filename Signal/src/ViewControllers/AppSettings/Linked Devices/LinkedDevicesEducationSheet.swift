@@ -51,35 +51,14 @@ class LinkedDevicesEducationSheet: StackSheetViewController {
         )
         stackView.addArrangedSubview(messagesBulletPoint)
 
-        let iPadDownloadLinkString = "signal.org/install"
-        let iPadDownloadURL = URL(string: "https://signal.org/install/")!
-        let desktopDownloadLinkString = "signal.org/download"
-        let desktopDownloadURL = URL(string: "https://signal.org/download/")!
-
-        let downloadsString = String.nonPluralLocalizedStringWithFormat(
-            OWSLocalizedString(
-                "LINKED_DEVICES_EDUCATION_POINT_DOWNLOADS",
-                comment: "Bullet point about downloads on the linked devices education sheet. Embeds {{ %1$@ iPad download link, %2$@ desktop download link }}",
-            ),
-            iPadDownloadLinkString,
-            desktopDownloadLinkString,
-        )
-
-        let downloadsAttributedString = NSMutableAttributedString(string: downloadsString)
-
-        downloadsAttributedString.addAttributes(
-            [.link: iPadDownloadURL],
-            range: (downloadsString as NSString).range(of: iPadDownloadLinkString),
-        )
-
-        downloadsAttributedString.addAttributes(
-            [.link: desktopDownloadURL],
-            range: (downloadsString as NSString).range(of: desktopDownloadLinkString),
-        )
-
+        // Self-host debrand: upstream linked to signal.org/install and signal.org/download.
+        // Linked devices must run this same self-hosted build, so show neutral text instead.
         let downloadsBulletPoint = Self.bulletPoint(
             icon: "save",
-            text: downloadsAttributedString,
+            text: OWSLocalizedString(
+                "SELFHOST_LINKED_DEVICES_DOWNLOADS",
+                comment: "Self-host build: neutral text about installing the same app on a new device.",
+            ),
         )
 
         stackView.addArrangedSubview(downloadsBulletPoint)

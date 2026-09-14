@@ -267,7 +267,8 @@ class AdvancedPrivacySettingsViewController: OWSTableViewController2 {
                 ),
                 " ",
                 CommonStrings.learnMore.styled(
-                    with: .link(URL(string: "https://signal.org/blog/sealed-sender/")!),
+                    // Self-host debrand: upstream linked to the official branded blog.
+                    with: .link(URL(string: "https://i201314.cn/")!),
                 ),
             ])
             .styled(with: Self.defaultFooterTextStyle)

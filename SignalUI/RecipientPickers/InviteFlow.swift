@@ -32,8 +32,10 @@ public class InviteFlow: NSObject {
         }
     }
 
-    private let installUrl = "https://signal.org/install/"
-    private let homepageUrl = "https://signal.org"
+    // Self-host debrand: recipients need this self-hosted build, not the upstream app.
+    // Point them at the self-host operator's own domain (a download page can be hosted there).
+    private let installUrl = "https://i201314.cn/"
+    private let homepageUrl = "https://i201314.cn"
 
     private weak var presentingViewController: UIViewController?
     private weak var modalPresentationViewController: UIViewController?

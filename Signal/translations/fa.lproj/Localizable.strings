@@ -215,13 +215,13 @@
 "APP_EXPIRED_BOTTOM_UPDATE" = "همین حالا به‌روزرسانی کنید";
 
 /* Default message for the 'app launch failed' alert. */
-"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "سیگنال قادر به راه‌اندازی نیست. لطفاً گزارش عیب‌یابی خود را به support@signal.org ارسال کنید تا ما بتوانیم این مشکل را رفع کنیم.";
+"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "سیگنال قادر به راه‌اندازی نیست. لطفاً گزارش عیب‌یابی خود را به your administrator ارسال کنید تا ما بتوانیم این مشکل را رفع کنیم.";
 
 /* Button to try launching the app even though the last launch failed */
 "APP_LAUNCH_FAILURE_CONTINUE" = "به جای آن سیگنال را باز کنید";
 
 /* Message for an error indicating that the app couldn't launch because some unexpected error happened with the user's registration status. */
-"APP_LAUNCH_FAILURE_CORRUPT_REGISTRATION_MESSAGE" = "لطفاً یک گزارش رفع اشکال به نشانی support@signal.org بفرستید تا بتوانیم این مشکل را حل کنیم.";
+"APP_LAUNCH_FAILURE_CORRUPT_REGISTRATION_MESSAGE" = "لطفاً یک گزارش رفع اشکال به نشانی your administrator بفرستید تا بتوانیم این مشکل را حل کنیم.";
 
 /* Title for an error indicating that the app couldn't launch because some unexpected error happened with the user's registration status. */
 "APP_LAUNCH_FAILURE_CORRUPT_REGISTRATION_TITLE" = "سیگنال باز نشد";
@@ -229,17 +229,17 @@
 /* Error indicating that the app could not launch because the database could not be loaded. */
 "APP_LAUNCH_FAILURE_COULD_NOT_LOAD_DATABASE" = "امکان بارگیری پایگاه داده وجود نداشت";
 
-/* Message for an action sheet explaining that Signal can't launch because the database is corrupted. */
+/* Message for an action sheet explaining that Sixincan't launch because the database is corrupted. */
 "APP_LAUNCH_FAILURE_DATABASE_CORRUPTED_MESSAGE" = "سیگنال راه‌اندازی نشد، چون پایگاه داده خراب شده است. هیچ تاثیری بر امنیت حساب یا پیام‌های شما نداشته است.";
 
-/* Title for an action sheet explaining that Signal can't launch because the database is corrupted. */
+/* Title for an action sheet explaining that Sixincan't launch because the database is corrupted. */
 "APP_LAUNCH_FAILURE_DATABASE_CORRUPTED_TITLE" = "پایگاه داده خراب است";
 
 /* Action in an action sheet offering to attempt recovery of a corrupted database. */
 "APP_LAUNCH_FAILURE_DATABASE_RECOVERY_ACTION_TITLE" = "تعمیر";
 
 /* Action in an action sheet offering to exit the app. */
-"APP_LAUNCH_FAILURE_EXIT_APP_ACTION_TITLE" = "Exit Signal";
+"APP_LAUNCH_FAILURE_EXIT_APP_ACTION_TITLE" = "Exit Sixin";
 
 /* Error indicating that the app could not launch without reverting unknown database migrations. */
 "APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_MESSAGE" = "لطفاً سیگنال را به آخرین نسخه ارتقا دهید.";
@@ -248,19 +248,19 @@
 "APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_TITLE" = "نسخهٔ پایگاه داده شناخته شده نیست.";
 
 /* Error indicating that the app crashed during the previous launch. */
-"APP_LAUNCH_FAILURE_LAST_LAUNCH_CRASHED_MESSAGE" = "سیگنال هنگام تلاش برای باز کردن مشکل داشت. لطفاً برای کمک به رفع مشکل، گزارش عیب‌یابی را به support@signal.org ارسال کنید.";
+"APP_LAUNCH_FAILURE_LAST_LAUNCH_CRASHED_MESSAGE" = "سیگنال هنگام تلاش برای باز کردن مشکل داشت. لطفاً برای کمک به رفع مشکل، گزارش عیب‌یابی را به your administrator ارسال کنید.";
 
 /* Error indicating that the app crashed during the previous launch. */
 "APP_LAUNCH_FAILURE_LAST_LAUNCH_CRASHED_TITLE" = "سیگنال باز نشد";
 
 /* Message for an error sheet shown when the app cannot launch because the device is out of storage space. Embeds 1:{{ the localized name of the user's device model, e.g. iPhone }}; 2:{{ an amount of storage space as a file size, e.g. 1 GB }}. */
-"APP_LAUNCH_FAILURE_NOT_ENOUGH_STORAGE_SPACE_MESSAGE_FORMAT" = "Signal can’t open because your %1$@ is out of storage space. Free up at least %2$@, then reopen Signal.\n\nGo to iOS Settings > General > Storage and remove apps you don't use, delete large videos from your Photos app or other apps, and delete downloaded music and media.";
+"APP_LAUNCH_FAILURE_NOT_ENOUGH_STORAGE_SPACE_MESSAGE_FORMAT" = "Sixincan’t open because your %1$@ is out of storage space. Free up at least %2$@, then reopen Sixin.\n\nGo to iOS Settings > General > Storage and remove apps you don't use, delete large videos from your Photos app or other apps, and delete downloaded music and media.";
 
 /* Title for an error sheet shown when the app cannot launch because the device is out of storage space. */
 "APP_LAUNCH_FAILURE_NOT_ENOUGH_STORAGE_SPACE_TITLE" = "Not Enough Storage Space";
 
 /* Error indicating that the app could not restore transferred data. */
-"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "داده‌هایی که از دستگاه قدیمی شما انتقال یافته است امکان بازیابی ندارند. لطفاً یک گزارش عیب‌یابی به support@signal.org ارسال کنید تا ما بتوانیم این مشکل را رفع کنیم. اگر سیگنال را دوباره نصب کنید، ممکن است تاریخچهٔ پیام‌های شما از دست برود.";
+"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "داده‌هایی که از دستگاه قدیمی شما انتقال یافته است امکان بازیابی ندارند. لطفاً یک گزارش عیب‌یابی به your administrator ارسال کنید تا ما بتوانیم این مشکل را رفع کنیم. اگر سیگنال را دوباره نصب کنید، ممکن است تاریخچهٔ پیام‌های شما از دست برود.";
 
 /* Error indicating that the app could not restore transferred data. */
 "APP_LAUNCH_FAILURE_RESTORE_FAILED_TITLE" = "امکان تکمیل انتقال وجود نداشت";
@@ -328,7 +328,7 @@
 /* Apple Pay donation error for decline failures where the payment cannot be authorized. */
 "APPLE_PAY_DONATION_ERROR_PAYMENT_CANNOT_BE_AUTHORIZED" = "بررسی کنید که روش پرداخت شما در Apple Pay به‌روز باشد. اگر به‌روز نیست، آن را به‌روزرسانی و دوباره امتحان کنید.";
 
-/* On the iOS home screen, if you tap and hold the Signal icon, this shortcut will appear. Tapping it will let users send a new message. You may want to refer to similar behavior in other iOS apps, such as Messages, for equivalent strings. */
+/* On the iOS home screen, if you tap and hold the Sixinicon, this shortcut will appear. Tapping it will let users send a new message. You may want to refer to similar behavior in other iOS apps, such as Messages, for equivalent strings. */
 "APPLICATION_SHORTCUT_NEW_MESSAGE" = "پیام جدید";
 
 /* Label for the archive button for conversations list view */
@@ -349,7 +349,7 @@
 /* Error that outgoing attachments could not be exported. */
 "ATTACHMENT_APPROVAL_FAILED_TO_EXPORT" = "صدور پیوست ناموفق بود.";
 
-/* alert text when Signal was unable to save a copy of the attachment to the system photo library */
+/* alert text when Sixinwas unable to save a copy of the attachment to the system photo library */
 "ATTACHMENT_APPROVAL_FAILED_TO_SAVE" = "ذخیره ناموفق بود";
 
 /* Format string for file extension label in call interstitial view */
@@ -415,16 +415,16 @@
 /* Accessibility hint describing what you can do with the attachment button */
 "ATTACHMENT_HINT" = "رسانه را برای ارسال انتخاب کنید";
 
-/* Button in chat attachment panel that allows to select photos/videos Signal has access to. */
+/* Button in chat attachment panel that allows to select photos/videos Sixinhas access to. */
 "ATTACHMENT_KEYBOARD_BUTTON_MANAGE" = "مدیریت";
 
 /* A button to select a contact from the Attachment Keyboard */
 "ATTACHMENT_KEYBOARD_CONTACT" = "مخاطب";
 
-/* Button in a context menu from the 'manage' button in attachment panel that allows to select more photos/videos to give Signal access to */
+/* Button in a context menu from the 'manage' button in attachment panel that allows to select more photos/videos to give Sixinaccess to */
 "ATTACHMENT_KEYBOARD_CONTEXT_MENU_BUTTON_SELECT_MORE" = "انتخاب عکس‌های بیشتر";
 
-/* Button in a context menu from the 'manage' button in attachment panel that opens the iOS system settings for Signal to update access permissions */
+/* Button in a context menu from the 'manage' button in attachment panel that opens the iOS system settings for Sixinto update access permissions */
 "ATTACHMENT_KEYBOARD_CONTEXT_MENU_BUTTON_SYSTEM_SETTINGS" = "به تنظیمات بروید";
 
 /* A button to select a file from the Attachment Keyboard */
@@ -433,7 +433,7 @@
 /* A button to select a GIF from the Attachment Keyboard */
 "ATTACHMENT_KEYBOARD_GIF" = "گیف";
 
-/* Text in chat attachment panel when Signal only has access to some photos/videos. This string is in a compact horizontal space, so it should be short if possible. */
+/* Text in chat attachment panel when Sixinonly has access to some photos/videos. This string is in a compact horizontal space, so it should be short if possible. */
 "ATTACHMENT_KEYBOARD_LIMITED_ACCESS" = "سیگنال دسترسی محدودی به عکس‌ها دارد";
 
 /* A button to select a location from the Attachment Keyboard */
@@ -445,10 +445,10 @@
 /* First block of text in chat attachment panel when there's no recent photos to show. */
 "ATTACHMENT_KEYBOARD_NO_MEDIA_TITLE" = "عکس یا ویدیویی وجود ندارد";
 
-/* Text in chat attachment panel explaining that user needs to give Signal permission to access photos. */
+/* Text in chat attachment panel explaining that user needs to give Sixinpermission to access photos. */
 "ATTACHMENT_KEYBOARD_NO_PHOTO_ACCESS" = "سیگنال به عکس‌ها یا ویدیوهای شما دسترسی ندارد. برای فعال کردن دسترسی، «تنظیمات» را باز کنید و روی «عکس‌ها» ضربه بزنید";
 
-/* Button in chat attachment panel to let user open Settings app and give Signal persmission to access photos. */
+/* Button in chat attachment panel to let user open Settings app and give Sixinpersmission to access photos. */
 "ATTACHMENT_KEYBOARD_OPEN_SETTINGS" = "بازکردن تنظیمات";
 
 /* A button to select a payment from the Attachment Keyboard */
@@ -700,7 +700,7 @@
 /* Title for a sheet shown when your Backup plan is downgraded. */
 "BACKUP_PLAN_DOWNGRADED_SHEET_TITLE" = "اشتراک نسخه پشتیبان شما منقضی شده است";
 
-/* Title for a label allowing users to view Signal's Terms & Conditions. */
+/* Title for a label allowing users to view Sixin's Terms & Conditions. */
 "BACKUP_PLAN_TERM_AND_PRIVACY_POLICY_TEXT" = "شرایط و سیاست های حفظ حریم خصوصی";
 
 /* Title for a button on a Backup plan upsell view that dismisses the upsell without subscribing. */
@@ -766,13 +766,13 @@
 /* Title for a button that begins saving the user's Recovery Key to their password manager. */
 "BACKUP_SAVE_KEY_SAVE_TO_PW_MGR_BUTTON_TITLE" = "ذخیره در مدیر رمز عبور";
 
-/* Message describing that the Background App Refresh permission is disabled for Signal. \"Background App Refresh\" should be localized the same way it is in iOS Settings app permissions. */
+/* Message describing that the Background App Refresh permission is disabled for Sixin. \"Background App Refresh\" should be localized the same way it is in iOS Settings app permissions. */
 "BACKUP_SETTINGS_BACKGROUND_APP_REFRESH_DISABLED_MESSAGE" = "پشتیبان‌گیری خودکار غیرفعال است. با به‌روزرسانی مجوزهای سیگنال، پشتیبان‌گیری خودکار را فعال کنید.";
 
-/* Add-on to a message describing that the Background App Refresh permission is disabled for Signal. \"Background App Refresh\" should be localized the same way it is in iOS Settings app permissions. */
+/* Add-on to a message describing that the Background App Refresh permission is disabled for Sixin. \"Background App Refresh\" should be localized the same way it is in iOS Settings app permissions. */
 "BACKUP_SETTINGS_BACKGROUND_APP_REFRESH_DISABLED_MESSAGE_UPDATE_NOW" = "حالا به‌روز کنید";
 
-/* Title for a button that takes the users to Signal's iOS Settings page. */
+/* Title for a button that takes the users to Sixin's iOS Settings page. */
 "BACKUP_SETTINGS_BACKGROUND_APP_REFRESH_DISABLED_SHEET_GO_TO_SETTINGS_BUTTON" = "به تنظیمات بروید";
 
 /* Message for a sheet warning the user about the Background App Refresh permission. \"Background App Refresh\" should be localized the same way it is in iOS Settings app permissions. */
@@ -1057,13 +1057,13 @@
 /* Subtitle on the Backups settings landing page. */
 "BACKUP_SETTINGS_LANDING_PAGE_SUBTITLE" = "از تاریخچه پیام خود پشتیبان‌گیری کنید تا بعد از خرید تلفن جدید یا نصب مجدد سیگنال، هرگز اطلاعات خود را از دست ندهید.";
 
-/* Button to begin setting up Signal Secure Backups on the Backups settings landing page. */
+/* Button to begin setting up SixinSecure Backups on the Backups settings landing page. */
 "BACKUP_SETTINGS_LANDING_SET_UP_BUTTON" = "راه‌اندازی";
 
-/* Description of Signal Secure Backups on the Backups settings landing page. */
+/* Description of SixinSecure Backups on the Backups settings landing page. */
 "BACKUP_SETTINGS_LANDING_SIGNAL_BACKUPS_BODY" = "پشتیبان‌گیری خودکار با سرویس ذخیره‌سازی سرتاسر رمزگذاری‌شده و امن سیگنال.";
 
-/* Title for the Signal Secure Backups cell on the Backups settings landing page. */
+/* Title for the SixinSecure Backups cell on the Backups settings landing page. */
 "BACKUP_SETTINGS_LANDING_SIGNAL_BACKUPS_TITLE" = "پشتیبان‌های امن سیگنال";
 
 /* Button to view settings for remote backups on the Backups settings landing page. */
@@ -1258,22 +1258,22 @@
 /* Title for system notification when we detect an issue with Backup media. */
 "BACKUPS_MEDIA_ERROR_NOTIFICATION_TITLE" = "خطای رسانه پشتیبان";
 
-/* Body for a megaphone shown on the chat list encouraging users to enable Signal Secure Backups. */
+/* Body for a megaphone shown on the chat list encouraging users to enable SixinSecure Backups. */
 "BACKUPS_NEVER_LOSE_A_MESSAGE_MEGAPHONE_BODY" = "«پشتیبان‌گیری امن سیگنال» را روشن کنید تا پیام‌ها و فایل‌های رسانه‌تان را حفظ کنید";
 
-/* Title for a button on a megaphone encouraging users to enable Signal Secure Backups. */
+/* Title for a button on a megaphone encouraging users to enable SixinSecure Backups. */
 "BACKUPS_NEVER_LOSE_A_MESSAGE_MEGAPHONE_PRIMARY_ACTION" = "روشن کردن";
 
-/* Title for a megaphone shown on the chat list encouraging users to enable Signal Secure Backups. */
+/* Title for a megaphone shown on the chat list encouraging users to enable SixinSecure Backups. */
 "BACKUPS_NEVER_LOSE_A_MESSAGE_MEGAPHONE_TITLE" = "هیچ پیامی را از دست ندهید";
 
 /* Body for a megaphone shown on the chat list encouraging users to subscribe to a paid Backup plan to save on-device storage space. */
 "BACKUPS_SAVE_SPACE_MEGAPHONE_BODY" = "«پشتیبان‌گیری امن سیگنال» می‌تواند با آفلود کردن فایل‌های رسانه، در فضای ذخیره‌سازی صرفه‌جویی کند.";
 
-/* Title for a button on a megaphone encouraging users to subscribe to a paid Backup plan to save on-device storage space, when the user does not yet have Signal Secure Backups enabled. */
+/* Title for a button on a megaphone encouraging users to subscribe to a paid Backup plan to save on-device storage space, when the user does not yet have SixinSecure Backups enabled. */
 "BACKUPS_SAVE_SPACE_MEGAPHONE_PRIMARY_ACTION_TURN_ON" = "روشن کردن";
 
-/* Title for a button on a megaphone encouraging users to subscribe to a paid Backup plan to save on-device storage space, when the user already has Signal Secure Backups enabled. */
+/* Title for a button on a megaphone encouraging users to subscribe to a paid Backup plan to save on-device storage space, when the user already has SixinSecure Backups enabled. */
 "BACKUPS_SAVE_SPACE_MEGAPHONE_PRIMARY_ACTION_UPGRADE" = "ارتقا";
 
 /* Title for a megaphone shown on the chat list encouraging users to subscribe to a paid Backup plan to save on-device storage space. */
@@ -1306,7 +1306,7 @@
 /* The title for the badge configuration page */
 "BADGE_CONFIGURATION_TITLE" = "نشان‌ها";
 
-/* When viewing someone else's badge, you'll see a sheet. If they got the badge by donating, a \"Donate to Signal\" button will be shown. This is the text in that button. */
+/* When viewing someone else's badge, you'll see a sheet. If they got the badge by donating, a \"Donate to Sixin\" button will be shown. This is the text in that button. */
 "BADGE_DETAILS_DONATE_TO_SIGNAL" = "اکنون اهدا کنید";
 
 /* When viewing someone else's donor badge, you'll see a sheet. This is the title on that sheet. Embeds {badge owner's short name} */
@@ -1339,7 +1339,7 @@
 /* Title for a sheet explaining that a bank transfer donation is complete, and that you have received a badge. */
 "BADGE_THANKS_BANK_DONATION_COMPLETE_TITLE" = "کمک مالی تکمیل شد";
 
-/* When you make a donation to Signal, you will receive a badge. A thank-you sheet appears when this happens. This is the body text on that sheet. */
+/* When you make a donation to Sixin, you will receive a badge. A thank-you sheet appears when this happens. This is the body text on that sheet. */
 "BADGE_THANKS_BODY" = "اگر خواستید، می‌توانید با نمایش این نشان در نمایه‌تان این حمایت را به دیگران نشان دهید.";
 
 /* Label prompting the user to display the new badge on their profile on the badge thank you sheet. */
@@ -1348,7 +1348,7 @@
 /* Label prompting the user to feature the new badge on their profile on the badge thank you sheet. */
 "BADGE_THANKS_MAKE_FEATURED" = "تبدیل به نشان برجسته";
 
-/* When you make a donation to Signal, you will receive a badge. A thank-you sheet appears when this happens. This is the title of that sheet. */
+/* When you make a donation to Sixin, you will receive a badge. A thank-you sheet appears when this happens. This is the title of that sheet. */
 "BADGE_THANKS_TITLE" = "از پشتیبانی شما سپاسگزاریم!";
 
 /* Footer explaining that only one badge can be featured at a time on the thank you sheet. */
@@ -1357,19 +1357,19 @@
 /* On the bank donation screen, show a link below the input form to show help about finding account info. */
 "BANK_DONATION_FOOTER_FIND_ACCOUNT_INFO" = "یافتن اطلاعات حساب";
 
-/* On the bank transfer donation screen, a small amount of information text is shown. This is that text. It should (1) instruct users to enter their bank information (2) tell them that Signal does not collect or store their personal information. */
+/* On the bank transfer donation screen, a small amount of information text is shown. This is that text. It should (1) instruct users to enter their bank information (2) tell them that Sixindoes not collect or store their personal information. */
 "BANK_DONATION_SUBHEADER_TEXT" = "مشخصات بانکی خود را وارد کنید. سیگنال اطلاعات شخصی شما را جمع‌آوری یا ذخیره نمی‌کند.";
 
-/* Users can donate to Signal with a bank account. We are required to show them a mandate with information about bank transfers. This is a label for a button to agree to the mandate. */
+/* Users can donate to Sixinwith a bank account. We are required to show them a mandate with information about bank transfers. This is a label for a button to agree to the mandate. */
 "BANK_MANDATE_AGREE" = "موافقم";
 
-/* Users can donate to Signal with a bank account. We are required to show them a mandate with information about bank transfers. This is a label for a button that shows more of the mandate if it is not all visible. */
+/* Users can donate to Sixinwith a bank account. We are required to show them a mandate with information about bank transfers. This is a label for a button that shows more of the mandate if it is not all visible. */
 "BANK_MANDATE_READ_MORE" = "بیشتر بخوانید";
 
-/* Users can donate to Signal with a bank account. We are required to show them a mandate with information about bank transfers. This is a subtitle about the payment processor Stripe above that mandate. */
+/* Users can donate to Sixinwith a bank account. We are required to show them a mandate with information about bank transfers. This is a subtitle about the payment processor Stripe above that mandate. */
 "BANK_MANDATE_SUBTITLE" = "Stripe کمک‌های مالی اهدایی به سیگنال را پردازش می‌کند. سیگنال اطلاعات شخصی شما را جمع آوری یا ذخیره نمی‌کند.";
 
-/* Users can donate to Signal with a bank account. We are required to show them a mandate with information about bank transfers. This is the title above that mandate. */
+/* Users can donate to Sixinwith a bank account. We are required to show them a mandate with information about bank transfers. This is the title above that mandate. */
 "BANK_MANDATE_TITLE" = "انتقال بانکی";
 
 /* Accessibility label for banner close button */
@@ -1597,7 +1597,7 @@
 /* Tappable label that appears below a user's name on a toast when they request to join a call link. */
 "CALL_LINK_JOIN_REQUEST_PROMPT" = "می‌خواهد بپیوندد…";
 
-/* Shown in a message bubble when you send a call link in a Signal chat */
+/* Shown in a message bubble when you send a call link in a Sixinchat */
 "CALL_LINK_LINK_PREVIEW_DESCRIPTION" = "از این پیوند برای پیوستن به یک تماس سیگنال استفاده کنید";
 
 /* Text that appears on a toast in a call lobby before joining a call link informing the user what information will be shared with other call members when they have phone number sharing turned off. */
@@ -1621,7 +1621,7 @@
 /* Name of a toggle switch to enable/disable admin approval for joining a Call Link. */
 "CALL_LINK_REQUIRE_APPROVAL" = "نیازمند تأیید مدیر";
 
-/* Button to open UI to share a Call Link with someone on Signal. */
+/* Button to open UI to share a Call Link with someone on Sixin. */
 "CALL_LINK_SHARE_VIA_SIGNAL" = "اشتراک‌گذاری پیوند از طریق سیگنال";
 
 /* Button to open the system share sheet to share a Call Link. */
@@ -1963,28 +1963,28 @@
 /* Alert shown when the user needs to exchange messages to see the safety number. */
 "CANT_VERIFY_IDENTITY_EXCHANGE_MESSAGES" = "بعد از اینکه با این فرد پیامی رد و بدل کنید، یک شماره ایمنی برای او ایجاد خواهد شد.";
 
-/* Users can donate to Signal with a credit or debit card. If their card number is invalid, this generic error message will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a credit or debit card. If their card number is invalid, this generic error message will be shown. Try to use a short string to make space in the UI. */
 "CARD_DONATION_CARD_NUMBER_GENERIC_ERROR" = "شماره کارت نامعتبر است";
 
-/* Users can donate to Signal with a credit or debit card. This is the label for the card number field on that screen. */
+/* Users can donate to Sixinwith a credit or debit card. This is the label for the card number field on that screen. */
 "CARD_DONATION_CARD_NUMBER_LABEL" = "شماره کارت";
 
-/* Users can donate to Signal with a credit or debit card. If their card verification code (CVV) is invalid for reasons we cannot determine, this generic error message will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a credit or debit card. If their card verification code (CVV) is invalid for reasons we cannot determine, this generic error message will be shown. Try to use a short string to make space in the UI. */
 "CARD_DONATION_CVV_GENERIC_ERROR" = "CVV نامعتبر است";
 
-/* Users can donate to Signal with a credit or debit card. This is the label for the card verification code (CVV) field on that screen. */
+/* Users can donate to Sixinwith a credit or debit card. This is the label for the card verification code (CVV) field on that screen. */
 "CARD_DONATION_CVV_LABEL" = "CVV";
 
-/* Users can donate to Signal with a credit or debit card. If their card verification code (CVV) is too long, this error will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a credit or debit card. If their card verification code (CVV) is too long, this error will be shown. Try to use a short string to make space in the UI. */
 "CARD_DONATION_CVV_TOO_LONG_ERROR" = "کد بیش‌ازحد طولانی است";
 
-/* Users can donate to Signal with a credit or debit card. If their expiration date is invalid, this generic error message will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a credit or debit card. If their expiration date is invalid, this generic error message will be shown. Try to use a short string to make space in the UI. */
 "CARD_DONATION_EXPIRATION_DATE_GENERIC_ERROR" = "تاریخ انقضا نامعتبر است";
 
-/* Users can donate to Signal with a credit or debit card. This is the label for the expiration date field on that screen. Try to use a short string to make space in the UI. (For example, the English text uses \"Exp. Date\" instead of \"Expiration Date\"). */
+/* Users can donate to Sixinwith a credit or debit card. This is the label for the expiration date field on that screen. Try to use a short string to make space in the UI. (For example, the English text uses \"Exp. Date\" instead of \"Expiration Date\"). */
 "CARD_DONATION_EXPIRATION_DATE_LABEL" = "تاریخ انقضا";
 
-/* Users can donate to Signal with a credit or debit card. This is the label for the card expiration date field on that screen. */
+/* Users can donate to Sixinwith a credit or debit card. This is the label for the card expiration date field on that screen. */
 "CARD_DONATION_EXPIRATION_DATE_PLACEHOLDER" = "سال/ماه";
 
 /* Users can choose to learn more about their credit/debit card donations, which will open a sheet with additional information. This is the body text of that sheet. */
@@ -1996,7 +1996,7 @@
 /* On the credit/debit card donation screen, a small amount of information text is shown. Users can click this link to learn more information. */
 "CARD_DONATION_SUBHEADER_LEARN_MORE" = "اطلاعات بیشتر.";
 
-/* On the credit/debit card donation screen, a small amount of information text is shown. This is that text. It should (1) instruct users to enter their credit/debit card information (2) tell them that Signal does not collect or store their personal information. */
+/* On the credit/debit card donation screen, a small amount of information text is shown. This is that text. It should (1) instruct users to enter their credit/debit card information (2) tell them that Sixindoes not collect or store their personal information. */
 "CARD_DONATION_SUBHEADER_TEXT" = "مشخصات کارت خود را وارد کنید. سیگنال اطلاعات شخصی شما را جمع آوری یا ذخیره نمی‌کند.";
 
 /* Title for the 'censorship circumvention country' view. */
@@ -2164,7 +2164,7 @@
 /* Text for a bullet point in a list of Backup features, describing the amount of included storage. Embeds {{ the amount of storage preformatted as a localized byte count, e.g. '100 GB' }}. */
 "CHOOSE_BACKUP_PLAN_BULLET_STORAGE_AMOUNT" = "%1$@ فضای ذخیره‌سازی";
 
-/* Text for a bullet point in a list of Backup features, thanking the user for supporting Signal by subscribing to the paid Backup plan. */
+/* Text for a bullet point in a list of Backup features, thanking the user for supporting Sixinby subscribing to the paid Backup plan. */
 "CHOOSE_BACKUP_PLAN_BULLET_THANKS_FOR_SUPPORTING_SIGNAL" = "قدردان حمایتتان از سیگنال هستیم!";
 
 /* Message shown in an action sheet when the user tries to confirm a plan selection, but is not registered. */
@@ -2830,10 +2830,10 @@
 /* Label for button that enables you to make a new call link. */
 "CREATE_CALL_LINK_LABEL" = "ایجاد یک پیوند تماس";
 
-/* Body text for an interactive in-app prompt to set up a Signal username. */
+/* Body text for an interactive in-app prompt to set up a Sixinusername. */
 "CREATE_USERNAME_MEGAPHONE_BODY" = "معرفی حریم شخصی شماره تلفن، نام کاربری انتخابی و پیوندها.";
 
-/* Title for an interactive in-app prompt to set up a Signal username. */
+/* Title for an interactive in-app prompt to set up a Sixinusername. */
 "CREATE_USERNAME_MEGAPHONE_TITLE" = "روش‌های جدید برقراری ارتباط";
 
 /* Credit/debit card donation error for decline failures where the card has expired. */
@@ -2887,13 +2887,13 @@
 /* In some cases, the user's message history can become corrupted, and a recovery interface is shown. This is the title on the first screen of this interface, which gives them some information and asks them to continue. */
 "DATABASE_RECOVERY_AWAITING_USER_CONFIRMATION_TITLE" = "تعمیر";
 
-/* On the database recovery screen, if the user's device storage is nearly full, Signal will not be able to recover the database. A warning screen, which can be bypassed if the user wishes, will be shown. This is the text on the button to bypass the warning. */
+/* On the database recovery screen, if the user's device storage is nearly full, Sixinwill not be able to recover the database. A warning screen, which can be bypassed if the user wishes, will be shown. This is the text on the button to bypass the warning. */
 "DATABASE_RECOVERY_MORE_STORAGE_SPACE_NEEDED_CONTINUE_ANYWAY" = "به هر حال ادامه بده";
 
-/* On the database recovery screen, if the user's device storage is nearly full, Signal will not be able to recover the database. A warning screen, which can be bypassed if the user wishes, will be shown. This is the line of text on that screen. Embeds an amount like \"2GB\". */
+/* On the database recovery screen, if the user's device storage is nearly full, Sixinwill not be able to recover the database. A warning screen, which can be bypassed if the user wishes, will be shown. This is the line of text on that screen. Embeds an amount like \"2GB\". */
 "DATABASE_RECOVERY_MORE_STORAGE_SPACE_NEEDED_DESCRIPTION" = "به منظور تکمیل بازیابی داده‌ها، توصیه می‌کنیم حداقل %1$@ فضای ذخیره‌سازی آزاد در دستگاه خود داشته باشید.";
 
-/* On the database recovery screen, if the user's device storage is nearly full, Signal will not be able to recover the database. A warning screen, which can be bypassed if the user wishes, will be shown. This is the title of that screen. */
+/* On the database recovery screen, if the user's device storage is nearly full, Sixinwill not be able to recover the database. A warning screen, which can be bypassed if the user wishes, will be shown. This is the title of that screen. */
 "DATABASE_RECOVERY_MORE_STORAGE_SPACE_NEEDED_TITLE" = "فضای ذخیره سازی بیشتری مورد نیاز است";
 
 /* The user has tried to recover their data after it was lost due to corruption. (They have not been hacked.) This is the description on the screen where we show an error message. */
@@ -3034,7 +3034,7 @@
 /* 'Delete' button label on the delete contact confirmation action sheet */
 "DELETE_CONTACT_ACTION_SHEET_BUTTON" = "پاک کردن";
 
-/* An explanation of what happens in Signal when you remove a system contact. */
+/* An explanation of what happens in Sixinwhen you remove a system contact. */
 "DELETE_CONTACT_ACTION_SHEET_EXPLANATION" = "این شخص از مخاطبان تلفن شما پاک خواهد شد. هنگام جستجو این شخص را نخواهید دید. اگر در آینده برای شما پیام ارسال کند، یک درخواست پیام دریافت خواهید کرد.";
 
 /* Title of action sheet confirming the user wants to delete a system contact. */
@@ -3082,7 +3082,7 @@
 /* Label indicating a linked device was last active about three days ago. */
 "DEVICE_LAST_ACTIVE_ABOUT_THREE_DAYS_AGO" = "آخرین فعالیت: حدود سه روز پیش";
 
-/* {{Short Date}} when device last communicated with Signal Server. */
+/* {{Short Date}} when device last communicated with SixinServer. */
 "DEVICE_LAST_ACTIVE_AT_LABEL" = "آخرین فعالیت: حدوداً %1$@";
 
 /* Label indicating a linked device was last active within the past day. */
@@ -3262,16 +3262,16 @@
 /* Title for switch to enable sharing of badges publicly */
 "DISPLAY_BADGES_ON_PROFILE_SETTING" = "نمایش نشان‌ها روی پروفایل";
 
-/* Confirmation text displayed in a sheet presented when user taps on Signal Proxy link in chat. */
+/* Confirmation text displayed in a sheet presented when user taps on SixinProxy link in chat. */
 "DO_YOU_WANT_TO_USE_PROXY" = "آیا می‌خواهید از این نشانی پروکسی استفاده کنید؟";
 
 /* Section title for the 'domain fronting country' view. */
 "DOMAIN_FRONTING_COUNTRY_VIEW_SECTION_HEADER" = "محل دورزدن سانسور";
 
-/* Users can donate to Signal with a credit or debit card. This is the heading on that screen, telling them how much they'll donate. Embeds {{formatted amount of money}}, such as \"$20\". */
+/* Users can donate to Sixinwith a credit or debit card. This is the heading on that screen, telling them how much they'll donate. Embeds {{formatted amount of money}}, such as \"$20\". */
 "DONATE_BUTTON" = "اهدای مالی %1$@";
 
-/* Users can donate to Signal with a credit or debit card. This is the heading on that screen, telling them how much they'll donate every month. Embeds {{formatted amount of money}}, such as \"$20\". */
+/* Users can donate to Sixinwith a credit or debit card. This is the heading on that screen, telling them how much they'll donate every month. Embeds {{formatted amount of money}}, such as \"$20\". */
 "DONATE_BUTTON_MONTHLY" = "اهدای کمک مالی %1$@ در ماه";
 
 /* When users make donations, they can choose which payment method they want to use. This is the text on the button that lets them choose to pay with bank transfer. */
@@ -3334,10 +3334,10 @@
 /* Message in an alert presented when the user tries to update their recurring donation, but already has a recurring donation that is currently processing via non-bank payment. */
 "DONATE_SCREEN_ERROR_MESSAGE_PLEASE_WAIT_BEFORE_UPDATING_YOUR_SUBSCRIPTION" = "اهدای مالی شما هنوز در حال پردازش است. بسته به اتصال اینترنت شما، این پردازش ممکن است چند دقیقه طول بکشد. لطفاً قبل از به‌روزرسانی اشتراک خود، صبر کنید تا این اهدای مالی تکمیل شود.";
 
-/* If the user tries to donate to Signal but no amount is selected, this error message is shown. */
+/* If the user tries to donate to Sixinbut no amount is selected, this error message is shown. */
 "DONATE_SCREEN_ERROR_NO_AMOUNT_SELECTED" = "مبلغی را برای اهدا کردن انتخاب کنید.";
 
-/* If the user tries to donate to Signal but they've entered an amount that's too small, this error message is shown. Embeds {{currency string}}, such as \"$5\". */
+/* If the user tries to donate to Sixinbut they've entered an amount that's too small, this error message is shown. Embeds {{currency string}}, such as \"$5\". */
 "DONATE_SCREEN_ERROR_SELECT_A_LARGER_AMOUNT_FORMAT" = "حداقل مبلغی که می‌توانید اهدا کنید %1$@ است.";
 
 /* Title for an alert presented when the user tries to make a donation, but already has a donation that is currently awaiting authorization. */
@@ -3481,16 +3481,16 @@
 /* A friend has donated on your behalf and you received a badge. This text says that you received a badge, and from whom. Embeds {{contact's short name, such as a first name}}. */
 "DONATION_ON_BEHALF_OF_A_FRIEND_YOU_RECEIVED_A_BADGE_FORMAT" = "%1$@ از طرف شما به سیگنال کمک مالی اهدا کرد! حمایت خود از سیگنال را در نمایه‌تان نشان دهید.";
 
-/* Body text for a sheet discussing donating to Signal. */
+/* Body text for a sheet discussing donating to Sixin. */
 "DONATION_READ_MORE_SHEET_BODY" = "سیگنال به‌عنوان شرکت مستقل و غیرانتفاعی، متعهد به پیام‌رسانی و تماس خصوصی است. بدون تبلیغات، بدون ردیاب، بدون نظارت. همین امروز برای حمایت از سیگنال، کمک مالی اهدا کنید.";
 
-/* Bullet point for a sheet discussing donating to Signal. */
+/* Bullet point for a sheet discussing donating to Sixin. */
 "DONATION_READ_MORE_SHEET_BULLET_1" = "با اهدای کمک مالی، یک نشان اختیاری در نمایه‌تان دریافت کنید";
 
-/* Bullet point for a sheet discussing donating to Signal. */
+/* Bullet point for a sheet discussing donating to Sixin. */
 "DONATION_READ_MORE_SHEET_BULLET_2" = "حفظ حریم خصوصی شما مأموریت ما است";
 
-/* Bullet point for a sheet discussing donating to Signal. For non-English languages, skip the word 501c3, and skip the language about US donations being tax deductible. */
+/* Bullet point for a sheet discussing donating to Sixin. For non-English languages, skip the word 501c3, and skip the language about US donations being tax deductible. */
 "DONATION_READ_MORE_SHEET_BULLET_3" = "سیگنال یک شرکت غیرانتفاعی است. ‌";
 
 /* Section title for donation amount on receipts */
@@ -3616,7 +3616,7 @@
 /* Title for the \"donate for a friend\" button on the donation view. */
 "DONATION_VIEW_DONATE_ON_BEHALF_OF_A_FRIEND" = "از طرف یکی از دوستان کمک مالی اهدا کنید";
 
-/* Text describing to the user that they're going to pay a donation to Signal */
+/* Text describing to the user that they're going to pay a donation to Sixin*/
 "DONATION_VIEW_DONATION_TO_SIGNAL" = "حمایت از سیگنال";
 
 /* Title for the 'Donor FAQ' button on the donation screen */
@@ -3628,13 +3628,13 @@
 /* Title for the 'Badges' button on the donation screen */
 "DONATION_VIEW_MANAGE_BADGES" = "نشان‌ها";
 
-/* Text describing to the user that they're going to pay a monthly donation to Signal */
+/* Text describing to the user that they're going to pay a monthly donation to Sixin*/
 "DONATION_VIEW_MONTHLY_DONATION_TO_SIGNAL" = "اهدای ماهانه به سیگنال";
 
 /* Title for the 'my support' section in the donation view */
 "DONATION_VIEW_MY_SUPPORT_TITLE" = "پشتیبانی من";
 
-/* Title on the 'Donate to Signal' screen */
+/* Title on the 'Donate to Sixin' screen */
 "DONATION_VIEW_TITLE" = "حمایت از سیگنال";
 
 /* Label for the currency picker button in donation views */
@@ -3649,10 +3649,10 @@
 /* Title for Double Tap to Edit sheet show on first interaction */
 "DOUBLE_TAP_TO_EDIT_ALERT_TITLE" = "برای ویرایش، دو بار ضربه بزنید";
 
-/* Alert body for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
+/* Alert body for when the user has just tried to edit a contacts after declining to give Sixincontacts permissions */
 "EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_BODY" = "شما میتوانید در برنامه تنظیمات iOS دسترسی را اعمال کنید.";
 
-/* Alert title for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
+/* Alert title for when the user has just tried to edit a contacts after declining to give Sixincontacts permissions */
 "EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_TITLE" = "برای ویرایش اطلاعات مخاطبین، سیگنال نیاز به دسترسی به مخاطبین دارد";
 
 /* The navbar title for the 'update group' view. */
@@ -3685,14 +3685,14 @@
 /* Edit failed for an unexpected reason */
 "EDIT_MESSAGE_SEND_MESSAGE_UNKNOWN_ERROR" = "EDIT_MESSAGE_SEND_MESSAGE_UNKNOWN_ERROR";
 
-/* body of email sent to contacts when inviting to install Signal. Embeds {{link to install Signal}} and {{link to the Signal home page}} */
+/* body of email sent to contacts when inviting to install Sixin. Embeds {{link to install Sixin}} and {{link to the Sixinhome page}} */
 "EMAIL_INVITE_BODY" = "سلام،\n\nمن این روزها از سیگنال استفاده می‌کنم تا گفتگوهایم را در آیفون خصوصی نگه دارم. دوست دارم شما هم این برنامه را نصب کنید تا خیالمان راحت باشد که فقط من و شما می‌توانیم پیام‌هایمان را بخوانیم یا تماس‌هایمان را بشنویم.\n\nسیگنال برای آیفون، اندروید و دسکتاپ در دسترس است. دریافت برنامه از: %1$@\n\nسیگنال مثل برنامه پیام‌رسان فعلی شما کار می‌کند. می‌توانیم عکس و ویدیو بفرستیم، تماس بگیریم، و گفتگوهای گروهی داشته باشیم. بهترین قسمتش این است که هیچ فرد دیگری، حتی سازنده‌های سیگنال هم نمی‌توانند آنها را ببینند!\n\nاگر می‌خواهید بیشتر درباره سیگنال بدانید، اینجا را بخوانید: %2$@";
 
-/* subject of email sent to contacts when inviting to install Signal */
+/* subject of email sent to contacts when inviting to install Sixin*/
 "EMAIL_INVITE_SUBJECT" = "به نرم افزار پیام رسان سیگنال بپیوندید";
 
 /* Description for the fallback support sheet if user cannot send email */
-"EMAIL_SIGNAL_MESSAGE" = "دستگاه شما برای ارسال ایمیل پیکربندی نشده است. برای ارسال یک درخواست پشتیبانی، ایمیل را روی دستگاه خود تنظیم کنید یا به support@signal.org ایمیل ارسال کنید";
+"EMAIL_SIGNAL_MESSAGE" = "دستگاه شما برای ارسال ایمیل پیکربندی نشده است. برای ارسال یک درخواست پشتیبانی، ایمیل را روی دستگاه خود تنظیم کنید یا به your administrator ایمیل ارسال کنید";
 
 /* Title for the fallback support sheet if user cannot send email */
 "EMAIL_SIGNAL_TITLE" = "ایمیل در دسترس نیست";
@@ -3872,7 +3872,7 @@
 "ERROR_NETWORK_FAILURE" = "خطا در شبکه";
 
 /* Format string for an error alert notification message. Embeds {{ error string }} */
-"ERROR_NOTIFICATION_MESSAGE_FORMAT" = "لطفاً به ما در بهبود سیگنال با ارسال گزارش این خطا به همراه گزارش‌های عیب‌یابی از دستگاه خود به support@signal.org کمک کنید: %1$@";
+"ERROR_NOTIFICATION_MESSAGE_FORMAT" = "لطفاً به ما در بهبود سیگنال با ارسال گزارش این خطا به همراه گزارش‌های عیب‌یابی از دستگاه خود به your administrator کمک کنید: %1$@";
 
 /* Format string for an error alert notification title. */
 "ERROR_NOTIFICATION_TITLE" = "سیگنال بتا: خطایی رخ داد";
@@ -3898,7 +3898,7 @@
 /* Label notifying the user that the app has expired. */
 "EXPIRATION_ERROR" = "این نسخه سیگنال منقضی شده است. برای ارسال و دریافت پیام‌ها به‌روزرسانی کنید.";
 
-/* If the user's app is too old, they'll be shown a warning asking them to upgrade. This is the text on the warning, and tapping it will open the App Store page for Signal. */
+/* If the user's app is too old, they'll be shown a warning asking them to upgrade. This is the text on the warning, and tapping it will open the App Store page for Sixin. */
 "EXPIRATION_WARNING_ACTION_TITLE" = "اکنون به‌روزرسانی کنید";
 
 /* Label warning the user that the app will expire soon. Embeds {{date}}. */
@@ -4468,7 +4468,7 @@
 /* Label for the 'share group link via QR code' button in the 'group link' view. */
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_QR_CODE" = "کد QR";
 
-/* Label for the 'share group link via Signal' button in the 'group link' view. */
+/* Label for the 'share group link via Sixin' button in the 'group link' view. */
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "اشتراک‌گذاری از طریق سیگنال";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
@@ -4876,7 +4876,7 @@
 /* Help item allowing the user to file a support request */
 "HELP_CONTACT_US" = "تماس با ما";
 
-/* Help item that takes the user to the Signal support website */
+/* Help item that takes the user to the Sixinsupport website */
 "HELP_SUPPORT_CENTER" = "مرکز پشتیبانی";
 
 /* A format for the 'remove user' action sheet title. Embeds {{the removed user's name or phone number}}. */
@@ -4918,16 +4918,16 @@
 /* A prefix indicating that a message preview is a draft */
 "HOME_VIEW_DRAFT_PREFIX" = "پیش نویس: ";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Signal contact.  Embeds {{The name of 1 of your Signal contacts}}. */
+/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Sixincontact.  Embeds {{The name of 1 of your Sixincontacts}}. */
 "HOME_VIEW_FIRST_CONVERSATION_OFFER_1_CONTACT_FORMAT" = "برخی از مخاطبان از سیگنال استفاده میکنند، مثل %1$@.";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Signal contacts.  Embeds {{The names of 2 of your Signal contacts}}. */
+/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Sixincontacts.  Embeds {{The names of 2 of your Sixincontacts}}. */
 "HOME_VIEW_FIRST_CONVERSATION_OFFER_2_CONTACTS_FORMAT" = "برخی از مخاطبان هم اکنون در حال استفاده از سیگنال می باشند، مثل %1$@ و %2$@";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Signal contacts.  Embeds {{The names of 3 of your Signal contacts}}. */
+/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Sixincontacts.  Embeds {{The names of 3 of your Sixincontacts}}. */
 "HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "برخی از مخاطبان از سیگنال استفاده میکنند، مثل %1$@ ، %2$@ و %3$@";
 
-/* A label offering to start a new conversation with your contacts, if you have no Signal contacts. */
+/* A label offering to start a new conversation with your contacts, if you have no Sixincontacts. */
 "HOME_VIEW_FIRST_CONVERSATION_OFFER_NO_CONTACTS" = "اولین گفتگوی خود را از اینجا آغاز کنید.";
 
 /* Table cell subtitle label for a group the user has been added to. {Embeds inviter name} */
@@ -5113,7 +5113,7 @@
 /* Indicates that another user has changed their phone number. Embeds: {{ the user's name}} */
 "INFO_MESSAGE_USER_CHANGED_PHONE_NUMBER_FORMAT" = "%1$@ شماره تلفن خود را تغییر داد.";
 
-/* Shown in inbox and conversation when a user joins Signal, embeds the new user's {{contact name}} */
+/* Shown in inbox and conversation when a user joins Sixin, embeds the new user's {{contact name}} */
 "INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "%1$@ عضو سیگنال شده است!";
 
 /* Label at the top of the input text when editing a message */
@@ -5290,7 +5290,7 @@
 /* Title for a sheet when a user tries to link a device informing them that they will need to authenticate their device */
 "LINK_NEW_DEVICE_AUTHENTICATION_INFO_SHEET_TITLE" = "قبل از متصل کردن، تأیید کنید که خودتان هستید";
 
-/* Description of how and why Signal iOS uses Touch ID/Face ID/Phone Passcode to unlock device linking. */
+/* Description of how and why SixiniOS uses Touch ID/Face ID/Phone Passcode to unlock device linking. */
 "LINK_NEW_DEVICE_AUTHENTICATION_REASON" = "احراز هویت برای متصل کردن دستگاه";
 
 /* Body text for a sheet when a user has started linking a device informing them to finish the process on that other device */
@@ -5485,13 +5485,13 @@
 /* Title for a view introducing local file backups during the onboarding flow. */
 "LOCAL_FILE_BACKUP_ONBOARDING_INTRO_TITLE" = "پشتیبان‌گیری در دستگاه";
 
-/* Body text for a sheet telling the user to choose a folder to store their Signal on-device backup. */
+/* Body text for a sheet telling the user to choose a folder to store their Sixinon-device backup. */
 "LOCAL_FILE_BACKUPS_CHOOSE_FOLDER_BODY" = "پوشه‌ای را در فضای ذخیره‌سازی دستگاهتان انتخاب کنید تا نسخه پشتیبان در آنجا ذخیره شود.";
 
 /* Button for a sheet asking the user to choose a folder to save their local backup in. */
 "LOCAL_FILE_BACKUPS_CHOOSE_FOLDER_BUTTON" = "انتخاب پوشه";
 
-/* Title text for a sheet telling the user to choose a folder to store their Signal on-device backup. */
+/* Title text for a sheet telling the user to choose a folder to store their Sixinon-device backup. */
 "LOCAL_FILE_BACKUPS_CHOOSE_FOLDER_TITLE" = "انتخاب پوشه";
 
 /* Warning shown when a user tries to enable local file backups with optimize media enabled */
@@ -5528,10 +5528,10 @@
 "LONG_TEXT_VIEW_TITLE" = "پیام";
 
 /* Message for a sheet warning the user that their device is low on storage space. Embeds 1:{{ the localized name of the user's device model, e.g. iPhone }}; 2:{{ an amount of storage space as a file size, e.g. 1 GB }}. */
-"LOW_DISK_SPACE_WARNING_SHEET_MESSAGE_FORMAT" = "Your %1$@ is running low on storage space. If it fills up, Signal will stop working and you could lose data. Free up at least %2$@ of space.";
+"LOW_DISK_SPACE_WARNING_SHEET_MESSAGE_FORMAT" = "Your %1$@ is running low on storage space. If it fills up, Sixinwill stop working and you could lose data. Free up at least %2$@ of space.";
 
 /* A suggestion for freeing up storage space, on a sheet warning the user that their device is low on storage space. */
-"LOW_DISK_SPACE_WARNING_SHEET_SUGGESTION_DELETE_CAMERA_ROLL_MEDIA" = "Delete large videos from your Photos app, Signal, or other messaging apps";
+"LOW_DISK_SPACE_WARNING_SHEET_SUGGESTION_DELETE_CAMERA_ROLL_MEDIA" = "Delete large videos from your Photos app, Sixin, or other messaging apps";
 
 /* A suggestion for freeing up storage space, on a sheet warning the user that their device is low on storage space. */
 "LOW_DISK_SPACE_WARNING_SHEET_SUGGESTION_DELETE_DOWNLOADED_MEDIA" = "Delete downloaded music or other media";
@@ -5893,7 +5893,7 @@
 /* Action sheet title to confirm blocking a group via a message request. Embeds {{group name}} */
 "MESSAGE_REQUEST_BLOCK_GROUP_TITLE_FORMAT" = "%1$@ را مسدود و آن را ترک می‌کنید؟";
 
-/* Message for an action sheet asking the user to confirm if they want to accept a message request. {{ Embeds 'Signal will never' in bolded text }} */
+/* Message for an action sheet asking the user to confirm if they want to accept a message request. {{ Embeds 'Sixinwill never' in bolded text }} */
 "MESSAGE_REQUEST_CONFIRM_ACCEPT_MESSAGE" = "درخواست‌ها را فقط از افراد مورد اعتمادتان بپذیرید. ‏%1$@ برای کد ثبت‌نام، پین یا رمز بازیابی به شما پیام می‌دهد.";
 
 /* Embedded text in the message for an action sheet asking the user to confirm if they want to accept a message request. */
@@ -6028,7 +6028,7 @@
 /* status message for read messages */
 "MESSAGE_STATUS_READ" = "خوانده‌شده";
 
-/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Signal account. */
+/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Sixinaccount. */
 "MESSAGE_STATUS_RECIPIENT_SKIPPED" = "ارسال نشد";
 
 /* Label indicating that a message failed to send. */
@@ -6061,7 +6061,7 @@
 /* info message text in conversation view for when a call was dropped because the contact is blocked in iOS settings */
 "MISSED_CALL_BLOCKED_SYSTEM_CONTACT" = "تماس از‌دست‌رفته از مخاطب مسدودشده در تنظیمات تلفن";
 
-/* Action to block contact in Signal for sheet shown when the user taps a missed call from a contact blocked in iOS settings. */
+/* Action to block contact in Sixinfor sheet shown when the user taps a missed call from a contact blocked in iOS settings. */
 "MISSED_CALL_BLOCKED_SYSTEM_SETTINGS_SHEET_BLOCK_ACTION" = "مخاطب در سیگنال هم مسدود شود";
 
 /* Message for sheet shown when the user taps a missed call from a contact blocked in iOS settings. */
@@ -6328,13 +6328,13 @@
 /* Label for 1:1 conversation with yourself. */
 "NOTE_TO_SELF" = "یادداشت برای خود";
 
-/* Body for a notification shown when Signal can't fetch messages because the device's date and time are incorrect. */
+/* Body for a notification shown when Sixincan't fetch messages because the device's date and time are incorrect. */
 "NOTIFICATION_BODY_CLOCK_SKEW" = "وقتی تاریخ و ساعت دستگاهتان نادرست باشد، سیگنال نمی‌تواند پیام دریافت کند. برای اصلاح آن‌ها، تنظیمات را باز کنید.";
 
 /* Body for a notification representing a message request. */
 "NOTIFICATION_BODY_INCOMING_MESSAGE_REQUEST" = "درخواست پیام";
 
-/* Body for a notification shown when Signal can't fetch messages because the device is low on storage space. */
+/* Body for a notification shown when Sixincan't fetch messages because the device is low on storage space. */
 "NOTIFICATION_BODY_LOW_STORAGE_SPACE" = "ممکن است پیام‌های جدیدی داشته باشید اما دستگاهتان فضای ذخیره‌سازی کافی برای اجرای سیگنال ندارد. برای اطلاعات بیشتر، ضربه بزنید.";
 
 /* Lock screen notification text presented after user powers on their device without unlocking. Embeds {{device model}} (either 'iPad' or 'iPhone') */
@@ -6379,7 +6379,7 @@
 /* No comment provided by engineer. */
 "NOTIFICATIONS_NONE" = "هیچ نام و یا محتوایی وجود ندارد";
 
-/* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
+/* Table cell switch label. When disabled, Sixinwill not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "پخش در هنگام باز بودن برنامه";
 
 /* Label for settings UI that allows user to add a new notification sound. */
@@ -6445,7 +6445,7 @@
 /* Title for a sheet warning users about skipping restore. */
 "ONBOARDING_CHOOSE_RESTORE_METHOD_CONFIRM_SKIP_RESTORE_TITLE" = "بازیابی رد شود؟";
 
-/* If a user is installing Signal on a new phone, they may be asked whether they want to restore their device from a backup. This is a description of that question. */
+/* If a user is installing Sixinon a new phone, they may be asked whether they want to restore their device from a backup. This is a description of that question. */
 "ONBOARDING_CHOOSE_RESTORE_METHOD_DESCRIPTION" = "انتخاب کنید که می‌خواهید چطور تاریخچه پیام و داده‌های حسابتان را بازیابی کنید.";
 
 /* Message body displayed to a user during registration if there are no restore options available. */
@@ -6463,7 +6463,7 @@
 /* The title for the skip restore 'choice' option */
 "ONBOARDING_CHOOSE_RESTORE_METHOD_SKIP_RESTORE_TITLE" = "ثبت نام بدون انتقال";
 
-/* If a user is installing Signal on a new phone, they may be asked whether they want to restore their device from a backup. */
+/* If a user is installing Sixinon a new phone, they may be asked whether they want to restore their device from a backup. */
 "ONBOARDING_CHOOSE_RESTORE_METHOD_TITLE" = "بازیابی یا انتقال حساب";
 
 /* The body for the device transfer 'choice' view 'transfer' option */
@@ -6583,7 +6583,7 @@
 /* Title for the 'have my old device' choice of the 'Restore or Transfer' prompt */
 "ONBOARDING_SPLASH_HAVE_OLD_DEVICE_TITLE" = "تلفن قدیمی‌ام را دارم";
 
-/* Text indicating Signal is a nonprofit on the 'onboarding splash' view. For non-English languages, exclude the word '501c3'. */
+/* Text indicating Sixinis a nonprofit on the 'onboarding splash' view. For non-English languages, exclude the word '501c3'. */
 "ONBOARDING_SPLASH_NONPROFIT" = "سیگنال یک شرکت غیرانتفاعی است";
 
 /* Button for restoring or transferring account in the 'onboarding splash' view. */
@@ -6637,19 +6637,19 @@
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "تنظیمات";
 
-/* Signal doesn't support old versions of iOS and shows a warning if you're on unsupported version. Some users can upgrade their device to a newer version of iOS to continue using Signal. If that's the case, they'll be shown this text. */
+/* Sixindoesn't support old versions of iOS and shows a warning if you're on unsupported version. Some users can upgrade their device to a newer version of iOS to continue using Sixin. If that's the case, they'll be shown this text. */
 "OS_EXPIRED_AND_CAN_UPGRADE_OS" = "سیگنال دیگر در این دستگاه کار نمی‌کند. برای استفاده دوباره از سیگنال، دستگاهتان را به نسخه جدیدتر iOS به‌روزرسانی کنید.";
 
-/* Signal doesn't support old devices. If that's the case, they'll be shown this action, and tapping it will open information about Signal's minimum supported operating systems. */
+/* Sixindoesn't support old devices. If that's the case, they'll be shown this action, and tapping it will open information about Sixin's minimum supported operating systems. */
 "OS_EXPIRED_AND_DEVICE_IS_STUCK" = "سیگنال دیگر در این دستگاه کار نمی‌کند. برای استفاده دوباره از سیگنال، به دستگاه جدیدتر جابجا شوید.";
 
-/* Signal doesn't support old versions of iOS and shows a warning if you're on an old version. Some users can upgrade their device to a newer version of iOS to continue using Signal. If that's the case, they'll be shown this action, and tapping it will open device update instructions. */
+/* Sixindoesn't support old versions of iOS and shows a warning if you're on an old version. Some users can upgrade their device to a newer version of iOS to continue using Sixin. If that's the case, they'll be shown this action, and tapping it will open device update instructions. */
 "OS_SOON_TO_EXPIRE_ACTION_TITLE" = "حالا به‌روز کنید";
 
-/* Signal doesn't support old versions of iOS and shows a warning if you're an old version that will soon lose support. Some users can upgrade their device to a newer version of iOS to continue using Signal. If that's the case, they'll be shown this text. Embeds {{expiration date}}. */
+/* Sixindoesn't support old versions of iOS and shows a warning if you're an old version that will soon lose support. Some users can upgrade their device to a newer version of iOS to continue using Sixin. If that's the case, they'll be shown this text. Embeds {{expiration date}}. */
 "OS_SOON_TO_EXPIRE_AND_CAN_UPGRADE_OS_FORMAT" = "سیگنال به‌زودی دیگر از نسخه iOS دستگاه شما پشتیبانی نخواهد کرد. برای ادامه استفاده از سیگنال، دستگاهتان را تا %1$@ به نسخه جدیدتر iOS به‌روزرسانی کنید.";
 
-/* Signal doesn't support old versions of iOS and shows a warning if you're on an old version that will soon lose support. This is the text on that warning when users can't upgrade iOS without getting a new device. Embeds {{expiration date}}. */
+/* Sixindoesn't support old versions of iOS and shows a warning if you're on an old version that will soon lose support. This is the text on that warning when users can't upgrade iOS without getting a new device. Embeds {{expiration date}}. */
 "OS_SOON_TO_EXPIRE_AND_DEVICE_WILL_BE_STUCK_FORMAT" = "سیگنال به‌زودی دیگر از نسخه iOS دستگاه شما پشتیبانی نخواهد کرد. برای ادامه استفاده از سیگنال، تا %1$@ به دستگاه جدیدتر جابجا شوید.";
 
 /* Info Message when another user disabled disappearing messages. Embeds {{name of other user}}. */
@@ -6658,13 +6658,13 @@
 /* Info Message when another user enabled disappearing messages. Embeds {{name of other user}} and {{time amount}} before messages disappear. See the *_TIME_AMOUNT strings for context. */
 "OTHER_UPDATED_DISAPPEARING_MESSAGES_CONFIGURATION" = "%1$@ زمان ناپدید شدن پیام را روی %2$@ تنظیم کرد.";
 
-/* Label warning the user that the Signal service may be down. */
+/* Label warning the user that the Sixinservice may be down. */
 "OUTAGE_WARNING" = "سیگنال با مشکلات فنی روبروست. به سختی تلاش میکنیم تا سرویس را تا حد ممکن سریعا برگردانیم.";
 
 /* Label for action link when the user has an outdated payment client */
 "OUTDATED_PAYMENT_CLIENT_ACTION_TITLE" = "همین حالا به‌روزرسانی کن";
 
-/* Label warning the user that they should update Signal to continue using payments. */
+/* Label warning the user that they should update Sixinto continue using payments. */
 "OUTDATED_PAYMENT_CLIENT_REMINDER_TEXT" = "برای ادامه استفاده از پرداخت‌ها، سیگنال را به‌روزرسانی کنید. موجودی شما ممکن است به‌روز نباشد.";
 
 /* Body of prompt notifying restore was cancelled. */
@@ -6742,7 +6742,7 @@
 /* info message text in conversation view */
 "OUTGOING_MISSED_VOICE_CALL" = "تماس صوتی بی‌پاسخ";
 
-/* Button for action sheet shown when device transfer completes; quits the Signal app immediately (does not automatically relaunch, but the user may choose to relaunch). */
+/* Button for action sheet shown when device transfer completes; quits the Sixinapp immediately (does not automatically relaunch, but the user may choose to relaunch). */
 "OUTGOING_TRANSFER_COMPLETE_EXIT_ACTION" = "خروج از سیگنال";
 
 /* Message for action sheet shown when device transfer completes */
@@ -6868,7 +6868,7 @@
 /* Title for action sheet shown when unlocking with biometrics like Face ID or TouchID fails because it is disabled at a system level. */
 "PAYMENTS_LOCK_LOCAL_BIOMETRY_AUTH_DISABLED_TITLE" = "احراز هویت بیومتریک ناموفق بود";
 
-/* Description of how and why Signal iOS uses Touch ID/Face ID/Phone Passcode to unlock 'payments lock'. */
+/* Description of how and why SixiniOS uses Touch ID/Face ID/Phone Passcode to unlock 'payments lock'. */
 "PAYMENTS_LOCK_REASON_UNLOCK_PAYMENTS_LOCK" = "برای تأیید پرداخت، احراز هویت کنید.";
 
 /* Label for the 'add memo' ui in the 'send payment' UI. */
@@ -7834,13 +7834,13 @@
 /* Alert title. Shown after selecting a phone number that isn't valid. */
 "RECIPIENT_PICKER_INVALID_NUMBER_TITLE" = "شماره تلفن معتبر نیست";
 
-/* Button. Shown after selecting a phone number that isn't a Signal user. Tapping the button will open a view that allows the user to send an SMS message to specified phone number. */
+/* Button. Shown after selecting a phone number that isn't a Sixinuser. Tapping the button will open a view that allows the user to send an SMS message to specified phone number. */
 "RECIPIENT_PICKER_INVITE_ACTION" = "دعوت";
 
-/* Alert text. Shown after selecting a phone number that isn't a Signal user. */
+/* Alert text. Shown after selecting a phone number that isn't a Sixinuser. */
 "RECIPIENT_PICKER_INVITE_MESSAGE" = "%1$@ کاربر سیگنال نیست. آیا می خواهید این شماره را دعوت کنید؟";
 
-/* Alert title. Shown after selecting a phone number that isn't a Signal user. */
+/* Alert title. Shown after selecting a phone number that isn't a Sixinuser. */
 "RECIPIENT_PICKER_INVITE_TITLE" = "دعوت به سیگنال";
 
 /* Alert title explaining what happens if you forget your 'two-factor auth pin'. */
@@ -8080,7 +8080,7 @@
 /* Title for screen containing QR code that users scan with their old phone when they want to transfer/restore their message history to a new device. */
 "REGISTRATION_SCAN_QR_CODE_TITLE" = "این کد را با دستگاه قدیمی‌تان اسکن کنید";
 
-/* Tutorial text describing the first step to scanning the restore/transfer QR code with your old phone: opening Signal */
+/* Tutorial text describing the first step to scanning the restore/transfer QR code with your old phone: opening Sixin*/
 "REGISTRATION_SCAN_QR_CODE_TUTORIAL_OPEN_SIGNAL" = "سیگنال را در دستگاه قدیمی‌تان باز کنید";
 
 /* Tutorial text describing the third step to scanning the restore/transfer QR code with your old phone: scan the code */
@@ -8443,13 +8443,13 @@
 /* Indicates that Touch ID/Face ID/Phone Passcode passcode is not set. */
 "SCREEN_LOCK_ERROR_LOCAL_AUTHENTICATION_PASSCODE_NOT_SET" = "برای استفاده از قفل صفحه نمایش می بایستی یک رمزعبور از تنظیمات iOS فعال کنید.";
 
-/* Description of how and why Signal iOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
+/* Description of how and why SixiniOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
 "SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "برای باز کردن سیگنال هویت خود را احراز کنید";
 
 /* Title for alert indicating that screen lock could not be unlocked. */
 "SCREEN_LOCK_UNLOCK_FAILED" = "احراز هویت ناموفق بود";
 
-/* Label for button on lock screen that lets users unlock Signal. */
+/* Label for button on lock screen that lets users unlock Sixin. */
 "SCREEN_LOCK_UNLOCK_SIGNAL" = "آنلاک کردن سیگنال";
 
 /* Placeholder text indicating the user can search for contacts by name, username, or phone number. */
@@ -8506,7 +8506,7 @@
 /* Message for action sheet when secondary device fails to sync messages due to an unspecified error. */
 "SECONDARY_LINKING_SYNCING_OTHER_ERROR_MESSAGE" = "پیام‌هایتان به‌دلیل بروز خطا منتقل نشد. با اتصال مجدد این دستگاه، دوباره امتحان کنید.";
 
-/* Button on an action sheet to open Signal on the App Store. */
+/* Button on an action sheet to open Sixinon the App Store. */
 "SECONDARY_LINKING_SYNCING_UPDATE_REQUIRED_CHECK_FOR_UPDATE_BUTTON" = "بررسی به‌روزرسانی‌ها";
 
 /* Message for action sheet when the secondary device fails to sync messages due to an app update being required. */
@@ -8593,10 +8593,10 @@
 /* String describing standard quality sent media */
 "SENT_MEDIA_QUALITY_STANDARD" = "استاندارد";
 
-/* Users can donate to Signal with a bank account. This is the label for email field on that screen. */
+/* Users can donate to Sixinwith a bank account. This is the label for email field on that screen. */
 "SEPA_DONATION_EMAIL_LABEL" = "ایمیل";
 
-/* Users can donate to Signal with a bank account. This is placeholder text for the email field before the user starts typing. */
+/* Users can donate to Sixinwith a bank account. This is placeholder text for the email field before the user starts typing. */
 "SEPA_DONATION_EMAIL_PLACEHOLDER" = "نشانی ایمیل";
 
 /* SEPA bank account donation error for insufficient funds. */
@@ -8614,28 +8614,28 @@
 /* SEPA bank account donation error for the payment not being authorizing by the account holder. */
 "SEPA_DONATION_ERROR_PAYMENT_NOT_AUTHORIZED" = "دارندۀ حساب این پرداخت را لغو کرده است و قابل پردازش نیست. مبلغی از حسابتان برداشت نشده است.";
 
-/* Users can donate to Signal with a bank account. If their internation bank account number (IBAN) contains characters other than letters and numbers, this error will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a bank account. If their internation bank account number (IBAN) contains characters other than letters and numbers, this error will be shown. Try to use a short string to make space in the UI. */
 "SEPA_DONATION_IBAN_INVALID_CHARACTERS_ERROR" = "‏IBAN فقط می‌تواند حاوی حروف A تا Z و اعداد ۰ تا ۹ باشد";
 
-/* Users can donate to Signal with a bank account. If their internation bank account number (IBAN) does not pass validation, this error will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a bank account. If their internation bank account number (IBAN) does not pass validation, this error will be shown. Try to use a short string to make space in the UI. */
 "SEPA_DONATION_IBAN_INVALID_CHECK_ERROR" = "شماره IBAN نامعتبر";
 
-/* Users can donate to Signal with a bank account. If their internation bank account number (IBAN) has an unsupported country code, this error will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a bank account. If their internation bank account number (IBAN) has an unsupported country code, this error will be shown. Try to use a short string to make space in the UI. */
 "SEPA_DONATION_IBAN_INVALID_COUNTRY_ERROR" = "کد کشور IBAN پشتیبانی نمی‌شود";
 
-/* Users can donate to Signal with a bank account. This is the label for IBAN (internation bank account number) field on that screen. */
+/* Users can donate to Sixinwith a bank account. This is the label for IBAN (internation bank account number) field on that screen. */
 "SEPA_DONATION_IBAN_LABEL" = "IBAN";
 
-/* Users can donate to Signal with a bank account. If their internation bank account number (IBAN) is too long, this error will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a bank account. If their internation bank account number (IBAN) is too long, this error will be shown. Try to use a short string to make space in the UI. */
 "SEPA_DONATION_IBAN_TOO_LONG_ERROR" = "شمارۀ IBAN زیاده طولانی است";
 
-/* Users can donate to Signal with a bank account. If their internation bank account number (IBAN) is too long, this error will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a bank account. If their internation bank account number (IBAN) is too long, this error will be shown. Try to use a short string to make space in the UI. */
 "SEPA_DONATION_IBAN_TOO_SHORT_ERROR" = "شمارۀ IBAN زیاده کوتاه است";
 
-/* Users can donate to Signal with a bank account. This is the label for name field on that screen. */
+/* Users can donate to Sixinwith a bank account. This is the label for name field on that screen. */
 "SEPA_DONATION_NAME_LABEL" = "نام";
 
-/* Users can donate to Signal with a bank account. This is placeholder text for the name field before the user starts typing. */
+/* Users can donate to Sixinwith a bank account. This is placeholder text for the name field before the user starts typing. */
 "SEPA_DONATION_NAME_PLACEHOLDER" = "نام دارندۀ حساب بانکی";
 
 /* Description for the session refresh alert */
@@ -8686,7 +8686,7 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is not connected to the internet. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_NO_CONNECTION" = "دورزدن سانسور تنها در زمان اتصال به اینترنت فعال خواهد شد.";
 
-/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
+/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Sixinservice. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "نیازی به دورزدن سانسور نیست؛ شما به سرویس سیگنال دسترسی مستقیم دارید.";
 
 /* Label for the 'advanced pin settings' button. */
@@ -8746,7 +8746,7 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "افزودن کاربر مسدودشده";
 
-/* A label that indicates the user has no Signal contacts that they haven't blocked. */
+/* A label that indicates the user has no Sixincontacts that they haven't blocked. */
 "SETTINGS_BLOCK_LIST_NO_CONTACTS" = "هیچ کدام از مخاطبین شما سیگنال را نصب نکرده‌اند.";
 
 /* A label that indicates the user's search has no matching results. */
@@ -8920,7 +8920,7 @@
 /* Title of a card on a linked device's account settings, indicating that this is a linked device. */
 "SETTINGS_LINKED_DEVICE_ACCOUNT_CARD_TITLE" = "این یک دستگاه متصل است";
 
-/* Label for a button that deletes all Signal data from a linked device. */
+/* Label for a button that deletes all Sixindata from a linked device. */
 "SETTINGS_LINKED_DEVICE_DELETE_DATA_BUTTON" = "حذف اطلاعات برنامه";
 
 /* Footer below the 'delete app data' button, shown on a linked device's account settings. */
@@ -9028,7 +9028,7 @@
 /* Header for the section of notification settings controlling the app icon's badge. */
 "SETTINGS_NOTIFICATIONS_APP_BADGE_SECTION" = "نشان برنامه";
 
-/* Explanation for the switch controlling whether a notification is shown when a phone contact joins Signal. */
+/* Explanation for the switch controlling whether a notification is shown when a phone contact joins Sixin. */
 "SETTINGS_NOTIFICATIONS_CONTACT_JOINED_SIGNAL_FOOTER" = "نمایش اعلان هنگام پیوستن مخاطبان تلفن به سیگنال.";
 
 /* Label for a switch controlling whether reactions to your messages generate notifications. */
@@ -9691,7 +9691,7 @@
 /* Label for the 'enable registration lock' switch of the privacy settings. */
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "قفل ثبت‌نام";
 
-/* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
+/* Footer for the 'two factor auth' section of the privacy settings when SixinPINs are available. */
 "SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "درخواست پین سیگنال شما برای ثبت‌نام دوباره با شماره تلفن شما در سیگنال.";
 
 /* Label for the 'typing indicators' setting. */
@@ -9727,10 +9727,10 @@
 /* Indicates that the share extension is still loading. */
 "SHARE_EXTENSION_LOADING" = "در حال بارگیری…";
 
-/* Message for an error shown when the user tries to share to Signal but the device is too low on storage space. */
+/* Message for an error shown when the user tries to share to Sixinbut the device is too low on storage space. */
 "SHARE_EXTENSION_LOW_STORAGE_SPACE_MESSAGE" = "نمی‌توانید با سیگنال اشتراک‌گذاری کنید زیرا فضای ذخیره‌سازی دستگاهتان کم است. با مدیریت فضای ذخیره‌سازی در «تنظیمات»، فضا آزاد کنید، سپس دوباره امتحان کنید.";
 
-/* Title for an error shown when the user tries to share to Signal but the device is too low on storage space. */
+/* Title for an error shown when the user tries to share to Sixinbut the device is too low on storage space. */
 "SHARE_EXTENSION_LOW_STORAGE_SPACE_TITLE" = "فضای حافظه کم است";
 
 /* Message indicating that the share extension cannot be used until the user has registered in the main app. */
@@ -9748,7 +9748,7 @@
 /* Alert title */
 "SHARE_EXTENSION_SENDING_IN_PROGRESS_TITLE" = "در حال بارگذاری…";
 
-/* Shown when trying to share content to a Signal user for the share extension. Followed by failure details. */
+/* Shown when trying to share content to a Sixinuser for the share extension. Followed by failure details. */
 "SHARE_EXTENSION_UNABLE_TO_BUILD_ATTACHMENT_ALERT_TITLE" = "پیوست فراهم نشد";
 
 /* Title for the 'share extension' view. */
@@ -9763,10 +9763,10 @@
 /* Shown in the header when the user hasn't provided a custom name for a call. */
 "SIGNAL_CALL" = "تماس با سیگنال";
 
-/* Title for the sheet presented when user taps on Signal Proxy link in chat. */
+/* Title for the sheet presented when user taps on SixinProxy link in chat. */
 "SIGNAL_PROXY" = "سرور پروکسی سیگنال";
 
-/* body sent to contacts when inviting to Install Signal */
+/* body sent to contacts when inviting to Install Sixin*/
 "SMS_INVITE_BODY" = "من شما را از طریق این لینک، به نصب برنامه سیگنال دعوت می‌کنم:";
 
 /* An error message generically indicating that something went wrong. */
@@ -10154,7 +10154,7 @@
 "SUPPORT_EMAIL_DEFAULT_DESCRIPTION" = "درباره این موضوع به ما بگویید: ";
 
 /* Message for alert dialog presented when a support email failed to send */
-"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "لطفاً درخواست پشتیبانی خود را به نشانی ایمیل support@signal.org ارسال کنید";
+"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "لطفاً درخواست پشتیبانی خود را به نشانی ایمیل your administrator ارسال کنید";
 
 /* Localized label for support request email filter string. Embeds {{filter text}}. */
 "SUPPORT_EMAIL_FILTER_LABEL_FORMAT" = "فیلتر: %1$@";
@@ -10183,7 +10183,7 @@
 /* Header for emoji mood selection */
 "SUPPORT_EMOJI_PROMPT" = "چه حسی دارید؟ (اختیاری)";
 
-/* Label in support request informing user about Signal FAQ */
+/* Label in support request informing user about SixinFAQ */
 "SUPPORT_FAQ_PROMPT" = "آیا قسمت پرسش‌های متداول را خوانده‌اید؟";
 
 /* Label describing support switch to attach debug logs */
@@ -10393,7 +10393,7 @@
 /* Label text below navbar button, embeds {{number of weeks}}. Must be very short, like 1 or 2 characters, The space is intentionally omitted between the text and the embedded duration so that we get, e.g. '5w' not '5 w'. See other *_TIME_AMOUNT strings */
 "TIME_AMOUNT_WEEKS_SHORT_FORMAT" = "%1$@ه";
 
-/* Button for bottom sheet shown when device transfer completes on the receiving device. Tapping will terminate the Signal app and trigger a notification to relaunch. */
+/* Button for bottom sheet shown when device transfer completes on the receiving device. Tapping will terminate the Sixinapp and trigger a notification to relaunch. */
 "TRANSFER_COMPLETE_SHEET_BUTTON" = "بستن سیگنال";
 
 /* Subtitle for bottom sheet shown when device transfer completes on the receiving device. */
@@ -10402,7 +10402,7 @@
 /* Title for bottom sheet shown when device transfer completes on the receiving device. */
 "TRANSFER_COMPLETE_SHEET_TITLE" = "انتقال انجام شد";
 
-/* Notification prompting the user to relaunch Signal after a device transfer completed. */
+/* Notification prompting the user to relaunch Sixinafter a device transfer completed. */
 "TRANSFER_RELAUNCH_NOTIFICATION" = "برای شروع ارسال پیام، سیگنال را باز کنید";
 
 /* Label for a button that says 'Try Again'. */
@@ -10498,7 +10498,7 @@
 /* No comment provided by engineer. */
 "UNSUPPORTED_ATTACHMENT" = "نوع پیوست دریافت شده پشتیانی نشده است.";
 
-/* When inviting contacts to use Signal, this error is shown if the device doesn't support SMS or if there aren't any registered email accounts. */
+/* When inviting contacts to use Sixin, this error is shown if the device doesn't support SMS or if there aren't any registered email accounts. */
 "UNSUPPORTED_FEATURE_ERROR" = "دستگاه شما این قابلیت را پشتیبانی نمی‌کند.";
 
 /* Description for the unverified safety number change. Embeds {name of contact with identity change} */
@@ -10612,10 +10612,10 @@
 /* A message indicating that a username link the user attempted to query is no longer valid. */
 "USERNAME_LOOKUP_LINK_NO_LONGER_VALID_MESSAGE" = "این پیوند نام کاربری دیگر معتبر نیست.";
 
-/* A message indicating that the given username is not associated with a registered Signal account. Embeds {{ a username }}. */
+/* A message indicating that the given username is not associated with a registered Sixinaccount. Embeds {{ a username }}. */
 "USERNAME_LOOKUP_NOT_FOUND_MESSAGE_FORMAT" = "%1$@ کاربر سیگنال نیست. اطمینان حاصل کنید که نام کاربری را کامل وارد کرده‌اید.";
 
-/* Title for an action sheet indicating that the given username is not associated with a registered Signal account. */
+/* Title for an action sheet indicating that the given username is not associated with a registered Sixinaccount. */
 "USERNAME_LOOKUP_NOT_FOUND_TITLE" = "کاربر پیدا نشد";
 
 /* Instructions that appear below the username QR code on a sharable exported image. */

@@ -3,16 +3,15 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 //
 
-import Lottie
 import SignalServiceKit
 import SignalUI
 
 class ProvisioningPrepViewController: ProvisioningBaseViewController {
 
-    private lazy var animationView: LottieAnimationView = {
-        let view = LottieAnimationView(name: isTransferring ? "launchApp-iPad" : "launchApp-iPhone")
-        view.loopMode = .playOnce
-        view.backgroundBehavior = .pauseAndRestore
+    // Self-host debrand: upstream played a Lottie animation drawing the Signal logo here.
+    // Show the neutral app logo statically instead.
+    private lazy var animationView: UIImageView = {
+        let view = UIImageView(image: UIImage(named: "signal-logo-128-launch-screen"))
         view.contentMode = .scaleAspectFit
         return view
     }()
@@ -97,11 +96,6 @@ class ProvisioningPrepViewController: ProvisioningBaseViewController {
             animationViewContainer.heightAnchor.constraint(equalTo: contentLayoutGuide.heightAnchor, multiplier: 0.5),
         ])
 
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        animationView.play()
     }
 
     // MARK: - Events

@@ -167,27 +167,7 @@ class AppSettingsViewController: OWSTableViewController2 {
                 },
             ))
         }
-        section1.add(.init(customCellBlock: { [weak self] in
-            guard let self else { return UITableViewCell() }
-            let accessoryContentView: UIView?
-            if self.hasExpiredGiftBadge {
-                let imageView = UIImageView(image: UIImage(imageLiteralResourceName: "info-fill"))
-                imageView.tintColor = Theme.accentBlueColor
-                imageView.autoSetDimensions(to: CGSize(square: 24))
-                accessoryContentView = imageView
-            } else {
-                accessoryContentView = nil
-            }
-            return OWSTableItem.buildCell(
-                icon: .settingsDonate,
-                itemName: OWSLocalizedString("SETTINGS_DONATE", comment: "Title for the 'donate to signal' link in settings."),
-                accessoryType: .disclosureIndicator,
-                accessoryContentView: accessoryContentView,
-                accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "donate"),
-            )
-        }, actionBlock: { [weak self] in
-            self?.didTapDonate()
-        }))
+        // Self-host debrand: "Donate to Signal" entry hidden; donation code is retained.
         contents.add(section1)
 
         let section2 = OWSTableSection()

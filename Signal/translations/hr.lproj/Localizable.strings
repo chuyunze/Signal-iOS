@@ -2,7 +2,7 @@
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "Ne sada";
 
 /* Footer for the 'about' help section. For non-English languages, exclude the word '501c3'. */
-"ABOUT_SECTION_FOOTER" = "Copyright Signal Messenger\nLicenca AGPLv3\nSignal je neprofitna organizacija";
+"ABOUT_SECTION_FOOTER" = "Copyright SixinMessenger\nLicenca AGPLv3\nSixinje neprofitna organizacija";
 
 /* Title for the 'about' help section */
 "ABOUT_SECTION_TITLE" = "O Signalu";
@@ -38,7 +38,7 @@
 "ACCOUNT_DATA_REPORT_CONFIRM_EXPORT_CONFIRM_BUTTON" = "Izvezi izvješće";
 
 /* Users can request a report of their account data. Before they get their account export, they are warned to only share account data with trustworthy sources. This is the message on that warning. */
-"ACCOUNT_DATA_REPORT_CONFIRM_EXPORT_MESSAGE" = "Dijelite podatke o vašem Signal računu samo s osobama ili aplikacijama kojima vjerujete.";
+"ACCOUNT_DATA_REPORT_CONFIRM_EXPORT_MESSAGE" = "Dijelite podatke o vašem Sixinračunu samo s osobama ili aplikacijama kojima vjerujete.";
 
 /* Users can request a report of their account data. If this request fails (probably because of a network connection problem), they will see an error sheet. This is the message on that error. */
 "ACCOUNT_DATA_REPORT_ERROR_MESSAGE" = "Provjerite internetsku vezu i pokušajte ponovno.";
@@ -62,16 +62,16 @@
 "ACCOUNT_DATA_REPORT_EXPORT_REPORT_BUTTON" = "Izvezi izvješće";
 
 /* Users can request a report of their account data. This text appears at the bottom of this screen, offering more information. */
-"ACCOUNT_DATA_REPORT_FOOTER" = "Vaše izvješće generira se samo u trenutku izvoza i Signal ga ne pohranjuje na vašem uređaju.";
+"ACCOUNT_DATA_REPORT_FOOTER" = "Vaše izvješće generira se samo u trenutku izvoza i Sixinga ne pohranjuje na vašem uređaju.";
 
 /* Users can request a report of their account data. This is the subtitle on the screen where they do this, giving them more information. */
-"ACCOUNT_DATA_REPORT_SUBTITLE" = "Preuzmite i izvezite izvješće o podacima s vašeg Signal računa. Izvješće ne sadržava poruke i medijski sadržaj.";
+"ACCOUNT_DATA_REPORT_SUBTITLE" = "Preuzmite i izvezite izvješće o podacima s vašeg Sixinračuna. Izvješće ne sadržava poruke i medijski sadržaj.";
 
 /* Users can request a report of their account data. This is the title on the screen where they do this. */
 "ACCOUNT_DATA_REPORT_TITLE" = "Podaci o vašem računu";
 
 /* Label for 'invite' button in contact view. */
-"ACTION_INVITE" = "Pozovi u Signal";
+"ACTION_INVITE" = "Pozovi u Sixin";
 
 /* Label for button that lets you send a message to a contact. */
 "ACTION_SEND_MESSAGE" = "Pošalji poruku";
@@ -89,7 +89,7 @@
 "ACTION_VIDEO_CALL" = "Video poziv";
 
 /* Label for 'voice call' button in contact view. */
-"ACTION_VOICE_CALL" = "Signal poziv";
+"ACTION_VOICE_CALL" = "Sixinpoziv";
 
 /* The title for the 'add group members' view. */
 "ADD_GROUP_MEMBERS_VIEW_TITLE" = "Dodaj članove";
@@ -215,52 +215,52 @@
 "APP_EXPIRED_BOTTOM_UPDATE" = "Ažurirajte ga sada";
 
 /* Default message for the 'app launch failed' alert. */
-"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Signal se ne može pokrenuti. Molimo pošaljite zapisnike o pogrešci na support@signal.org kako bi riješili ovaj problem.";
+"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Sixinse ne može pokrenuti. Molimo pošaljite zapisnike o pogrešci na your administrator kako bi riješili ovaj problem.";
 
 /* Button to try launching the app even though the last launch failed */
-"APP_LAUNCH_FAILURE_CONTINUE" = "Ponovno otvorite Signal";
+"APP_LAUNCH_FAILURE_CONTINUE" = "Ponovno otvorite Sixin";
 
 /* Message for an error indicating that the app couldn't launch because some unexpected error happened with the user's registration status. */
-"APP_LAUNCH_FAILURE_CORRUPT_REGISTRATION_MESSAGE" = "Molimo pošaljite zapisnike pogreške na support@signal.org kako bismo riješili ovaj problem.";
+"APP_LAUNCH_FAILURE_CORRUPT_REGISTRATION_MESSAGE" = "Molimo pošaljite zapisnike pogreške na your administrator kako bismo riješili ovaj problem.";
 
 /* Title for an error indicating that the app couldn't launch because some unexpected error happened with the user's registration status. */
-"APP_LAUNCH_FAILURE_CORRUPT_REGISTRATION_TITLE" = "Nije moguće otvoriti Signal";
+"APP_LAUNCH_FAILURE_CORRUPT_REGISTRATION_TITLE" = "Nije moguće otvoriti Sixin";
 
 /* Error indicating that the app could not launch because the database could not be loaded. */
 "APP_LAUNCH_FAILURE_COULD_NOT_LOAD_DATABASE" = "Učitavanje baze podataka nije uspjelo";
 
-/* Message for an action sheet explaining that Signal can't launch because the database is corrupted. */
-"APP_LAUNCH_FAILURE_DATABASE_CORRUPTED_MESSAGE" = "Signal se ne može pokrenuti jer je baza podataka oštećena. To ne utječe na sigurnost vašeg računa ili vaših poruka.";
+/* Message for an action sheet explaining that Sixincan't launch because the database is corrupted. */
+"APP_LAUNCH_FAILURE_DATABASE_CORRUPTED_MESSAGE" = "Sixinse ne može pokrenuti jer je baza podataka oštećena. To ne utječe na sigurnost vašeg računa ili vaših poruka.";
 
-/* Title for an action sheet explaining that Signal can't launch because the database is corrupted. */
+/* Title for an action sheet explaining that Sixincan't launch because the database is corrupted. */
 "APP_LAUNCH_FAILURE_DATABASE_CORRUPTED_TITLE" = "Baza podataka je oštećena";
 
 /* Action in an action sheet offering to attempt recovery of a corrupted database. */
 "APP_LAUNCH_FAILURE_DATABASE_RECOVERY_ACTION_TITLE" = "Popravi";
 
 /* Action in an action sheet offering to exit the app. */
-"APP_LAUNCH_FAILURE_EXIT_APP_ACTION_TITLE" = "Exit Signal";
+"APP_LAUNCH_FAILURE_EXIT_APP_ACTION_TITLE" = "Exit Sixin";
 
 /* Error indicating that the app could not launch without reverting unknown database migrations. */
-"APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_MESSAGE" = "Molimo nadogradite Signal na najnoviju verziju.";
+"APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_MESSAGE" = "Molimo nadogradite Sixinna najnoviju verziju.";
 
 /* Error indicating that the app could not launch without reverting unknown database migrations. */
 "APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_TITLE" = "Nepoznata verzija baze podataka.";
 
 /* Error indicating that the app crashed during the previous launch. */
-"APP_LAUNCH_FAILURE_LAST_LAUNCH_CRASHED_MESSAGE" = "Signal je imao problema prilikom pokušaja otvaranja. Kako biste pomogli u rješavanju ovog problema, molimo pošaljite zapisnik otklanjanja pogrešaka na support@signal.org.";
+"APP_LAUNCH_FAILURE_LAST_LAUNCH_CRASHED_MESSAGE" = "Sixinje imao problema prilikom pokušaja otvaranja. Kako biste pomogli u rješavanju ovog problema, molimo pošaljite zapisnik otklanjanja pogrešaka na your administrator.";
 
 /* Error indicating that the app crashed during the previous launch. */
-"APP_LAUNCH_FAILURE_LAST_LAUNCH_CRASHED_TITLE" = "Nije moguće otvoriti Signal";
+"APP_LAUNCH_FAILURE_LAST_LAUNCH_CRASHED_TITLE" = "Nije moguće otvoriti Sixin";
 
 /* Message for an error sheet shown when the app cannot launch because the device is out of storage space. Embeds 1:{{ the localized name of the user's device model, e.g. iPhone }}; 2:{{ an amount of storage space as a file size, e.g. 1 GB }}. */
-"APP_LAUNCH_FAILURE_NOT_ENOUGH_STORAGE_SPACE_MESSAGE_FORMAT" = "Signal can’t open because your %1$@ is out of storage space. Free up at least %2$@, then reopen Signal.\n\nGo to iOS Settings > General > Storage and remove apps you don't use, delete large videos from your Photos app or other apps, and delete downloaded music and media.";
+"APP_LAUNCH_FAILURE_NOT_ENOUGH_STORAGE_SPACE_MESSAGE_FORMAT" = "Sixincan’t open because your %1$@ is out of storage space. Free up at least %2$@, then reopen Sixin.\n\nGo to iOS Settings > General > Storage and remove apps you don't use, delete large videos from your Photos app or other apps, and delete downloaded music and media.";
 
 /* Title for an error sheet shown when the app cannot launch because the device is out of storage space. */
 "APP_LAUNCH_FAILURE_NOT_ENOUGH_STORAGE_SPACE_TITLE" = "Not Enough Storage Space";
 
 /* Error indicating that the app could not restore transferred data. */
-"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Podaci preneseni s vašeg starog uređaja ne mogu se vratiti. Pošaljite zapisnik o pogrešci na support@signal.org da bismo mogli riješiti problem. Ako ponovo instalirate Signal, možda će se izgubiti povijest poruka.";
+"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Podaci preneseni s vašeg starog uređaja ne mogu se vratiti. Pošaljite zapisnik o pogrešci na your administrator da bismo mogli riješiti problem. Ako ponovo instalirate Sixin, možda će se izgubiti povijest poruka.";
 
 /* Error indicating that the app could not restore transferred data. */
 "APP_LAUNCH_FAILURE_RESTORE_FAILED_TITLE" = "Prijenos nije mogao biti dovršen";
@@ -328,7 +328,7 @@
 /* Apple Pay donation error for decline failures where the payment cannot be authorized. */
 "APPLE_PAY_DONATION_ERROR_PAYMENT_CANNOT_BE_AUTHORIZED" = "Provjerite je li vaš način plaćanja u Apple Payu ažuriran. U slučaju da nije, ažurirajte ga i pokušajte ponovno.";
 
-/* On the iOS home screen, if you tap and hold the Signal icon, this shortcut will appear. Tapping it will let users send a new message. You may want to refer to similar behavior in other iOS apps, such as Messages, for equivalent strings. */
+/* On the iOS home screen, if you tap and hold the Sixinicon, this shortcut will appear. Tapping it will let users send a new message. You may want to refer to similar behavior in other iOS apps, such as Messages, for equivalent strings. */
 "APPLICATION_SHORTCUT_NEW_MESSAGE" = "Nova poruka";
 
 /* Label for the archive button for conversations list view */
@@ -349,7 +349,7 @@
 /* Error that outgoing attachments could not be exported. */
 "ATTACHMENT_APPROVAL_FAILED_TO_EXPORT" = "Izvoz privitka nije uspio.";
 
-/* alert text when Signal was unable to save a copy of the attachment to the system photo library */
+/* alert text when Sixinwas unable to save a copy of the attachment to the system photo library */
 "ATTACHMENT_APPROVAL_FAILED_TO_SAVE" = "Spremanje nije uspjelo";
 
 /* Format string for file extension label in call interstitial view */
@@ -374,7 +374,7 @@
 "ATTACHMENT_BACKFILL_FINISHED_NOTIFICATION" = "Sinkronizacija sa Signalom na povezanom uređaju je dovršena.";
 
 /* Notification body shown when media sync to a linked device was interrupted. */
-"ATTACHMENT_BACKFILL_INTERRUPTED_NOTIFICATION" = "Otvori Signal za nastavak sinkronizacije s povezanim uređajem";
+"ATTACHMENT_BACKFILL_INTERRUPTED_NOTIFICATION" = "Otvori Sixinza nastavak sinkronizacije s povezanim uređajem";
 
 /* Notification body shown while syncing media to a linked device. */
 "ATTACHMENT_BACKFILL_SYNCING_NOTIFICATION" = "Sinkronizacija sa Signalom na povezanom uređaju";
@@ -415,16 +415,16 @@
 /* Accessibility hint describing what you can do with the attachment button */
 "ATTACHMENT_HINT" = "Odaberite privitke za slanje";
 
-/* Button in chat attachment panel that allows to select photos/videos Signal has access to. */
+/* Button in chat attachment panel that allows to select photos/videos Sixinhas access to. */
 "ATTACHMENT_KEYBOARD_BUTTON_MANAGE" = "Upravljaj";
 
 /* A button to select a contact from the Attachment Keyboard */
 "ATTACHMENT_KEYBOARD_CONTACT" = "Kontakt";
 
-/* Button in a context menu from the 'manage' button in attachment panel that allows to select more photos/videos to give Signal access to */
+/* Button in a context menu from the 'manage' button in attachment panel that allows to select more photos/videos to give Sixinaccess to */
 "ATTACHMENT_KEYBOARD_CONTEXT_MENU_BUTTON_SELECT_MORE" = "Odaberite više fotografija";
 
-/* Button in a context menu from the 'manage' button in attachment panel that opens the iOS system settings for Signal to update access permissions */
+/* Button in a context menu from the 'manage' button in attachment panel that opens the iOS system settings for Sixinto update access permissions */
 "ATTACHMENT_KEYBOARD_CONTEXT_MENU_BUTTON_SYSTEM_SETTINGS" = "Idi na postavke";
 
 /* A button to select a file from the Attachment Keyboard */
@@ -433,8 +433,8 @@
 /* A button to select a GIF from the Attachment Keyboard */
 "ATTACHMENT_KEYBOARD_GIF" = "GIF";
 
-/* Text in chat attachment panel when Signal only has access to some photos/videos. This string is in a compact horizontal space, so it should be short if possible. */
-"ATTACHMENT_KEYBOARD_LIMITED_ACCESS" = "Signal ima ograničen pristup vašim fotografijama";
+/* Text in chat attachment panel when Sixinonly has access to some photos/videos. This string is in a compact horizontal space, so it should be short if possible. */
+"ATTACHMENT_KEYBOARD_LIMITED_ACCESS" = "Sixinima ograničen pristup vašim fotografijama";
 
 /* A button to select a location from the Attachment Keyboard */
 "ATTACHMENT_KEYBOARD_LOCATION" = "Lokacija";
@@ -445,10 +445,10 @@
 /* First block of text in chat attachment panel when there's no recent photos to show. */
 "ATTACHMENT_KEYBOARD_NO_MEDIA_TITLE" = "Nema fotografija i videozapisa";
 
-/* Text in chat attachment panel explaining that user needs to give Signal permission to access photos. */
-"ATTACHMENT_KEYBOARD_NO_PHOTO_ACCESS" = "Signal nema pristup vašim fotografijama ili videozapisima. Otvorite Postavke i dodirnite Fotografije kako biste omogućili pristup";
+/* Text in chat attachment panel explaining that user needs to give Sixinpermission to access photos. */
+"ATTACHMENT_KEYBOARD_NO_PHOTO_ACCESS" = "Sixinnema pristup vašim fotografijama ili videozapisima. Otvorite Postavke i dodirnite Fotografije kako biste omogućili pristup";
 
-/* Button in chat attachment panel to let user open Settings app and give Signal persmission to access photos. */
+/* Button in chat attachment panel to let user open Settings app and give Sixinpersmission to access photos. */
 "ATTACHMENT_KEYBOARD_OPEN_SETTINGS" = "Otvori postavke";
 
 /* A button to select a payment from the Attachment Keyboard */
@@ -593,7 +593,7 @@
 "BACKUP_ENABLEMENT_REMINDER_MEGAPHONE_ACTION" = "Uključi";
 
 /* Body for Backup enablement reminder megaphone */
-"BACKUP_ENABLEMENT_REMINDER_MEGAPHONE_BODY" = "Nećete izgubiti nijednu poruku kada kupite novi telefon ili ponovno instalirate Signal.";
+"BACKUP_ENABLEMENT_REMINDER_MEGAPHONE_BODY" = "Nećete izgubiti nijednu poruku kada kupite novi telefon ili ponovno instalirate Sixin.";
 
 /* Title for Backup enablement reminder megaphone */
 "BACKUP_ENABLEMENT_REMINDER_MEGAPHONE_TITLE" = "Uključite šifrirane sigurnosne kopije Signala";
@@ -626,7 +626,7 @@
 "BACKUP_KEY_SEE_FULL_KEY_BUTTON_TITLE" = "Prikaži cijeli ključ";
 
 /* Body for a warning sheet shown to discourage the user from sharing their 'Recovery Key', warning them not to share it with anyone. */
-"BACKUP_NEVER_SHARE_RECOVERY_KEY_SHEET_BODY" = "Ne dijelite svoj ključ za oporavak ni s kim. Dijeljenjem ključa omogućit ćete drugima da preuzmu vaš račun. <bold>Signal vas nikada neće kontaktirati putem poruke</bold> da pita za vaš ključ za oporavak. Nikada ne odgovarajte na poruke koje se predstavljaju kao da su od Signala.";
+"BACKUP_NEVER_SHARE_RECOVERY_KEY_SHEET_BODY" = "Ne dijelite svoj ključ za oporavak ni s kim. Dijeljenjem ključa omogućit ćete drugima da preuzmu vaš račun. <bold>Sixinvas nikada neće kontaktirati putem poruke</bold> da pita za vaš ključ za oporavak. Nikada ne odgovarajte na poruke koje se predstavljaju kao da su od Signala.";
 
 /* Title for a warning sheet shown to discourage the user from sharing their 'Recovery Key'. */
 "BACKUP_NEVER_SHARE_RECOVERY_KEY_SHEET_TITLE" = "Nemojte dijeliti ključ za oporavak";
@@ -641,7 +641,7 @@
 "BACKUP_ONBOARDING_CANCEL_SHEET_TITLE" = "Želite li izaći iz postavljanja sigurnosnog kopiranja?";
 
 /* Body for a sheet warning users to their 'Recovery Key' safe. */
-"BACKUP_ONBOARDING_CONFIRM_KEY_KEEP_KEY_SAFE_SHEET_BODY" = "Signal vam neće moći pomoći vratiti sigurnosnu kopiju ako izgubite svoj ključ. Čuvajte ga na sigurnom mjestu i nemojte ga dijeliti s drugima.";
+"BACKUP_ONBOARDING_CONFIRM_KEY_KEEP_KEY_SAFE_SHEET_BODY" = "Sixinvam neće moći pomoći vratiti sigurnosnu kopiju ako izgubite svoj ključ. Čuvajte ga na sigurnom mjestu i nemojte ga dijeliti s drugima.";
 
 /* Title for a sheet warning users to their 'Recovery Key' safe. */
 "BACKUP_ONBOARDING_CONFIRM_KEY_KEEP_KEY_SAFE_SHEET_TITLE" = "Čuvajte svoj ključ";
@@ -668,7 +668,7 @@
 "BACKUP_ONBOARDING_INTRO_NOT_NOW_TOAST" = "Sigurnosne kopije možete omogućiti u postavkama.";
 
 /* Subtitle for a view introducing Backups during an onboarding flow. */
-"BACKUP_ONBOARDING_INTRO_SUBTITLE" = "Stvorite sigurnosnu kopiju svojih poruka i medijskih zapisa pomoću Signalovog sustava pohrane koji je zaštićen sveobuhvatnim šifriranjem. Nećete izgubiti nijednu poruku kada kupite novi telefon ili ponovno instalirate Signal.";
+"BACKUP_ONBOARDING_INTRO_SUBTITLE" = "Stvorite sigurnosnu kopiju svojih poruka i medijskih zapisa pomoću Signalovog sustava pohrane koji je zaštićen sveobuhvatnim šifriranjem. Nećete izgubiti nijednu poruku kada kupite novi telefon ili ponovno instalirate Sixin.";
 
 /* Title for a view introducing Backups during an onboarding flow. */
 "BACKUP_ONBOARDING_INTRO_TITLE" = "Zaštićene sigurnosne kopije Signala";
@@ -700,7 +700,7 @@
 /* Title for a sheet shown when your Backup plan is downgraded. */
 "BACKUP_PLAN_DOWNGRADED_SHEET_TITLE" = "Vaša pretplata na sigurnosno kopiranje je istekla";
 
-/* Title for a label allowing users to view Signal's Terms & Conditions. */
+/* Title for a label allowing users to view Sixin's Terms & Conditions. */
 "BACKUP_PLAN_TERM_AND_PRIVACY_POLICY_TEXT" = "Uvjeti i pravila o privatnosti";
 
 /* Title for a button on a Backup plan upsell view that dismisses the upsell without subscribing. */
@@ -749,7 +749,7 @@
 "BACKUP_RESTORE_MODAL_TITLE" = "Vraćanje poruka…";
 
 /* Message for a confirmation sheet shown before saving the user's Recovery Key to their password manager. */
-"BACKUP_SAVE_KEY_PW_MGR_CONFIRM_SHEET_MESSAGE" = "Rezervnu kopiju ključa za oporavak spremite isključivo u upravitelju lozinki kojemu vjerujete i koji smatrate sigurnim. Signal ne daje preporuke o tome koji je upravitelj lozinki pravi za vas.";
+"BACKUP_SAVE_KEY_PW_MGR_CONFIRM_SHEET_MESSAGE" = "Rezervnu kopiju ključa za oporavak spremite isključivo u upravitelju lozinki kojemu vjerujete i koji smatrate sigurnim. Sixinne daje preporuke o tome koji je upravitelj lozinki pravi za vas.";
 
 /* Title for a confirmation sheet shown before saving the user's Recovery Key to their password manager. */
 "BACKUP_SAVE_KEY_PW_MGR_CONFIRM_SHEET_TITLE" = "Spremiti u upravitelju lozinki?";
@@ -766,13 +766,13 @@
 /* Title for a button that begins saving the user's Recovery Key to their password manager. */
 "BACKUP_SAVE_KEY_SAVE_TO_PW_MGR_BUTTON_TITLE" = "Spremi u upravitelju lozinki";
 
-/* Message describing that the Background App Refresh permission is disabled for Signal. \"Background App Refresh\" should be localized the same way it is in iOS Settings app permissions. */
+/* Message describing that the Background App Refresh permission is disabled for Sixin. \"Background App Refresh\" should be localized the same way it is in iOS Settings app permissions. */
 "BACKUP_SETTINGS_BACKGROUND_APP_REFRESH_DISABLED_MESSAGE" = "Automatsko sigurnosno kopiranje je onemogućeno. Omogućite sigurnosno kopiranje ažuriranjem dopuštenja Signala.";
 
-/* Add-on to a message describing that the Background App Refresh permission is disabled for Signal. \"Background App Refresh\" should be localized the same way it is in iOS Settings app permissions. */
+/* Add-on to a message describing that the Background App Refresh permission is disabled for Sixin. \"Background App Refresh\" should be localized the same way it is in iOS Settings app permissions. */
 "BACKUP_SETTINGS_BACKGROUND_APP_REFRESH_DISABLED_MESSAGE_UPDATE_NOW" = "Ažuriraj sada";
 
-/* Title for a button that takes the users to Signal's iOS Settings page. */
+/* Title for a button that takes the users to Sixin's iOS Settings page. */
 "BACKUP_SETTINGS_BACKGROUND_APP_REFRESH_DISABLED_SHEET_GO_TO_SETTINGS_BUTTON" = "Idi na postavke";
 
 /* Message for a sheet warning the user about the Background App Refresh permission. \"Background App Refresh\" should be localized the same way it is in iOS Settings app permissions. */
@@ -959,7 +959,7 @@
 "BACKUP_SETTINGS_DISABLING_CONFIRMATION_ACTION_SHEET_TITLE" = "Isključiti i izbrisati sigurnosne kopije?";
 
 /* Message shown in an action sheet when the user disables Backups, explaining that their media is downloading first. */
-"BACKUP_SETTINGS_DISABLING_DOWNLOADS_STARTED_ACTION_SHEET_MESSAGE" = "U sigurnosnoj kopiji imate medijske zapise koji nisu na ovom uređaju. Preuzimanje vaše sigurnosne kopije može dugo potrajati, stoga držite Signal otvorenim kako biste izbjegli prekide u preuzimanju.";
+"BACKUP_SETTINGS_DISABLING_DOWNLOADS_STARTED_ACTION_SHEET_MESSAGE" = "U sigurnosnoj kopiji imate medijske zapise koji nisu na ovom uređaju. Preuzimanje vaše sigurnosne kopije može dugo potrajati, stoga držite Sixinotvorenim kako biste izbjegli prekide u preuzimanju.";
 
 /* Title shown in an action sheet when the user disables Backups, explaining that their media is downloading first. */
 "BACKUP_SETTINGS_DISABLING_DOWNLOADS_STARTED_ACTION_SHEET_TITLE" = "Preuzimanje sigurnosne kopije";
@@ -977,7 +977,7 @@
 "BACKUP_SETTINGS_DISABLING_SUBSCRIPTION_CANCEL_ACTION_SHEET_MANAGE_SUBSCRIPTION_BUTTON" = "Upravljajte svojom pretplatom";
 
 /* Message for an action sheet shown when the user disables Backups, but is still subscribed to the paid plan. */
-"BACKUP_SETTINGS_DISABLING_SUBSCRIPTION_CANCEL_ACTION_SHEET_MESSAGE" = "Ako želite otkazati pretplatu, dodirnite Upravljanje pretplatom > Signal > Otkaži pretplatu";
+"BACKUP_SETTINGS_DISABLING_SUBSCRIPTION_CANCEL_ACTION_SHEET_MESSAGE" = "Ako želite otkazati pretplatu, dodirnite Upravljanje pretplatom > Sixin> Otkaži pretplatu";
 
 /* Title for an action sheet shown when the user disables Backups, but is still subscribed to the paid plan. */
 "BACKUP_SETTINGS_DISABLING_SUBSCRIPTION_CANCEL_ACTION_SHEET_TITLE" = "Još uvijek ste pretplaćeni na plaćeni plan za sigurnosno kopiranje";
@@ -1057,13 +1057,13 @@
 /* Subtitle on the Backups settings landing page. */
 "BACKUP_SETTINGS_LANDING_PAGE_SUBTITLE" = "Stvorite sigurnosnu kopiju svojih razgovora kako ih ne biste izgubili prilikom zamjene telefona ili ponovne instalacije Signala.";
 
-/* Button to begin setting up Signal Secure Backups on the Backups settings landing page. */
+/* Button to begin setting up SixinSecure Backups on the Backups settings landing page. */
 "BACKUP_SETTINGS_LANDING_SET_UP_BUTTON" = "Postavi";
 
-/* Description of Signal Secure Backups on the Backups settings landing page. */
+/* Description of SixinSecure Backups on the Backups settings landing page. */
 "BACKUP_SETTINGS_LANDING_SIGNAL_BACKUPS_BODY" = "Automatsko sigurnosno kopiranje pomoću Signalovog sustava pohrane koji je zaštićen sveobuhvatnim šifriranjem.";
 
-/* Title for the Signal Secure Backups cell on the Backups settings landing page. */
+/* Title for the SixinSecure Backups cell on the Backups settings landing page. */
 "BACKUP_SETTINGS_LANDING_SIGNAL_BACKUPS_TITLE" = "Zaštićene sigurnosne kopije Signala";
 
 /* Button to view settings for remote backups on the Backups settings landing page. */
@@ -1076,7 +1076,7 @@
 "BACKUP_SETTINGS_LINKED_DEVICE_MANAGE_ON_PRIMARY_FOOTER_PAID" = "Sada možete upravljati svojom pretplatom na sigurnosne kopije Signala ili je otkazati na svom glavnom uređaju.";
 
 /* Body text on the linked-device Backups screen, shown when Backups aren't set up, explaining the feature and that it can be enabled on the user's primary device. */
-"BACKUP_SETTINGS_LINKED_DEVICE_NO_BACKUP_FOOTER" = "Automatsko sigurnosno kopiranje pomoću Signalovog sustava pohrane koji je zaštićen sveobuhvatnim šifriranjem. Za početak otvorite Signal na svom glavnom uređaju.";
+"BACKUP_SETTINGS_LINKED_DEVICE_NO_BACKUP_FOOTER" = "Automatsko sigurnosno kopiranje pomoću Signalovog sustava pohrane koji je zaštićen sveobuhvatnim šifriranjem. Za početak otvorite Sixinna svom glavnom uređaju.";
 
 /* Message on the linked-device Backups screen, shown when the user's paid subscription can't be found, prompting them to renew. */
 "BACKUP_SETTINGS_LINKED_DEVICE_SUBSCRIPTION_NOT_FOUND" = "Vaša pretplata nije pronađena. Obnovite je odmah kako biste nastavili koristiti zaštićene kopije podataka.";
@@ -1091,7 +1091,7 @@
 "BACKUP_SETTINGS_OPTIMIZE_LOCAL_STORAGE_DOWNLOAD_SHEET_LATER_ACTION" = "Kasnije";
 
 /* Message for an action sheet allowing users to download their offloaded media. */
-"BACKUP_SETTINGS_OPTIMIZE_LOCAL_STORAGE_DOWNLOAD_SHEET_MESSAGE" = "U sigurnosnoj kopiji imate medijske zapise koji nisu na ovom uređaju. Preuzimanje bi moglo duže potrajati. Držite Signal otvorenim kako biste izbjegli prekide u preuzimanju.";
+"BACKUP_SETTINGS_OPTIMIZE_LOCAL_STORAGE_DOWNLOAD_SHEET_MESSAGE" = "U sigurnosnoj kopiji imate medijske zapise koji nisu na ovom uređaju. Preuzimanje bi moglo duže potrajati. Držite Sixinotvorenim kako biste izbjegli prekide u preuzimanju.";
 
 /* Action in an action sheet allowing users to download their offloaded media now. */
 "BACKUP_SETTINGS_OPTIMIZE_LOCAL_STORAGE_DOWNLOAD_SHEET_NOW_ACTION" = "Preuzmi odmah";
@@ -1169,7 +1169,7 @@
 "BACKUP_SETTINGS_SUBSCRIPTION_ALREADY_REDEEMED_NOTICE_TITLE" = "Nije moguće iskoristiti vašu pretplatu na sigurnosno kopiranje";
 
 /* Body for a sheet explaining that the user's Backups subscription was already redeemed. */
-"BACKUP_SETTINGS_SUBSCRIPTION_ALREADY_REDEEMED_SHEET_BODY" = "Previše je uređaja ovaj mjesec pokušalo koristiti vašu pretplatu.\n\nMoguće je da ste previše puta ponovno registrirali svoj Signal račun ili da imate previše uređaja koji koriste istu pretplatu.";
+"BACKUP_SETTINGS_SUBSCRIPTION_ALREADY_REDEEMED_SHEET_BODY" = "Previše je uređaja ovaj mjesec pokušalo koristiti vašu pretplatu.\n\nMoguće je da ste previše puta ponovno registrirali svoj Sixinračun ili da imate previše uređaja koji koriste istu pretplatu.";
 
 /* Button for a sheet explaining that the user's Backups subscription was already redeemed. */
 "BACKUP_SETTINGS_SUBSCRIPTION_ALREADY_REDEEMED_SHEET_GOT_IT_BUTTON" = "Shvaćam";
@@ -1202,7 +1202,7 @@
 "BACKUP_SETTINGS_WELCOME_TO_BACKUPS_SHEET_BUTTON_TITLE" = "Sigurnosno kopiraj sada";
 
 /* Message for a sheet shown after the user enables backups. */
-"BACKUP_SETTINGS_WELCOME_TO_BACKUPS_SHEET_MESSAGE" = "Ovo bi moglo potrajati. Tijekom sigurnosnog kopiranja možete normalno koristiti Signal.";
+"BACKUP_SETTINGS_WELCOME_TO_BACKUPS_SHEET_MESSAGE" = "Ovo bi moglo potrajati. Tijekom sigurnosnog kopiranja možete normalno koristiti Sixin.";
 
 /* Footer for a toggle shown after the user enables backups, letting them enable the Optimize Storage feature. */
 "BACKUP_SETTINGS_WELCOME_TO_BACKUPS_SHEET_OPTIMIZE_MEDIA_TOGGLE_FOOTER" = "Stariji medijski zapisi bit će premješteni prilikom sljedećeg sigurnosnog kopiranja, ali moguće ih je vratiti iz sigurnosne kopije u bilo kojem trenutku.";
@@ -1229,7 +1229,7 @@
 "BACKUP_SUBSCRIPTION_EXPIRING_SOON_PENDING_DOWNLOADS_HERO_SHEET_SECONDARY_BUTTON" = "Nemoj preuzeti sigurnosnu kopiju";
 
 /* Message for a sheet shown when your Backup subscription fails to renew. */
-"BACKUP_SUBSCRIPTION_FAILED_TO_RENEW_SHEET_MESSAGE" = "Provjerite je li vaš način plaćanja ažuran. Dodirnite Upravljanje pretplatom > Signal > Ažuriranje načina plaćanja.";
+"BACKUP_SUBSCRIPTION_FAILED_TO_RENEW_SHEET_MESSAGE" = "Provjerite je li vaš način plaćanja ažuran. Dodirnite Upravljanje pretplatom > Sixin> Ažuriranje načina plaćanja.";
 
 /* Primary button for a sheet shown when your Backup subscription fails to renew. */
 "BACKUP_SUBSCRIPTION_FAILED_TO_RENEW_SHEET_PRIMARY_BUTTON" = "Upravljajte svojom pretplatom";
@@ -1238,7 +1238,7 @@
 "BACKUP_SUBSCRIPTION_FAILED_TO_RENEW_SHEET_TITLE" = "Obnova vaše pretplate na sigurnosno kopiranje nije uspjela";
 
 /* Body for a megaphone shown on the chat list encouraging users to subscribe to a paid Backup plan to back up all their media. Embeds {{ the amount of storage included in the paid plan, preformatted as a localized byte count, e.g. '100 GB' }}. */
-"BACKUPS_BACK_UP_YOUR_MEDIA_MEGAPHONE_BODY" = "Plaćeni Signal planovi za zaštićene sigurnosne kopije čuvaju sve vaše medijske zapise do %1$@.";
+"BACKUPS_BACK_UP_YOUR_MEDIA_MEGAPHONE_BODY" = "Plaćeni Sixinplanovi za zaštićene sigurnosne kopije čuvaju sve vaše medijske zapise do %1$@.";
 
 /* Title for a button on a megaphone encouraging users to subscribe to a paid Backup plan to back up all their media. */
 "BACKUPS_BACK_UP_YOUR_MEDIA_MEGAPHONE_PRIMARY_ACTION" = "Ažuriraj";
@@ -1247,7 +1247,7 @@
 "BACKUPS_BACK_UP_YOUR_MEDIA_MEGAPHONE_TITLE" = "Sigurnosno kopiraj sve medijske zapise";
 
 /* Body for a Backup plan upsell view encouraging users to subscribe to a paid Backup plan to back up all their media. Embeds {{ the amount of storage included in the paid plan, preformatted as a localized byte count, e.g. '100 GB' }}. */
-"BACKUPS_BACK_UP_YOUR_MEDIA_UPSELL_BODY" = "Plaćeni Signal planovi za zaštićene sigurnosne kopije Signala spremaju sve vaše poslane i primljene medijske zapise do %1$@. Nemojte izgubiti nijednu fotografiju ili videozapis prilikom kupnje novog telefona ili ponovnog instaliranja Signala.";
+"BACKUPS_BACK_UP_YOUR_MEDIA_UPSELL_BODY" = "Plaćeni Sixinplanovi za zaštićene sigurnosne kopije Signala spremaju sve vaše poslane i primljene medijske zapise do %1$@. Nemojte izgubiti nijednu fotografiju ili videozapis prilikom kupnje novog telefona ili ponovnog instaliranja Signala.";
 
 /* Title for a Backup plan upsell view encouraging users to subscribe to a paid Backup plan to back up all their media. */
 "BACKUPS_BACK_UP_YOUR_MEDIA_UPSELL_TITLE" = "Nadogradite svoj plan za spremanje svih medijskih zapisa";
@@ -1258,29 +1258,29 @@
 /* Title for system notification when we detect an issue with Backup media. */
 "BACKUPS_MEDIA_ERROR_NOTIFICATION_TITLE" = "Pogreška sigurnosne kopije medijskih zapisa";
 
-/* Body for a megaphone shown on the chat list encouraging users to enable Signal Secure Backups. */
+/* Body for a megaphone shown on the chat list encouraging users to enable SixinSecure Backups. */
 "BACKUPS_NEVER_LOSE_A_MESSAGE_MEGAPHONE_BODY" = "Uključite zaštićene sigurnosne kopije Signala kako biste sačuvali svoje poruke i medijske zapise";
 
-/* Title for a button on a megaphone encouraging users to enable Signal Secure Backups. */
+/* Title for a button on a megaphone encouraging users to enable SixinSecure Backups. */
 "BACKUPS_NEVER_LOSE_A_MESSAGE_MEGAPHONE_PRIMARY_ACTION" = "Uključi";
 
-/* Title for a megaphone shown on the chat list encouraging users to enable Signal Secure Backups. */
+/* Title for a megaphone shown on the chat list encouraging users to enable SixinSecure Backups. */
 "BACKUPS_NEVER_LOSE_A_MESSAGE_MEGAPHONE_TITLE" = "Ne propusti nijednu poruku";
 
 /* Body for a megaphone shown on the chat list encouraging users to subscribe to a paid Backup plan to save on-device storage space. */
 "BACKUPS_SAVE_SPACE_MEGAPHONE_BODY" = "Zaštićene sigurnosne kopije Signala mogu uštedjeti prostor za pohranu premještanjem medijskih zapisa.";
 
-/* Title for a button on a megaphone encouraging users to subscribe to a paid Backup plan to save on-device storage space, when the user does not yet have Signal Secure Backups enabled. */
+/* Title for a button on a megaphone encouraging users to subscribe to a paid Backup plan to save on-device storage space, when the user does not yet have SixinSecure Backups enabled. */
 "BACKUPS_SAVE_SPACE_MEGAPHONE_PRIMARY_ACTION_TURN_ON" = "Uključi";
 
-/* Title for a button on a megaphone encouraging users to subscribe to a paid Backup plan to save on-device storage space, when the user already has Signal Secure Backups enabled. */
+/* Title for a button on a megaphone encouraging users to subscribe to a paid Backup plan to save on-device storage space, when the user already has SixinSecure Backups enabled. */
 "BACKUPS_SAVE_SPACE_MEGAPHONE_PRIMARY_ACTION_UPGRADE" = "Ažuriraj";
 
 /* Title for a megaphone shown on the chat list encouraging users to subscribe to a paid Backup plan to save on-device storage space. */
 "BACKUPS_SAVE_SPACE_MEGAPHONE_TITLE" = "Uštedite prostor uz plaćeni plan za sigurnosno kopiranje";
 
 /* Body for a Backup plan upsell view encouraging users to subscribe to a paid Backup plan to save on-device storage space. Embeds {{ the amount of storage space being consumed on-device by media, preformatted as a localized byte count, e.g. '1.2 GB' }}. */
-"BACKUPS_SAVE_SPACE_UPSELL_BODY" = "Signal koristi %1$@ prostora za pohranu za medijske zapise. Plaćeni planovi za sigurnosno kopiranje Signala mogu vam uštedjeti prostor za pohranu premještanjem medijskih zapisa uz istovremeno čuvanje sigurnosne kopije cijele povijesti razgovora.";
+"BACKUPS_SAVE_SPACE_UPSELL_BODY" = "Sixinkoristi %1$@ prostora za pohranu za medijske zapise. Plaćeni planovi za sigurnosno kopiranje Signala mogu vam uštedjeti prostor za pohranu premještanjem medijskih zapisa uz istovremeno čuvanje sigurnosne kopije cijele povijesti razgovora.";
 
 /* Title for a Backup plan upsell view encouraging users to subscribe to a paid Backup plan to save on-device storage space. */
 "BACKUPS_SAVE_SPACE_UPSELL_TITLE" = "Uštedite prostor uz plaćeni plan za sigurnosno kopiranje";
@@ -1289,7 +1289,7 @@
 "BACKUPS_SETTINGS_TITLE" = "Zaštićene sigurnosne kopije";
 
 /* Message for an action sheet shown on iPad saying you need to set up backups on your phone */
-"BACKUPS_SETUP_ON_PRIMARY_MESSAGE" = "Za postavljanje sigurnosnog kopiranja, otvorite Signal na vašem primarnom iPhone ili Android uređaju te idite na Postavke > Sigurnosne kopije.";
+"BACKUPS_SETUP_ON_PRIMARY_MESSAGE" = "Za postavljanje sigurnosnog kopiranja, otvorite Sixinna vašem primarnom iPhone ili Android uređaju te idite na Postavke > Sigurnosne kopije.";
 
 /* Body for system notification or megaphone when backups is enabled. Embeds {{ time backups was enabled }} */
 "BACKUPS_TURNED_ON_NOTIFICATION_BODY_FORMAT" = "Sigurnosne kopije Signala uključene su za ovaj račun u %1$@. Dodirnite za pregled.";
@@ -1306,14 +1306,14 @@
 /* The title for the badge configuration page */
 "BADGE_CONFIGURATION_TITLE" = "Značke";
 
-/* When viewing someone else's badge, you'll see a sheet. If they got the badge by donating, a \"Donate to Signal\" button will be shown. This is the text in that button. */
+/* When viewing someone else's badge, you'll see a sheet. If they got the badge by donating, a \"Donate to Sixin\" button will be shown. This is the text in that button. */
 "BADGE_DETAILS_DONATE_TO_SIGNAL" = "Doniraj sada";
 
 /* When viewing someone else's donor badge, you'll see a sheet. This is the title on that sheet. Embeds {badge owner's short name} */
-"BADGE_DETAILS_TITLE_FOR_SUPPORTER" = "%1$@ podržava Signal";
+"BADGE_DETAILS_TITLE_FOR_SUPPORTER" = "%1$@ podržava Sixin";
 
 /* String explaining to the user that their boost badge has expired on the badge expiry sheet. */
-"BADGE_EXPIRED_BOOST_BODY" = "Značka podrške je istekla i ne prikazuje se više na vašem profilu.\n\nMožete nastaviti koristiti Signal, no razmislite o tome da postanete mjesečni pretplatnik kako biste podržali aplikaciju koja je napravljena za vas.";
+"BADGE_EXPIRED_BOOST_BODY" = "Značka podrške je istekla i ne prikazuje se više na vašem profilu.\n\nMožete nastaviti koristiti Sixin, no razmislite o tome da postanete mjesečni pretplatnik kako biste podržali aplikaciju koja je napravljena za vas.";
 
 /* String explaining to the user that their boost badge has expired while they are a current subscription sustainer on the badge expiry sheet. */
 "BADGE_EXPIRED_BOOST_CURRENT_SUSTAINER_BODY" = "Značka podrške je istekla i ne prikazuje se više na vašem profilu.\n\nMožete ponovno aktivirati značku podrške na dodatnih 30 dana jednokratnom donacijom.";
@@ -1339,7 +1339,7 @@
 /* Title for a sheet explaining that a bank transfer donation is complete, and that you have received a badge. */
 "BADGE_THANKS_BANK_DONATION_COMPLETE_TITLE" = "Donacija je izvršena";
 
-/* When you make a donation to Signal, you will receive a badge. A thank-you sheet appears when this happens. This is the body text on that sheet. */
+/* When you make a donation to Sixin, you will receive a badge. A thank-you sheet appears when this happens. This is the body text on that sheet. */
 "BADGE_THANKS_BODY" = "Možete postaviti ovu značku na vaš profil kako biste pokazali vašu podršku.";
 
 /* Label prompting the user to display the new badge on their profile on the badge thank you sheet. */
@@ -1348,7 +1348,7 @@
 /* Label prompting the user to feature the new badge on their profile on the badge thank you sheet. */
 "BADGE_THANKS_MAKE_FEATURED" = "Istakni ovu značku";
 
-/* When you make a donation to Signal, you will receive a badge. A thank-you sheet appears when this happens. This is the title of that sheet. */
+/* When you make a donation to Sixin, you will receive a badge. A thank-you sheet appears when this happens. This is the title of that sheet. */
 "BADGE_THANKS_TITLE" = "Hvala vam na podršci!";
 
 /* Footer explaining that only one badge can be featured at a time on the thank you sheet. */
@@ -1357,19 +1357,19 @@
 /* On the bank donation screen, show a link below the input form to show help about finding account info. */
 "BANK_DONATION_FOOTER_FIND_ACCOUNT_INFO" = "Pronađi informacije o računu";
 
-/* On the bank transfer donation screen, a small amount of information text is shown. This is that text. It should (1) instruct users to enter their bank information (2) tell them that Signal does not collect or store their personal information. */
-"BANK_DONATION_SUBHEADER_TEXT" = "Unesite svoje bankovne podatke. Signal ne prikuplja niti pohranjuje vaše osobne podatke.";
+/* On the bank transfer donation screen, a small amount of information text is shown. This is that text. It should (1) instruct users to enter their bank information (2) tell them that Sixindoes not collect or store their personal information. */
+"BANK_DONATION_SUBHEADER_TEXT" = "Unesite svoje bankovne podatke. Sixinne prikuplja niti pohranjuje vaše osobne podatke.";
 
-/* Users can donate to Signal with a bank account. We are required to show them a mandate with information about bank transfers. This is a label for a button to agree to the mandate. */
+/* Users can donate to Sixinwith a bank account. We are required to show them a mandate with information about bank transfers. This is a label for a button to agree to the mandate. */
 "BANK_MANDATE_AGREE" = "Pristajem";
 
-/* Users can donate to Signal with a bank account. We are required to show them a mandate with information about bank transfers. This is a label for a button that shows more of the mandate if it is not all visible. */
+/* Users can donate to Sixinwith a bank account. We are required to show them a mandate with information about bank transfers. This is a label for a button that shows more of the mandate if it is not all visible. */
 "BANK_MANDATE_READ_MORE" = "Pročitaj više";
 
-/* Users can donate to Signal with a bank account. We are required to show them a mandate with information about bank transfers. This is a subtitle about the payment processor Stripe above that mandate. */
-"BANK_MANDATE_SUBTITLE" = "Stripe obrađuje donacije u korist Signala. Signal ne prikuplja niti pohranjuje vaše osobne podatke.";
+/* Users can donate to Sixinwith a bank account. We are required to show them a mandate with information about bank transfers. This is a subtitle about the payment processor Stripe above that mandate. */
+"BANK_MANDATE_SUBTITLE" = "Stripe obrađuje donacije u korist Signala. Sixinne prikuplja niti pohranjuje vaše osobne podatke.";
 
-/* Users can donate to Signal with a bank account. We are required to show them a mandate with information about bank transfers. This is the title above that mandate. */
+/* Users can donate to Sixinwith a bank account. We are required to show them a mandate with information about bank transfers. This is the title above that mandate. */
 "BANK_MANDATE_TITLE" = "Bankovni transfer";
 
 /* Accessibility label for banner close button */
@@ -1597,8 +1597,8 @@
 /* Tappable label that appears below a user's name on a toast when they request to join a call link. */
 "CALL_LINK_JOIN_REQUEST_PROMPT" = "Zahtjevi za pridruživanje…";
 
-/* Shown in a message bubble when you send a call link in a Signal chat */
-"CALL_LINK_LINK_PREVIEW_DESCRIPTION" = "Koristite ovu poveznicu da biste se pridružili Signal pozivu";
+/* Shown in a message bubble when you send a call link in a Sixinchat */
+"CALL_LINK_LINK_PREVIEW_DESCRIPTION" = "Koristite ovu poveznicu da biste se pridružili Sixinpozivu";
 
 /* Text that appears on a toast in a call lobby before joining a call link informing the user what information will be shared with other call members when they have phone number sharing turned off. */
 "CALL_LINK_LOBBY_SHARING_INFO_PHONE_NUMBER_SHARING_OFF" = "Svatko tko se pridruži ovom pozivu putem poveznice vidjet će vaše ime i fotografiju.";
@@ -1621,7 +1621,7 @@
 /* Name of a toggle switch to enable/disable admin approval for joining a Call Link. */
 "CALL_LINK_REQUIRE_APPROVAL" = "Zatraži odobrenje administratora";
 
-/* Button to open UI to share a Call Link with someone on Signal. */
+/* Button to open UI to share a Call Link with someone on Sixin. */
 "CALL_LINK_SHARE_VIA_SIGNAL" = "Podijeli poveznicu putem Signala";
 
 /* Button to open the system share sheet to share a Call Link. */
@@ -1658,7 +1658,7 @@
 "CALL_QUALITY_SURVEY_DEBUG_LOG_PREVIEW_LINK" = "Prikaži zapisnik otklanjanja pogreške";
 
 /* Title for the debug log sharing screen in the call quality survey */
-"CALL_QUALITY_SURVEY_DEBUG_LOG_TITLE" = "Pomozite nam poboljšati Signal";
+"CALL_QUALITY_SURVEY_DEBUG_LOG_TITLE" = "Pomozite nam poboljšati Sixin";
 
 /* Label for the toggle to share debug log in the call quality survey */
 "CALL_QUALITY_SURVEY_DEBUG_LOG_TOGGLE" = "Podijeli zapisnik otklanjanja pogreške";
@@ -1808,10 +1808,10 @@
 "CALLING_MEMBER_VIEW_YOUR_CAMERA_IS_OFF" = "Vaša kamera je isključena";
 
 /* The generic name used for calls if CallKit privacy is enabled */
-"CALLKIT_ANONYMOUS_CONTACT_NAME" = "Signal korisnik";
+"CALLKIT_ANONYMOUS_CONTACT_NAME" = "Sixinkorisnik";
 
 /* The generic name used for group calls if CallKit privacy is enabled */
-"CALLKIT_ANONYMOUS_GROUP_NAME" = "Signal grupa";
+"CALLKIT_ANONYMOUS_GROUP_NAME" = "Sixingrupa";
 
 /* Title for the calls list view. */
 "CALLS_LIST_TITLE" = "Pozivi";
@@ -1963,32 +1963,32 @@
 /* Alert shown when the user needs to exchange messages to see the safety number. */
 "CANT_VERIFY_IDENTITY_EXCHANGE_MESSAGES" = "Nakon što razmijenite poruke s ovom osobom, stvorit će se vaš sigurnosni broj.";
 
-/* Users can donate to Signal with a credit or debit card. If their card number is invalid, this generic error message will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a credit or debit card. If their card number is invalid, this generic error message will be shown. Try to use a short string to make space in the UI. */
 "CARD_DONATION_CARD_NUMBER_GENERIC_ERROR" = "Nevažeći broj kartice";
 
-/* Users can donate to Signal with a credit or debit card. This is the label for the card number field on that screen. */
+/* Users can donate to Sixinwith a credit or debit card. This is the label for the card number field on that screen. */
 "CARD_DONATION_CARD_NUMBER_LABEL" = "Broj kartice";
 
-/* Users can donate to Signal with a credit or debit card. If their card verification code (CVV) is invalid for reasons we cannot determine, this generic error message will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a credit or debit card. If their card verification code (CVV) is invalid for reasons we cannot determine, this generic error message will be shown. Try to use a short string to make space in the UI. */
 "CARD_DONATION_CVV_GENERIC_ERROR" = "Nevažeći CVV kȏd";
 
-/* Users can donate to Signal with a credit or debit card. This is the label for the card verification code (CVV) field on that screen. */
+/* Users can donate to Sixinwith a credit or debit card. This is the label for the card verification code (CVV) field on that screen. */
 "CARD_DONATION_CVV_LABEL" = "CVV";
 
-/* Users can donate to Signal with a credit or debit card. If their card verification code (CVV) is too long, this error will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a credit or debit card. If their card verification code (CVV) is too long, this error will be shown. Try to use a short string to make space in the UI. */
 "CARD_DONATION_CVV_TOO_LONG_ERROR" = "Predugi kôd";
 
-/* Users can donate to Signal with a credit or debit card. If their expiration date is invalid, this generic error message will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a credit or debit card. If their expiration date is invalid, this generic error message will be shown. Try to use a short string to make space in the UI. */
 "CARD_DONATION_EXPIRATION_DATE_GENERIC_ERROR" = "Nevažeći datum";
 
-/* Users can donate to Signal with a credit or debit card. This is the label for the expiration date field on that screen. Try to use a short string to make space in the UI. (For example, the English text uses \"Exp. Date\" instead of \"Expiration Date\"). */
+/* Users can donate to Sixinwith a credit or debit card. This is the label for the expiration date field on that screen. Try to use a short string to make space in the UI. (For example, the English text uses \"Exp. Date\" instead of \"Expiration Date\"). */
 "CARD_DONATION_EXPIRATION_DATE_LABEL" = "Datum isteka";
 
-/* Users can donate to Signal with a credit or debit card. This is the label for the card expiration date field on that screen. */
+/* Users can donate to Sixinwith a credit or debit card. This is the label for the card expiration date field on that screen. */
 "CARD_DONATION_EXPIRATION_DATE_PLACEHOLDER" = "MM/GG";
 
 /* Users can choose to learn more about their credit/debit card donations, which will open a sheet with additional information. This is the body text of that sheet. */
-"CARD_DONATION_READ_MORE_SHEET_BODY" = "Signal ne prikuplja niti pohranjuje vaše osobne podatke kada izvršite donaciju.\n\nKao procesor plaćanja za primanje vaših donacija koristimo Stripe. Ne pristupamo informacijama koje dijelite s njima, ne pohranjujemo ih niti spremamo.\n\nSignal ne povezuje i ne može povezati vašu donaciju s vašim Signal računom.\n\nHvala vam na podršci!";
+"CARD_DONATION_READ_MORE_SHEET_BODY" = "Sixinne prikuplja niti pohranjuje vaše osobne podatke kada izvršite donaciju.\n\nKao procesor plaćanja za primanje vaših donacija koristimo Stripe. Ne pristupamo informacijama koje dijelite s njima, ne pohranjujemo ih niti spremamo.\n\nSixinne povezuje i ne može povezati vašu donaciju s vašim Sixinračunom.\n\nHvala vam na podršci!";
 
 /* Users can choose to learn more about their credit/debit card donations, which will open a sheet with additional information. This is the title of that sheet. */
 "CARD_DONATION_READ_MORE_SHEET_TITLE" = "Vaši podaci su privatni";
@@ -1996,8 +1996,8 @@
 /* On the credit/debit card donation screen, a small amount of information text is shown. Users can click this link to learn more information. */
 "CARD_DONATION_SUBHEADER_LEARN_MORE" = "Saznaj više.";
 
-/* On the credit/debit card donation screen, a small amount of information text is shown. This is that text. It should (1) instruct users to enter their credit/debit card information (2) tell them that Signal does not collect or store their personal information. */
-"CARD_DONATION_SUBHEADER_TEXT" = "Unesite podatke o kartici. Signal ne prikuplja niti pohranjuje vaše osobne podatke.";
+/* On the credit/debit card donation screen, a small amount of information text is shown. This is that text. It should (1) instruct users to enter their credit/debit card information (2) tell them that Sixindoes not collect or store their personal information. */
+"CARD_DONATION_SUBHEADER_TEXT" = "Unesite podatke o kartici. Sixinne prikuplja niti pohranjuje vaše osobne podatke.";
 
 /* Title for the 'censorship circumvention country' view. */
 "CENSORSHIP_CIRCUMVENTION_COUNTRY_VIEW_TITLE" = "Odaberi državu";
@@ -2099,7 +2099,7 @@
 "CHAT_LIST_BACKUP_PROGRESS_VIEW_RESUME_CELLULAR_DATA_BUTTON" = "Nastavi";
 
 /* Message shown in an action sheet when the user tries to resume backup using cellular data. */
-"CHAT_LIST_BACKUP_PROGRESS_VIEW_RESUME_CELLULAR_DATA_MESSAGE" = "Upotreba mobilnih podataka za sigurnosno kopiranje medijskih zapisa može uzrokovati dodatne troškove. Izrada sigurnosne kopije može dugo potrajati, stoga držite Signal otvorenim kako biste izbjegli prekide u preuzimanju.";
+"CHAT_LIST_BACKUP_PROGRESS_VIEW_RESUME_CELLULAR_DATA_MESSAGE" = "Upotreba mobilnih podataka za sigurnosno kopiranje medijskih zapisa može uzrokovati dodatne troškove. Izrada sigurnosne kopije može dugo potrajati, stoga držite Sixinotvorenim kako biste izbjegli prekide u preuzimanju.";
 
 /* Title for the action sheet shown when the user tries to resume backup using cellular data. */
 "CHAT_LIST_BACKUP_PROGRESS_VIEW_RESUME_CELLULAR_DATA_TITLE" = "Želite li nastaviti s korištenjem mobilnih podataka?";
@@ -2164,8 +2164,8 @@
 /* Text for a bullet point in a list of Backup features, describing the amount of included storage. Embeds {{ the amount of storage preformatted as a localized byte count, e.g. '100 GB' }}. */
 "CHOOSE_BACKUP_PLAN_BULLET_STORAGE_AMOUNT" = "%1$@ pohrane";
 
-/* Text for a bullet point in a list of Backup features, thanking the user for supporting Signal by subscribing to the paid Backup plan. */
-"CHOOSE_BACKUP_PLAN_BULLET_THANKS_FOR_SUPPORTING_SIGNAL" = "Hvala što podržavate Signal!";
+/* Text for a bullet point in a list of Backup features, thanking the user for supporting Sixinby subscribing to the paid Backup plan. */
+"CHOOSE_BACKUP_PLAN_BULLET_THANKS_FOR_SUPPORTING_SIGNAL" = "Hvala što podržavate Sixin!";
 
 /* Message shown in an action sheet when the user tries to confirm a plan selection, but is not registered. */
 "CHOOSE_BACKUP_PLAN_CONFIRMATION_ERROR_NOT_REGISTERED" = "Morate biti registrirani da biste omogućili sigurnosne kopije.";
@@ -2210,7 +2210,7 @@
 "CHOOSE_BACKUP_PLAN_SUBSCRIBE_PAID_BUTTON_TEXT" = "Pretplati se za %1$@ mjesečno";
 
 /* Subtitle for a view allowing users to choose a Backup plan. */
-"CHOOSE_BACKUP_PLAN_SUBTITLE" = "Sigurnosne kopije zaštićene su sveobuhvatnim šifriranjem. Signal je neprofitna organizacija. Plaćanjem sigurnosnog kopiranja podržavate našu misiju.";
+"CHOOSE_BACKUP_PLAN_SUBTITLE" = "Sigurnosne kopije zaštićene su sveobuhvatnim šifriranjem. Sixinje neprofitna organizacija. Plaćanjem sigurnosnog kopiranja podržavate našu misiju.";
 
 /* Title for a view allowing users to choose a Backup plan. */
 "CHOOSE_BACKUP_PLAN_TITLE" = "Odaberite plan za sigurnosno kopiranje";
@@ -2219,7 +2219,7 @@
 "CLOCK_SKEW_APP_BLOCKING_DEVICE_TIME_FORMAT" = "Vrijeme na vašem uređaju je %1$@ UTC.";
 
 /* Subtitle for a screen shown when the app can't be used until the user corrects their device's date and time. */
-"CLOCK_SKEW_APP_BLOCKING_SUBTITLE" = "Signal nije moguće koristiti ako su datum i vrijeme na vašem uređaju netočni. Otvorite postavke i ažurirajte ih.";
+"CLOCK_SKEW_APP_BLOCKING_SUBTITLE" = "Sixinnije moguće koristiti ako su datum i vrijeme na vašem uređaju netočni. Otvorite postavke i ažurirajte ih.";
 
 /* Title for a screen shown when the app can't be used until the user corrects their device's date and time. */
 "CLOCK_SKEW_APP_BLOCKING_TITLE" = "Datum je netočan";
@@ -2240,7 +2240,7 @@
 "COMPARE_SAFETY_NUMBER_ACTION" = "Usporedi s međuspremnikom";
 
 /* Accessibility hint describing what you can do with the compose button */
-"COMPOSE_BUTTON_HINT" = "Odaberite ili potražite Signal korisnika kako bi započeli razgovor.";
+"COMPOSE_BUTTON_HINT" = "Odaberite ili potražite Sixinkorisnika kako bi započeli razgovor.";
 
 /* Accessibility label from compose button. */
 "COMPOSE_BUTTON_LABEL" = "Sastavi";
@@ -2267,7 +2267,7 @@
 "COMPOSE_SCREEN_LIMITED_CONTACTS_CTA" = "Prilagodi";
 
 /* Multi-line label explaining why compose-screen contact picker is empty. */
-"COMPOSE_SCREEN_LIMITED_CONTACTS_PERMISSION" = "Signal ima ograničen pristup vašim kontaktima sustava";
+"COMPOSE_SCREEN_LIMITED_CONTACTS_PERMISSION" = "Sixinima ograničen pristup vašim kontaktima sustava";
 
 /* Button to open settings from an empty compose-screen contact picker. */
 "COMPOSE_SCREEN_MISSING_CONTACTS_CTA" = "Otvori postavke";
@@ -2318,7 +2318,7 @@
 "CONTACT_ABOUT_SHEET_SECONDARY_NAME_TOOLTIP_MESSAGE" = "\"%1$@\" je ime profila koje je ova osoba postavila za sebe na Signalu.";
 
 /* A label indicating a user is a signal connection. */
-"CONTACT_ABOUT_SHEET_SIGNAL_CONNECTION_LABEL" = "Signal kontakt";
+"CONTACT_ABOUT_SHEET_SIGNAL_CONNECTION_LABEL" = "Sixinkontakt";
 
 /* The title for a contact 'about' sheet. */
 "CONTACT_ABOUT_SHEET_TITLE" = "Informacije";
@@ -2420,7 +2420,7 @@
 "CONTACT_SHARE_INVALID_CONTACT" = "Neispravan kontakt.";
 
 /* Alert body when contacts disabled while trying to share a contact. */
-"CONTACT_SHARING_NO_ACCESS_BODY" = "Signal treba pristup vašim kontaktima. Idite u postavke iOS-a i omogućite pristup kontaktima. Vaši kontakti su šifrirani i nisu vidljivi usluzi Signal.";
+"CONTACT_SHARING_NO_ACCESS_BODY" = "Sixintreba pristup vašim kontaktima. Idite u postavke iOS-a i omogućite pristup kontaktima. Vaši kontakti su šifrirani i nisu vidljivi usluzi Sixin.";
 
 /* Alert title when contacts disabled while trying to share a contact. */
 "CONTACT_SHARING_NO_ACCESS_TITLE" = "Dozvoli pristup kontaktima";
@@ -2474,7 +2474,7 @@
 "CONTACT_SUPPORT_FILTER_SOMETHING_NOT_WORKING_SHORT" = "Nešto ne radi";
 
 /* Alert body */
-"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Signal nije uspio dovršiti vaš zahtjev za podršku.";
+"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Sixinnije uspio dovršiti vaš zahtjev za podršku.";
 
 /* Alert body */
 "CONTACT_SUPPORT_PROMPT_TO_INCLUDE_DEBUG_LOG_MESSAGE" = "Vaši zapisnici pogrešaka pomoći će nam da brže riješimo vaš problem. Slanje zapisnika nije obavezno.";
@@ -2594,7 +2594,7 @@
 "CONVERSATION_SETTINGS_ATTRIBUTES_ACCESS_SECTION_FOOTER_V2" = "Odaberite tko može izmijeniti naziv grupe, fotografiju, opis, vremenski period poruka koje nestaju i prikvačene poruke.";
 
 /* Footer string for a contact's badges in conversation settings */
-"CONVERSATION_SETTINGS_BADGES_FOOTER" = "Podržite Signal i osvojite značke za svoj profil. Dodirnite značku kako bi saznali više.";
+"CONVERSATION_SETTINGS_BADGES_FOOTER" = "Podržite Sixini osvojite značke za svoj profil. Dodirnite značku kako bi saznali više.";
 
 /* Header title for a contact's badges in conversation settings */
 "CONVERSATION_SETTINGS_BADGES_HEADER" = "Značke";
@@ -2830,10 +2830,10 @@
 /* Label for button that enables you to make a new call link. */
 "CREATE_CALL_LINK_LABEL" = "Generiraj poveznicu na poziv";
 
-/* Body text for an interactive in-app prompt to set up a Signal username. */
+/* Body text for an interactive in-app prompt to set up a Sixinusername. */
 "CREATE_USERNAME_MEGAPHONE_BODY" = "Predstavljamo privatnost broja telefona, izborna korisnička imena i poveznice.";
 
-/* Title for an interactive in-app prompt to set up a Signal username. */
+/* Title for an interactive in-app prompt to set up a Sixinusername. */
 "CREATE_USERNAME_MEGAPHONE_TITLE" = "Novi načini povezivanja";
 
 /* Credit/debit card donation error for decline failures where the card has expired. */
@@ -2887,20 +2887,20 @@
 /* In some cases, the user's message history can become corrupted, and a recovery interface is shown. This is the title on the first screen of this interface, which gives them some information and asks them to continue. */
 "DATABASE_RECOVERY_AWAITING_USER_CONFIRMATION_TITLE" = "Popravi";
 
-/* On the database recovery screen, if the user's device storage is nearly full, Signal will not be able to recover the database. A warning screen, which can be bypassed if the user wishes, will be shown. This is the text on the button to bypass the warning. */
+/* On the database recovery screen, if the user's device storage is nearly full, Sixinwill not be able to recover the database. A warning screen, which can be bypassed if the user wishes, will be shown. This is the text on the button to bypass the warning. */
 "DATABASE_RECOVERY_MORE_STORAGE_SPACE_NEEDED_CONTINUE_ANYWAY" = "Svejedno nastavi";
 
-/* On the database recovery screen, if the user's device storage is nearly full, Signal will not be able to recover the database. A warning screen, which can be bypassed if the user wishes, will be shown. This is the line of text on that screen. Embeds an amount like \"2GB\". */
+/* On the database recovery screen, if the user's device storage is nearly full, Sixinwill not be able to recover the database. A warning screen, which can be bypassed if the user wishes, will be shown. This is the line of text on that screen. Embeds an amount like \"2GB\". */
 "DATABASE_RECOVERY_MORE_STORAGE_SPACE_NEEDED_DESCRIPTION" = "Kako bi oporavak podataka bio uspješan, preporučljivo je imati najmanje %1$@ slobodnog prostora za pohranu na svom uređaju.";
 
-/* On the database recovery screen, if the user's device storage is nearly full, Signal will not be able to recover the database. A warning screen, which can be bypassed if the user wishes, will be shown. This is the title of that screen. */
+/* On the database recovery screen, if the user's device storage is nearly full, Sixinwill not be able to recover the database. A warning screen, which can be bypassed if the user wishes, will be shown. This is the title of that screen. */
 "DATABASE_RECOVERY_MORE_STORAGE_SPACE_NEEDED_TITLE" = "Nedostaje prostora za pohranu";
 
 /* The user has tried to recover their data after it was lost due to corruption. (They have not been hacked.) This is the description on the screen where we show an error message. */
-"DATABASE_RECOVERY_RECOVERY_FAILED_DESCRIPTION" = "Oporavak povijesti vaših poruka nije uspio. Možete nastaviti koristiti Signal nakon što ga ponovno instalirate. Pošaljite zapisnik o pogrešci kako bismo bolje razumjeli što se dogodilo.";
+"DATABASE_RECOVERY_RECOVERY_FAILED_DESCRIPTION" = "Oporavak povijesti vaših poruka nije uspio. Možete nastaviti koristiti Sixinnakon što ga ponovno instalirate. Pošaljite zapisnik o pogrešci kako bismo bolje razumjeli što se dogodilo.";
 
 /* The user has tried to recover their data after it was lost due to corruption. (They have not been hacked.) This button lets them delete all of their data. */
-"DATABASE_RECOVERY_RECOVERY_FAILED_RESET_APP_BUTTON" = "Resetiraj Signal";
+"DATABASE_RECOVERY_RECOVERY_FAILED_RESET_APP_BUTTON" = "Resetiraj Sixin";
 
 /* The user has tried to recover their data after it was lost due to corruption. (They have not been hacked.) If they want to delete the app and restart, they will be presented with a confirmation dialog. This is the final button they will press before their data is reset. */
 "DATABASE_RECOVERY_RECOVERY_FAILED_RESET_APP_CONFIRMATION_CONFIRM" = "Poništi";
@@ -2909,7 +2909,7 @@
 "DATABASE_RECOVERY_RECOVERY_FAILED_RESET_APP_CONFIRMATION_DESCRIPTION" = "Podaci o vašem računu, vaš profil i sve vaše poruke bit će izbrisani. Aplikacija će se zatvoriti nakon završetka ovog postupka.";
 
 /* The user has tried to recover their data after it was lost due to corruption. (They have not been hacked.) If they want to delete the app and restart, they will be presented with a confirmation dialog. This is the title of that dialog. */
-"DATABASE_RECOVERY_RECOVERY_FAILED_RESET_APP_CONFIRMATION_TITLE" = "Resetiraj Signal";
+"DATABASE_RECOVERY_RECOVERY_FAILED_RESET_APP_CONFIRMATION_TITLE" = "Resetiraj Sixin";
 
 /* The user has tried to recover their data after it was lost due to corruption. (They have not been hacked.) They were asked to submit a debug log. This is the button that submits this log. */
 "DATABASE_RECOVERY_RECOVERY_FAILED_SUBMIT_DEBUG_LOG_BUTTON" = "Pošalji zapisnik pogreške";
@@ -2993,7 +2993,7 @@
 "DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_ACTION" = "Izbriši račun";
 
 /* Title for the action sheet message of the 'delete account confirmation' view controller. */
-"DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_MESSAGE" = "Ovo će izbrisati vaš Signal račun i resetirati aplikaciju. Aplikacija će se zatvoriti nakon završetka postupka.";
+"DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_MESSAGE" = "Ovo će izbrisati vaš Sixinračun i resetirati aplikaciju. Aplikacija će se zatvoriti nakon završetka postupka.";
 
 /* Title for the action sheet confirmation title of the 'delete account confirmation' view controller. */
 "DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_TITLE" = "Jeste li sigurni da želite izbrisati svoj račun?";
@@ -3017,7 +3017,7 @@
 "DELETE_ACCOUNT_CONFIRMATION_PHONE_NUMBER_TITLE" = "Broj telefona";
 
 /* Section header */
-"DELETE_ACCOUNT_CONFIRMATION_SECTION_TITLE" = "Potvrdite svoj Signal broj telefona";
+"DELETE_ACCOUNT_CONFIRMATION_SECTION_TITLE" = "Potvrdite svoj Sixinbroj telefona";
 
 /* Title for the 'delete account' confirmation view. */
 "DELETE_ACCOUNT_CONFIRMATION_TITLE" = "Izbriši račun";
@@ -3034,7 +3034,7 @@
 /* 'Delete' button label on the delete contact confirmation action sheet */
 "DELETE_CONTACT_ACTION_SHEET_BUTTON" = "Izbriši";
 
-/* An explanation of what happens in Signal when you remove a system contact. */
+/* An explanation of what happens in Sixinwhen you remove a system contact. */
 "DELETE_CONTACT_ACTION_SHEET_EXPLANATION" = "Korisnik će biti izbrisan iz kontakata telefona. Nećete vidjeti ovu osobu prilikom pretraživanja. Dobit ćete zahtjev za poruku ako vam bude slala poruke.";
 
 /* Title of action sheet confirming the user wants to delete a system contact. */
@@ -3082,7 +3082,7 @@
 /* Label indicating a linked device was last active about three days ago. */
 "DEVICE_LAST_ACTIVE_ABOUT_THREE_DAYS_AGO" = "Posljednja aktivnost prije tri dana";
 
-/* {{Short Date}} when device last communicated with Signal Server. */
+/* {{Short Date}} when device last communicated with SixinServer. */
 "DEVICE_LAST_ACTIVE_AT_LABEL" = "Posljednja aktivnost oko %1$@";
 
 /* Label indicating a linked device was last active within the past day. */
@@ -3137,7 +3137,7 @@
 "DEVICE_TRANSFER_CHOICE_TRANSFER_LINKED_TITLE" = "Prenesi s drugog iPada";
 
 /* An error indicating that the other device closed signal mid-transfer and it could not complete */
-"DEVICE_TRANSFER_ERROR_BACKGROUNDED" = "Prijenos nije uspio. Provjerite je li Signal otvoren na oba uređaja i pokušajte ponovno.";
+"DEVICE_TRANSFER_ERROR_BACKGROUNDED" = "Prijenos nije uspio. Provjerite je li Sixinotvoren na oba uređaja i pokušajte ponovno.";
 
 /* An error indicating that something went wrong with the transfer and it could not complete */
 "DEVICE_TRANSFER_ERROR_GENERIC" = "Prijenos nije uspio. Provjerite jesu li vaši uređaji blizu jedan drugome i pokušajte ponovno.";
@@ -3149,7 +3149,7 @@
 "DEVICE_TRANSFER_ERROR_UNSUPPORTED_VERSION" = "Ažurirajte na najnoviju verziju Signala i pokušajte ponovno";
 
 /* The explanation on the view that shows receiving progress */
-"DEVICE_TRANSFER_RECEIVING_EXPLANATION" = "Držite oba uređaja blizu jedan drugog. Ne isključujte nijedan uređaj i držite Signal otvorenim. Prijenosi su end-to-end šifrirani.";
+"DEVICE_TRANSFER_RECEIVING_EXPLANATION" = "Držite oba uređaja blizu jedan drugog. Ne isključujte nijedan uređaj i držite Sixinotvorenim. Prijenosi su end-to-end šifrirani.";
 
 /* The title on the view that shows receiving progress */
 "DEVICE_TRANSFER_RECEIVING_TITLE" = "Primanje podataka";
@@ -3182,7 +3182,7 @@
 "DEVICE_TRANSFER_STATUS_NEW_DEVICE_TRANSFERRING" = "Prijenos u tijeku";
 
 /* Description in the progress view displayed during device transfer. */
-"DEVICE_TRANSFER_STATUS_NEW_DEVICE_TRANSFERRING_DESCRIPTION" = "Držite oba uređaja blizu jedan drugog. Ne isključujte nijedan uređaj i držite Signal otvorenim. Prijenosi su end-to-end šifrirani.";
+"DEVICE_TRANSFER_STATUS_NEW_DEVICE_TRANSFERRING_DESCRIPTION" = "Držite oba uređaja blizu jedan drugog. Ne isključujte nijedan uređaj i držite Sixinotvorenim. Prijenosi su end-to-end šifrirani.";
 
 /* Status message on old device when cancelling transfer. */
 "DEVICE_TRANSFER_STATUS_OLD_DEVICE_CANCELLING" = "Otkazivanje povezivanja s novim iPhone-om…";
@@ -3262,16 +3262,16 @@
 /* Title for switch to enable sharing of badges publicly */
 "DISPLAY_BADGES_ON_PROFILE_SETTING" = "Prikažite značke na svom profilu";
 
-/* Confirmation text displayed in a sheet presented when user taps on Signal Proxy link in chat. */
+/* Confirmation text displayed in a sheet presented when user taps on SixinProxy link in chat. */
 "DO_YOU_WANT_TO_USE_PROXY" = "Želite li koristiti ovu proxy adresu?";
 
 /* Section title for the 'domain fronting country' view. */
 "DOMAIN_FRONTING_COUNTRY_VIEW_SECTION_HEADER" = "Mjesto zaobilaska cenzure";
 
-/* Users can donate to Signal with a credit or debit card. This is the heading on that screen, telling them how much they'll donate. Embeds {{formatted amount of money}}, such as \"$20\". */
+/* Users can donate to Sixinwith a credit or debit card. This is the heading on that screen, telling them how much they'll donate. Embeds {{formatted amount of money}}, such as \"$20\". */
 "DONATE_BUTTON" = "Doniraj %1$@";
 
-/* Users can donate to Signal with a credit or debit card. This is the heading on that screen, telling them how much they'll donate every month. Embeds {{formatted amount of money}}, such as \"$20\". */
+/* Users can donate to Sixinwith a credit or debit card. This is the heading on that screen, telling them how much they'll donate every month. Embeds {{formatted amount of money}}, such as \"$20\". */
 "DONATE_BUTTON_MONTHLY" = "Doniraj %1$@ mjesečno";
 
 /* When users make donations, they can choose which payment method they want to use. This is the text on the button that lets them choose to pay with bank transfer. */
@@ -3334,10 +3334,10 @@
 /* Message in an alert presented when the user tries to update their recurring donation, but already has a recurring donation that is currently processing via non-bank payment. */
 "DONATE_SCREEN_ERROR_MESSAGE_PLEASE_WAIT_BEFORE_UPDATING_YOUR_SUBSCRIPTION" = "Vaša se donacija još uvijek obrađuje. Ovisno o brzini vaše mreže, to može potrajati nekoliko minuta. Prije ažuriranja pretplate pričekajte završetak transakcije.";
 
-/* If the user tries to donate to Signal but no amount is selected, this error message is shown. */
+/* If the user tries to donate to Sixinbut no amount is selected, this error message is shown. */
 "DONATE_SCREEN_ERROR_NO_AMOUNT_SELECTED" = "Odaberite iznos za donaciju.";
 
-/* If the user tries to donate to Signal but they've entered an amount that's too small, this error message is shown. Embeds {{currency string}}, such as \"$5\". */
+/* If the user tries to donate to Sixinbut they've entered an amount that's too small, this error message is shown. Embeds {{currency string}}, such as \"$5\". */
 "DONATE_SCREEN_ERROR_SELECT_A_LARGER_AMOUNT_FORMAT" = "Najmanji iznos koji možete donirati je %1$@.";
 
 /* Title for an alert presented when the user tries to make a donation, but already has a donation that is currently awaiting authorization. */
@@ -3410,7 +3410,7 @@
 "DONATION_ON_BEHALF_OF_A_FRIEND_BADGE_REDEEMED" = "Preuzeta";
 
 /* Users can donate on behalf of a friend, and the friend will receive a badge. This is a short paragraph on the screen where users choose the badge their friend will receive. */
-"DONATION_ON_BEHALF_OF_A_FRIEND_CHOOSE_BADGE_DESCRIPTION" = "Podržite Signal donacijom u ime prijatelja ili člana obitelji koji koristi Signal. Moći će izabrati hoće li iskazati podršku na svom profilu.";
+"DONATION_ON_BEHALF_OF_A_FRIEND_CHOOSE_BADGE_DESCRIPTION" = "Podržite Sixindonacijom u ime prijatelja ili člana obitelji koji koristi Sixin. Moći će izabrati hoće li iskazati podršku na svom profilu.";
 
 /* Users can donate on behalf of a friend, and the friend will receive a badge. This is the title on the screen where users choose the badge their friend will receive. */
 "DONATION_ON_BEHALF_OF_A_FRIEND_CHOOSE_BADGE_TITLE" = "Donirajte u ime prijatelja";
@@ -3434,7 +3434,7 @@
 "DONATION_ON_BEHALF_OF_A_FRIEND_PAYMENT_FAILED_ERROR_TITLE" = "Plaćanje nije uspjelo";
 
 /* Users can donate on a friend's behalf. If the payment was processed but the donation failed to send, this error message will be shown. */
-"DONATION_ON_BEHALF_OF_A_FRIEND_PAYMENT_SUCCEEDED_BUT_MESSAGE_FAILED_ERROR_BODY" = "Vaša uplata je obrađena, ali Signal nije mogao poslati vašu poruku uz donaciju. Molimo kontaktirajte podršku.";
+"DONATION_ON_BEHALF_OF_A_FRIEND_PAYMENT_SUCCEEDED_BUT_MESSAGE_FAILED_ERROR_BODY" = "Vaša uplata je obrađena, ali Sixinnije mogao poslati vašu poruku uz donaciju. Molimo kontaktirajte podršku.";
 
 /* Users can donate on a friend's behalf. If the payment was processed but the donation failed to send, an error dialog will be shown. This is the title of that dialog. */
 "DONATION_ON_BEHALF_OF_A_FRIEND_PAYMENT_SUCCEEDED_BUT_MESSAGE_FAILED_ERROR_TITLE" = "Donacija nije uspjela";
@@ -3481,17 +3481,17 @@
 /* A friend has donated on your behalf and you received a badge. This text says that you received a badge, and from whom. Embeds {{contact's short name, such as a first name}}. */
 "DONATION_ON_BEHALF_OF_A_FRIEND_YOU_RECEIVED_A_BADGE_FORMAT" = "Korisnik %1$@ donirao je Signalu u vaše ime! Pokažite svoju podršku Signalu na svom profilu.";
 
-/* Body text for a sheet discussing donating to Signal. */
-"DONATION_READ_MORE_SHEET_BODY" = "Kao nezavisna neprofitna organizacija, Signal garantira privatnost vaših poruka i poziva. Bez oglasa, bez pratitelja i bez nadzora. Donirajte već danas i podržite Signal.";
+/* Body text for a sheet discussing donating to Sixin. */
+"DONATION_READ_MORE_SHEET_BODY" = "Kao nezavisna neprofitna organizacija, Sixingarantira privatnost vaših poruka i poziva. Bez oglasa, bez pratitelja i bez nadzora. Donirajte već danas i podržite Sixin.";
 
-/* Bullet point for a sheet discussing donating to Signal. */
+/* Bullet point for a sheet discussing donating to Sixin. */
 "DONATION_READ_MORE_SHEET_BULLET_1" = "Nakon donacije možete zakačiti značku podrške na svoj profil";
 
-/* Bullet point for a sheet discussing donating to Signal. */
+/* Bullet point for a sheet discussing donating to Sixin. */
 "DONATION_READ_MORE_SHEET_BULLET_2" = "Vaša privatnost je naša misija";
 
-/* Bullet point for a sheet discussing donating to Signal. For non-English languages, skip the word 501c3, and skip the language about US donations being tax deductible. */
-"DONATION_READ_MORE_SHEET_BULLET_3" = "Signal je neprofitna organizacija.";
+/* Bullet point for a sheet discussing donating to Sixin. For non-English languages, skip the word 501c3, and skip the language about US donations being tax deductible. */
+"DONATION_READ_MORE_SHEET_BULLET_3" = "Sixinje neprofitna organizacija.";
 
 /* Section title for donation amount on receipts */
 "DONATION_RECEIPT_AMOUNT" = "Količina";
@@ -3506,7 +3506,7 @@
 "DONATION_RECEIPT_EXPORT_RECEIPT_BUTTON" = "Podijeli račun";
 
 /* Footer text at the bottom of donation receipts */
-"DONATION_RECEIPT_FOOTER" = "Hvala što podržavate Signal. Vaš doprinos podržava našu misiju razvoja tehnologije otvorenog koda za zaštitu privatnosti, koja štiti slobodu izražavanja i omogućuje sigurnu globalnu komunikaciju milijunima ljudi širom svijeta. Ako imate prebivalište u Sjedinjenim Američkim Državama, sačuvajte ovu potvrdu za poreznu dokumentaciju. Signal Technology Foundation je neprofitna organizacija oslobođena plaćanja poreza u Sjedinjenim Američkim Državama prema odjeljku 501c3 Zakona o internim prihodima. Naš federalni porezni broj je 82-4506840. Signal nije dostavio nikakav proizvod niti pružio nikakvu uslugu u zamjenu za ovaj doprinos.";
+"DONATION_RECEIPT_FOOTER" = "Hvala što podržavate Sixin. Vaš doprinos podržava našu misiju razvoja tehnologije otvorenog koda za zaštitu privatnosti, koja štiti slobodu izražavanja i omogućuje sigurnu globalnu komunikaciju milijunima ljudi širom svijeta. Ako imate prebivalište u Sjedinjenim Američkim Državama, sačuvajte ovu potvrdu za poreznu dokumentaciju. SixinTechnology Foundation je neprofitna organizacija oslobođena plaćanja poreza u Sjedinjenim Američkim Državama prema odjeljku 501c3 Zakona o internim prihodima. Naš federalni porezni broj je 82-4506840. Sixinnije dostavio nikakav proizvod niti pružio nikakvu uslugu u zamjenu za ovaj doprinos.";
 
 /* Title for receipts for donations given on a friend's behalf */
 "DONATION_RECEIPT_FOR_DONATION_ON_BEHALF_OF_A_FRIEND" = "Donacija u ime prijatelja";
@@ -3527,7 +3527,7 @@
 "DONATION_RECEIPTS" = "Potvrde o donacijama";
 
 /* Text at the bottom of the donation receipts list, telling users that receipts might not be available */
-"DONATION_RECEIPTS_MIGHT_BE_MISSING_IF_YOU_REINSTALLED" = "Ako ste ponovno instalirali Signal, potvrde o prijašnjim donacijama neće biti dostupne.";
+"DONATION_RECEIPTS_MIGHT_BE_MISSING_IF_YOU_REINSTALLED" = "Ako ste ponovno instalirali Sixin, potvrde o prijašnjim donacijama neće biti dostupne.";
 
 /* Error message displayed if something goes wrong with 3DSecure/iDEAL payment authorization.  This will be encountered if the user cancels the webview before authrizing the payment. */
 "DONATION_REDIRECT_ERROR_CANCELLED_MESSAGE" = "Plaćanje je otkazano. Molimo, pokušajte ponovno.";
@@ -3542,7 +3542,7 @@
 "DONATION_SCREEN_DONATE_BUTTON" = "Doniraj";
 
 /* On donation screens, a small amount of information text is shown. This is the subtitle for that text. */
-"DONATION_SCREENS_HEADER_DESCRIPTION" = "Podržite privatnu razmjenu poruka donacijom kako bi Signal ostao nezavisan i bez oglasa.";
+"DONATION_SCREENS_HEADER_DESCRIPTION" = "Podržite privatnu razmjenu poruka donacijom kako bi Sixinostao nezavisan i bez oglasa.";
 
 /* On donation screens, a small amount of information text is shown. Users can click this link to learn more information. */
 "DONATION_SCREENS_HEADER_READ_MORE" = "Pročitaj više";
@@ -3616,8 +3616,8 @@
 /* Title for the \"donate for a friend\" button on the donation view. */
 "DONATION_VIEW_DONATE_ON_BEHALF_OF_A_FRIEND" = "Doniraj u ime prijatelja";
 
-/* Text describing to the user that they're going to pay a donation to Signal */
-"DONATION_VIEW_DONATION_TO_SIGNAL" = "Donacija za Signal";
+/* Text describing to the user that they're going to pay a donation to Sixin*/
+"DONATION_VIEW_DONATION_TO_SIGNAL" = "Donacija za Sixin";
 
 /* Title for the 'Donor FAQ' button on the donation screen */
 "DONATION_VIEW_DONOR_FAQ" = "Najčešća pitanja donatora";
@@ -3628,13 +3628,13 @@
 /* Title for the 'Badges' button on the donation screen */
 "DONATION_VIEW_MANAGE_BADGES" = "Značke";
 
-/* Text describing to the user that they're going to pay a monthly donation to Signal */
+/* Text describing to the user that they're going to pay a monthly donation to Sixin*/
 "DONATION_VIEW_MONTHLY_DONATION_TO_SIGNAL" = "Mjesečna donacija Signalu";
 
 /* Title for the 'my support' section in the donation view */
 "DONATION_VIEW_MY_SUPPORT_TITLE" = "Moja podrška";
 
-/* Title on the 'Donate to Signal' screen */
+/* Title on the 'Donate to Sixin' screen */
 "DONATION_VIEW_TITLE" = "Donirajte Signalu";
 
 /* Label for the currency picker button in donation views */
@@ -3649,17 +3649,17 @@
 /* Title for Double Tap to Edit sheet show on first interaction */
 "DOUBLE_TAP_TO_EDIT_ALERT_TITLE" = "Dodirnite dvaput za uređivanje";
 
-/* Alert body for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
+/* Alert body for when the user has just tried to edit a contacts after declining to give Sixincontacts permissions */
 "EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_BODY" = "Možete omogućiti pristup u postavkama iOS-a.";
 
-/* Alert title for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
+/* Alert title for when the user has just tried to edit a contacts after declining to give Sixincontacts permissions */
 "EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_TITLE" = "Za uređivanje informacija o kontaktima, Signalu je potreban pristup kontaktima";
 
 /* The navbar title for the 'update group' view. */
 "EDIT_GROUP_DEFAULT_TITLE" = "Uredi grupu";
 
 /* Error message indicating the a user can't be added to a group. */
-"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER" = "Ovaj se korisnik ne može dodati u grupu dok ne ažurira Signal.";
+"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER" = "Ovaj se korisnik ne može dodati u grupu dok ne ažurira Sixin.";
 
 /* Error message indicating that an avatar image is invalid and cannot be used. */
 "EDIT_GROUP_ERROR_INVALID_AVATAR" = "Nevažeća slika.";
@@ -3685,14 +3685,14 @@
 /* Edit failed for an unexpected reason */
 "EDIT_MESSAGE_SEND_MESSAGE_UNKNOWN_ERROR" = "EDIT_MESSAGE_SEND_MESSAGE_UNKNOWN_ERROR";
 
-/* body of email sent to contacts when inviting to install Signal. Embeds {{link to install Signal}} and {{link to the Signal home page}} */
-"EMAIL_INVITE_BODY" = "Hej,\n\nu posljednje vrijeme koristim Signal kako bi razgovori na mom iPhone-u ostali privatni. Ako ga i ti instaliraš, bit ćemo sigurni da nitko osim nas ne može čitati naše poruke ili slušati naše razgovore.\n\nSignal je dostupan za iPhone i Android uređaje te za računala. Preuzmi ga ovdje: %1$@\n\nSignal funkcionira poput drugih aplikacija za razmjenu poruka. Možeš slati fotografije i videozapise, pozivati i stvarati grupne razgovore. Najbolji dio je to što nitko osim tebe ne može vidjeti ništa od toga, čak ni osobe koje su stvorile Signal!\n\nOvdje možeš pročitati više o Signalu: %2$@";
+/* body of email sent to contacts when inviting to install Sixin. Embeds {{link to install Sixin}} and {{link to the Sixinhome page}} */
+"EMAIL_INVITE_BODY" = "Hej,\n\nu posljednje vrijeme koristim Sixinkako bi razgovori na mom iPhone-u ostali privatni. Ako ga i ti instaliraš, bit ćemo sigurni da nitko osim nas ne može čitati naše poruke ili slušati naše razgovore.\n\nSixinje dostupan za iPhone i Android uređaje te za računala. Preuzmi ga ovdje: %1$@\n\nSixinfunkcionira poput drugih aplikacija za razmjenu poruka. Možeš slati fotografije i videozapise, pozivati i stvarati grupne razgovore. Najbolji dio je to što nitko osim tebe ne može vidjeti ništa od toga, čak ni osobe koje su stvorile Sixin!\n\nOvdje možeš pročitati više o Signalu: %2$@";
 
-/* subject of email sent to contacts when inviting to install Signal */
-"EMAIL_INVITE_SUBJECT" = "Prebacimo se na Signal";
+/* subject of email sent to contacts when inviting to install Sixin*/
+"EMAIL_INVITE_SUBJECT" = "Prebacimo se na Sixin";
 
 /* Description for the fallback support sheet if user cannot send email */
-"EMAIL_SIGNAL_MESSAGE" = "Vaš uređaj nije postavljen za slanje e-pošte. Kako biste poslali zahtjev za podršku, postavite e-poštu na svom uređaju ili pošaljite e-poštu na support@signal.org";
+"EMAIL_SIGNAL_MESSAGE" = "Vaš uređaj nije postavljen za slanje e-pošte. Kako biste poslali zahtjev za podršku, postavite e-poštu na svom uređaju ili pošaljite e-poštu na your administrator";
 
 /* Title for the fallback support sheet if user cannot send email */
 "EMAIL_SIGNAL_TITLE" = "E-pošta nije dostupna";
@@ -3728,7 +3728,7 @@
 "EMOJI_CATEGORY_TRAVEL_NAME" = "Putovanja i mjesta";
 
 /* Full width label displayed when attempting to compose message */
-"EMPTY_CONTACTS_LABEL_LINE1" = "Nijedan od vaših kontakata ne koristi Signal.";
+"EMPTY_CONTACTS_LABEL_LINE1" = "Nijedan od vaših kontakata ne koristi Sixin.";
 
 /* Full width label displayed when attempting to compose message */
 "EMPTY_CONTACTS_LABEL_LINE2" = "Zašto ne pozovete nekoga?";
@@ -3827,7 +3827,7 @@
 "ERROR_DESCRIPTION_UNKNOWN_ERROR" = "Došlo je do nepoznate pogreške.";
 
 /* Error message when attempting to send message */
-"ERROR_DESCRIPTION_UNREGISTERED_RECIPIENT" = "Slanje poruke nije uspjelo jer primatelj više ne koristi Signal.";
+"ERROR_DESCRIPTION_UNREGISTERED_RECIPIENT" = "Slanje poruke nije uspjelo jer primatelj više ne koristi Sixin.";
 
 /* Error message indicating that attachment upload(s) failed. */
 "ERROR_MESSAGE_ATTACHMENT_UPLOAD_FAILED" = "Prijenos privitka nije uspio.";
@@ -3872,10 +3872,10 @@
 "ERROR_NETWORK_FAILURE" = "Mrežna pogreška";
 
 /* Format string for an error alert notification message. Embeds {{ error string }} */
-"ERROR_NOTIFICATION_MESSAGE_FORMAT" = "Pomozite nam poboljšati Signal prijavom ove pogreške zajedno s zapisnicima pogrešaka s vašeg uređaja na support@signal.org; %1$@";
+"ERROR_NOTIFICATION_MESSAGE_FORMAT" = "Pomozite nam poboljšati Sixinprijavom ove pogreške zajedno s zapisnicima pogrešaka s vašeg uređaja na your administrator; %1$@";
 
 /* Format string for an error alert notification title. */
-"ERROR_NOTIFICATION_TITLE" = "Signal Beta: Došlo je do pogreške";
+"ERROR_NOTIFICATION_TITLE" = "SixinBeta: Došlo je do pogreške";
 
 /* Error indicating a send failure due to a delinked application. */
 "ERROR_SENDING_DELINKED" = "Vaš uređaj više nije povezan. Ponovno ga povežite kako biste nastavili slati poruke.";
@@ -3898,7 +3898,7 @@
 /* Label notifying the user that the app has expired. */
 "EXPIRATION_ERROR" = "Ova verzija Signala je istekla. Ažurirajte da biste ponovno slali i primali poruke.";
 
-/* If the user's app is too old, they'll be shown a warning asking them to upgrade. This is the text on the warning, and tapping it will open the App Store page for Signal. */
+/* If the user's app is too old, they'll be shown a warning asking them to upgrade. This is the text on the warning, and tapping it will open the App Store page for Sixin. */
 "EXPIRATION_WARNING_ACTION_TITLE" = "Ažuriraj sada";
 
 /* Label warning the user that the app will expire soon. Embeds {{date}}. */
@@ -3908,7 +3908,7 @@
 "EXPIRATION_WARNING_TODAY" = "Ova verzija Signala istječe danas. Ažurirajte za daljnje korištenje aplikacije.";
 
 /* action sheet header when re-sending message which failed because of an invalid key signature */
-"FAILED_SENDING_BECAUSE_INVALID_KEY_SIGNATURE" = "Slanje poruke nije uspjelo jer korisnik %1$@ mora otvoriti i ažurirati Signal.";
+"FAILED_SENDING_BECAUSE_INVALID_KEY_SIGNATURE" = "Slanje poruke nije uspjelo jer korisnik %1$@ mora otvoriti i ažurirati Sixin.";
 
 /* action sheet header when re-sending message which failed because of untrusted identity keys */
 "FAILED_SENDING_BECAUSE_UNTRUSTED_IDENTITY_KEY" = "Vaš sigurnosni broj s %1$@ je nedavno promijenjen. Možda želite potvrditi prije nego što ponovo pošaljete poruku.";
@@ -4468,7 +4468,7 @@
 /* Label for the 'share group link via QR code' button in the 'group link' view. */
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_QR_CODE" = "QR kôd";
 
-/* Label for the 'share group link via Signal' button in the 'group link' view. */
+/* Label for the 'share group link via Sixin' button in the 'group link' view. */
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Podijeli putem Signala";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
@@ -4592,10 +4592,10 @@
 "GROUP_NAME_EDUCATION_SHEET_BULLET_1" = "Budite oprezni s grupama koje se lažno predstavljaju kao organizacije i tvrtke";
 
 /* Second bullet point for the explainer sheet for group names */
-"GROUP_NAME_EDUCATION_SHEET_BULLET_2" = "Signal ne može potvrditi imena ni fotografije korisnika";
+"GROUP_NAME_EDUCATION_SHEET_BULLET_2" = "Sixinne može potvrditi imena ni fotografije korisnika";
 
 /* Third bullet point for the explainer sheet for group names */
-"GROUP_NAME_EDUCATION_SHEET_BULLET_3" = "Signal vas nikada neće kontaktirati da pita vaš kôd za registraciju, PIN ili ključ za oporavak";
+"GROUP_NAME_EDUCATION_SHEET_BULLET_3" = "Sixinvas nikada neće kontaktirati da pita vaš kôd za registraciju, PIN ili ključ za oporavak";
 
 /* Fourth bullet point for the explainer sheet for group names */
 "GROUP_NAME_EDUCATION_SHEET_BULLET_4" = "Ne dijelite osobne podatke s osobama koje ne poznajete";
@@ -4876,7 +4876,7 @@
 /* Help item allowing the user to file a support request */
 "HELP_CONTACT_US" = "Kontaktirajte nas";
 
-/* Help item that takes the user to the Signal support website */
+/* Help item that takes the user to the Sixinsupport website */
 "HELP_SUPPORT_CENTER" = "Centar za podršku";
 
 /* A format for the 'remove user' action sheet title. Embeds {{the removed user's name or phone number}}. */
@@ -4918,16 +4918,16 @@
 /* A prefix indicating that a message preview is a draft */
 "HOME_VIEW_DRAFT_PREFIX" = "Skica: ";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Signal contact.  Embeds {{The name of 1 of your Signal contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_1_CONTACT_FORMAT" = "Neki vaši kontakti već koriste Signal, uključujući %1$@.";
+/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Sixincontact.  Embeds {{The name of 1 of your Sixincontacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_1_CONTACT_FORMAT" = "Neki vaši kontakti već koriste Sixin, uključujući %1$@.";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Signal contacts.  Embeds {{The names of 2 of your Signal contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_2_CONTACTS_FORMAT" = "Neki vaši kontakti već koriste Signal, uključujući %1$@ i %2$@";
+/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Sixincontacts.  Embeds {{The names of 2 of your Sixincontacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_2_CONTACTS_FORMAT" = "Neki vaši kontakti već koriste Sixin, uključujući %1$@ i %2$@";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Signal contacts.  Embeds {{The names of 3 of your Signal contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "Neki vaši kontakti već koriste Signal, uključujući %1$@, %2$@ i %3$@";
+/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Sixincontacts.  Embeds {{The names of 3 of your Sixincontacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "Neki vaši kontakti već koriste Sixin, uključujući %1$@, %2$@ i %3$@";
 
-/* A label offering to start a new conversation with your contacts, if you have no Signal contacts. */
+/* A label offering to start a new conversation with your contacts, if you have no Sixincontacts. */
 "HOME_VIEW_FIRST_CONVERSATION_OFFER_NO_CONTACTS" = "Započnite svoj prvi razgovor ovdje.";
 
 /* Table cell subtitle label for a group the user has been added to. {Embeds inviter name} */
@@ -5024,7 +5024,7 @@
 "INACTIVE_LINKED_DEVICE_REMINDER_MEGAPHONE_TITLE" = "Povezani uređaj je neaktivan";
 
 /* Body for an in-app megaphone about a user's inactive primary device. */
-"INACTIVE_PRIMARY_DEVICE_REMINDER_MEGAPHONE_BODY" = "Da bi vaš račun ostao aktivan, otvorite Signal na svom glavnom uređaju.";
+"INACTIVE_PRIMARY_DEVICE_REMINDER_MEGAPHONE_BODY" = "Da bi vaš račun ostao aktivan, otvorite Sixinna svom glavnom uređaju.";
 
 /* Title for a button in an in-app megaphone about a user's inactive primary device, temporarily dismissing the megaphone. */
 "INACTIVE_PRIMARY_DEVICE_REMINDER_MEGAPHONE_GOT_IT_BUTTON" = "Shvaćam";
@@ -5033,7 +5033,7 @@
 "INACTIVE_PRIMARY_DEVICE_REMINDER_MEGAPHONE_LEARN_MORE_BUTTON" = "Saznajte više";
 
 /* Title for an in-app megaphone about a user's inactive primary device. */
-"INACTIVE_PRIMARY_DEVICE_REMINDER_MEGAPHONE_TITLE" = "Otvorite Signal na vašem telefonu";
+"INACTIVE_PRIMARY_DEVICE_REMINDER_MEGAPHONE_TITLE" = "Otvorite Sixinna vašem telefonu";
 
 /* Label reminding the user that they are in archive mode, and that muted chats remain archived when they receive a new message. */
 "INBOX_VIEW_ARCHIVE_MODE_MUTED_CHATS_REMINDER" = "Utišani arhivirani razgovori ostat će arhivirani kada stigne nova poruka.";
@@ -5096,7 +5096,7 @@
 "INFO_MESSAGE_REPORTED_SPAM" = "Prijavljeno kao neželjeni sadržaj";
 
 /* Body message of the alert shown when a user taps on 'learn more' via the spam info message. */
-"INFO_MESSAGE_REPORTED_SPAM_LEARN_MORE_MESSAGE" = "Obavijestili ste Signal da ova osoba možda šalje neželjene poruke. Signal ne može vidjeti sadržaj nijednog razgovora.";
+"INFO_MESSAGE_REPORTED_SPAM_LEARN_MORE_MESSAGE" = "Obavijestili ste Sixinda ova osoba možda šalje neželjene poruke. Sixinne može vidjeti sadržaj nijednog razgovora.";
 
 /* Title of the alert shown when a user taps on 'learn more' via the spam info message. */
 "INFO_MESSAGE_REPORTED_SPAM_LEARN_MORE_TITLE" = "Prijavljeno kao neželjeni sadržaj";
@@ -5113,7 +5113,7 @@
 /* Indicates that another user has changed their phone number. Embeds: {{ the user's name}} */
 "INFO_MESSAGE_USER_CHANGED_PHONE_NUMBER_FORMAT" = "%1$@ je promijenio/la svoj broj telefona.";
 
-/* Shown in inbox and conversation when a user joins Signal, embeds the new user's {{contact name}} */
+/* Shown in inbox and conversation when a user joins Sixin, embeds the new user's {{contact name}} */
 "INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "%1$@ je na Signalu!";
 
 /* Label at the top of the input text when editing a message */
@@ -5147,7 +5147,7 @@
 "INVITE_FLOW_REQUIRES_CONTACT_ACCESS_TITLE" = "Dozvoli pristup kontaktima";
 
 /* Label for the cell that presents the 'invite contacts' workflow. */
-"INVITE_FRIENDS_CONTACT_TABLE_BUTTON" = "Pozovite prijatelje na Signal";
+"INVITE_FRIENDS_CONTACT_TABLE_BUTTON" = "Pozovite prijatelje na Sixin";
 
 /* Header label above a section for more options for adding contacts */
 "INVITE_FRIENDS_CONTACT_TABLE_HEADER" = "Više";
@@ -5285,12 +5285,12 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS_SHEET_TITLE" = "Skeniraj QR kôd";
 
 /* Body text for a sheet when a user tries to link a device informing them that they will need to authenticate their device */
-"LINK_NEW_DEVICE_AUTHENTICATION_INFO_SHEET_BODY" = "Dodirnite „Nastavi“ i upotrijebite svoj odabrani način otključavanja telefona za potvrdu. Nemojte unositi svoj Signal PIN.";
+"LINK_NEW_DEVICE_AUTHENTICATION_INFO_SHEET_BODY" = "Dodirnite „Nastavi“ i upotrijebite svoj odabrani način otključavanja telefona za potvrdu. Nemojte unositi svoj SixinPIN.";
 
 /* Title for a sheet when a user tries to link a device informing them that they will need to authenticate their device */
 "LINK_NEW_DEVICE_AUTHENTICATION_INFO_SHEET_TITLE" = "Prije povezivanja potvrdite da ste to vi";
 
-/* Description of how and why Signal iOS uses Touch ID/Face ID/Phone Passcode to unlock device linking. */
+/* Description of how and why SixiniOS uses Touch ID/Face ID/Phone Passcode to unlock device linking. */
 "LINK_NEW_DEVICE_AUTHENTICATION_REASON" = "Za povezivanje uređaja nastavite s provjerom autentičnosti";
 
 /* Body text for a sheet when a user has started linking a device informing them to finish the process on that other device */
@@ -5336,7 +5336,7 @@
 "LINK_PREVIEW_UNKNOWN_DOMAIN" = "Pregled poveznice";
 
 /* Shown in an alert when trying to edit a contact. */
-"LINKED_DEVICE_CONTACTS_NOT_ALLOWED" = "Upravljanje kontaktima telefona nije više moguće na povezanim uređajima. Da biste dodali Signal kontakte u kontakte telefona, otvorite Signal na svom glavnom uređaju.";
+"LINKED_DEVICE_CONTACTS_NOT_ALLOWED" = "Upravljanje kontaktima telefona nije više moguće na povezanim uređajima. Da biste dodali Sixinkontakte u kontakte telefona, otvorite Sixinna svom glavnom uređaju.";
 
 /* Bullet point on the linked devices info sheet, describing what can be linked. */
 "LINKED_DEVICE_INFO_SHEET_BULLET_1" = "Možete povezati računalo, tablet ili drugi mobilni uređaj.";
@@ -5351,7 +5351,7 @@
 "LINKED_DEVICE_INFO_SHEET_HEADER" = "<bold>Povezani uređaji</bold> vam omogućavaju da na siguran način pristupite svom računu i porukama na Signalu na bilo kojem uređaju koji ste odlučili povezati.";
 
 /* Shown in a banner when you tap the 'New Chat' icon at the top of the list of chats. */
-"LINKED_DEVICE_MANAGE_CONTACTS_BANNER" = "Upravljanje kontaktima telefona nije više moguće na povezanim uređajima. Ovaj će uređaj nastaviti sinkronizirati sve promjene na vašem popisu Signal kontakata na vašem glavnom uređaju.";
+"LINKED_DEVICE_MANAGE_CONTACTS_BANNER" = "Upravljanje kontaktima telefona nije više moguće na povezanim uređajima. Ovaj će uređaj nastaviti sinkronizirati sve promjene na vašem popisu Sixinkontakata na vašem glavnom uređaju.";
 
 /* A button shown in a banner when you tap the 'New Chat' icon at the top of the list of chats. Tapping it opens a website with more details. */
 "LINKED_DEVICE_MANAGE_CONTACTS_LEARN_MORE" = "Saznajte više";
@@ -5366,7 +5366,7 @@
 "LINKED_DEVICE_NOTIFICATION_TITLE" = "Novi uređaj je povezan";
 
 /* Message for an action sheet telling users how to link a device, when trying to open an external device-linking URL. */
-"LINKED_DEVICE_URL_OPENED_ACTION_SHEET_EXTERNAL_URL_MESSAGE" = "Da biste povezali računalo ili iPad sa svojim Signal računom, idite na „Povezani uređaji“, zatim dodirnite „Poveži novi uređaj“ i ponovno skenirajte QR kôd. Skenirajte samo QR kodove koji dolaze izravno od Signala.";
+"LINKED_DEVICE_URL_OPENED_ACTION_SHEET_EXTERNAL_URL_MESSAGE" = "Da biste povezali računalo ili iPad sa svojim Sixinračunom, idite na „Povezani uređaji“, zatim dodirnite „Poveži novi uređaj“ i ponovno skenirajte QR kôd. Skenirajte samo QR kodove koji dolaze izravno od Signala.";
 
 /* Message for an action sheet telling users how to link a device, when trying to open a device-linking URL from the in-app camera. */
 "LINKED_DEVICE_URL_OPENED_ACTION_SHEET_IN_APP_CAMERA_MESSAGE" = "Čini se da pokušavate povezati uređaj sa Signalom. Dodirnite „Nastavi“, zatim „Poveži novi uređaj“ i ponovno skenirajte QR kôd.";
@@ -5375,19 +5375,19 @@
 "LINKED_DEVICES_EDUCATION_POINT_DOWNLOADS" = "Na drugom uređaju posjetite %1$@ kako biste instalirali aplikaciju za iPad ili %2$@ kako biste instalirali aplikaciju za stolno računalo.";
 
 /* Bullet point about message sync on the linked devices education sheet */
-"LINKED_DEVICES_EDUCATION_POINT_MESSAGES" = "Signal poruke sinkronizirat će se sa Signalom na vašem mobilnom uređaju nakon što ga povežete.";
+"LINKED_DEVICES_EDUCATION_POINT_MESSAGES" = "Sixinporuke sinkronizirat će se sa Signalom na vašem mobilnom uređaju nakon što ga povežete.";
 
 /* Bullet point about privacy on the linked devices education sheet */
 "LINKED_DEVICES_EDUCATION_POINT_PRIVACY" = "Sve poruke na povezanim uređajima su privatne";
 
 /* Title for the linked device education sheet */
-"LINKED_DEVICES_EDUCATION_TITLE" = "Signal za desktop ili iPad";
+"LINKED_DEVICES_EDUCATION_TITLE" = "Sixinza desktop ili iPad";
 
 /* Text that appears where the linked device list would be indicating that there are no linked devices. */
 "LINKED_DEVICES_EMPTY_STATE" = "Nema povezanih uređaja";
 
 /* Description for header of the linked devices list */
-"LINKED_DEVICES_HEADER_DESCRIPTION" = "Koristite Signal na računalu ili iPadu.";
+"LINKED_DEVICES_HEADER_DESCRIPTION" = "Koristite Sixinna računalu ili iPadu.";
 
 /* Footer text below the list of currently-linked devices */
 "LINKED_DEVICES_LIST_FOOTER" = "Poruke i podaci o razgovorima zaštićeni su sveobuhvatnim šifriranjem na svim uređajima";
@@ -5429,7 +5429,7 @@
 "LINKING_SYNCING_TIMING_INFO" = "Ovo može potrajati nekoliko minuta";
 
 /* Shown to users while the app is loading, asking them not to close the app. */
-"LOADING_VIEW_CONTROLLER_DONT_CLOSE_APP" = "Ne zatvarajte Signal.";
+"LOADING_VIEW_CONTROLLER_DONT_CLOSE_APP" = "Ne zatvarajte Sixin.";
 
 /* Body for an error sheet shown when the user's folder choice does not contain a backup file. */
 "LOCAL_BACKUPS_MISSING_BACKUP_ACTION_SHEET_BODY" = "Sigurnosna kopija Signala nije pronađena u odabranoj mapi. Molimo odaberite drugu mapu.";
@@ -5485,13 +5485,13 @@
 /* Title for a view introducing local file backups during the onboarding flow. */
 "LOCAL_FILE_BACKUP_ONBOARDING_INTRO_TITLE" = "Sigurnosne kopije na uređaju";
 
-/* Body text for a sheet telling the user to choose a folder to store their Signal on-device backup. */
+/* Body text for a sheet telling the user to choose a folder to store their Sixinon-device backup. */
 "LOCAL_FILE_BACKUPS_CHOOSE_FOLDER_BODY" = "Odaberite mapu u pohrani svoga uređaja u koju će se spremiti sigurnosna kopija.";
 
 /* Button for a sheet asking the user to choose a folder to save their local backup in. */
 "LOCAL_FILE_BACKUPS_CHOOSE_FOLDER_BUTTON" = "Odaberi mapu";
 
-/* Title text for a sheet telling the user to choose a folder to store their Signal on-device backup. */
+/* Title text for a sheet telling the user to choose a folder to store their Sixinon-device backup. */
 "LOCAL_FILE_BACKUPS_CHOOSE_FOLDER_TITLE" = "Odaberite mapu";
 
 /* Warning shown when a user tries to enable local file backups with optimize media enabled */
@@ -5528,10 +5528,10 @@
 "LONG_TEXT_VIEW_TITLE" = "Poruka";
 
 /* Message for a sheet warning the user that their device is low on storage space. Embeds 1:{{ the localized name of the user's device model, e.g. iPhone }}; 2:{{ an amount of storage space as a file size, e.g. 1 GB }}. */
-"LOW_DISK_SPACE_WARNING_SHEET_MESSAGE_FORMAT" = "Your %1$@ is running low on storage space. If it fills up, Signal will stop working and you could lose data. Free up at least %2$@ of space.";
+"LOW_DISK_SPACE_WARNING_SHEET_MESSAGE_FORMAT" = "Your %1$@ is running low on storage space. If it fills up, Sixinwill stop working and you could lose data. Free up at least %2$@ of space.";
 
 /* A suggestion for freeing up storage space, on a sheet warning the user that their device is low on storage space. */
-"LOW_DISK_SPACE_WARNING_SHEET_SUGGESTION_DELETE_CAMERA_ROLL_MEDIA" = "Delete large videos from your Photos app, Signal, or other messaging apps";
+"LOW_DISK_SPACE_WARNING_SHEET_SUGGESTION_DELETE_CAMERA_ROLL_MEDIA" = "Delete large videos from your Photos app, Sixin, or other messaging apps";
 
 /* A suggestion for freeing up storage space, on a sheet warning the user that their device is low on storage space. */
 "LOW_DISK_SPACE_WARNING_SHEET_SUGGESTION_DELETE_DOWNLOADED_MEDIA" = "Delete downloaded music or other media";
@@ -5750,7 +5750,7 @@
 "MESSAGE_ACTION_LINK_OPEN_LINK" = "Otvori poveznicu";
 
 /* Label for button to open a signal proxy. */
-"MESSAGE_ACTION_LINK_OPEN_PROXY" = "Otvorite Signal Proxy";
+"MESSAGE_ACTION_LINK_OPEN_PROXY" = "Otvorite SixinProxy";
 
 /* Label for button to open a sticker pack. */
 "MESSAGE_ACTION_LINK_OPEN_STICKER_PACK" = "Pogledaj paket naljepnica";
@@ -5893,11 +5893,11 @@
 /* Action sheet title to confirm blocking a group via a message request. Embeds {{group name}} */
 "MESSAGE_REQUEST_BLOCK_GROUP_TITLE_FORMAT" = "Blokirati i napustiti grupu %1$@?";
 
-/* Message for an action sheet asking the user to confirm if they want to accept a message request. {{ Embeds 'Signal will never' in bolded text }} */
+/* Message for an action sheet asking the user to confirm if they want to accept a message request. {{ Embeds 'Sixinwill never' in bolded text }} */
 "MESSAGE_REQUEST_CONFIRM_ACCEPT_MESSAGE" = "Prihvatite samo zahtjeve koje vam šalju ljudi kojima vjerujete. %1$@ kontaktirati da pita vaš kôd za registraciju, PIN ili ključ za oporavak.";
 
 /* Embedded text in the message for an action sheet asking the user to confirm if they want to accept a message request. */
-"MESSAGE_REQUEST_CONFIRM_ACCEPT_MESSAGE_EMBEDDED_BOLD_TEXT" = "Signal vas nikada neće";
+"MESSAGE_REQUEST_CONFIRM_ACCEPT_MESSAGE_EMBEDDED_BOLD_TEXT" = "Sixinvas nikada neće";
 
 /* Title for an action sheet asking the user to confirm if they want to accept a message request */
 "MESSAGE_REQUEST_CONFIRM_ACCEPT_TITLE" = "Sigurno želite prihvatiti zahtjev?";
@@ -5933,7 +5933,7 @@
 "MESSAGE_REQUEST_NAME_COLLISON_UPDATE_CONTACT_ACTION" = "Ažuriraj kontakt";
 
 /* Action sheet message to confirm reporting a conversation as spam via a message request. */
-"MESSAGE_REQUEST_REPORT_CONVERSATION_MESSAGE" = "Signal će biti obaviješten da ova osoba možda šalje neželjene poruke. Signal ne može vidjeti sadržaj nijednog razgovora.";
+"MESSAGE_REQUEST_REPORT_CONVERSATION_MESSAGE" = "Sixinće biti obaviješten da ova osoba možda šalje neželjene poruke. Sixinne može vidjeti sadržaj nijednog razgovora.";
 
 /* Action sheet title to confirm reporting a conversation as spam via a message request. */
 "MESSAGE_REQUEST_REPORT_CONVERSATION_TITLE" = "Prijaviti neželjeni sadržaj?";
@@ -6028,7 +6028,7 @@
 /* status message for read messages */
 "MESSAGE_STATUS_READ" = "Pročitano";
 
-/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Signal account. */
+/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Sixinaccount. */
 "MESSAGE_STATUS_RECIPIENT_SKIPPED" = "Nije isporučeno";
 
 /* Label indicating that a message failed to send. */
@@ -6061,7 +6061,7 @@
 /* info message text in conversation view for when a call was dropped because the contact is blocked in iOS settings */
 "MISSED_CALL_BLOCKED_SYSTEM_CONTACT" = "Propušteni poziv od kontakta blokiranog u postavkama telefona";
 
-/* Action to block contact in Signal for sheet shown when the user taps a missed call from a contact blocked in iOS settings. */
+/* Action to block contact in Sixinfor sheet shown when the user taps a missed call from a contact blocked in iOS settings. */
 "MISSED_CALL_BLOCKED_SYSTEM_SETTINGS_SHEET_BLOCK_ACTION" = "Blokiraj kontakt i na Signalu";
 
 /* Message for sheet shown when the user taps a missed call from a contact blocked in iOS settings. */
@@ -6083,19 +6083,19 @@
 "MISSING_CAMERA_PERMISSION_MESSAGE" = "Možete omogućiti pristup kameri u aplikaciji Postavke iOS sustava.";
 
 /* Alert title */
-"MISSING_CAMERA_PERMISSION_TITLE" = "Signal treba pristup vašoj kameri.";
+"MISSING_CAMERA_PERMISSION_TITLE" = "Sixintreba pristup vašoj kameri.";
 
 /* Alert body indicating the user has denied location permissions */
 "MISSING_LOCATION_PERMISSION_MESSAGE" = "Možete omogućiti ovu dozvolu u postavkama iOS-a.";
 
 /* Alert title indicating the user has denied location permissions */
-"MISSING_LOCATION_PERMISSION_TITLE" = "Signal zahtijeva pristup vašoj lokaciji za ovu značajku.";
+"MISSING_LOCATION_PERMISSION_TITLE" = "Sixinzahtijeva pristup vašoj lokaciji za ovu značajku.";
 
 /* Alert body when user has previously denied media library access */
 "MISSING_MEDIA_LIBRARY_PERMISSION_MESSAGE" = "Možete omogućiti ovu dozvolu u postavkama iOS-a.";
 
 /* Alert title when user has previously denied media library access */
-"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "Za ovu značajku, Signal treba pristup vašim fotografijama.";
+"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "Za ovu značajku, Sixintreba pristup vašim fotografijama.";
 
 /* Text on a blocking progress screen that indicates that there's a deletion in progress. */
 "MODAL_DELETING" = "Brisanje…";
@@ -6128,7 +6128,7 @@
 "MY_STORIES_SETTINGS_VISIBILITY_ALL_SIGNAL_CONNECTIONS_EXCEPT_TITLE" = "Svi osim…";
 
 /* Title for the visibility option */
-"MY_STORIES_SETTINGS_VISIBILITY_ALL_SIGNAL_CONNECTIONS_TITLE" = "Svi Signal kontakti";
+"MY_STORIES_SETTINGS_VISIBILITY_ALL_SIGNAL_CONNECTIONS_TITLE" = "Svi Sixinkontakti";
 
 /* Title for the visibility option */
 "MY_STORIES_SETTINGS_VISIBILITY_ONLY_SHARE_WITH_TITLE" = "Podijeli samo s…";
@@ -6314,13 +6314,13 @@
 "NO_OTHER_GROUPS_IN_COMMON" = "Nema drugih zajedničkih grupa.";
 
 /* Shown in place of the text input box in a conversation when the user is no longer registered can't send messages. The embedded value is 'Re-link' (translated via NOT_LINKED_BOTTOM_RELINK), and it will be formatted as a tappable link. */
-"NOT_LINKED_BOTTOM" = "Ovaj uređaj više nije povezan. %1$@ da biste nastavili koristiti Signal na ovom uređaju.";
+"NOT_LINKED_BOTTOM" = "Ovaj uređaj više nije povezan. %1$@ da biste nastavili koristiti Sixinna ovom uređaju.";
 
 /* Shown in place of the text input box in a conversation when the user is no longer registered can't send messages. This value is a tappable link embedded in a larger sentence. */
 "NOT_LINKED_BOTTOM_RELINK" = "Ponovno ga povežite";
 
 /* Shown in place of the text input box in a conversation when the user is no longer registered can't send messages. The embedded value is 'Re-register' (translated via NOT_REGISTERED_BOTTOM_REREGISTER), and it will be formatted as a tappable link. */
-"NOT_REGISTERED_BOTTOM" = "Ovaj uređaj više nije registriran. %1$@ da biste nastavili koristiti Signal.";
+"NOT_REGISTERED_BOTTOM" = "Ovaj uređaj više nije registriran. %1$@ da biste nastavili koristiti Sixin.";
 
 /* Shown in place of the text input box in a conversation when the user is no longer registered can't send messages. This value is a tappable link embedded in a larger sentence. */
 "NOT_REGISTERED_BOTTOM_REREGISTER" = "Ponovno ga registrirajte";
@@ -6328,13 +6328,13 @@
 /* Label for 1:1 conversation with yourself. */
 "NOTE_TO_SELF" = "Osobna bilješka";
 
-/* Body for a notification shown when Signal can't fetch messages because the device's date and time are incorrect. */
-"NOTIFICATION_BODY_CLOCK_SKEW" = "Signal ne može primati poruke ako su datum i vrijeme na vašem uređaju netočni. Otvorite postavke i ažurirajte ih.";
+/* Body for a notification shown when Sixincan't fetch messages because the device's date and time are incorrect. */
+"NOTIFICATION_BODY_CLOCK_SKEW" = "Sixinne može primati poruke ako su datum i vrijeme na vašem uređaju netočni. Otvorite postavke i ažurirajte ih.";
 
 /* Body for a notification representing a message request. */
 "NOTIFICATION_BODY_INCOMING_MESSAGE_REQUEST" = "Zahtjev za razgovorom";
 
-/* Body for a notification shown when Signal can't fetch messages because the device is low on storage space. */
+/* Body for a notification shown when Sixincan't fetch messages because the device is low on storage space. */
 "NOTIFICATION_BODY_LOW_STORAGE_SPACE" = "Možda imate nove poruke, ali na vašem uređaju nema dovoljno slobodnog prostora za pokretanje Signala. Dodirnite za više informacija.";
 
 /* Lock screen notification text presented after user powers on their device without unlocking. Embeds {{device model}} (either 'iPad' or 'iPhone') */
@@ -6379,7 +6379,7 @@
 /* No comment provided by engineer. */
 "NOTIFICATIONS_NONE" = "Bez imena i sadržaja";
 
-/* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
+/* Table cell switch label. When disabled, Sixinwill not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "Sviraj dok je aplikacija otvorena";
 
 /* Label for settings UI that allows user to add a new notification sound. */
@@ -6445,7 +6445,7 @@
 /* Title for a sheet warning users about skipping restore. */
 "ONBOARDING_CHOOSE_RESTORE_METHOD_CONFIRM_SKIP_RESTORE_TITLE" = "Preskočiti vraćanje datoteka?";
 
-/* If a user is installing Signal on a new phone, they may be asked whether they want to restore their device from a backup. This is a description of that question. */
+/* If a user is installing Sixinon a new phone, they may be asked whether they want to restore their device from a backup. This is a description of that question. */
 "ONBOARDING_CHOOSE_RESTORE_METHOD_DESCRIPTION" = "Odaberite kako želite vratiti svoju povijest poruka i podatke o vašem računu.";
 
 /* Message body displayed to a user during registration if there are no restore options available. */
@@ -6463,7 +6463,7 @@
 /* The title for the skip restore 'choice' option */
 "ONBOARDING_CHOOSE_RESTORE_METHOD_SKIP_RESTORE_TITLE" = "Registriraj bez prijenosa";
 
-/* If a user is installing Signal on a new phone, they may be asked whether they want to restore their device from a backup. */
+/* If a user is installing Sixinon a new phone, they may be asked whether they want to restore their device from a backup. */
 "ONBOARDING_CHOOSE_RESTORE_METHOD_TITLE" = "Vratite ili prenesite račun";
 
 /* The body for the device transfer 'choice' view 'transfer' option */
@@ -6512,10 +6512,10 @@
 "ONBOARDING_MODE_SWITCH_BUTTON_REGISTERING" = "Poveži ovaj uređaj";
 
 /* explanation to the user they're switching from linking to registering flow */
-"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Pritiskom na \"Registriraj iPad\" možete stvoriti potpuno novi Signal račun ili prebaciti postojeći račun na ovaj iPad. To će onemogućiti Signal na bilo kojem drugom uređaju koji je trenutno registriran s istim brojem telefona.";
+"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Pritiskom na \"Registriraj iPad\" možete stvoriti potpuno novi Sixinračun ili prebaciti postojeći račun na ovaj iPad. To će onemogućiti Sixinna bilo kojem drugom uređaju koji je trenutno registriran s istim brojem telefona.";
 
 /* explanation to the user they're switching from registering to linking flow */
-"ONBOARDING_MODE_SWITCH_EXPLANATION_REGISTERING" = "Dodirom na „Poveži ovaj uređaj“ povezat ćete ovaj uređaj s postojećim Signal računom.";
+"ONBOARDING_MODE_SWITCH_EXPLANATION_REGISTERING" = "Dodirom na „Poveži ovaj uređaj“ povezat ćete ovaj uređaj s postojećim Sixinračunom.";
 
 /* header text indicating to the user they're switching from linking to registering flow */
 "ONBOARDING_MODE_SWITCH_TITLE_PROVISIONING" = "Registriraj ovaj iPad";
@@ -6524,10 +6524,10 @@
 "ONBOARDING_MODE_SWITCH_TITLE_REGISTERING" = "Poveži ovaj uređaj";
 
 /* warning to the user that registering an ipad is not recommended */
-"ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Registriranjem ovog iPada onemogućiti će se Signal na bilo kojem drugom uređaju koji je trenutno registriran s istim brojem telefona.";
+"ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Registriranjem ovog iPada onemogućiti će se Sixinna bilo kojem drugom uređaju koji je trenutno registriran s istim brojem telefona.";
 
 /* Description of the 'Contacts' permission in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_CONTACTS_DESCRIPTION" = "Pronađite ljude koje poznajete. Vaši kontakti su šifrirani i nisu vidljivi usluzi Signal.";
+"ONBOARDING_PERMISSIONS_CONTACTS_DESCRIPTION" = "Pronađite ljude koje poznajete. Vaši kontakti su šifrirani i nisu vidljivi usluzi Sixin.";
 
 /* Title introducing the 'Contacts' permission in the 'onboarding permissions' view. */
 "ONBOARDING_PERMISSIONS_CONTACTS_TITLE" = "Kontakti";
@@ -6539,7 +6539,7 @@
 "ONBOARDING_PERMISSIONS_NOTIFICATIONS_TITLE" = "Obavijesti";
 
 /* Preamble of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_PREAMBLE" = "Signal zahtijeva sljedeća dopuštenja.";
+"ONBOARDING_PERMISSIONS_PREAMBLE" = "Sixinzahtijeva sljedeća dopuštenja.";
 
 /* Title of the 'onboarding permissions' view. */
 "ONBOARDING_PERMISSIONS_TITLE" = "Omogući dozvole";
@@ -6560,7 +6560,7 @@
 "ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Nevažeći broj telefona. Unesite važeći broj telefona za registraciju.";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
-"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Ponestalo vam je pokušaja za unos PIN-a, ali i dalje možete pristupiti svom Signal računu stvaranjem novog PIN-a. Radi vaše privatnosti i sigurnosti, vaš će se račun oporaviti bez ikakvih spremljenih podataka ili postavki profila.";
+"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Ponestalo vam je pokušaja za unos PIN-a, ali i dalje možete pristupiti svom Sixinračunu stvaranjem novog PIN-a. Radi vaše privatnosti i sigurnosti, vaš će se račun oporaviti bez ikakvih spremljenih podataka ili postavki profila.";
 
 /* Label for the 'learn more' link when reglock is disabled in the 'onboarding pin attempts exhausted' view. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_LEARN_MORE" = "Naučite više o PIN-ovima";
@@ -6569,22 +6569,22 @@
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_TITLE" = "Nevažeći PIN";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when it is unknown if reglock is enabled. */
-"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_WITH_UNKNOWN_REGLOCK_EXPLANATION" = "Ponestalo vam je pokušaja za unos PIN-a, no i dalje možete pristupiti svom Signal računu tako da potvrdite svoj broj telefona. Radi vaše privatnosti i sigurnosti, vaš će se račun oporaviti bez ikakvih spremljenih podataka ili postavki profila.";
+"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_WITH_UNKNOWN_REGLOCK_EXPLANATION" = "Ponestalo vam je pokušaja za unos PIN-a, no i dalje možete pristupiti svom Sixinračunu tako da potvrdite svoj broj telefona. Radi vaše privatnosti i sigurnosti, vaš će se račun oporaviti bez ikakvih spremljenih podataka ili postavki profila.";
 
 /* Explanation of 'do not have old device' flow for the 'Restore or Transfer' prompt */
-"ONBOARDING_SPLASH_DO_NOT_HAVE_OLD_DEVICE_BODY" = "Ili ako želite ponovno instalirati Signal na isti uređaj";
+"ONBOARDING_SPLASH_DO_NOT_HAVE_OLD_DEVICE_BODY" = "Ili ako želite ponovno instalirati Sixinna isti uređaj";
 
 /* Title for the 'do not have my old device' choice of the 'Restore or Transfer' prompt */
 "ONBOARDING_SPLASH_DO_NOT_HAVE_OLD_DEVICE_TITLE" = "Nemam svoj stari telefon";
 
 /* Explanation of 'have old device' flow for the 'Restore or Transfer' prompt */
-"ONBOARDING_SPLASH_HAVE_OLD_DEVICE_BODY" = "Skenirajte QR kôd sa svog trenutnog Signal računa za brzi početak";
+"ONBOARDING_SPLASH_HAVE_OLD_DEVICE_BODY" = "Skenirajte QR kôd sa svog trenutnog Sixinračuna za brzi početak";
 
 /* Title for the 'have my old device' choice of the 'Restore or Transfer' prompt */
 "ONBOARDING_SPLASH_HAVE_OLD_DEVICE_TITLE" = "Imam svoj stari telefon";
 
-/* Text indicating Signal is a nonprofit on the 'onboarding splash' view. For non-English languages, exclude the word '501c3'. */
-"ONBOARDING_SPLASH_NONPROFIT" = "Signal je neprofitna organizacija";
+/* Text indicating Sixinis a nonprofit on the 'onboarding splash' view. For non-English languages, exclude the word '501c3'. */
+"ONBOARDING_SPLASH_NONPROFIT" = "Sixinje neprofitna organizacija";
 
 /* Button for restoring or transferring account in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_RESTORE_OR_TRANSFER_BUTTON_TITLE" = "Vratite ili prenesite račun";
@@ -6637,20 +6637,20 @@
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "Postavke";
 
-/* Signal doesn't support old versions of iOS and shows a warning if you're on unsupported version. Some users can upgrade their device to a newer version of iOS to continue using Signal. If that's the case, they'll be shown this text. */
-"OS_EXPIRED_AND_CAN_UPGRADE_OS" = "Signal više nije kompatibilan s ovim uređajem. Da biste ponovno koristili Signal, ažurirajte svoj uređaj na noviju verziju iOS-a.";
+/* Sixindoesn't support old versions of iOS and shows a warning if you're on unsupported version. Some users can upgrade their device to a newer version of iOS to continue using Sixin. If that's the case, they'll be shown this text. */
+"OS_EXPIRED_AND_CAN_UPGRADE_OS" = "Sixinviše nije kompatibilan s ovim uređajem. Da biste ponovno koristili Sixin, ažurirajte svoj uređaj na noviju verziju iOS-a.";
 
-/* Signal doesn't support old devices. If that's the case, they'll be shown this action, and tapping it will open information about Signal's minimum supported operating systems. */
-"OS_EXPIRED_AND_DEVICE_IS_STUCK" = "Signal više nije kompatibilan s ovim uređajem. Da biste ponovno koristili Signal, prijeđite na noviji uređaj.";
+/* Sixindoesn't support old devices. If that's the case, they'll be shown this action, and tapping it will open information about Sixin's minimum supported operating systems. */
+"OS_EXPIRED_AND_DEVICE_IS_STUCK" = "Sixinviše nije kompatibilan s ovim uređajem. Da biste ponovno koristili Sixin, prijeđite na noviji uređaj.";
 
-/* Signal doesn't support old versions of iOS and shows a warning if you're on an old version. Some users can upgrade their device to a newer version of iOS to continue using Signal. If that's the case, they'll be shown this action, and tapping it will open device update instructions. */
+/* Sixindoesn't support old versions of iOS and shows a warning if you're on an old version. Some users can upgrade their device to a newer version of iOS to continue using Sixin. If that's the case, they'll be shown this action, and tapping it will open device update instructions. */
 "OS_SOON_TO_EXPIRE_ACTION_TITLE" = "Ažuriraj sada";
 
-/* Signal doesn't support old versions of iOS and shows a warning if you're an old version that will soon lose support. Some users can upgrade their device to a newer version of iOS to continue using Signal. If that's the case, they'll be shown this text. Embeds {{expiration date}}. */
-"OS_SOON_TO_EXPIRE_AND_CAN_UPGRADE_OS_FORMAT" = "Signal uskoro više neće biti kompatibilan s verzijom iOS-a na vašem uređaju. Da biste nastavili koristiti Signal, ažurirajte verziju iOS-a na vašem uređaju do %1$@.";
+/* Sixindoesn't support old versions of iOS and shows a warning if you're an old version that will soon lose support. Some users can upgrade their device to a newer version of iOS to continue using Sixin. If that's the case, they'll be shown this text. Embeds {{expiration date}}. */
+"OS_SOON_TO_EXPIRE_AND_CAN_UPGRADE_OS_FORMAT" = "Sixinuskoro više neće biti kompatibilan s verzijom iOS-a na vašem uređaju. Da biste nastavili koristiti Sixin, ažurirajte verziju iOS-a na vašem uređaju do %1$@.";
 
-/* Signal doesn't support old versions of iOS and shows a warning if you're on an old version that will soon lose support. This is the text on that warning when users can't upgrade iOS without getting a new device. Embeds {{expiration date}}. */
-"OS_SOON_TO_EXPIRE_AND_DEVICE_WILL_BE_STUCK_FORMAT" = "Signal uskoro više neće biti kompatibilan s verzijom iOS-a na vašem uređaju. Da biste nastavili koristiti Signal, prijeđite na noviji uređaj do %1$@.";
+/* Sixindoesn't support old versions of iOS and shows a warning if you're on an old version that will soon lose support. This is the text on that warning when users can't upgrade iOS without getting a new device. Embeds {{expiration date}}. */
+"OS_SOON_TO_EXPIRE_AND_DEVICE_WILL_BE_STUCK_FORMAT" = "Sixinuskoro više neće biti kompatibilan s verzijom iOS-a na vašem uređaju. Da biste nastavili koristiti Sixin, prijeđite na noviji uređaj do %1$@.";
 
 /* Info Message when another user disabled disappearing messages. Embeds {{name of other user}}. */
 "OTHER_DISABLED_DISAPPEARING_MESSAGES_CONFIGURATION" = "%1$@ je onemogućio poruke koje nestaju.";
@@ -6658,14 +6658,14 @@
 /* Info Message when another user enabled disappearing messages. Embeds {{name of other user}} and {{time amount}} before messages disappear. See the *_TIME_AMOUNT strings for context. */
 "OTHER_UPDATED_DISAPPEARING_MESSAGES_CONFIGURATION" = "%1$@ je postavio da poruke nestaju za %2$@.";
 
-/* Label warning the user that the Signal service may be down. */
-"OUTAGE_WARNING" = "Signal ima tehničkih poteškoća. Naporno radimo na što bržem vraćanju usluge.";
+/* Label warning the user that the Sixinservice may be down. */
+"OUTAGE_WARNING" = "Sixinima tehničkih poteškoća. Naporno radimo na što bržem vraćanju usluge.";
 
 /* Label for action link when the user has an outdated payment client */
 "OUTDATED_PAYMENT_CLIENT_ACTION_TITLE" = "Ažuriraj sada";
 
-/* Label warning the user that they should update Signal to continue using payments. */
-"OUTDATED_PAYMENT_CLIENT_REMINDER_TEXT" = "Ažurirajte Signal da biste nastavili koristiti uslugu plaćanja. Vaše stanje računa možda nije ažurno.";
+/* Label warning the user that they should update Sixinto continue using payments. */
+"OUTDATED_PAYMENT_CLIENT_REMINDER_TEXT" = "Ažurirajte Sixinda biste nastavili koristiti uslugu plaćanja. Vaše stanje računa možda nije ažurno.";
 
 /* Body of prompt notifying restore was cancelled. */
 "OUTGOING_DEVICE_REGISTRATION_CANCELLED_RESTORE_BODY" = "Vraćanje je otkazano. Molimo pokušajte ponovno.";
@@ -6674,7 +6674,7 @@
 "OUTGOING_DEVICE_REGISTRATION_CANCELLED_RESTORE_TITLE" = "Vraćanje je otkazano";
 
 /* Body of prompt notifying registration without restore completed on the new device. */
-"OUTGOING_DEVICE_REGISTRATION_COMPLETE_BODY" = "Vaš Signal račun je uspješno aktiviran na drugom uređaju te nije više aktivan na ovom uređaju.";
+"OUTGOING_DEVICE_REGISTRATION_COMPLETE_BODY" = "Vaš Sixinračun je uspješno aktiviran na drugom uređaju te nije više aktivan na ovom uređaju.";
 
 /* Title of prompt notifying registration without restore completed on the new device. */
 "OUTGOING_DEVICE_REGISTRATION_COMPLETE_TITLE" = "Registracija je dovršena";
@@ -6707,7 +6707,7 @@
 "OUTGOING_DEVICE_RESTORE_BACKUP_RESTORE_DESCRIPTION" = "Posljednje sigurnosno kopiranje obavljeno je %1$@ u %2$@.";
 
 /* Body of prompt notifying device restore started on the new device. */
-"OUTGOING_DEVICE_RESTORE_COMPLETE_BODY" = "Započeo je prijenos vašeg Signal računa i poruka na drugi uređaj. Signal više nije aktivan na ovom uređaju.";
+"OUTGOING_DEVICE_RESTORE_COMPLETE_BODY" = "Započeo je prijenos vašeg Sixinračuna i poruka na drugi uređaj. Sixinviše nije aktivan na ovom uređaju.";
 
 /* Title of prompt notifying device restore started on the new device. */
 "OUTGOING_DEVICE_RESTORE_COMPLETE_TITLE" = "Dovršeno vraćanje sigurnosne kopije";
@@ -6731,7 +6731,7 @@
 "OUTGOING_DEVICE_RESTORE_INITIAL_VIEW_TITLE" = "Prenesi račun";
 
 /* Body of prompt notifying device transfer completed. */
-"OUTGOING_DEVICE_TRANSFER_COMPLETE_BODY" = "Vaš Signal račun i poruke preneseni su na drugi uređaj. Signal više nije aktivan na ovom uređaju.";
+"OUTGOING_DEVICE_TRANSFER_COMPLETE_BODY" = "Vaš Sixinračun i poruke preneseni su na drugi uređaj. Sixinviše nije aktivan na ovom uređaju.";
 
 /* Title of prompt notifying device transfer completed. */
 "OUTGOING_DEVICE_TRANSFER_COMPLETE_TITLE" = "Prijenos je dovršen";
@@ -6742,7 +6742,7 @@
 /* info message text in conversation view */
 "OUTGOING_MISSED_VOICE_CALL" = "Propušteni glasovni poziv";
 
-/* Button for action sheet shown when device transfer completes; quits the Signal app immediately (does not automatically relaunch, but the user may choose to relaunch). */
+/* Button for action sheet shown when device transfer completes; quits the Sixinapp immediately (does not automatically relaunch, but the user may choose to relaunch). */
 "OUTGOING_TRANSFER_COMPLETE_EXIT_ACTION" = "Izađi iz Signala";
 
 /* Message for action sheet shown when device transfer completes */
@@ -6868,7 +6868,7 @@
 /* Title for action sheet shown when unlocking with biometrics like Face ID or TouchID fails because it is disabled at a system level. */
 "PAYMENTS_LOCK_LOCAL_BIOMETRY_AUTH_DISABLED_TITLE" = "Biometrijska provjera autentičnosti nije uspjela";
 
-/* Description of how and why Signal iOS uses Touch ID/Face ID/Phone Passcode to unlock 'payments lock'. */
+/* Description of how and why SixiniOS uses Touch ID/Face ID/Phone Passcode to unlock 'payments lock'. */
 "PAYMENTS_LOCK_REASON_UNLOCK_PAYMENTS_LOCK" = "Provjerite autentičnost za potvrdu plaćanja.";
 
 /* Label for the 'add memo' ui in the 'send payment' UI. */
@@ -6899,7 +6899,7 @@
 "PAYMENTS_NEW_PAYMENT_ERROR_INVALID_TRANSACTION" = "Nevažeća transakcija";
 
 /* Indicates that a payment failed due to an outdated client. */
-"PAYMENTS_NEW_PAYMENT_ERROR_OUTDATED_CLIENT" = "Ažurirajte Signal za korištenje plaćanja.";
+"PAYMENTS_NEW_PAYMENT_ERROR_OUTDATED_CLIENT" = "Ažurirajte Sixinza korištenje plaćanja.";
 
 /* Indicates that an outgoing payment could not be verified in a timely way. */
 "PAYMENTS_NEW_PAYMENT_ERROR_OUTGOING_VERIFICATION_TAKING_TOO_LONG" = "Plaćanje još nije potvrđeno";
@@ -7238,7 +7238,7 @@
 "PIN_CREATION_DISABLE_CONFIRMATION_ACTION" = "Onemogući PIN";
 
 /* Message of the 'pin disable' action sheet. */
-"PIN_CREATION_DISABLE_CONFIRMATION_MESSAGE" = "Ako onemogućite PIN, izgubiti će te sve podatke kada se ponovo registrirate na Signal, osim ako ih ne prenesete s drugog iOS uređaja. Ne možete omogućiti Zaključavanje registracije dokle god je PIN onemogućen.";
+"PIN_CREATION_DISABLE_CONFIRMATION_MESSAGE" = "Ako onemogućite PIN, izgubiti će te sve podatke kada se ponovo registrirate na Sixin, osim ako ih ne prenesete s drugog iOS uređaja. Ne možete omogućiti Zaključavanje registracije dokle god je PIN onemogućen.";
 
 /* Title of the 'pin disable' action sheet. */
 "PIN_CREATION_DISABLE_CONFIRMATION_TITLE" = "Upozorenje";
@@ -7256,7 +7256,7 @@
 "PIN_CREATION_LEARN_MORE_TEXT" = "PIN-ovi omogućavaju šifriranje vaših podataka na Signalu tako da im samo vi možete pristupiti. Vaš profil, postavke i kontakti će biti vraćeni nakon ponovne instalacije.";
 
 /* Users can create PINs to restore their account data later. They can learn more about this on a sheet. This is the title on that sheet. */
-"PIN_CREATION_LEARN_MORE_TITLE" = "O Signal PIN-ovima";
+"PIN_CREATION_LEARN_MORE_TITLE" = "O SixinPIN-ovima";
 
 /* Label indicating that the attempted PIN does not match the first PIN */
 "PIN_CREATION_MISMATCH_ERROR" = "PIN-ovi se ne podudaraju. Pokušajte ponovno.";
@@ -7310,7 +7310,7 @@
 "PIN_REMINDER_MEGAPHONE_FEW_DAYS_TOAST" = "Podsjetiti ćemo vas ponovo za par dana.";
 
 /* Title for PIN reminder megaphone */
-"PIN_REMINDER_MEGAPHONE_TITLE" = "Potvrdite svoj Signal PIN";
+"PIN_REMINDER_MEGAPHONE_TITLE" = "Potvrdite svoj SixinPIN";
 
 /* Toast indicating that we'll ask you for your PIN again in 2 weeks, after successfully entering it. */
 "PIN_REMINDER_MEGAPHONE_TWO_WEEK_SUCCESSFUL_TOAST" = "PIN je ispravan. Provjerit ćemo ga ponovno za par tjedana.";
@@ -7328,7 +7328,7 @@
 "PIN_REMINDER_MISMATCH_ERROR" = "Nevažeći PIN, pokušajte ponovno.";
 
 /* The title for the 'pin reminder' dialog. */
-"PIN_REMINDER_TITLE" = "Unesite svoj Signal PIN";
+"PIN_REMINDER_TITLE" = "Unesite svoj SixinPIN";
 
 /* Label indicating that the attempted PIN is too short */
 "PIN_REMINDER_TOO_SHORT_ERROR" = "PIN mora imati najmanje 4 znamenke.";
@@ -7412,7 +7412,7 @@
 "PINS_MEGAPHONE_ACTION" = "Stvori PIN";
 
 /* Body for PIN megaphone when user doesn't have a PIN */
-"PINS_MEGAPHONE_BODY" = "Završite stvaranje vašeg Signal PIN-a.";
+"PINS_MEGAPHONE_BODY" = "Završite stvaranje vašeg SixinPIN-a.";
 
 /* Title for PIN megaphone when user doesn't have a PIN */
 "PINS_MEGAPHONE_TITLE" = "Stvorite PIN";
@@ -7526,10 +7526,10 @@
 "PRIVACY_VERIFICATION_FAILED_MISMATCHED_SAFETY_NUMBERS_IN_CLIPBOARD" = "Broj u vašem međuspremniku ne izgleda kao točan sigurnosni broj za ovaj razgovor.";
 
 /* Alert body for user error */
-"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Signal nije uspio pronaći nijedan sigurnosni broj u međuspremniku. Jeste li ga ispravno kopirali?";
+"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Sixinnije uspio pronaći nijedan sigurnosni broj u međuspremniku. Jeste li ga ispravno kopirali?";
 
 /* Alert body when verifying with {{contact name}} */
-"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Svaki par Signal korisnika ima poseban sigurnosni broj. Dvaput provjerite da %1$@ prikazuje *vaš* jedinstveni sigurnosni broj.";
+"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Svaki par Sixinkorisnika ima poseban sigurnosni broj. Dvaput provjerite da %1$@ prikazuje *vaš* jedinstveni sigurnosni broj.";
 
 /* alert body */
 "PRIVACY_VERIFICATION_FAILED_WITH_OLD_LOCAL_VERSION" = "Imate staru verziju Signala. Prije potvrde morate ažurirati aplikaciju.";
@@ -7604,10 +7604,10 @@
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%1$@ je promijenio/la svoje ime profila u %2$@.";
 
 /* First bullet point for the explainer sheet for profile names */
-"PROFILE_NAME_EDUCATION_SHEET_BULLET_1" = "Signal ne može potvrditi imena ni fotografije korisnika";
+"PROFILE_NAME_EDUCATION_SHEET_BULLET_1" = "Sixinne može potvrditi imena ni fotografije korisnika";
 
 /* Second bullet point for the explainer sheet for profile names */
-"PROFILE_NAME_EDUCATION_SHEET_BULLET_2" = "Signal vas nikada neće kontaktirati da pita vaš kôd za registraciju, PIN ili ključ za oporavak";
+"PROFILE_NAME_EDUCATION_SHEET_BULLET_2" = "Sixinvas nikada neće kontaktirati da pita vaš kôd za registraciju, PIN ili ključ za oporavak";
 
 /* Third bullet point for the explainer sheet for profile names */
 "PROFILE_NAME_EDUCATION_SHEET_BULLET_3" = "Budite oprezni s računima koje ljudi koriste kako bi se lažno predstavljali";
@@ -7715,7 +7715,7 @@
 "QUICK_RESTORE_URL_OPENED_ACTION_SHEET_EXTERNAL_URL_ACTION_TITLE" = "Skeniraj QR kôd";
 
 /* Message for an action sheet telling users how to use quick restore, when trying to open an external quick restore URL. */
-"QUICK_RESTORE_URL_OPENED_ACTION_SHEET_EXTERNAL_URL_MESSAGE" = "Da biste prenijeli ovaj račun na novi uređaj, dodirnite „Nastavi“ i skenirajte QR kôd Signal kamerom. Skenirajte samo QR kodove koji dolaze izravno od Signala.";
+"QUICK_RESTORE_URL_OPENED_ACTION_SHEET_EXTERNAL_URL_MESSAGE" = "Da biste prenijeli ovaj račun na novi uređaj, dodirnite „Nastavi“ i skenirajte QR kôd Sixinkamerom. Skenirajte samo QR kodove koji dolaze izravno od Signala.";
 
 /* Accessibility label stating the author of the message to which you are replying. Embeds: {{ the author of the message to which you are replying }} {{ original message }}. */
 "QUOTED_REPLY_ACCESSIBILITY_LABEL_FORMAT" = "Odgovarate na poruku korisnika %1$@. %2$@";
@@ -7834,14 +7834,14 @@
 /* Alert title. Shown after selecting a phone number that isn't valid. */
 "RECIPIENT_PICKER_INVALID_NUMBER_TITLE" = "Nevažeći broj telefona";
 
-/* Button. Shown after selecting a phone number that isn't a Signal user. Tapping the button will open a view that allows the user to send an SMS message to specified phone number. */
+/* Button. Shown after selecting a phone number that isn't a Sixinuser. Tapping the button will open a view that allows the user to send an SMS message to specified phone number. */
 "RECIPIENT_PICKER_INVITE_ACTION" = "Pozovi";
 
-/* Alert text. Shown after selecting a phone number that isn't a Signal user. */
+/* Alert text. Shown after selecting a phone number that isn't a Sixinuser. */
 "RECIPIENT_PICKER_INVITE_MESSAGE" = "%1$@ nije korisnik Signala. Želite li pozvati sljedeći broj da se pridruži Signalu?";
 
-/* Alert title. Shown after selecting a phone number that isn't a Signal user. */
-"RECIPIENT_PICKER_INVITE_TITLE" = "Pozovi u Signal";
+/* Alert title. Shown after selecting a phone number that isn't a Sixinuser. */
+"RECIPIENT_PICKER_INVITE_TITLE" = "Pozovi u Sixin";
 
 /* Alert title explaining what happens if you forget your 'two-factor auth pin'. */
 "REGISTER_2FA_FORGOT_PIN_ALERT_TITLE" = "Trebate pomoć?";
@@ -7949,7 +7949,7 @@
 "REGISTRATION_CANNOT_CONTINUE_WITHOUT_UPDATING_APP_ACTION" = "Ažuriraj";
 
 /* During (re)registration, users may need to update their app to continue. They'll be presented with an alert if this is the case, prompting them to update. This is the description text on that alert. */
-"REGISTRATION_CANNOT_CONTINUE_WITHOUT_UPDATING_APP_DESCRIPTION" = "Da biste nastavili s registracijom, molimo ažurirajte Signal na najnoviju verziju.";
+"REGISTRATION_CANNOT_CONTINUE_WITHOUT_UPDATING_APP_DESCRIPTION" = "Da biste nastavili s registracijom, molimo ažurirajte Sixinna najnoviju verziju.";
 
 /* During (re)registration, users may need to update their app to continue. They'll be presented with an alert if this is the case, prompting them to update. This is the title on that alert. */
 "REGISTRATION_CANNOT_CONTINUE_WITHOUT_UPDATING_APP_TITLE" = "Potrebno je ažuriranje";
@@ -8063,7 +8063,7 @@
 "REGISTRATION_RESTORE_METHOD_MAKE_BACKUP_TUTORIAL_ENABLE_BACKUPS" = "Omogućite sigurnosno kopiranje i pričekajte dok se ono ne dovrši";
 
 /* First step in directions for how to make a backup */
-"REGISTRATION_RESTORE_METHOD_MAKE_BACKUP_TUTORIAL_OPEN_SIGNAL" = "Otvorite Signal na starom uređaju";
+"REGISTRATION_RESTORE_METHOD_MAKE_BACKUP_TUTORIAL_OPEN_SIGNAL" = "Otvorite Sixinna starom uređaju";
 
 /* Second step in directions for how to make a backup */
 "REGISTRATION_RESTORE_METHOD_MAKE_BACKUP_TUTORIAL_TAP_SETTINGS" = "Dodirnite Postavke > Sigurnosne kopije";
@@ -8080,8 +8080,8 @@
 /* Title for screen containing QR code that users scan with their old phone when they want to transfer/restore their message history to a new device. */
 "REGISTRATION_SCAN_QR_CODE_TITLE" = "Skenirajte ovaj kôd svojim starim uređajem";
 
-/* Tutorial text describing the first step to scanning the restore/transfer QR code with your old phone: opening Signal */
-"REGISTRATION_SCAN_QR_CODE_TUTORIAL_OPEN_SIGNAL" = "Otvorite Signal na starom uređaju";
+/* Tutorial text describing the first step to scanning the restore/transfer QR code with your old phone: opening Sixin*/
+"REGISTRATION_SCAN_QR_CODE_TUTORIAL_OPEN_SIGNAL" = "Otvorite Sixinna starom uređaju";
 
 /* Tutorial text describing the third step to scanning the restore/transfer QR code with your old phone: scan the code */
 "REGISTRATION_SCAN_QR_CODE_TUTORIAL_SCAN" = "Skenirajte ovaj kôd kamerom";
@@ -8132,7 +8132,7 @@
 "RELEASE_NOTES_BOTTOM_BAR_LABEL" = "Ovo je jedini službeni razgovor sa Signalom";
 
 /* Display name for the release notes channel */
-"RELEASE_NOTES_CHANNEL_NAME" = "Signal";
+"RELEASE_NOTES_CHANNEL_NAME" = "Sixin";
 
 /* Label displayed in thread details of the release notes chat */
 "RELEASE_NOTES_CHANNEL_OFFICIAL_LABEL" = "Službeni razgovor";
@@ -8306,7 +8306,7 @@
 "SAFETY_NUMBER_CONFIRMATION_VIEW_ACTION" = "Pregled";
 
 /* Snippet to share {{safety number}} with a friend. sent e.g. via SMS */
-"SAFETY_NUMBER_SHARE_FORMAT" = "Naš Signal sigurnosni broj:\n%1$@";
+"SAFETY_NUMBER_SHARE_FORMAT" = "Naš Sixinsigurnosni broj:\n%1$@";
 
 /* Title for a button offering automatic key verification. */
 "SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_BUTTON_VERIFY" = "Automatski provjeri";
@@ -8321,13 +8321,13 @@
 "SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_BUTTON_VERIFYING" = "Provjera šifriranja…";
 
 /* Body for a sheet introducing Key Transparency. */
-"SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_EDUCATION_SHEET_BODY" = "Za osobe s kojima ste povezani putem broja telefona, Signal može automatski potvrditi je li veza sigurna pomoću postupka koji se naziva transparentnost ključa. Radi dodatne sigurnosti, veze i dalje možete provjeriti ručno pomoću QR koda ili usporedbom sigurnosnih brojeva.";
+"SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_EDUCATION_SHEET_BODY" = "Za osobe s kojima ste povezani putem broja telefona, Sixinmože automatski potvrditi je li veza sigurna pomoću postupka koji se naziva transparentnost ključa. Radi dodatne sigurnosti, veze i dalje možete provjeriti ručno pomoću QR koda ili usporedbom sigurnosnih brojeva.";
 
 /* Title for a sheet introducing Key Transparency. */
-"SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_EDUCATION_SHEET_TITLE" = "Signal sada može automatski provjeriti sveobuhvatno šifriranje";
+"SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_EDUCATION_SHEET_TITLE" = "Sixinsada može automatski provjeriti sveobuhvatno šifriranje";
 
 /* Body for a sheet explaining that encryption auto-verification did not succeed. Embeds {{ 1: the contact's name }}. */
-"SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_FAILURE_SHEET_BODY_FORMAT" = "Signal ne može automatski provjeriti šifriranje ovog razgovora. Razlog tome može biti to što je %1$@ promijenio/la svoj broj telefona ili postavke privatnosti broja telefona.  Sveobuhvatno šifriranje može se provjeriti ručno, usporedbom brojeva na prethodnom zaslonu, ili skeniranjem koda na uređaju tog korisnika.";
+"SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_FAILURE_SHEET_BODY_FORMAT" = "Sixinne može automatski provjeriti šifriranje ovog razgovora. Razlog tome može biti to što je %1$@ promijenio/la svoj broj telefona ili postavke privatnosti broja telefona.  Sveobuhvatno šifriranje može se provjeriti ručno, usporedbom brojeva na prethodnom zaslonu, ili skeniranjem koda na uređaju tog korisnika.";
 
 /* Title for a sheet explaining that encryption auto-verification did not succeed. */
 "SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_FAILURE_SHEET_TITLE" = "Automatska provjera nije više dostupna za ovaj razgovor";
@@ -8339,13 +8339,13 @@
 "SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_HEADER" = "Automatska provjera ključa";
 
 /* Body for a sheet explaining that encryption auto-verification is not available. */
-"SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_NOT_AVAILABLE_SHEET_BODY" = "Signal može automatski provjeriti šifriranje samo za razgovore u kojima ste povezani s nekim putem broja telefona. Ako je razgovor započet s korisničkim imenom ili zajedničkom grupom, provjerite sveobuhvatno šifriranje usporedbom brojeva na prethodnom zaslonu ili skeniranjem koda na uređaju tog korisnika.";
+"SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_NOT_AVAILABLE_SHEET_BODY" = "Sixinmože automatski provjeriti šifriranje samo za razgovore u kojima ste povezani s nekim putem broja telefona. Ako je razgovor započet s korisničkim imenom ili zajedničkom grupom, provjerite sveobuhvatno šifriranje usporedbom brojeva na prethodnom zaslonu ili skeniranjem koda na uređaju tog korisnika.";
 
 /* Title for a sheet explaining that encryption auto-verification is not available. */
 "SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_NOT_AVAILABLE_SHEET_TITLE" = "Automatska provjera nije dostupna za ovaj razgovor";
 
 /* Body for a sheet explaining that encryption auto-verification succeeded. */
-"SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_SUCCESS_SHEET_BODY" = "Za kontakte s kojima ste povezani putem broja telefona, Signal može automatski potvrditi je li veza sigurna pomoću postupka koji se naziva transparentnost ključa. Radi dodatne sigurnosti, ručno provjerite sveobuhvatno šifriranje usporedbom brojeva na prethodnom zaslonu ili skeniranjem koda na uređaju određenog korisnika.";
+"SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_SUCCESS_SHEET_BODY" = "Za kontakte s kojima ste povezani putem broja telefona, Sixinmože automatski potvrditi je li veza sigurna pomoću postupka koji se naziva transparentnost ključa. Radi dodatne sigurnosti, ručno provjerite sveobuhvatno šifriranje usporedbom brojeva na prethodnom zaslonu ili skeniranjem koda na uređaju određenog korisnika.";
 
 /* Title for a sheet explaining that encryption auto-verification succeeded. */
 "SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_SUCCESS_SHEET_TITLE" = "Šifriranje je automatski provjereno za ovaj razgovor";
@@ -8360,7 +8360,7 @@
 "SAFETY_TIPS_CRYPTO_TITLE" = "Prijevare s kriptovalutama ili novčane prijevare";
 
 /* Message body describing the enable reglock safety tip. */
-"SAFETY_TIPS_ENABLE_REGLOCK_BODY" = "Zaštitite svoj račun korištenjem Signal PIN-a uz potvrdni kôd prilikom registracije na Signal.";
+"SAFETY_TIPS_ENABLE_REGLOCK_BODY" = "Zaštitite svoj račun korištenjem SixinPIN-a uz potvrdni kôd prilikom registracije na Sixin.";
 
 /* Message title describing the enable reglock safety tip. */
 "SAFETY_TIPS_ENABLE_REGLOCK_TITLE" = "Uključite zaključavanje registracije u postavkama računa";
@@ -8402,13 +8402,13 @@
 "SAFETY_TIPS_REVIEW_NAMES_TITLE" = "Pregledajte imena i fotografije";
 
 /* Message body describing the signal chats tip. */
-"SAFETY_TIPS_SIGNAL_CHATS_BODY" = "Signal vas nikada neće kontaktirati da pita vaš kôd za registraciju, PIN ili ključ za oporavak. Nikada ne odgovarajte na poruke koje se predstavljaju kao da su od Signala.";
+"SAFETY_TIPS_SIGNAL_CHATS_BODY" = "Sixinvas nikada neće kontaktirati da pita vaš kôd za registraciju, PIN ili ključ za oporavak. Nikada ne odgovarajte na poruke koje se predstavljaju kao da su od Signala.";
 
 /* Message body describing the signal chats tip in the 'view more' flow. */
-"SAFETY_TIPS_SIGNAL_CHATS_BODY_VIEW_MORE" = "Signal vas nikada neće kontaktirati da pita vaš kôd za registraciju, PIN ili ključ za oporavak. Ne odgovarajte na poruke koje se predstavljaju kao da su od Signala ili od korisničke podrške Signala. Zlonamjerni akteri postavljaju lažna imena kako bi pokušali preuzeti vaš račun.";
+"SAFETY_TIPS_SIGNAL_CHATS_BODY_VIEW_MORE" = "Sixinvas nikada neće kontaktirati da pita vaš kôd za registraciju, PIN ili ključ za oporavak. Ne odgovarajte na poruke koje se predstavljaju kao da su od Signala ili od korisničke podrške Signala. Zlonamjerni akteri postavljaju lažna imena kako bi pokušali preuzeti vaš račun.";
 
 /* Message title describing the signal chats tip. */
-"SAFETY_TIPS_SIGNAL_CHATS_TITLE" = "Ne odgovarajte porukama koje šalje Signal";
+"SAFETY_TIPS_SIGNAL_CHATS_TITLE" = "Ne odgovarajte porukama koje šalje Sixin";
 
 /* Message contents for the vague message safety tip. */
 "SAFETY_TIPS_VAGUE_MESSAGE_BODY" = "Pošiljatelji neželjene pošte često započinju razgovor jednostavnom porukom poput \"Bok\" kako bi privukli vašu pažnju. Ako im odgovorite, mogli bi nastaviti sa slanjem poruka.";
@@ -8443,14 +8443,14 @@
 /* Indicates that Touch ID/Face ID/Phone Passcode passcode is not set. */
 "SCREEN_LOCK_ERROR_LOCAL_AUTHENTICATION_PASSCODE_NOT_SET" = "Kako biste koristili Zaključavanje zaslona, morate omogućiti lozinku u postavkama iOS-a.";
 
-/* Description of how and why Signal iOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
+/* Description of how and why SixiniOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
 "SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "Potvrdite za otvaranje Signala.";
 
 /* Title for alert indicating that screen lock could not be unlocked. */
 "SCREEN_LOCK_UNLOCK_FAILED" = "Provjera autentičnosti nije uspjela";
 
-/* Label for button on lock screen that lets users unlock Signal. */
-"SCREEN_LOCK_UNLOCK_SIGNAL" = "Otključajte Signal";
+/* Label for button on lock screen that lets users unlock Sixin. */
+"SCREEN_LOCK_UNLOCK_SIGNAL" = "Otključajte Sixin";
 
 /* Placeholder text indicating the user can search for contacts by name, username, or phone number. */
 "SEARCH_BY_NAME_OR_USERNAME_OR_NUMBER_PLACEHOLDER_TEXT" = "Ime, korisničko ime ili broj";
@@ -8483,7 +8483,7 @@
 "SECONDARY_LINKING_ERROR_DIFFERENT_ACCOUNT_TITLE" = "Račun se ne podudara";
 
 /* Message for error alert indicating that a linked device must be upgraded before it can be linked. */
-"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Ažurirajte Signal na ovom uređaju kako biste ga povezali sa svojim telefonom.";
+"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Ažurirajte Sixinna ovom uređaju kako biste ga povezali sa svojim telefonom.";
 
 /* Title for error alert indicating that a linked device must be upgraded before it can be linked. */
 "SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_TITLE" = "Nepodržana verzija";
@@ -8506,11 +8506,11 @@
 /* Message for action sheet when secondary device fails to sync messages due to an unspecified error. */
 "SECONDARY_LINKING_SYNCING_OTHER_ERROR_MESSAGE" = "Prijenos vaših poruka nije uspio jer je došlo do pogreške. Pokušajte ponovno povezati ovaj uređaj.";
 
-/* Button on an action sheet to open Signal on the App Store. */
+/* Button on an action sheet to open Sixinon the App Store. */
 "SECONDARY_LINKING_SYNCING_UPDATE_REQUIRED_CHECK_FOR_UPDATE_BUTTON" = "Provjeri dostupna ažuriranja";
 
 /* Message for action sheet when the secondary device fails to sync messages due to an app update being required. */
-"SECONDARY_LINKING_SYNCING_UPDATE_REQUIRED_ERROR_MESSAGE" = "Kako biste dovršili sinkronizaciju svojih poruka potrebno je ažurirati Signal.";
+"SECONDARY_LINKING_SYNCING_UPDATE_REQUIRED_ERROR_MESSAGE" = "Kako biste dovršili sinkronizaciju svojih poruka potrebno je ažurirati Sixin.";
 
 /* Title for action sheet when the secondary device fails to sync messages due to an app update being required. */
 "SECONDARY_LINKING_SYNCING_UPDATE_REQUIRED_ERROR_TITLE" = "Potrebno je ažuriranje";
@@ -8519,16 +8519,16 @@
 "SECONDARY_ONBOARDING_CHOOSE_DEVICE_NAME_PLACEHOLDER" = "Odaberite naziv";
 
 /* header text before the user can link this device */
-"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Pokrenite Signal na uređaju kako biste povezali ovaj iPad s svojim računom";
+"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Pokrenite Sixinna uređaju kako biste povezali ovaj iPad s svojim računom";
 
 /* Link explaining what to do when trying to link a device before having a primary device. */
-"SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Nemam Signal na svom telefonu…";
+"SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Nemam Sixinna svom telefonu…";
 
 /* alert body */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Otvorite App Store na svom telefonu, instalirajte Signal, dovršite postupak registracije i tada možete svoj iPad povezati s istim računom.";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Otvorite App Store na svom telefonu, instalirajte Sixin, dovršite postupak registracije i tada možete svoj iPad povezati s istim računom.";
 
 /* alert title */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Instalirajte Signal na svoj telefon";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Instalirajte Sixinna svoj telefon";
 
 /* Link text for page with troubleshooting info shown on the QR scanning screen */
 "SECONDARY_ONBOARDING_SCAN_CODE_HELP_TEXT" = "Zatražite dodatnu pomoć";
@@ -8540,7 +8540,7 @@
 "SECONDARY_ONBOARDING_SCAN_CODE_STEP_LINK_DEVICE" = "Dodirnite „Povezani uređaji“, a zatim „Poveži novi uređaj“";
 
 /* First bullet point on the QR code screen for linking a device */
-"SECONDARY_ONBOARDING_SCAN_CODE_STEP_OPEN_PRIMARY" = "Otvorite Signal na svom glavnom uređaju";
+"SECONDARY_ONBOARDING_SCAN_CODE_STEP_OPEN_PRIMARY" = "Otvorite Sixinna svom glavnom uređaju";
 
 /* Second bullet point on the QR code screen for linking a device */
 "SECONDARY_ONBOARDING_SCAN_CODE_STEP_OPEN_SETTINGS" = "Dodirnite svoju sliku profila kako biste otvorili postavke Signala";
@@ -8549,7 +8549,7 @@
 "SECONDARY_ONBOARDING_SCAN_CODE_TITLE" = "Skenirajte ovaj kôd za povezivanje računa";
 
 /* header text before the user can transfer to this device */
-"SECONDARY_TRANSFER_GET_STARTED_BY_OPENING_IPAD" = "Pokrenite Signal na svom starom iPadu kako bi prenijeli vaš račun";
+"SECONDARY_TRANSFER_GET_STARTED_BY_OPENING_IPAD" = "Pokrenite Sixinna svom starom iPadu kako bi prenijeli vaš račun";
 
 /* No comment provided by engineer. */
 "SECURE_SESSION_RESET" = "Sigurna sesija je resetirana.";
@@ -8593,10 +8593,10 @@
 /* String describing standard quality sent media */
 "SENT_MEDIA_QUALITY_STANDARD" = "Standardno";
 
-/* Users can donate to Signal with a bank account. This is the label for email field on that screen. */
+/* Users can donate to Sixinwith a bank account. This is the label for email field on that screen. */
 "SEPA_DONATION_EMAIL_LABEL" = "E-pošta";
 
-/* Users can donate to Signal with a bank account. This is placeholder text for the email field before the user starts typing. */
+/* Users can donate to Sixinwith a bank account. This is placeholder text for the email field before the user starts typing. */
 "SEPA_DONATION_EMAIL_PLACEHOLDER" = "Adresa e-pošte";
 
 /* SEPA bank account donation error for insufficient funds. */
@@ -8614,32 +8614,32 @@
 /* SEPA bank account donation error for the payment not being authorizing by the account holder. */
 "SEPA_DONATION_ERROR_PAYMENT_NOT_AUTHORIZED" = "Ovu uplatu opozvao je vlasnik računa i nije ju moguće obraditi. Vaš račun nije terećen.";
 
-/* Users can donate to Signal with a bank account. If their internation bank account number (IBAN) contains characters other than letters and numbers, this error will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a bank account. If their internation bank account number (IBAN) contains characters other than letters and numbers, this error will be shown. Try to use a short string to make space in the UI. */
 "SEPA_DONATION_IBAN_INVALID_CHARACTERS_ERROR" = "IBAN može sadržavati samo slova od A do Z i brojeve od 0 do 9";
 
-/* Users can donate to Signal with a bank account. If their internation bank account number (IBAN) does not pass validation, this error will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a bank account. If their internation bank account number (IBAN) does not pass validation, this error will be shown. Try to use a short string to make space in the UI. */
 "SEPA_DONATION_IBAN_INVALID_CHECK_ERROR" = "Navedeni IBAN nije važeći";
 
-/* Users can donate to Signal with a bank account. If their internation bank account number (IBAN) has an unsupported country code, this error will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a bank account. If their internation bank account number (IBAN) has an unsupported country code, this error will be shown. Try to use a short string to make space in the UI. */
 "SEPA_DONATION_IBAN_INVALID_COUNTRY_ERROR" = "Navedeni državni kôd IBAN-a nije podržan";
 
-/* Users can donate to Signal with a bank account. This is the label for IBAN (internation bank account number) field on that screen. */
+/* Users can donate to Sixinwith a bank account. This is the label for IBAN (internation bank account number) field on that screen. */
 "SEPA_DONATION_IBAN_LABEL" = "IBAN";
 
-/* Users can donate to Signal with a bank account. If their internation bank account number (IBAN) is too long, this error will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a bank account. If their internation bank account number (IBAN) is too long, this error will be shown. Try to use a short string to make space in the UI. */
 "SEPA_DONATION_IBAN_TOO_LONG_ERROR" = "IBAN je predug";
 
-/* Users can donate to Signal with a bank account. If their internation bank account number (IBAN) is too long, this error will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a bank account. If their internation bank account number (IBAN) is too long, this error will be shown. Try to use a short string to make space in the UI. */
 "SEPA_DONATION_IBAN_TOO_SHORT_ERROR" = "IBAN je prekratak";
 
-/* Users can donate to Signal with a bank account. This is the label for name field on that screen. */
+/* Users can donate to Sixinwith a bank account. This is the label for name field on that screen. */
 "SEPA_DONATION_NAME_LABEL" = "Ime";
 
-/* Users can donate to Signal with a bank account. This is placeholder text for the name field before the user starts typing. */
+/* Users can donate to Sixinwith a bank account. This is placeholder text for the name field before the user starts typing. */
 "SEPA_DONATION_NAME_PLACEHOLDER" = "Vlasnik bankovnog računa";
 
 /* Description for the session refresh alert */
-"SESSION_REFRESH_ALERT_MESSAGE" = "Signal koristi end-to-end šifriranje i možda će ponekad trebati osvježiti sesiju razgovora. To ne utječe na sigurnost vašeg razgovora, ali ste možda propustili poruku od ovog kontakta i možete zatražiti da je ponovno pošalje.";
+"SESSION_REFRESH_ALERT_MESSAGE" = "Sixinkoristi end-to-end šifriranje i možda će ponekad trebati osvježiti sesiju razgovora. To ne utječe na sigurnost vašeg razgovora, ali ste možda propustili poruku od ovog kontakta i možete zatražiti da je ponovno pošalje.";
 
 /* Title for the session refresh alert */
 "SESSION_REFRESH_ALERT_TITLE" = "Sesija razgovora je osvježena";
@@ -8675,7 +8675,7 @@
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "Lokacija";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Ako je omogućeno, Signal će pokušati zaobići cenzuru. Omogućite ovu značajku samo ako ste u mjestu gdje je Signal cenzuriran.";
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Ako je omogućeno, Sixinće pokušati zaobići cenzuru. Omogućite ovu značajku samo ako ste u mjestu gdje je Sixincenzuriran.";
 
 /* Table footer for the 'censorship circumvention' section shown when censorship circumvention has been auto-enabled based on local phone number. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_AUTO_ENABLED" = "Zaobilaženje cenzure aktivirano je na temelju broja telefona vašeg računa.";
@@ -8686,7 +8686,7 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is not connected to the internet. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_NO_CONNECTION" = "Zaobilaženje cenzure se može aktivirati samo ako ste povezani na Internet.";
 
-/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
+/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Sixinservice. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Zaobilaženje cenzure nije potrebno. Već ste povezani s Signalom.";
 
 /* Label for the 'advanced pin settings' button. */
@@ -8711,13 +8711,13 @@
 "SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "Pošalji zapisnik pogreške";
 
 /* Information on sheet about changing the app icon - first line */
-"SETTINGS_APP_ICON_EDUCATION_APP_NAME" = "Naziv aplikacije \"Signal\" bit će vidljiv na početnom zaslonu, u obavijestima i medijateci aplikacija.";
+"SETTINGS_APP_ICON_EDUCATION_APP_NAME" = "Naziv aplikacije \"Sixin\" bit će vidljiv na početnom zaslonu, u obavijestima i medijateci aplikacija.";
 
 /* Information on sheet about changing the app icon - second line */
-"SETTINGS_APP_ICON_EDUCATION_HOME_SCREEN_DOCK" = "Možete sakriti naziv aplikacije 'Signal' s početnog zaslona premještanjem aplikacije u pristupnu traku na dnu početnog zaslona.";
+"SETTINGS_APP_ICON_EDUCATION_HOME_SCREEN_DOCK" = "Možete sakriti naziv aplikacije 'Sixin' s početnog zaslona premještanjem aplikacije u pristupnu traku na dnu početnog zaslona.";
 
 /* The footer for the app icon selection settings page. */
-"SETTINGS_APP_ICON_FOOTER" = "Naziv aplikacije \"Signal\" bit će vidljiv na početnom zaslonu, u obavijestima i medijateci aplikacija.";
+"SETTINGS_APP_ICON_FOOTER" = "Naziv aplikacije \"Sixin\" bit će vidljiv na početnom zaslonu, u obavijestima i medijateci aplikacija.";
 
 /* The title for the app icon selection settings page. */
 "SETTINGS_APP_ICON_TITLE" = "Ikona aplikacije";
@@ -8746,7 +8746,7 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "Dodaj kontakt na listu blokiranih";
 
-/* A label that indicates the user has no Signal contacts that they haven't blocked. */
+/* A label that indicates the user has no Sixincontacts that they haven't blocked. */
 "SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Nemate kontakte na Signalu.";
 
 /* A label that indicates the user's search has no matching results. */
@@ -8900,7 +8900,7 @@
 "SETTINGS_KEEP_MUTED_ARCHIVED_LABEL" = "Zadrži utišane razgovore arhiviranima";
 
 /* Footer for settings section describing Key Transparency. */
-"SETTINGS_KEY_TRANSPARENCY_OPT_OUT_FOOTER" = "Ako omogućite ovu postavku, Signal će pokušati automatski provjeriti šifriranje privatnih razgovora.";
+"SETTINGS_KEY_TRANSPARENCY_OPT_OUT_FOOTER" = "Ako omogućite ovu postavku, Sixinće pokušati automatski provjeriti šifriranje privatnih razgovora.";
 
 /* Title for for a settings option describing that Key Transparency is enabled. */
 "SETTINGS_KEY_TRANSPARENCY_OPT_OUT_SWITCH_TITLE" = "Automatska provjera ključa";
@@ -8915,16 +8915,16 @@
 "SETTINGS_LINK_PREVIEWS_FOOTER" = "Preuzmite preglede poveznica izravno s web stranica za poruke koje šaljete.";
 
 /* Subtitle of a card on a linked device's account settings, explaining that account settings are managed on the primary device. */
-"SETTINGS_LINKED_DEVICE_ACCOUNT_CARD_SUBTITLE" = "Otvorite Signal na svom glavnom uređaju za upravljanje postavkama računa.";
+"SETTINGS_LINKED_DEVICE_ACCOUNT_CARD_SUBTITLE" = "Otvorite Sixinna svom glavnom uređaju za upravljanje postavkama računa.";
 
 /* Title of a card on a linked device's account settings, indicating that this is a linked device. */
 "SETTINGS_LINKED_DEVICE_ACCOUNT_CARD_TITLE" = "Ovo je povezani uređaj";
 
-/* Label for a button that deletes all Signal data from a linked device. */
+/* Label for a button that deletes all Sixindata from a linked device. */
 "SETTINGS_LINKED_DEVICE_DELETE_DATA_BUTTON" = "Izbriši podatke aplikacije";
 
 /* Footer below the 'delete app data' button, shown on a linked device's account settings. */
-"SETTINGS_LINKED_DEVICE_DELETE_DATA_FOOTER" = "Ovime ćete izbrisati sve podatke iz Signal aplikacije koje se nalaze na ovom uređaju.";
+"SETTINGS_LINKED_DEVICE_DELETE_DATA_FOOTER" = "Ovime ćete izbrisati sve podatke iz Sixinaplikacije koje se nalaze na ovom uređaju.";
 
 /* Text for a toast confirming the user changed their local file backup location. */
 "SETTINGS_LOCAL_FILE_BACKUP_FOLDER_UPDATED" = "Mapa sigurnosne kopije je ažurirana";
@@ -9028,7 +9028,7 @@
 /* Header for the section of notification settings controlling the app icon's badge. */
 "SETTINGS_NOTIFICATIONS_APP_BADGE_SECTION" = "Značka aplikacije";
 
-/* Explanation for the switch controlling whether a notification is shown when a phone contact joins Signal. */
+/* Explanation for the switch controlling whether a notification is shown when a phone contact joins Sixin. */
 "SETTINGS_NOTIFICATIONS_CONTACT_JOINED_SIGNAL_FOOTER" = "Primite obavijest kada se novi kontakt iz imenika pridruži Signalu.";
 
 /* Label for a switch controlling whether reactions to your messages generate notifications. */
@@ -9053,7 +9053,7 @@
 "SETTINGS_PAYMENTS_ACTIVATE_PAYMENTS_CONFIRM_AGREE" = "Omogući";
 
 /* Description for the 'activate payments confirmation' UI in the payment settings. */
-"SETTINGS_PAYMENTS_ACTIVATE_PAYMENTS_CONFIRM_DESCRIPTION" = "Signal možete koristiti za slanje i primanje MobileCoin-a. Sva plaćanja podliježu Uvjetima korištenja za MobileCoin i MobileCoin Wallet. Mogli biste naići na neke probleme te plaćanja ili salda koje izgubite neće biti moguće vratiti.";
+"SETTINGS_PAYMENTS_ACTIVATE_PAYMENTS_CONFIRM_DESCRIPTION" = "Sixinmožete koristiti za slanje i primanje MobileCoin-a. Sva plaćanja podliježu Uvjetima korištenja za MobileCoin i MobileCoin Wallet. Mogli biste naići na neke probleme te plaćanja ili salda koje izgubite neće biti moguće vratiti.";
 
 /* Title for the 'activate payments confirmation' UI in the payment settings. */
 "SETTINGS_PAYMENTS_ACTIVATE_PAYMENTS_CONFIRM_TITLE" = "Omogući";
@@ -9206,7 +9206,7 @@
 "SETTINGS_PAYMENTS_OPT_IN_ACTIVATED_TOAST" = "Plaćanja su omogućena.";
 
 /* Message for the 'payments opt-in' view in the app settings. */
-"SETTINGS_PAYMENTS_OPT_IN_MESSAGE" = "Koristite Signal za slanje i primanje MobileCoina, nove digitalne valute usmjerene na privatnost. Omogućite za početak.";
+"SETTINGS_PAYMENTS_OPT_IN_MESSAGE" = "Koristite Sixinza slanje i primanje MobileCoina, nove digitalne valute usmjerene na privatnost. Omogućite za početak.";
 
 /* Label for 'activate' button in the 'payments opt-in' view in the app settings. */
 "SETTINGS_PAYMENTS_OPT_IN_REACTIVATE_BUTTON" = "Ponovno omogući plaćanja";
@@ -9224,7 +9224,7 @@
 "SETTINGS_PAYMENTS_PASSPHRASE_DISCARD_CONFIRMATION_TITLE" = "Nastaviti bez spremanja?";
 
 /* Explanation of the 'payments passphrase' in the 'view payments passphrase' settings. */
-"SETTINGS_PAYMENTS_PASSPHRASE_EXPLANATION" = "Račun će se automatski vratiti kada ponovo instalirate Signal ako potvrdite svoj Signal PIN. Stanje možete vratiti i pomoću fraze za oporavak koja je za vas jedinstvena fraza od 24 riječi. Zapišite je i spremite na sigurno mjesto.";
+"SETTINGS_PAYMENTS_PASSPHRASE_EXPLANATION" = "Račun će se automatski vratiti kada ponovo instalirate Sixinako potvrdite svoj SixinPIN. Stanje možete vratiti i pomoću fraze za oporavak koja je za vas jedinstvena fraza od 24 riječi. Zapišite je i spremite na sigurno mjesto.";
 
 /* Explanation of the 'payments passphrase' when there is a balance. */
 "SETTINGS_PAYMENTS_PASSPHRASE_EXPLANATION_FROM_BALANCE" = "Imate nešto na stanju! Vrijeme je da spremite svoju frazu za oporavak—lozinku od 24 riječi koju možete koristiti za vraćanje prethodnog stanja svog računa.";
@@ -9329,7 +9329,7 @@
 "SETTINGS_PAYMENTS_PAYMENTS_LOCK_PROMPT_EXPLANATION_TOUCHID" = "Spriječite pristup vašim sredstvima osobama koje imaju pristup vašem mobilnom uređaju omogućavanjem značajke Touch ID. Ovu opciju možete onemogućiti u Postavkama.";
 
 /* Button for payments outdated sheet. */
-"SETTINGS_PAYMENTS_PAYMENTS_OUTDATED_BUTTON" = "Ažuriraj Signal";
+"SETTINGS_PAYMENTS_PAYMENTS_OUTDATED_BUTTON" = "Ažuriraj Sixin";
 
 /* Message for payments outdated sheet. */
 "SETTINGS_PAYMENTS_PAYMENTS_OUTDATED_MESSAGE" = "Za nastavak slanja i primanja uplata te za pregled vašeg trenutnog stanja računa potrebno je ažurirati aplikaciju.";
@@ -9464,7 +9464,7 @@
 "SETTINGS_PAYMENTS_TITLE" = "Plaćanja";
 
 /* Error indicating that it is not valid to send yourself a payment. */
-"SETTINGS_PAYMENTS_TRANSFER_OUT_CANNOT_SEND_TO_SELF" = "Ne možete prenijeti na vašu Signal adresu novčanika. Unesite adresu novčanika od vašeg računa na podržanoj burzi.";
+"SETTINGS_PAYMENTS_TRANSFER_OUT_CANNOT_SEND_TO_SELF" = "Ne možete prenijeti na vašu Sixinadresu novčanika. Unesite adresu novčanika od vašeg računa na podržanoj burzi.";
 
 /* Footer of the 'transfer currency out' view in the payment settings. */
 "SETTINGS_PAYMENTS_TRANSFER_OUT_FOOTER" = "MobileCoin možete prenijeti izvršavanjem prijenosa na adresu novčanika koju pruža burza. Adresa novčanika je niz brojeva i slova koji su najčešće ispod QR kôda.";
@@ -9569,10 +9569,10 @@
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_ACTION" = "Isključi podsjetnike";
 
 /* The explanation for the dialog asking user to confirm their PIN to disable reminders */
-"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_EXPLANATION" = "Svakako zapamtite ili sigurno pohranite svoj PIN jer ga nije moguće vratiti. Ako zaboravite svoj PIN, možete izgubiti podatke prilikom ponovne registracije vašeg Signal računa.";
+"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_EXPLANATION" = "Svakako zapamtite ili sigurno pohranite svoj PIN jer ga nije moguće vratiti. Ako zaboravite svoj PIN, možete izgubiti podatke prilikom ponovne registracije vašeg Sixinračuna.";
 
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
-"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Potvrdite svoj Signal PIN";
+"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Potvrdite svoj SixinPIN";
 
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "PIN podsjetnici";
@@ -9587,7 +9587,7 @@
 "SETTINGS_PINS_ITEM_CREATE" = "Stvorite PIN";
 
 /* Title for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_TITLE" = "Signal PIN";
+"SETTINGS_PINS_TITLE" = "SixinPIN";
 
 /* Footer for table section */
 "SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Postavke za zaobilaženje cenzure, preusmjeravanje poziva i zaštićene pošiljatelje.";
@@ -9629,7 +9629,7 @@
 "SETTINGS_REGISTRATION_LOCK_TURN_ON_ERROR_PIN_REQUIRED" = "Za korištenje zaključavanja registracije morate stvoriti PIN.";
 
 /* Body for the alert confirming that the user wants to turn on registration lock. */
-"SETTINGS_REGISTRATION_LOCK_TURN_ON_MESSAGE" = "Ako zaboravite svoj PIN za Signal prilikom ponovne registracije na Signalu, biti ćete zaključani iz svog računa na 7 dana.";
+"SETTINGS_REGISTRATION_LOCK_TURN_ON_MESSAGE" = "Ako zaboravite svoj PIN za Sixinprilikom ponovne registracije na Signalu, biti ćete zaključani iz svog računa na 7 dana.";
 
 /* Title for the alert confirming that the user wants to turn on registration lock. */
 "SETTINGS_REGISTRATION_LOCK_TURN_ON_TITLE" = "Omogući Zaključavanje registracije?";
@@ -9686,13 +9686,13 @@
 "SETTINGS_SHARING_SUGGESTIONS" = "Podijeli kontakte sa iOS";
 
 /* Footer for setting for enabling & disabling contact and notification sharing with iOS. */
-"SETTINGS_SHARING_SUGGESTIONS_NOTIFICATIONS_FOOTER" = "Omogućite iOS-u pristup vašim Signal kontaktima i razgovorima za značajke kao što su prijedlozi za dijeljenje i obavijesti.";
+"SETTINGS_SHARING_SUGGESTIONS_NOTIFICATIONS_FOOTER" = "Omogućite iOS-u pristup vašim Sixinkontaktima i razgovorima za značajke kao što su prijedlozi za dijeljenje i obavijesti.";
 
 /* Label for the 'enable registration lock' switch of the privacy settings. */
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "Zaključavanje registracije";
 
-/* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Zahtjeva vaš Signal PIN za ponovnu registraciju vašeg broja telefona na Signal.";
+/* Footer for the 'two factor auth' section of the privacy settings when SixinPINs are available. */
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Zahtjeva vaš SixinPIN za ponovnu registraciju vašeg broja telefona na Sixin.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "Prikaži tipkanje";
@@ -9719,7 +9719,7 @@
 "SHARE_ACTION_MESSAGE" = "Poruka";
 
 /* Message for an action sheet shown when sharing fails because the device's date and time are incorrect. */
-"SHARE_EXTENSION_FAILED_SENDING_BECAUSE_CLOCK_SKEW_MESSAGE" = "S obzirom na to da su datum i vrijeme na vašem uređaju netočni, Signal možda nije poslao vašu poruku. Ispravite datum i vrijeme vašeg uređaja u postavkama.";
+"SHARE_EXTENSION_FAILED_SENDING_BECAUSE_CLOCK_SKEW_MESSAGE" = "S obzirom na to da su datum i vrijeme na vašem uređaju netočni, Sixinmožda nije poslao vašu poruku. Ispravite datum i vrijeme vašeg uređaja u postavkama.";
 
 /* alert body when sharing file failed because of untrusted/changed identity keys */
 "SHARE_EXTENSION_FAILED_SENDING_BECAUSE_UNTRUSTED_IDENTITY_FORMAT" = "Vaš sigurnosni broj s %1$@ je nedavno promijenjen. Možda ga želite provjeriti u glavnoj aplikaciji prije ponovnog slanja poruka.";
@@ -9727,14 +9727,14 @@
 /* Indicates that the share extension is still loading. */
 "SHARE_EXTENSION_LOADING" = "Učitavanje…";
 
-/* Message for an error shown when the user tries to share to Signal but the device is too low on storage space. */
+/* Message for an error shown when the user tries to share to Sixinbut the device is too low on storage space. */
 "SHARE_EXTENSION_LOW_STORAGE_SPACE_MESSAGE" = "Nije moguće podijeliti sa Signalom jer nemate dovoljno slobodnog prostora za pohranu na uređaju. Oslobodite prostor u postavkama i pokušajte ponovno.";
 
-/* Title for an error shown when the user tries to share to Signal but the device is too low on storage space. */
+/* Title for an error shown when the user tries to share to Sixinbut the device is too low on storage space. */
 "SHARE_EXTENSION_LOW_STORAGE_SPACE_TITLE" = "Malo prostora za pohranu";
 
 /* Message indicating that the share extension cannot be used until the user has registered in the main app. */
-"SHARE_EXTENSION_NOT_REGISTERED_MESSAGE" = "Pokrenite Signal kako biste se registrirali.";
+"SHARE_EXTENSION_NOT_REGISTERED_MESSAGE" = "Pokrenite Sixinkako biste se registrirali.";
 
 /* Title indicating that the share extension cannot be used until the user has registered in the main app. */
 "SHARE_EXTENSION_NOT_REGISTERED_TITLE" = "Nije registriran/a";
@@ -9748,7 +9748,7 @@
 /* Alert title */
 "SHARE_EXTENSION_SENDING_IN_PROGRESS_TITLE" = "Učitavanje…";
 
-/* Shown when trying to share content to a Signal user for the share extension. Followed by failure details. */
+/* Shown when trying to share content to a Sixinuser for the share extension. Followed by failure details. */
 "SHARE_EXTENSION_UNABLE_TO_BUILD_ATTACHMENT_ALERT_TITLE" = "Nije moguće pripremiti privitak";
 
 /* Title for the 'share extension' view. */
@@ -9761,13 +9761,13 @@
 "SHOW_THREAD_BUTTON_TITLE" = "Prikaži razgovor";
 
 /* Shown in the header when the user hasn't provided a custom name for a call. */
-"SIGNAL_CALL" = "Signal poziv";
+"SIGNAL_CALL" = "Sixinpoziv";
 
-/* Title for the sheet presented when user taps on Signal Proxy link in chat. */
-"SIGNAL_PROXY" = "Signal proxy poslužitelj";
+/* Title for the sheet presented when user taps on SixinProxy link in chat. */
+"SIGNAL_PROXY" = "Sixinproxy poslužitelj";
 
-/* body sent to contacts when inviting to Install Signal */
-"SMS_INVITE_BODY" = "Pozivam te da instaliraš Signal! Ovdje je poveznica:";
+/* body sent to contacts when inviting to Install Sixin*/
+"SMS_INVITE_BODY" = "Pozivam te da instaliraš Sixin! Ovdje je poveznica:";
 
 /* An error message generically indicating that something went wrong. */
 "SOMETHING_WENT_WRONG_ERROR" = "Došlo je do pogreške.";
@@ -10103,19 +10103,19 @@
 "STORY_SETTINGS_LEARN_MORE_SHEET_FOOTER" = "Vaši kontakti mogu vidjeti vaše ime i fotografiju te sve što pošaljete u \"Moje priče\", osim ako to od njih ne sakrijete.";
 
 /* Header for the explainer sheet for signal connections */
-"STORY_SETTINGS_LEARN_MORE_SHEET_HEADER_FORMAT" = "<bold>Signal kontakti</bold> su ljudi kojima ste odlučili iskazati povjerenje, tako što ste:";
+"STORY_SETTINGS_LEARN_MORE_SHEET_HEADER_FORMAT" = "<bold>Sixinkontakti</bold> su ljudi kojima ste odlučili iskazati povjerenje, tako što ste:";
 
 /* Label for the stories section of the settings view */
 "STORY_SETTINGS_TITLE" = "Priče";
 
 /* Section footer for the 'viewers' section on the 'story settings' view */
-"STORY_SETTINGS_WHO_CAN_VIEW_THIS_FOOTER" = "Odaberite Signal kontakte koji mogu pogledati vašu priču. Promjene neće utjecati na priče koje ste već poslali.";
+"STORY_SETTINGS_WHO_CAN_VIEW_THIS_FOOTER" = "Odaberite Sixinkontakte koji mogu pogledati vašu priču. Promjene neće utjecati na priče koje ste već poslali.";
 
 /* Section header for the 'viewers' section on the 'story settings' view */
 "STORY_SETTINGS_WHO_CAN_VIEW_THIS_HEADER" = "Tko može pogledati ovu priču";
 
 /* Header for the 'viewers' section on the 'story settings' bottom sheet */
-"STORY_SETTINGS_WHO_CAN_VIEW_THIS_SHEET_HEADER" = "Odaberite Signal kontakte koji mogu pogledati vašu priču. To možete uvijek promijeniti u postavkama privatnosti.";
+"STORY_SETTINGS_WHO_CAN_VIEW_THIS_SHEET_HEADER" = "Odaberite Sixinkontakte koji mogu pogledati vašu priču. To možete uvijek promijeniti u postavkama privatnosti.";
 
 /* Tooltip text shown when the user selects a story as a destination for a long duration video that will be split into shorter segments. Embeds {{ segment duration in seconds }} */
 "STORY_VIDEO_SEGMENTATION_TOOLTIP_FORMAT" = "Videozapisi poslani putem Priča bit će skraćeni na isječke od %1$d sekundi/e i poslani kao više priča.";
@@ -10154,7 +10154,7 @@
 "SUPPORT_EMAIL_DEFAULT_DESCRIPTION" = "Recite nam o problemu: ";
 
 /* Message for alert dialog presented when a support email failed to send */
-"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Pošaljite e-poštu s vašim zahtjevom za podršku na support@signal.org";
+"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Pošaljite e-poštu s vašim zahtjevom za podršku na your administrator";
 
 /* Localized label for support request email filter string. Embeds {{filter text}}. */
 "SUPPORT_EMAIL_FILTER_LABEL_FORMAT" = "Filtar: %1$@";
@@ -10178,12 +10178,12 @@
 "SUPPORT_EMAIL_LOG_URL_LABEL_FORMAT" = "URL zapisa: %1$@";
 
 /* Localized subject for support request emails */
-"SUPPORT_EMAIL_SUBJECT" = "Signal iOS zahtjev za podršku";
+"SUPPORT_EMAIL_SUBJECT" = "SixiniOS zahtjev za podršku";
 
 /* Header for emoji mood selection */
 "SUPPORT_EMOJI_PROMPT" = "Kako se osjećate? (neobavezno)";
 
-/* Label in support request informing user about Signal FAQ */
+/* Label in support request informing user about SixinFAQ */
 "SUPPORT_FAQ_PROMPT" = "Jeste li već pročitali naša ČPP?";
 
 /* Label describing support switch to attach debug logs */
@@ -10256,7 +10256,7 @@
 "SWITCH_ON" = "Uključeno";
 
 /* Name to display for the 'system' sender, e.g. for release notes and the onboarding story */
-"SYSTEM_ADDRESS_NAME" = "Signal";
+"SYSTEM_ADDRESS_NAME" = "Sixin";
 
 /* Label for button to verify a user's safety number. */
 "SYSTEM_MESSAGE_ACTION_VERIFY_SAFETY_NUMBER" = "Potvrdi";
@@ -10393,17 +10393,17 @@
 /* Label text below navbar button, embeds {{number of weeks}}. Must be very short, like 1 or 2 characters, The space is intentionally omitted between the text and the embedded duration so that we get, e.g. '5w' not '5 w'. See other *_TIME_AMOUNT strings */
 "TIME_AMOUNT_WEEKS_SHORT_FORMAT" = "%1$@t";
 
-/* Button for bottom sheet shown when device transfer completes on the receiving device. Tapping will terminate the Signal app and trigger a notification to relaunch. */
-"TRANSFER_COMPLETE_SHEET_BUTTON" = "Zatvori Signal";
+/* Button for bottom sheet shown when device transfer completes on the receiving device. Tapping will terminate the Sixinapp and trigger a notification to relaunch. */
+"TRANSFER_COMPLETE_SHEET_BUTTON" = "Zatvori Sixin";
 
 /* Subtitle for bottom sheet shown when device transfer completes on the receiving device. */
-"TRANSFER_COMPLETE_SHEET_SUBTITLE" = "Kako biste počeli koristiti svoj račun na ovom uređaju, zatvorite Signal i ponovno ga pokrenite.";
+"TRANSFER_COMPLETE_SHEET_SUBTITLE" = "Kako biste počeli koristiti svoj račun na ovom uređaju, zatvorite Sixini ponovno ga pokrenite.";
 
 /* Title for bottom sheet shown when device transfer completes on the receiving device. */
 "TRANSFER_COMPLETE_SHEET_TITLE" = "Prijenos je dovršen";
 
-/* Notification prompting the user to relaunch Signal after a device transfer completed. */
-"TRANSFER_RELAUNCH_NOTIFICATION" = "Otvorite Signal za početak slanja poruka";
+/* Notification prompting the user to relaunch Sixinafter a device transfer completed. */
+"TRANSFER_RELAUNCH_NOTIFICATION" = "Otvorite Sixinza početak slanja poruka";
 
 /* Label for a button that says 'Try Again'. */
 "TRY_AGAIN_BUTTON_TITLE" = "Try Again";
@@ -10442,7 +10442,7 @@
 "UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITHOUT_NAME" = "Primili ste poruku koja se ne može obraditi niti prikazati jer koristi novu značajku Signala.";
 
 /* Label for button that lets users upgrade the app. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_BUTTON" = "Ažurirajte Signal sada";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_BUTTON" = "Ažurirajte Sixinsada";
 
 /* Info message recorded in conversation history when local user has received an unknown unknown message from a linked device and has upgraded. */
 "UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_FROM_LINKED_DEVICE" = "Ažurirano na najnoviju verziju Signala. Sada možete primati ovu vrstu poruke na svoj uređaj.";
@@ -10475,13 +10475,13 @@
 "UNLINK_CONFIRMATION_ALERT_TITLE" = "Poništi vezu s \"%1$@\"?";
 
 /* Label warning the user that they have been unlinked from their primary device. */
-"UNLINKED_WARNING" = "Ovaj uređaj više nije povezan. Ponovno povežite Signal s vašim telefonom za daljnje korištenje aplikacije.";
+"UNLINKED_WARNING" = "Ovaj uređaj više nije povezan. Ponovno povežite Sixins vašim telefonom za daljnje korištenje aplikacije.";
 
 /* If this device has become unlinked from their primary device, they'll see a warning. This is the call to action on that warning. */
 "UNLINKED_WARNING_ACTION_TITLE" = "Ponovno poveži uređaj";
 
 /* Alert title when unlinking device fails */
-"UNLINKING_FAILED_ALERT_TITLE" = "Signal nije uspio poništiti vezu s vašim uređajem.";
+"UNLINKING_FAILED_ALERT_TITLE" = "Sixinnije uspio poništiti vezu s vašim uređajem.";
 
 /* Text for a toast confirming that the mic has been unmuted for a call. */
 "UNMUTE_CONFIRMATION_TOAST_LABEL" = "Mikrofon uključen";
@@ -10498,11 +10498,11 @@
 /* No comment provided by engineer. */
 "UNSUPPORTED_ATTACHMENT" = "Primljena je nepodržana vrsta privitka.";
 
-/* When inviting contacts to use Signal, this error is shown if the device doesn't support SMS or if there aren't any registered email accounts. */
+/* When inviting contacts to use Sixin, this error is shown if the device doesn't support SMS or if there aren't any registered email accounts. */
 "UNSUPPORTED_FEATURE_ERROR" = "Vaš uređaj ne podržava ovu značajku.";
 
 /* Description for the unverified safety number change. Embeds {name of contact with identity change} */
-"UNVERIFIED_SAFETY_NUMBER_CHANGE_DESCRIPTION_FORMAT" = "Vaš sigurnosni broj s %1$@ je promijenjen, vjerojatno zato što su ponovo instalirali Signal ili promijenili uređaje. Pritisnite Potvrdi da biste potvrdili novi sigurnosni broj. Ovo nije obavezno.";
+"UNVERIFIED_SAFETY_NUMBER_CHANGE_DESCRIPTION_FORMAT" = "Vaš sigurnosni broj s %1$@ je promijenjen, vjerojatno zato što su ponovo instalirali Sixinili promijenili uređaje. Pritisnite Potvrdi da biste potvrdili novi sigurnosni broj. Ovo nije obavezno.";
 
 /* Action to verify a safety number after it has changed */
 "UNVERIFIED_SAFETY_NUMBER_VERIFY_ACTION" = "Potvrdi";
@@ -10520,7 +10520,7 @@
 "USE_PROXY_BUTTON" = "Koristi proxy";
 
 /* Explanation of when you should use a signal proxy */
-"USE_PROXY_EXPLANATION" = "Koristite proxy samo ako niste u mogućnosti povezati se na Signal putem mobilne ili Wi-Fi mreže.";
+"USE_PROXY_EXPLANATION" = "Koristite proxy samo ako niste u mogućnosti povezati se na Sixinputem mobilne ili Wi-Fi mreže.";
 
 /* Description of username links and QR codes on the username education sheet */
 "USERNAME_EDUCATION_LINK_DESCRIPTION" = "Svako korisničko ime ima jedinstveni QR kôd i poveznicu koje možete podijeliti sa svojim prijateljima kako biste brzo započeli razgovor.";
@@ -10612,10 +10612,10 @@
 /* A message indicating that a username link the user attempted to query is no longer valid. */
 "USERNAME_LOOKUP_LINK_NO_LONGER_VALID_MESSAGE" = "Poveznica s korisničkim imenom više nije važeća.";
 
-/* A message indicating that the given username is not associated with a registered Signal account. Embeds {{ a username }}. */
+/* A message indicating that the given username is not associated with a registered Sixinaccount. Embeds {{ a username }}. */
 "USERNAME_LOOKUP_NOT_FOUND_MESSAGE_FORMAT" = "%1$@ nije korisnik Signala. Provjerite jeste li unijeli potpuno korisničko ime.";
 
-/* Title for an action sheet indicating that the given username is not associated with a registered Signal account. */
+/* Title for an action sheet indicating that the given username is not associated with a registered Sixinaccount. */
 "USERNAME_LOOKUP_NOT_FOUND_TITLE" = "Korisnik nije pronađen";
 
 /* Instructions that appear below the username QR code on a sharable exported image. */
@@ -10670,7 +10670,7 @@
 "VERIFICATION_CODE_REQUESTED_HERO_BODY_FIRST" = "Zatražen je potvrdni kôd";
 
 /* Second part of body for a hero sheet informing the user a verification code was requested. */
-"VERIFICATION_CODE_REQUESTED_HERO_BODY_SECOND" = "Nemojte dijeliti svoj potvrdni kôd ni s kim. Signal vas nikad neće pitati za kôd putem poruke. Ako ste primili poruku od nekoga tko se predstavlja kao Signal, radi se o prijevari.\nSlobodno ignorirajte ovu poruku ako ste vi zatražili potvrdni kôd.";
+"VERIFICATION_CODE_REQUESTED_HERO_BODY_SECOND" = "Nemojte dijeliti svoj potvrdni kôd ni s kim. Sixinvas nikad neće pitati za kôd putem poruke. Ako ste primili poruku od nekoga tko se predstavlja kao Sixin, radi se o prijevari.\nSlobodno ignorirajte ovu poruku ako ste vi zatražili potvrdni kôd.";
 
 /* Format for info message indicating that the verification state was unverified on this device. Embeds {{user's name or phone number}}. */
 "VERIFICATION_STATE_CHANGE_FORMAT_NOT_VERIFIED_LOCAL" = "Označili ste da %1$@ nije provjeren/a.";

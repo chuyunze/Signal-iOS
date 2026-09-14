@@ -38,9 +38,12 @@ public class TSConstants {
     // Never instantiate this class.
     private init() {}
 
-    public static let legalTermsUrl = URL(string: "https://signal.org/legal/")!
-    public static let donateUrl = URL(string: "https://signal.org/donate/")!
-    public static let appStoreUrl = URL(string: "https://itunes.apple.com/us/app/signal-private-messenger/id874139669?mt=8")!
+    // Self-host debrand: upstream pointed at signal.org legal/donate pages and the
+    // official App Store listing. This is a self-hosted fork; route these to the
+    // operator's own domain instead. Real pages can be hosted there later.
+    public static let legalTermsUrl = URL(string: "https://i201314.cn/")!
+    public static let donateUrl = URL(string: "https://i201314.cn/")!
+    public static let appStoreUrl = URL(string: "https://i201314.cn/")!
 
     public static var mainServiceURL: String { shared.mainServiceURL }
 

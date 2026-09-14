@@ -21,7 +21,7 @@ final class AppIconSettingsTableViewController: OWSTableViewController2 {
     ]
 
     /// This URL itself is not used. The action is overridden in the text view delegate function.
-    private static let learnMoreURL = URL(string: "https://support.signal.org/")!
+    private static let learnMoreURL = URL(string: "https://i201314.cn/")!
 
     // MARK: Properties
 

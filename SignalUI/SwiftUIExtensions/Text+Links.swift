@@ -16,7 +16,7 @@ extension Text {
         action: @escaping () -> Void,
     ) -> some View {
         // Placeholder URL is needed for the link, but it's thrown away in the OpenURLAction
-        (self + Text(" [\(title)](https://support.signal.org/)").fontWeight(useBold ? .bold : nil))
+        (self + Text(" [\(title)](https://i201314.cn/)").fontWeight(useBold ? .bold : nil))
             .tint(tint)
             .environment(\.openURL, OpenURLAction { _ in
                 action()

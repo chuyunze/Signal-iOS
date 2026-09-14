@@ -12,7 +12,8 @@ public enum LinkPreviewHelper {
             return Self.stickerPackShareDomain(forUrl: url)
         }
         if PossibleGroupInviteLinkUrl.parseFrom(url) != nil {
-            return "signal.org"
+            // Self-host debrand: label shown on group-invite link previews.
+            return "i201314.cn"
         }
         return url.host
     }

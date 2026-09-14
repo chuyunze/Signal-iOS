@@ -321,7 +321,7 @@ public class ShareViewController: OWSNavigationController, ShareViewDelegate {
     private func showBlockingView(_ viewController: AppBlockingViewController) {
         AssertIsOnMainThread()
 
-        viewController.navigationItem.title = "Signal"
+        viewController.navigationItem.title = "私信"
         viewController.navigationItem.leftBarButtonItem = .cancelButton { [weak self] in
             self?.shareViewWasCancelled()
         }

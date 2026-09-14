@@ -22,9 +22,10 @@ final class CallKitCallManager {
     let callController = CXCallController(queue: .main)
     let showNamesOnCallScreen: Bool
 
-    static let kAnonymousCallHandlePrefix = "Signal:"
-    static let kGroupThreadCallHandlePrefix = "SignalGroup:"
-    static let kCallLinkCallHandlePrefix = "SignalCall:"
+    // Self-host debrand: these strings only identify handles within our own app/CallKit storage.
+    static let kAnonymousCallHandlePrefix = "Sixin:"
+    static let kGroupThreadCallHandlePrefix = "SixinGroup:"
+    static let kCallLinkCallHandlePrefix = "SixinCall:"
 
     private static func decodeGroupId(fromIntentHandle handle: String) -> GroupIdentifier? {
         let prefix = handle.prefix(kGroupThreadCallHandlePrefix.count)

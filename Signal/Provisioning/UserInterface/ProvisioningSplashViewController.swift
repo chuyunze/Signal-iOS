@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 //
 
-import SafariServices
 import SignalServiceKit
 import SignalUI
 import UIKit
@@ -75,8 +74,20 @@ class ProvisioningSplashViewController: ProvisioningBaseViewController {
                 comment: "Link to the 'terms and privacy policy' in the 'onboarding splash' view.",
             )),
             primaryAction: UIAction { [weak self] _ in
-                self?.present(SFSafariViewController(url: TSConstants.legalTermsUrl), animated: true)
-
+                // Self-host debrand: upstream opened https://signal.org/legal/ here.
+                // Show a local, neutral notice instead of linking to the official site.
+                let sheet = ActionSheetController(
+                    title: OWSLocalizedString(
+                        "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY",
+                        comment: "Link to the 'terms and privacy policy' in the 'onboarding splash' view.",
+                    ),
+                    message: OWSLocalizedString(
+                        "SELFHOST_TERMS_PRIVACY_NOTICE",
+                        comment: "Self-host build: neutral terms/privacy notice shown on the splash screen.",
+                    ),
+                )
+                sheet.addAction(ActionSheetAction(title: CommonStrings.okButton, style: .default))
+                self?.present(sheet, animated: true)
             },
         )
         tosPPButton.configuration?.baseForegroundColor = .Signal.secondaryLabel

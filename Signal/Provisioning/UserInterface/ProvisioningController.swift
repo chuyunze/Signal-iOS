@@ -144,10 +144,7 @@ class ProvisioningController: NSObject {
     private func setUpDebugLogsGesture(
         on navigationController: UINavigationController,
     ) {
-        let submitLogsGesture = UITapGestureRecognizer(target: self, action: #selector(submitLogs))
-        submitLogsGesture.numberOfTapsRequired = 8
-        submitLogsGesture.delaysTouchesEnded = false
-        navigationController.view.addGestureRecognizer(submitLogsGesture)
+        // Self-host debrand: hidden 8-tap debug log gesture disabled for test users.
     }
 
     @objc

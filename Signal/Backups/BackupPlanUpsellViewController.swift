@@ -194,7 +194,7 @@ struct BackupPlanUpsellView: View {
     BackupPlanUpsellView(viewModel: {
         let viewModel = BackupPlanUpsellViewModel(
             titleText: "Hot Deal on Backups Today!",
-            bodyText: "For one day only, get Signal Secure Backups at a screamin' deal. Keep that media safe!",
+            bodyText: "For one day only, get Sixin Secure Backups at a screamin' deal. Keep that media safe!",
             storageAllowanceBytes: 100 * .gigabyte,
             storeKitAvailability: .available(paidPlanDisplayPrice: "$1.99"),
         )

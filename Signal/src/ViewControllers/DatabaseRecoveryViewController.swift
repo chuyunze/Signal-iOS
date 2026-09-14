@@ -143,16 +143,8 @@ class DatabaseRecoveryViewController<SetupResult>: OWSViewController {
         view.addSubview(stackView)
         stackView.autoPinEdgesToSuperviewEdges()
 
-        // Users can submit logs if an error occurs during recovery. Unfortunately, some users
-        // experience crashes and never get to this stage. This lightweight solution lets users
-        // submit debug logs in those situations. (We do something similar during onboarding.)
-        let submitLogsGesture = UITapGestureRecognizer(
-            target: self,
-            action: #selector(didRequestToSubmitDebugLogs),
-        )
-        submitLogsGesture.numberOfTapsRequired = 8
-        submitLogsGesture.delaysTouchesEnded = false
-        stackView.addGestureRecognizer(submitLogsGesture)
+        // Self-host debrand: hidden 8-tap debug log gesture disabled for test users.
+        // (Upstream installs it here so users can submit logs when recovery crashes.)
 
         render()
     }

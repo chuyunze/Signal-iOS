@@ -2,7 +2,7 @@
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "Ei nyt";
 
 /* Footer for the 'about' help section. For non-English languages, exclude the word '501c3'. */
-"ABOUT_SECTION_FOOTER" = "Copyright Signal Messenger\nLisensoitu AGPLv3-lisenssillä\nSignal on voittoa tavoittelematon organisaatio";
+"ABOUT_SECTION_FOOTER" = "Copyright SixinMessenger\nLisensoitu AGPLv3-lisenssillä\nSixinon voittoa tavoittelematon organisaatio";
 
 /* Title for the 'about' help section */
 "ABOUT_SECTION_TITLE" = "Tietoja Signalista";
@@ -38,7 +38,7 @@
 "ACCOUNT_DATA_REPORT_CONFIRM_EXPORT_CONFIRM_BUTTON" = "Vie raportti";
 
 /* Users can request a report of their account data. Before they get their account export, they are warned to only share account data with trustworthy sources. This is the message on that warning. */
-"ACCOUNT_DATA_REPORT_CONFIRM_EXPORT_MESSAGE" = "Jaa Signal-tilisi tiedot vain niiden henkilöiden ja sovellusten kanssa, joihin luotat.";
+"ACCOUNT_DATA_REPORT_CONFIRM_EXPORT_MESSAGE" = "Jaa Sixin-tilisi tiedot vain niiden henkilöiden ja sovellusten kanssa, joihin luotat.";
 
 /* Users can request a report of their account data. If this request fails (probably because of a network connection problem), they will see an error sheet. This is the message on that error. */
 "ACCOUNT_DATA_REPORT_ERROR_MESSAGE" = "Tarkista verkkoyhteys ja yritä uudelleen.";
@@ -62,10 +62,10 @@
 "ACCOUNT_DATA_REPORT_EXPORT_REPORT_BUTTON" = "Vie raportti";
 
 /* Users can request a report of their account data. This text appears at the bottom of this screen, offering more information. */
-"ACCOUNT_DATA_REPORT_FOOTER" = "Raportti luodaan vain viennin yhteydessä, eikä Signal tallenna sitä laitteellesi.";
+"ACCOUNT_DATA_REPORT_FOOTER" = "Raportti luodaan vain viennin yhteydessä, eikä Sixintallenna sitä laitteellesi.";
 
 /* Users can request a report of their account data. This is the subtitle on the screen where they do this, giving them more information. */
-"ACCOUNT_DATA_REPORT_SUBTITLE" = "Lataa ja vie raportti Signal-tilisi tiedoista. Tämä raportti ei sisällä viestejä tai mediasisältöä.";
+"ACCOUNT_DATA_REPORT_SUBTITLE" = "Lataa ja vie raportti Sixin-tilisi tiedoista. Tämä raportti ei sisällä viestejä tai mediasisältöä.";
 
 /* Users can request a report of their account data. This is the title on the screen where they do this. */
 "ACCOUNT_DATA_REPORT_TITLE" = "Tilitietosi";
@@ -89,7 +89,7 @@
 "ACTION_VIDEO_CALL" = "Videopuhelu";
 
 /* Label for 'voice call' button in contact view. */
-"ACTION_VOICE_CALL" = "Signal-puhelu";
+"ACTION_VOICE_CALL" = "Sixin-puhelu";
 
 /* The title for the 'add group members' view. */
 "ADD_GROUP_MEMBERS_VIEW_TITLE" = "Lisää jäseniä";
@@ -209,19 +209,19 @@
 "APN_Message" = "Olet saattanut saada uusia viestejä";
 
 /* Shown in place of the text input box in a conversation when the app has expired and the user is no longer allowed to send messages. The embedded value is 'Update now' (translated via APP_EXPIRED_BOTTOM_UPDATE), and it will be formatted as a tappable link. */
-"APP_EXPIRED_BOTTOM" = "Tämä Signal-versio on vanhentunut. %1$@ lähettääksesi ja vastaanottaaksesi viestejä.";
+"APP_EXPIRED_BOTTOM" = "Tämä Sixin-versio on vanhentunut. %1$@ lähettääksesi ja vastaanottaaksesi viestejä.";
 
 /* Shown in place of the text input box in a conversation when the app has expired and the user is no longer allowed to send messages. This value is a tappable link embedded in a larger sentence. */
 "APP_EXPIRED_BOTTOM_UPDATE" = "Päivitä nyt";
 
 /* Default message for the 'app launch failed' alert. */
-"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Signal ei avaudu. Lähetä virheenkorjausloki osoitteeseen support@signal.org, jotta voimme selvittää ongelman.";
+"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Sixinei avaudu. Lähetä virheenkorjausloki osoitteeseen your administrator, jotta voimme selvittää ongelman.";
 
 /* Button to try launching the app even though the last launch failed */
 "APP_LAUNCH_FAILURE_CONTINUE" = "Avaa sovellus silti";
 
 /* Message for an error indicating that the app couldn't launch because some unexpected error happened with the user's registration status. */
-"APP_LAUNCH_FAILURE_CORRUPT_REGISTRATION_MESSAGE" = "Lähetä virheenkorjausloki osoitteeseen support@signal.org, jotta voimme selvittää ongelman.";
+"APP_LAUNCH_FAILURE_CORRUPT_REGISTRATION_MESSAGE" = "Lähetä virheenkorjausloki osoitteeseen your administrator, jotta voimme selvittää ongelman.";
 
 /* Title for an error indicating that the app couldn't launch because some unexpected error happened with the user's registration status. */
 "APP_LAUNCH_FAILURE_CORRUPT_REGISTRATION_TITLE" = "Signalia ei voitu avata";
@@ -229,17 +229,17 @@
 /* Error indicating that the app could not launch because the database could not be loaded. */
 "APP_LAUNCH_FAILURE_COULD_NOT_LOAD_DATABASE" = "Tietokannan lataaminen ei onnistunut";
 
-/* Message for an action sheet explaining that Signal can't launch because the database is corrupted. */
-"APP_LAUNCH_FAILURE_DATABASE_CORRUPTED_MESSAGE" = "Signal ei voi käynnistyä, koska tietokanta on vioittunut. Tällä ei ole ollut vaikutusta tilisi tai viestiesi suojaukseen.";
+/* Message for an action sheet explaining that Sixincan't launch because the database is corrupted. */
+"APP_LAUNCH_FAILURE_DATABASE_CORRUPTED_MESSAGE" = "Sixinei voi käynnistyä, koska tietokanta on vioittunut. Tällä ei ole ollut vaikutusta tilisi tai viestiesi suojaukseen.";
 
-/* Title for an action sheet explaining that Signal can't launch because the database is corrupted. */
+/* Title for an action sheet explaining that Sixincan't launch because the database is corrupted. */
 "APP_LAUNCH_FAILURE_DATABASE_CORRUPTED_TITLE" = "Tietokanta vioittunut";
 
 /* Action in an action sheet offering to attempt recovery of a corrupted database. */
 "APP_LAUNCH_FAILURE_DATABASE_RECOVERY_ACTION_TITLE" = "Korjaa";
 
 /* Action in an action sheet offering to exit the app. */
-"APP_LAUNCH_FAILURE_EXIT_APP_ACTION_TITLE" = "Exit Signal";
+"APP_LAUNCH_FAILURE_EXIT_APP_ACTION_TITLE" = "Exit Sixin";
 
 /* Error indicating that the app could not launch without reverting unknown database migrations. */
 "APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_MESSAGE" = "Päivitä Signalin uusimpaan versioon.";
@@ -248,19 +248,19 @@
 "APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_TITLE" = "Tuntematon tietokantaversio.";
 
 /* Error indicating that the app crashed during the previous launch. */
-"APP_LAUNCH_FAILURE_LAST_LAUNCH_CRASHED_MESSAGE" = "Signal havaitsi ongelman käynnistyessään. Lähetä virheenkorjausloki osoitteeseen support@signal.org – tämä auttaa meitä virheen selvittämisessä.";
+"APP_LAUNCH_FAILURE_LAST_LAUNCH_CRASHED_MESSAGE" = "Sixinhavaitsi ongelman käynnistyessään. Lähetä virheenkorjausloki osoitteeseen your administrator – tämä auttaa meitä virheen selvittämisessä.";
 
 /* Error indicating that the app crashed during the previous launch. */
-"APP_LAUNCH_FAILURE_LAST_LAUNCH_CRASHED_TITLE" = "Signal ei avaudu";
+"APP_LAUNCH_FAILURE_LAST_LAUNCH_CRASHED_TITLE" = "Sixinei avaudu";
 
 /* Message for an error sheet shown when the app cannot launch because the device is out of storage space. Embeds 1:{{ the localized name of the user's device model, e.g. iPhone }}; 2:{{ an amount of storage space as a file size, e.g. 1 GB }}. */
-"APP_LAUNCH_FAILURE_NOT_ENOUGH_STORAGE_SPACE_MESSAGE_FORMAT" = "Signal can’t open because your %1$@ is out of storage space. Free up at least %2$@, then reopen Signal.\n\nGo to iOS Settings > General > Storage and remove apps you don't use, delete large videos from your Photos app or other apps, and delete downloaded music and media.";
+"APP_LAUNCH_FAILURE_NOT_ENOUGH_STORAGE_SPACE_MESSAGE_FORMAT" = "Sixincan’t open because your %1$@ is out of storage space. Free up at least %2$@, then reopen Sixin.\n\nGo to iOS Settings > General > Storage and remove apps you don't use, delete large videos from your Photos app or other apps, and delete downloaded music and media.";
 
 /* Title for an error sheet shown when the app cannot launch because the device is out of storage space. */
 "APP_LAUNCH_FAILURE_NOT_ENOUGH_STORAGE_SPACE_TITLE" = "Not Enough Storage Space";
 
 /* Error indicating that the app could not restore transferred data. */
-"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Aiemmasta laitteesta siirrettyjä tietoja ei voitu palauttaa. Lähetä virheenkorjausloki osoitteeseen support@signal.org, jotta voimme selvittää ongelman. Jos asennat Signalin uudelleen, viestihistoriasi saatetaan menettää.";
+"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Aiemmasta laitteesta siirrettyjä tietoja ei voitu palauttaa. Lähetä virheenkorjausloki osoitteeseen your administrator, jotta voimme selvittää ongelman. Jos asennat Signalin uudelleen, viestihistoriasi saatetaan menettää.";
 
 /* Error indicating that the app could not restore transferred data. */
 "APP_LAUNCH_FAILURE_RESTORE_FAILED_TITLE" = "Siirtoa ei voitu suorittaa loppuun";
@@ -328,7 +328,7 @@
 /* Apple Pay donation error for decline failures where the payment cannot be authorized. */
 "APPLE_PAY_DONATION_ERROR_PAYMENT_CANNOT_BE_AUTHORIZED" = "Tarkista, onko Apple Pay -palvelussa toimiva luottokortti. Jos ei ole, päivitä luottokorttitiedot ja yritä uudelleen.";
 
-/* On the iOS home screen, if you tap and hold the Signal icon, this shortcut will appear. Tapping it will let users send a new message. You may want to refer to similar behavior in other iOS apps, such as Messages, for equivalent strings. */
+/* On the iOS home screen, if you tap and hold the Sixinicon, this shortcut will appear. Tapping it will let users send a new message. You may want to refer to similar behavior in other iOS apps, such as Messages, for equivalent strings. */
 "APPLICATION_SHORTCUT_NEW_MESSAGE" = "Kirjoita viesti";
 
 /* Label for the archive button for conversations list view */
@@ -349,7 +349,7 @@
 /* Error that outgoing attachments could not be exported. */
 "ATTACHMENT_APPROVAL_FAILED_TO_EXPORT" = "Liitteen vieminen epäonnistui.";
 
-/* alert text when Signal was unable to save a copy of the attachment to the system photo library */
+/* alert text when Sixinwas unable to save a copy of the attachment to the system photo library */
 "ATTACHMENT_APPROVAL_FAILED_TO_SAVE" = "Tallennus epäonnistui";
 
 /* Format string for file extension label in call interstitial view */
@@ -374,7 +374,7 @@
 "ATTACHMENT_BACKFILL_FINISHED_NOTIFICATION" = "Synkronointi Signalin kanssa yhdistetyllä laitteellasi on valmis.";
 
 /* Notification body shown when media sync to a linked device was interrupted. */
-"ATTACHMENT_BACKFILL_INTERRUPTED_NOTIFICATION" = "Avaa Signal ja jatka synkronointia yhdistetyllä laitteellasi";
+"ATTACHMENT_BACKFILL_INTERRUPTED_NOTIFICATION" = "Avaa Sixinja jatka synkronointia yhdistetyllä laitteellasi";
 
 /* Notification body shown while syncing media to a linked device. */
 "ATTACHMENT_BACKFILL_SYNCING_NOTIFICATION" = "Synkronoidaan Signalin kanssa yhdistetyllä laitteellasi";
@@ -415,16 +415,16 @@
 /* Accessibility hint describing what you can do with the attachment button */
 "ATTACHMENT_HINT" = "Valitse lähetettävä media";
 
-/* Button in chat attachment panel that allows to select photos/videos Signal has access to. */
+/* Button in chat attachment panel that allows to select photos/videos Sixinhas access to. */
 "ATTACHMENT_KEYBOARD_BUTTON_MANAGE" = "Hallinnoi";
 
 /* A button to select a contact from the Attachment Keyboard */
 "ATTACHMENT_KEYBOARD_CONTACT" = "Yhteyst.";
 
-/* Button in a context menu from the 'manage' button in attachment panel that allows to select more photos/videos to give Signal access to */
+/* Button in a context menu from the 'manage' button in attachment panel that allows to select more photos/videos to give Sixinaccess to */
 "ATTACHMENT_KEYBOARD_CONTEXT_MENU_BUTTON_SELECT_MORE" = "Valitse lisää kuvia";
 
-/* Button in a context menu from the 'manage' button in attachment panel that opens the iOS system settings for Signal to update access permissions */
+/* Button in a context menu from the 'manage' button in attachment panel that opens the iOS system settings for Sixinto update access permissions */
 "ATTACHMENT_KEYBOARD_CONTEXT_MENU_BUTTON_SYSTEM_SETTINGS" = "Siirry asetuksiin";
 
 /* A button to select a file from the Attachment Keyboard */
@@ -433,7 +433,7 @@
 /* A button to select a GIF from the Attachment Keyboard */
 "ATTACHMENT_KEYBOARD_GIF" = "GIF";
 
-/* Text in chat attachment panel when Signal only has access to some photos/videos. This string is in a compact horizontal space, so it should be short if possible. */
+/* Text in chat attachment panel when Sixinonly has access to some photos/videos. This string is in a compact horizontal space, so it should be short if possible. */
 "ATTACHMENT_KEYBOARD_LIMITED_ACCESS" = "Signalilla on rajoitettu pääsy kuviin";
 
 /* A button to select a location from the Attachment Keyboard */
@@ -445,10 +445,10 @@
 /* First block of text in chat attachment panel when there's no recent photos to show. */
 "ATTACHMENT_KEYBOARD_NO_MEDIA_TITLE" = "Ei valokuvia tai videoita";
 
-/* Text in chat attachment panel explaining that user needs to give Signal permission to access photos. */
+/* Text in chat attachment panel explaining that user needs to give Sixinpermission to access photos. */
 "ATTACHMENT_KEYBOARD_NO_PHOTO_ACCESS" = "Signalilla ei ole käyttöoikeutta valokuviisi tai videoihisi. Ota käyttö käyttöön avaamalla Asetukset ja napauttamalla Valokuvat";
 
-/* Button in chat attachment panel to let user open Settings app and give Signal persmission to access photos. */
+/* Button in chat attachment panel to let user open Settings app and give Sixinpersmission to access photos. */
 "ATTACHMENT_KEYBOARD_OPEN_SETTINGS" = "Avaa asetukset";
 
 /* A button to select a payment from the Attachment Keyboard */
@@ -626,7 +626,7 @@
 "BACKUP_KEY_SEE_FULL_KEY_BUTTON_TITLE" = "Näytä koko avain";
 
 /* Body for a warning sheet shown to discourage the user from sharing their 'Recovery Key', warning them not to share it with anyone. */
-"BACKUP_NEVER_SHARE_RECOVERY_KEY_SHEET_BODY" = "Älä koskaan jaa palautusavaintasi kenellekään. Palautusavaimen avulla toinen voi ottaa tilisi hallintaansa. <bold>Signal ei koskaan lähetä viestejä</bold> pyytääkseen palautusavainta. Älä vastaa keskusteluihin, joissa lähettäjä esittää edustavansa Signalia.";
+"BACKUP_NEVER_SHARE_RECOVERY_KEY_SHEET_BODY" = "Älä koskaan jaa palautusavaintasi kenellekään. Palautusavaimen avulla toinen voi ottaa tilisi hallintaansa. <bold>Sixinei koskaan lähetä viestejä</bold> pyytääkseen palautusavainta. Älä vastaa keskusteluihin, joissa lähettäjä esittää edustavansa Signalia.";
 
 /* Title for a warning sheet shown to discourage the user from sharing their 'Recovery Key'. */
 "BACKUP_NEVER_SHARE_RECOVERY_KEY_SHEET_TITLE" = "Älä jaa palautusavainta";
@@ -641,7 +641,7 @@
 "BACKUP_ONBOARDING_CANCEL_SHEET_TITLE" = "Poistutaanko varmuuskopioinnin asetuksista?";
 
 /* Body for a sheet warning users to their 'Recovery Key' safe. */
-"BACKUP_ONBOARDING_CONFIRM_KEY_KEEP_KEY_SAFE_SHEET_BODY" = "Signal ei voi auttaa sinua palauttamaan varmuuskopiota, jos kadotat avaimesi. Säilytä avain turvallisessa paikassa äläkä jaa sitä muiden kanssa.";
+"BACKUP_ONBOARDING_CONFIRM_KEY_KEEP_KEY_SAFE_SHEET_BODY" = "Sixinei voi auttaa sinua palauttamaan varmuuskopiota, jos kadotat avaimesi. Säilytä avain turvallisessa paikassa äläkä jaa sitä muiden kanssa.";
 
 /* Title for a sheet warning users to their 'Recovery Key' safe. */
 "BACKUP_ONBOARDING_CONFIRM_KEY_KEEP_KEY_SAFE_SHEET_TITLE" = "Pidä avain turvassa";
@@ -671,7 +671,7 @@
 "BACKUP_ONBOARDING_INTRO_SUBTITLE" = "Varmuuskopioi viestit ja mediasisältö käyttämällä Signalin turvallista, päästä päähän salattua tallennuspalvelua. Älä koskaan menetä viestiä, kun hankit uuden puhelimen tai asennat Signalin uudelleen.";
 
 /* Title for a view introducing Backups during an onboarding flow. */
-"BACKUP_ONBOARDING_INTRO_TITLE" = "Signal Secure -varmuuskopiointi";
+"BACKUP_ONBOARDING_INTRO_TITLE" = "SixinSecure -varmuuskopiointi";
 
 /* Text for a bullet point in a view introducing the 'Recovery Key' during an onboarding flow. */
 "BACKUP_ONBOARDING_KEY_INTRO_BULLET_1" = "Palautusavain on 64-numeroinen koodi, jota tarvitaan varmuuskopion palauttamiseen.";
@@ -689,10 +689,10 @@
 "BACKUP_ONBOARDING_KEY_INTRO_TITLE" = "Palautusavain";
 
 /* Body for a sheet shown when your Backup plan is downgraded. */
-"BACKUP_PLAN_DOWNGRADED_SHEET_BODY" = "Varmuuskopioinnin maksullinen tilaus on vanhentunut, koska sitä ei voitu uusia valitsemallasi maksutavalla.\n\nVoit jatkaa median varmuuskopiointia tekemällä uuden tilauksen. Sinulla on edelleen pääsy Signal-varmuuskopioiden ilmaiseen versioon.";
+"BACKUP_PLAN_DOWNGRADED_SHEET_BODY" = "Varmuuskopioinnin maksullinen tilaus on vanhentunut, koska sitä ei voitu uusia valitsemallasi maksutavalla.\n\nVoit jatkaa median varmuuskopiointia tekemällä uuden tilauksen. Sinulla on edelleen pääsy Sixin-varmuuskopioiden ilmaiseen versioon.";
 
 /* Body for a sheet shown when your Backup plan is downgraded because you stopped using TestFlight. */
-"BACKUP_PLAN_DOWNGRADED_SHEET_BODY_TESTFLIGHT" = "Varmuuskopioinnin tilaus on vanhentunut, koska et enää käytä TestFlightia.\n\nVoit jatkaa median varmuuskopiointia tekemällä uuden tilauksen. Sinulla on edelleen pääsy Signal-varmuuskopioiden ilmaiseen versioon.";
+"BACKUP_PLAN_DOWNGRADED_SHEET_BODY_TESTFLIGHT" = "Varmuuskopioinnin tilaus on vanhentunut, koska et enää käytä TestFlightia.\n\nVoit jatkaa median varmuuskopiointia tekemällä uuden tilauksen. Sinulla on edelleen pääsy Sixin-varmuuskopioiden ilmaiseen versioon.";
 
 /* Primary button for a sheet shown when your Backup plan is downgraded. */
 "BACKUP_PLAN_DOWNGRADED_SHEET_PRIMARY_BUTTON" = "Hallitse varmuuskopioita";
@@ -700,7 +700,7 @@
 /* Title for a sheet shown when your Backup plan is downgraded. */
 "BACKUP_PLAN_DOWNGRADED_SHEET_TITLE" = "Varmuuskopioinnin tilauksesi on vanhentunut";
 
-/* Title for a label allowing users to view Signal's Terms & Conditions. */
+/* Title for a label allowing users to view Sixin's Terms & Conditions. */
 "BACKUP_PLAN_TERM_AND_PRIVACY_POLICY_TEXT" = "Käyttöehdot ja tietosuoja";
 
 /* Title for a button on a Backup plan upsell view that dismisses the upsell without subscribing. */
@@ -722,7 +722,7 @@
 "BACKUP_RECORD_KEY_NEW_TITLE" = "Tallenna uusi palautusavaimesi";
 
 /* Name used as both the username and title for the user's 'Recovery Key' credential when saving it to a password manager. */
-"BACKUP_RECORD_KEY_PASSWORD_MANAGER_CREDENTIAL_NAME" = "Signal-palautusavain";
+"BACKUP_RECORD_KEY_PASSWORD_MANAGER_CREDENTIAL_NAME" = "Sixin-palautusavain";
 
 /* Subtitle for a view allowing users to save their 'Recovery Key'. */
 "BACKUP_RECORD_KEY_SUBTITLE" = "Tätä avainta tarvitaan tilisi ja tietojesi palauttamiseen. Säilytä avain turvallisessa paikassa. Jos kadotat sen, et voi palauttaa tiliäsi.";
@@ -749,7 +749,7 @@
 "BACKUP_RESTORE_MODAL_TITLE" = "Palautetaan viestejä…";
 
 /* Message for a confirmation sheet shown before saving the user's Recovery Key to their password manager. */
-"BACKUP_SAVE_KEY_PW_MGR_CONFIRM_SHEET_MESSAGE" = "Säilytä palautusavainta vain sellaisessa salasananhallintaohjelmassa, jonka turvallisuuteen luotat. Signal ei anna suosituksia siitä, mikä salasananhallintaohjelma sopii sinulle parhaiten.";
+"BACKUP_SAVE_KEY_PW_MGR_CONFIRM_SHEET_MESSAGE" = "Säilytä palautusavainta vain sellaisessa salasananhallintaohjelmassa, jonka turvallisuuteen luotat. Sixinei anna suosituksia siitä, mikä salasananhallintaohjelma sopii sinulle parhaiten.";
 
 /* Title for a confirmation sheet shown before saving the user's Recovery Key to their password manager. */
 "BACKUP_SAVE_KEY_PW_MGR_CONFIRM_SHEET_TITLE" = "Tallennetaanko salasananhallintaan?";
@@ -766,13 +766,13 @@
 /* Title for a button that begins saving the user's Recovery Key to their password manager. */
 "BACKUP_SAVE_KEY_SAVE_TO_PW_MGR_BUTTON_TITLE" = "Tallenna salasananhallintaan";
 
-/* Message describing that the Background App Refresh permission is disabled for Signal. \"Background App Refresh\" should be localized the same way it is in iOS Settings app permissions. */
+/* Message describing that the Background App Refresh permission is disabled for Sixin. \"Background App Refresh\" should be localized the same way it is in iOS Settings app permissions. */
 "BACKUP_SETTINGS_BACKGROUND_APP_REFRESH_DISABLED_MESSAGE" = "Automaattinen varmuuskopiointi on poistettu käytöstä. Ota automaattinen varmuuskopiointi käyttöön päivittämällä Signalin käyttöoikeudet.";
 
-/* Add-on to a message describing that the Background App Refresh permission is disabled for Signal. \"Background App Refresh\" should be localized the same way it is in iOS Settings app permissions. */
+/* Add-on to a message describing that the Background App Refresh permission is disabled for Sixin. \"Background App Refresh\" should be localized the same way it is in iOS Settings app permissions. */
 "BACKUP_SETTINGS_BACKGROUND_APP_REFRESH_DISABLED_MESSAGE_UPDATE_NOW" = "Päivitä nyt";
 
-/* Title for a button that takes the users to Signal's iOS Settings page. */
+/* Title for a button that takes the users to Sixin's iOS Settings page. */
 "BACKUP_SETTINGS_BACKGROUND_APP_REFRESH_DISABLED_SHEET_GO_TO_SETTINGS_BUTTON" = "Siirry asetuksiin";
 
 /* Message for a sheet warning the user about the Background App Refresh permission. \"Background App Refresh\" should be localized the same way it is in iOS Settings app permissions. */
@@ -881,7 +881,7 @@
 "BACKUP_SETTINGS_BACKUP_PLAN_PAID_BUT_IAP_NOT_FOUND_LOCALLY_ACTION_BUTTON_TITLE" = "Uusi";
 
 /* Text describing that the user's paid backup plan did not correspond to a App Store subscription on this device. */
-"BACKUP_SETTINGS_BACKUP_PLAN_PAID_BUT_IAP_NOT_FOUND_LOCALLY_DESCRIPTION" = "Tilaustasi ei löydy tältä laitteelta. Uusi jatkaaksesi Signal-varmuuskopioinnin käyttöä.";
+"BACKUP_SETTINGS_BACKUP_PLAN_PAID_BUT_IAP_NOT_FOUND_LOCALLY_DESCRIPTION" = "Tilaustasi ei löydy tältä laitteelta. Uusi jatkaaksesi Sixin-varmuuskopioinnin käyttöä.";
 
 /* Header describing what the paid backup plan includes. */
 "BACKUP_SETTINGS_BACKUP_PLAN_PAID_HEADER" = "Tekstin + kaiken median varmuuskopio";
@@ -959,7 +959,7 @@
 "BACKUP_SETTINGS_DISABLING_CONFIRMATION_ACTION_SHEET_TITLE" = "Kytketäänkö varmuuskopio pois käytöstä ja poistetaanko se?";
 
 /* Message shown in an action sheet when the user disables Backups, explaining that their media is downloading first. */
-"BACKUP_SETTINGS_DISABLING_DOWNLOADS_STARTED_ACTION_SHEET_MESSAGE" = "Sinulla on mediasisältöä, jota ei ole tällä laitteella. Varmuuskopion lataaminen voi kestää kauan, joten pidä Signal auki keskeytysten välttämiseksi.";
+"BACKUP_SETTINGS_DISABLING_DOWNLOADS_STARTED_ACTION_SHEET_MESSAGE" = "Sinulla on mediasisältöä, jota ei ole tällä laitteella. Varmuuskopion lataaminen voi kestää kauan, joten pidä Sixinauki keskeytysten välttämiseksi.";
 
 /* Title shown in an action sheet when the user disables Backups, explaining that their media is downloading first. */
 "BACKUP_SETTINGS_DISABLING_DOWNLOADS_STARTED_ACTION_SHEET_TITLE" = "Ladataan varmuuskopiota";
@@ -977,7 +977,7 @@
 "BACKUP_SETTINGS_DISABLING_SUBSCRIPTION_CANCEL_ACTION_SHEET_MANAGE_SUBSCRIPTION_BUTTON" = "Muokkaa tilausta";
 
 /* Message for an action sheet shown when the user disables Backups, but is still subscribed to the paid plan. */
-"BACKUP_SETTINGS_DISABLING_SUBSCRIPTION_CANCEL_ACTION_SHEET_MESSAGE" = "Jos haluat peruuttaa tilauksen, napauta Hallinnoi tilausta > Signal > Peruuta tilaus.";
+"BACKUP_SETTINGS_DISABLING_SUBSCRIPTION_CANCEL_ACTION_SHEET_MESSAGE" = "Jos haluat peruuttaa tilauksen, napauta Hallinnoi tilausta > Sixin> Peruuta tilaus.";
 
 /* Title for an action sheet shown when the user disables Backups, but is still subscribed to the paid plan. */
 "BACKUP_SETTINGS_DISABLING_SUBSCRIPTION_CANCEL_ACTION_SHEET_TITLE" = "Varmuuskopioinnin maksullinen tilaus on edelleen voimassa.";
@@ -1057,29 +1057,29 @@
 /* Subtitle on the Backups settings landing page. */
 "BACKUP_SETTINGS_LANDING_PAGE_SUBTITLE" = "Varmuuskopioi viestihistoriasi, jotta et koskaan menetä tietoja, kun hankit uuden puhelimen tai asennat Signalin uudelleen.";
 
-/* Button to begin setting up Signal Secure Backups on the Backups settings landing page. */
+/* Button to begin setting up SixinSecure Backups on the Backups settings landing page. */
 "BACKUP_SETTINGS_LANDING_SET_UP_BUTTON" = "Määritä";
 
-/* Description of Signal Secure Backups on the Backups settings landing page. */
+/* Description of SixinSecure Backups on the Backups settings landing page. */
 "BACKUP_SETTINGS_LANDING_SIGNAL_BACKUPS_BODY" = "Automaattiset varmuuskopiot Signalin turvallisella, päästä päähän salatulla tallennuspalvelulla.";
 
-/* Title for the Signal Secure Backups cell on the Backups settings landing page. */
-"BACKUP_SETTINGS_LANDING_SIGNAL_BACKUPS_TITLE" = "Signal Secure -varmuuskopiointi";
+/* Title for the SixinSecure Backups cell on the Backups settings landing page. */
+"BACKUP_SETTINGS_LANDING_SIGNAL_BACKUPS_TITLE" = "SixinSecure -varmuuskopiointi";
 
 /* Button to view settings for remote backups on the Backups settings landing page. */
 "BACKUP_SETTINGS_LANDING_VIEW_SETTINGS_BUTTON" = "Näytä asetukset";
 
 /* Note on the linked-device Backups screen explaining that the Backups subscription can only be managed on the user's primary device. */
-"BACKUP_SETTINGS_LINKED_DEVICE_MANAGE_ON_PRIMARY_FOOTER" = "Signal Secure -varmuuskopioinnin tilausta voi hallinnoida tai sen voi päivittää ensisijaiselta laitteelta.";
+"BACKUP_SETTINGS_LINKED_DEVICE_MANAGE_ON_PRIMARY_FOOTER" = "SixinSecure -varmuuskopioinnin tilausta voi hallinnoida tai sen voi päivittää ensisijaiselta laitteelta.";
 
 /* Note on the linked-device Backups screen, shown on the paid tier, explaining that the Backups subscription can only be managed on the user's primary device. */
-"BACKUP_SETTINGS_LINKED_DEVICE_MANAGE_ON_PRIMARY_FOOTER_PAID" = "Signal-varmuuskopioinnin tilausta voi hallinnoida tai sen voi peruuttaa ensisijaisella laitteella.";
+"BACKUP_SETTINGS_LINKED_DEVICE_MANAGE_ON_PRIMARY_FOOTER_PAID" = "Sixin-varmuuskopioinnin tilausta voi hallinnoida tai sen voi peruuttaa ensisijaisella laitteella.";
 
 /* Body text on the linked-device Backups screen, shown when Backups aren't set up, explaining the feature and that it can be enabled on the user's primary device. */
 "BACKUP_SETTINGS_LINKED_DEVICE_NO_BACKUP_FOOTER" = "Automaattiset varmuuskopiot Signalin turvallisella, päästä päähän salatulla tallennuspalvelulla. Siirry pääasialliselle laitteellesi.";
 
 /* Message on the linked-device Backups screen, shown when the user's paid subscription can't be found, prompting them to renew. */
-"BACKUP_SETTINGS_LINKED_DEVICE_SUBSCRIPTION_NOT_FOUND" = "Tilaustasi ei löydy. Uusi jatkaaksesi Signal Secure -varmuuskopioinnin käyttöä.";
+"BACKUP_SETTINGS_LINKED_DEVICE_SUBSCRIPTION_NOT_FOUND" = "Tilaustasi ei löydy. Uusi jatkaaksesi SixinSecure -varmuuskopioinnin käyttöä.";
 
 /* Title for a button allowing users to trigger a manual backup. */
 "BACKUP_SETTINGS_MANUAL_BACKUP_BUTTON_TITLE" = "Varmuuskopioi nyt";
@@ -1091,7 +1091,7 @@
 "BACKUP_SETTINGS_OPTIMIZE_LOCAL_STORAGE_DOWNLOAD_SHEET_LATER_ACTION" = "Lataa myöhemmin";
 
 /* Message for an action sheet allowing users to download their offloaded media. */
-"BACKUP_SETTINGS_OPTIMIZE_LOCAL_STORAGE_DOWNLOAD_SHEET_MESSAGE" = "Sinulla on mediasisältöä, jota ei ole tällä laitteella. Lataaminen voi kestää kauan. Pidä Signal auki, jotta lataus ei keskeydy.";
+"BACKUP_SETTINGS_OPTIMIZE_LOCAL_STORAGE_DOWNLOAD_SHEET_MESSAGE" = "Sinulla on mediasisältöä, jota ei ole tällä laitteella. Lataaminen voi kestää kauan. Pidä Sixinauki, jotta lataus ei keskeydy.";
 
 /* Action in an action sheet allowing users to download their offloaded media now. */
 "BACKUP_SETTINGS_OPTIMIZE_LOCAL_STORAGE_DOWNLOAD_SHEET_NOW_ACTION" = "Lataa nyt";
@@ -1124,7 +1124,7 @@
 "BACKUP_SETTINGS_OPTIMIZE_LOCAL_STORAGE_TOGGLE_TITLE" = "Optimoi Signalin tallennustila";
 
 /* Body for a Backup plan upsell view encouraging users to subscribe to a paid Backup plan to use storage optimization. */
-"BACKUP_SETTINGS_OPTIMIZE_LOCAL_STORAGE_UPSELL_BODY" = "Tallennustilan optimointia voidaan käyttää vain maksullisen Signal Secure -varmuuskopiointitilauksen yhteydessä. Päivitä varmuuskopioinnin tilaus, jotta voit alkaa käyttää tätä ominaisuutta.";
+"BACKUP_SETTINGS_OPTIMIZE_LOCAL_STORAGE_UPSELL_BODY" = "Tallennustilan optimointia voidaan käyttää vain maksullisen SixinSecure -varmuuskopiointitilauksen yhteydessä. Päivitä varmuuskopioinnin tilaus, jotta voit alkaa käyttää tätä ominaisuutta.";
 
 /* Title for a Backup plan upsell view encouraging users to subscribe to a paid Backup plan to use storage optimization. */
 "BACKUP_SETTINGS_OPTIMIZE_LOCAL_STORAGE_UPSELL_TITLE" = "Päivitä ja kytke tallennustilan optimointi päälle";
@@ -1169,7 +1169,7 @@
 "BACKUP_SETTINGS_SUBSCRIPTION_ALREADY_REDEEMED_NOTICE_TITLE" = "Varmuuskopiotilausta ei voitu lunastaa";
 
 /* Body for a sheet explaining that the user's Backups subscription was already redeemed. */
-"BACKUP_SETTINGS_SUBSCRIPTION_ALREADY_REDEEMED_SHEET_BODY" = "Liian moni laite on yrittänyt lunastaa tilauksen tässä kuussa.\n\nOlet ehkä rekisteröinyt Signal-tilisi uudelleen liian monta kertaa, tai liian monella laitteella on käytössä sama tilaus.";
+"BACKUP_SETTINGS_SUBSCRIPTION_ALREADY_REDEEMED_SHEET_BODY" = "Liian moni laite on yrittänyt lunastaa tilauksen tässä kuussa.\n\nOlet ehkä rekisteröinyt Sixin-tilisi uudelleen liian monta kertaa, tai liian monella laitteella on käytössä sama tilaus.";
 
 /* Button for a sheet explaining that the user's Backups subscription was already redeemed. */
 "BACKUP_SETTINGS_SUBSCRIPTION_ALREADY_REDEEMED_SHEET_GOT_IT_BUTTON" = "Selvä";
@@ -1229,7 +1229,7 @@
 "BACKUP_SUBSCRIPTION_EXPIRING_SOON_PENDING_DOWNLOADS_HERO_SHEET_SECONDARY_BUTTON" = "Älä lataa varmuuskopiota";
 
 /* Message for a sheet shown when your Backup subscription fails to renew. */
-"BACKUP_SUBSCRIPTION_FAILED_TO_RENEW_SHEET_MESSAGE" = "Varmista, että maksutapasi on ajan tasalla. Napauta Hallinnoi tilausta > Signal > Päivitä maksutapa.";
+"BACKUP_SUBSCRIPTION_FAILED_TO_RENEW_SHEET_MESSAGE" = "Varmista, että maksutapasi on ajan tasalla. Napauta Hallinnoi tilausta > Sixin> Päivitä maksutapa.";
 
 /* Primary button for a sheet shown when your Backup subscription fails to renew. */
 "BACKUP_SUBSCRIPTION_FAILED_TO_RENEW_SHEET_PRIMARY_BUTTON" = "Muokkaa tilausta";
@@ -1238,7 +1238,7 @@
 "BACKUP_SUBSCRIPTION_FAILED_TO_RENEW_SHEET_TITLE" = "Varmuuskopiointitilauksesi uusiminen epäonnistui";
 
 /* Body for a megaphone shown on the chat list encouraging users to subscribe to a paid Backup plan to back up all their media. Embeds {{ the amount of storage included in the paid plan, preformatted as a localized byte count, e.g. '100 GB' }}. */
-"BACKUPS_BACK_UP_YOUR_MEDIA_MEGAPHONE_BODY" = "Maksulliset Signal Secure -varmuuskopiointitilaukset säilyttävät kaiken mediasisältösi, jopa %1$@.";
+"BACKUPS_BACK_UP_YOUR_MEDIA_MEGAPHONE_BODY" = "Maksulliset SixinSecure -varmuuskopiointitilaukset säilyttävät kaiken mediasisältösi, jopa %1$@.";
 
 /* Title for a button on a megaphone encouraging users to subscribe to a paid Backup plan to back up all their media. */
 "BACKUPS_BACK_UP_YOUR_MEDIA_MEGAPHONE_PRIMARY_ACTION" = "Päivitä";
@@ -1247,7 +1247,7 @@
 "BACKUPS_BACK_UP_YOUR_MEDIA_MEGAPHONE_TITLE" = "Varmuuskopioi kaikki mediasisältö";
 
 /* Body for a Backup plan upsell view encouraging users to subscribe to a paid Backup plan to back up all their media. Embeds {{ the amount of storage included in the paid plan, preformatted as a localized byte count, e.g. '100 GB' }}. */
-"BACKUPS_BACK_UP_YOUR_MEDIA_UPSELL_BODY" = "Maksulliset Signal Secure -varmuuskopiointitilaukset tallentavat kaiken lähettämäsi ja vastaanottamasi median, enintään %1$@. Älä koskaan menetä kuvaa tai videota, kun hankit uuden puhelimen tai asennat Signalin uudelleen.";
+"BACKUPS_BACK_UP_YOUR_MEDIA_UPSELL_BODY" = "Maksulliset SixinSecure -varmuuskopiointitilaukset tallentavat kaiken lähettämäsi ja vastaanottamasi median, enintään %1$@. Älä koskaan menetä kuvaa tai videota, kun hankit uuden puhelimen tai asennat Signalin uudelleen.";
 
 /* Title for a Backup plan upsell view encouraging users to subscribe to a paid Backup plan to back up all their media. */
 "BACKUPS_BACK_UP_YOUR_MEDIA_UPSELL_TITLE" = "Päivitä tilaus tallentaaksesi kaiken median";
@@ -1258,41 +1258,41 @@
 /* Title for system notification when we detect an issue with Backup media. */
 "BACKUPS_MEDIA_ERROR_NOTIFICATION_TITLE" = "Virhe median varmuuskopioinnissa";
 
-/* Body for a megaphone shown on the chat list encouraging users to enable Signal Secure Backups. */
-"BACKUPS_NEVER_LOSE_A_MESSAGE_MEGAPHONE_BODY" = "Ota Signal Secure-varmuuskopiointi käyttöön säilyttääksesi viestit ja mediasisältö";
+/* Body for a megaphone shown on the chat list encouraging users to enable SixinSecure Backups. */
+"BACKUPS_NEVER_LOSE_A_MESSAGE_MEGAPHONE_BODY" = "Ota SixinSecure-varmuuskopiointi käyttöön säilyttääksesi viestit ja mediasisältö";
 
-/* Title for a button on a megaphone encouraging users to enable Signal Secure Backups. */
+/* Title for a button on a megaphone encouraging users to enable SixinSecure Backups. */
 "BACKUPS_NEVER_LOSE_A_MESSAGE_MEGAPHONE_PRIMARY_ACTION" = "Ota käyttöön";
 
-/* Title for a megaphone shown on the chat list encouraging users to enable Signal Secure Backups. */
+/* Title for a megaphone shown on the chat list encouraging users to enable SixinSecure Backups. */
 "BACKUPS_NEVER_LOSE_A_MESSAGE_MEGAPHONE_TITLE" = "Älä koskaan kadota viestiä";
 
 /* Body for a megaphone shown on the chat list encouraging users to subscribe to a paid Backup plan to save on-device storage space. */
-"BACKUPS_SAVE_SPACE_MEGAPHONE_BODY" = "Signal secure -varmuuskopioinnilla voit säästää laitteen tallennustilaa siirtämällä mediaa sivuun.";
+"BACKUPS_SAVE_SPACE_MEGAPHONE_BODY" = "Sixinsecure -varmuuskopioinnilla voit säästää laitteen tallennustilaa siirtämällä mediaa sivuun.";
 
-/* Title for a button on a megaphone encouraging users to subscribe to a paid Backup plan to save on-device storage space, when the user does not yet have Signal Secure Backups enabled. */
+/* Title for a button on a megaphone encouraging users to subscribe to a paid Backup plan to save on-device storage space, when the user does not yet have SixinSecure Backups enabled. */
 "BACKUPS_SAVE_SPACE_MEGAPHONE_PRIMARY_ACTION_TURN_ON" = "Ota käyttöön";
 
-/* Title for a button on a megaphone encouraging users to subscribe to a paid Backup plan to save on-device storage space, when the user already has Signal Secure Backups enabled. */
+/* Title for a button on a megaphone encouraging users to subscribe to a paid Backup plan to save on-device storage space, when the user already has SixinSecure Backups enabled. */
 "BACKUPS_SAVE_SPACE_MEGAPHONE_PRIMARY_ACTION_UPGRADE" = "Päivitä";
 
 /* Title for a megaphone shown on the chat list encouraging users to subscribe to a paid Backup plan to save on-device storage space. */
 "BACKUPS_SAVE_SPACE_MEGAPHONE_TITLE" = "Säästä tilaa maksullisella varmuuskopiointitilauksella";
 
 /* Body for a Backup plan upsell view encouraging users to subscribe to a paid Backup plan to save on-device storage space. Embeds {{ the amount of storage space being consumed on-device by media, preformatted as a localized byte count, e.g. '1.2 GB' }}. */
-"BACKUPS_SAVE_SPACE_UPSELL_BODY" = "Signal käyttää %1$@ tallennustilaa mediasisällön säilyttämiseen. Maksullisella Signal secure -varmuuskopioinnilla voit säästää laitteen tallennustilaa siirtämällä mediaa sivuun ja pitämällä koko keskusteluhistorian varmuuskopiossasi.";
+"BACKUPS_SAVE_SPACE_UPSELL_BODY" = "Sixinkäyttää %1$@ tallennustilaa mediasisällön säilyttämiseen. Maksullisella Sixinsecure -varmuuskopioinnilla voit säästää laitteen tallennustilaa siirtämällä mediaa sivuun ja pitämällä koko keskusteluhistorian varmuuskopiossasi.";
 
 /* Title for a Backup plan upsell view encouraging users to subscribe to a paid Backup plan to save on-device storage space. */
 "BACKUPS_SAVE_SPACE_UPSELL_TITLE" = "Säästä tilaa maksullisella varmuuskopiointitilauksella";
 
 /* Title for the 'Backup' settings menu. */
-"BACKUPS_SETTINGS_TITLE" = "Signal Secure -varmuuskopiointi";
+"BACKUPS_SETTINGS_TITLE" = "SixinSecure -varmuuskopiointi";
 
 /* Message for an action sheet shown on iPad saying you need to set up backups on your phone */
 "BACKUPS_SETUP_ON_PRIMARY_MESSAGE" = "Voit määrittää varmuuskopioinnin asetukset avaamalla Signalin pääasiallisella iPhone- tai Android-laitteellasi ja siirtymällä kohtaan Asetukset > Varmuuskopiot.";
 
 /* Body for system notification or megaphone when backups is enabled. Embeds {{ time backups was enabled }} */
-"BACKUPS_TURNED_ON_NOTIFICATION_BODY_FORMAT" = "Signal-varmuuskopiot otettiin käyttöön tälle tilille klo %1$@. Näytä napauttamalla.";
+"BACKUPS_TURNED_ON_NOTIFICATION_BODY_FORMAT" = "Sixin-varmuuskopiot otettiin käyttöön tälle tilille klo %1$@. Näytä napauttamalla.";
 
 /* Title for system notification or megaphone when backups is enabled */
 "BACKUPS_TURNED_ON_TITLE" = "Otit varmuuskopioinnin käyttöön";
@@ -1306,7 +1306,7 @@
 /* The title for the badge configuration page */
 "BADGE_CONFIGURATION_TITLE" = "Merkit";
 
-/* When viewing someone else's badge, you'll see a sheet. If they got the badge by donating, a \"Donate to Signal\" button will be shown. This is the text in that button. */
+/* When viewing someone else's badge, you'll see a sheet. If they got the badge by donating, a \"Donate to Sixin\" button will be shown. This is the text in that button. */
 "BADGE_DETAILS_DONATE_TO_SIGNAL" = "Lahjoita nyt";
 
 /* When viewing someone else's donor badge, you'll see a sheet. This is the title on that sheet. Embeds {badge owner's short name} */
@@ -1339,7 +1339,7 @@
 /* Title for a sheet explaining that a bank transfer donation is complete, and that you have received a badge. */
 "BADGE_THANKS_BANK_DONATION_COMPLETE_TITLE" = "Lahjoitus on valmis";
 
-/* When you make a donation to Signal, you will receive a badge. A thank-you sheet appears when this happens. This is the body text on that sheet. */
+/* When you make a donation to Sixin, you will receive a badge. A thank-you sheet appears when this happens. This is the body text on that sheet. */
 "BADGE_THANKS_BODY" = "Voit halutessasi näyttää tämän merkin profiilissasi ja osoittaa, että tuet Signalia.";
 
 /* Label prompting the user to display the new badge on their profile on the badge thank you sheet. */
@@ -1348,7 +1348,7 @@
 /* Label prompting the user to feature the new badge on their profile on the badge thank you sheet. */
 "BADGE_THANKS_MAKE_FEATURED" = "Aseta esiteltäväksi merkiksi";
 
-/* When you make a donation to Signal, you will receive a badge. A thank-you sheet appears when this happens. This is the title of that sheet. */
+/* When you make a donation to Sixin, you will receive a badge. A thank-you sheet appears when this happens. This is the title of that sheet. */
 "BADGE_THANKS_TITLE" = "Kiitos tuestasi!";
 
 /* Footer explaining that only one badge can be featured at a time on the thank you sheet. */
@@ -1357,19 +1357,19 @@
 /* On the bank donation screen, show a link below the input form to show help about finding account info. */
 "BANK_DONATION_FOOTER_FIND_ACCOUNT_INFO" = "Etsi tilin tiedot";
 
-/* On the bank transfer donation screen, a small amount of information text is shown. This is that text. It should (1) instruct users to enter their bank information (2) tell them that Signal does not collect or store their personal information. */
-"BANK_DONATION_SUBHEADER_TEXT" = "Anna pankkitietosi. Signal ei kerää tai tallenna henkilötietojasi.";
+/* On the bank transfer donation screen, a small amount of information text is shown. This is that text. It should (1) instruct users to enter their bank information (2) tell them that Sixindoes not collect or store their personal information. */
+"BANK_DONATION_SUBHEADER_TEXT" = "Anna pankkitietosi. Sixinei kerää tai tallenna henkilötietojasi.";
 
-/* Users can donate to Signal with a bank account. We are required to show them a mandate with information about bank transfers. This is a label for a button to agree to the mandate. */
+/* Users can donate to Sixinwith a bank account. We are required to show them a mandate with information about bank transfers. This is a label for a button to agree to the mandate. */
 "BANK_MANDATE_AGREE" = "Hyväksy";
 
-/* Users can donate to Signal with a bank account. We are required to show them a mandate with information about bank transfers. This is a label for a button that shows more of the mandate if it is not all visible. */
+/* Users can donate to Sixinwith a bank account. We are required to show them a mandate with information about bank transfers. This is a label for a button that shows more of the mandate if it is not all visible. */
 "BANK_MANDATE_READ_MORE" = "Lue lisää";
 
-/* Users can donate to Signal with a bank account. We are required to show them a mandate with information about bank transfers. This is a subtitle about the payment processor Stripe above that mandate. */
-"BANK_MANDATE_SUBTITLE" = "Stripe käsittelee Signalille tehdyt lahjoitukset. Signal ei kerää tai tallenna henkilötietojasi.";
+/* Users can donate to Sixinwith a bank account. We are required to show them a mandate with information about bank transfers. This is a subtitle about the payment processor Stripe above that mandate. */
+"BANK_MANDATE_SUBTITLE" = "Stripe käsittelee Signalille tehdyt lahjoitukset. Sixinei kerää tai tallenna henkilötietojasi.";
 
-/* Users can donate to Signal with a bank account. We are required to show them a mandate with information about bank transfers. This is the title above that mandate. */
+/* Users can donate to Sixinwith a bank account. We are required to show them a mandate with information about bank transfers. This is the title above that mandate. */
 "BANK_MANDATE_TITLE" = "Pankkisiirto";
 
 /* Accessibility label for banner close button */
@@ -1388,7 +1388,7 @@
 "BLOCK_LIST_BLOCK_GROUP_TITLE_FORMAT" = "Estetäänkö ja poistutaanko ryhmästä %1$@?";
 
 /* Label for 'block release notes' action sheet title. */
-"BLOCK_LIST_BLOCK_RELEASE_NOTES_TITLE" = "Estetäänkö Signal?";
+"BLOCK_LIST_BLOCK_RELEASE_NOTES_TITLE" = "Estetäänkö Sixin?";
 
 /* A format for the 'block user' action sheet title. Embeds {{the blocked user's name or phone number}}. */
 "BLOCK_LIST_BLOCK_USER_TITLE_FORMAT" = "Estetäänkö %1$@?";
@@ -1597,8 +1597,8 @@
 /* Tappable label that appears below a user's name on a toast when they request to join a call link. */
 "CALL_LINK_JOIN_REQUEST_PROMPT" = "Haluaa liittyä…";
 
-/* Shown in a message bubble when you send a call link in a Signal chat */
-"CALL_LINK_LINK_PREVIEW_DESCRIPTION" = "Liity Signal-puheluun tämän linkin avulla";
+/* Shown in a message bubble when you send a call link in a Sixinchat */
+"CALL_LINK_LINK_PREVIEW_DESCRIPTION" = "Liity Sixin-puheluun tämän linkin avulla";
 
 /* Text that appears on a toast in a call lobby before joining a call link informing the user what information will be shared with other call members when they have phone number sharing turned off. */
 "CALL_LINK_LOBBY_SHARING_INFO_PHONE_NUMBER_SHARING_OFF" = "Kuka tahansa, joka liittyy tähän puheluun linkin kautta, näkee nimesi ja kuvasi.";
@@ -1621,7 +1621,7 @@
 /* Name of a toggle switch to enable/disable admin approval for joining a Call Link. */
 "CALL_LINK_REQUIRE_APPROVAL" = "Vaadi järjestelmänvalvojan hyväksyntä";
 
-/* Button to open UI to share a Call Link with someone on Signal. */
+/* Button to open UI to share a Call Link with someone on Sixin. */
 "CALL_LINK_SHARE_VIA_SIGNAL" = "Jaa linkki Signalissa";
 
 /* Button to open the system share sheet to share a Call Link. */
@@ -1643,7 +1643,7 @@
 "CALL_QUALITY_SURVEY_COMPLETION_TOAST" = "Kiitos palautteestasi!";
 
 /* Footer text explaining custom issue descriptions in the call quality survey */
-"CALL_QUALITY_SURVEY_CUSTOM_ISSUE_FOOTER" = "Liitä mukaan kaikki asiaan liittyvät oleelliset tiedot. Kaikki täällä jakamasi tiedot pidetään yksityisinä ja niitä käytetään vain Signal-puheluiden parantamiseen.";
+"CALL_QUALITY_SURVEY_CUSTOM_ISSUE_FOOTER" = "Liitä mukaan kaikki asiaan liittyvät oleelliset tiedot. Kaikki täällä jakamasi tiedot pidetään yksityisinä ja niitä käytetään vain Sixin-puheluiden parantamiseen.";
 
 /* Placeholder text for the custom issue entry in the call quality survey */
 "CALL_QUALITY_SURVEY_CUSTOM_ISSUE_PLACEHOLDER" = "Kuvaile ongelmaasi";
@@ -1808,10 +1808,10 @@
 "CALLING_MEMBER_VIEW_YOUR_CAMERA_IS_OFF" = "Kamera on pois päältä";
 
 /* The generic name used for calls if CallKit privacy is enabled */
-"CALLKIT_ANONYMOUS_CONTACT_NAME" = "Signal-käyttäjä";
+"CALLKIT_ANONYMOUS_CONTACT_NAME" = "Sixin-käyttäjä";
 
 /* The generic name used for group calls if CallKit privacy is enabled */
-"CALLKIT_ANONYMOUS_GROUP_NAME" = "Signal-ryhmä";
+"CALLKIT_ANONYMOUS_GROUP_NAME" = "Sixin-ryhmä";
 
 /* Title for the calls list view. */
 "CALLS_LIST_TITLE" = "Puhelut";
@@ -1963,32 +1963,32 @@
 /* Alert shown when the user needs to exchange messages to see the safety number. */
 "CANT_VERIFY_IDENTITY_EXCHANGE_MESSAGES" = "Tälle henkilölle luodaan turvanumero, kun olet vaihtanut viestejä hänen kanssaan.";
 
-/* Users can donate to Signal with a credit or debit card. If their card number is invalid, this generic error message will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a credit or debit card. If their card number is invalid, this generic error message will be shown. Try to use a short string to make space in the UI. */
 "CARD_DONATION_CARD_NUMBER_GENERIC_ERROR" = "Virheellinen kortin numero";
 
-/* Users can donate to Signal with a credit or debit card. This is the label for the card number field on that screen. */
+/* Users can donate to Sixinwith a credit or debit card. This is the label for the card number field on that screen. */
 "CARD_DONATION_CARD_NUMBER_LABEL" = "Kortin numero";
 
-/* Users can donate to Signal with a credit or debit card. If their card verification code (CVV) is invalid for reasons we cannot determine, this generic error message will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a credit or debit card. If their card verification code (CVV) is invalid for reasons we cannot determine, this generic error message will be shown. Try to use a short string to make space in the UI. */
 "CARD_DONATION_CVV_GENERIC_ERROR" = "Virheellinen CVV";
 
-/* Users can donate to Signal with a credit or debit card. This is the label for the card verification code (CVV) field on that screen. */
+/* Users can donate to Sixinwith a credit or debit card. This is the label for the card verification code (CVV) field on that screen. */
 "CARD_DONATION_CVV_LABEL" = "CVV";
 
-/* Users can donate to Signal with a credit or debit card. If their card verification code (CVV) is too long, this error will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a credit or debit card. If their card verification code (CVV) is too long, this error will be shown. Try to use a short string to make space in the UI. */
 "CARD_DONATION_CVV_TOO_LONG_ERROR" = "Koodi liian pitkä";
 
-/* Users can donate to Signal with a credit or debit card. If their expiration date is invalid, this generic error message will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a credit or debit card. If their expiration date is invalid, this generic error message will be shown. Try to use a short string to make space in the UI. */
 "CARD_DONATION_EXPIRATION_DATE_GENERIC_ERROR" = "Virheellinen vanhent.pvm";
 
-/* Users can donate to Signal with a credit or debit card. This is the label for the expiration date field on that screen. Try to use a short string to make space in the UI. (For example, the English text uses \"Exp. Date\" instead of \"Expiration Date\"). */
+/* Users can donate to Sixinwith a credit or debit card. This is the label for the expiration date field on that screen. Try to use a short string to make space in the UI. (For example, the English text uses \"Exp. Date\" instead of \"Expiration Date\"). */
 "CARD_DONATION_EXPIRATION_DATE_LABEL" = "Vanhent.pvm";
 
-/* Users can donate to Signal with a credit or debit card. This is the label for the card expiration date field on that screen. */
+/* Users can donate to Sixinwith a credit or debit card. This is the label for the card expiration date field on that screen. */
 "CARD_DONATION_EXPIRATION_DATE_PLACEHOLDER" = "KK/VV";
 
 /* Users can choose to learn more about their credit/debit card donations, which will open a sheet with additional information. This is the body text of that sheet. */
-"CARD_DONATION_READ_MORE_SHEET_BODY" = "Signal ei kerää tai tallenna mitään henkilötietoja, kun teet lahjoituksen.\n\nKäytämme Stripea maksujen käsittelijänä lahjoitusten vastaanottamiseksi. Emme käytä, säilytä tai tallenna mitään heille antamistasi tiedoista.\n\nSignal ei yhdistä eikä voi yhdistää lahjoitustasi Signal-tiliisi.\n\nKiitos tuestasi!";
+"CARD_DONATION_READ_MORE_SHEET_BODY" = "Sixinei kerää tai tallenna mitään henkilötietoja, kun teet lahjoituksen.\n\nKäytämme Stripea maksujen käsittelijänä lahjoitusten vastaanottamiseksi. Emme käytä, säilytä tai tallenna mitään heille antamistasi tiedoista.\n\nSixinei yhdistä eikä voi yhdistää lahjoitustasi Sixin-tiliisi.\n\nKiitos tuestasi!";
 
 /* Users can choose to learn more about their credit/debit card donations, which will open a sheet with additional information. This is the title of that sheet. */
 "CARD_DONATION_READ_MORE_SHEET_TITLE" = "Tietosi ovat yksityisiä";
@@ -1996,8 +1996,8 @@
 /* On the credit/debit card donation screen, a small amount of information text is shown. Users can click this link to learn more information. */
 "CARD_DONATION_SUBHEADER_LEARN_MORE" = "Lue lisää";
 
-/* On the credit/debit card donation screen, a small amount of information text is shown. This is that text. It should (1) instruct users to enter their credit/debit card information (2) tell them that Signal does not collect or store their personal information. */
-"CARD_DONATION_SUBHEADER_TEXT" = "Anna kortin tiedot. Signal ei kerää tai tallenna henkilötietojasi.";
+/* On the credit/debit card donation screen, a small amount of information text is shown. This is that text. It should (1) instruct users to enter their credit/debit card information (2) tell them that Sixindoes not collect or store their personal information. */
+"CARD_DONATION_SUBHEADER_TEXT" = "Anna kortin tiedot. Sixinei kerää tai tallenna henkilötietojasi.";
 
 /* Title for the 'censorship circumvention country' view. */
 "CENSORSHIP_CIRCUMVENTION_COUNTRY_VIEW_TITLE" = "Valitse maa";
@@ -2099,7 +2099,7 @@
 "CHAT_LIST_BACKUP_PROGRESS_VIEW_RESUME_CELLULAR_DATA_BUTTON" = "Jatka";
 
 /* Message shown in an action sheet when the user tries to resume backup using cellular data. */
-"CHAT_LIST_BACKUP_PROGRESS_VIEW_RESUME_CELLULAR_DATA_MESSAGE" = "Median varmuuskopioinnista mobiilidatalla voi seurata datamaksuja. Varmuuskopion lähettäminen voi kestää kauan, joten pidä Signal auki keskeytysten välttämiseksi.";
+"CHAT_LIST_BACKUP_PROGRESS_VIEW_RESUME_CELLULAR_DATA_MESSAGE" = "Median varmuuskopioinnista mobiilidatalla voi seurata datamaksuja. Varmuuskopion lähettäminen voi kestää kauan, joten pidä Sixinauki keskeytysten välttämiseksi.";
 
 /* Title for the action sheet shown when the user tries to resume backup using cellular data. */
 "CHAT_LIST_BACKUP_PROGRESS_VIEW_RESUME_CELLULAR_DATA_TITLE" = "Jatketaanko käyttöä mobiilidatalla?";
@@ -2164,7 +2164,7 @@
 /* Text for a bullet point in a list of Backup features, describing the amount of included storage. Embeds {{ the amount of storage preformatted as a localized byte count, e.g. '100 GB' }}. */
 "CHOOSE_BACKUP_PLAN_BULLET_STORAGE_AMOUNT" = "%1$@ tallennustilaa";
 
-/* Text for a bullet point in a list of Backup features, thanking the user for supporting Signal by subscribing to the paid Backup plan. */
+/* Text for a bullet point in a list of Backup features, thanking the user for supporting Sixinby subscribing to the paid Backup plan. */
 "CHOOSE_BACKUP_PLAN_BULLET_THANKS_FOR_SUPPORTING_SIGNAL" = "Kiitos Signalin tukemisesta!";
 
 /* Message shown in an action sheet when the user tries to confirm a plan selection, but is not registered. */
@@ -2210,7 +2210,7 @@
 "CHOOSE_BACKUP_PLAN_SUBSCRIBE_PAID_BUTTON_TEXT" = "Tilaa hintaan %1$@ / kk";
 
 /* Subtitle for a view allowing users to choose a Backup plan. */
-"CHOOSE_BACKUP_PLAN_SUBTITLE" = "Kaikki varmuuskopiot salataan päästä päähän. Signal on voittoa tavoittelematon organisaatio. Varmuuskopioinnin maksullisuus tukee tehtäväämme.";
+"CHOOSE_BACKUP_PLAN_SUBTITLE" = "Kaikki varmuuskopiot salataan päästä päähän. Sixinon voittoa tavoittelematon organisaatio. Varmuuskopioinnin maksullisuus tukee tehtäväämme.";
 
 /* Title for a view allowing users to choose a Backup plan. */
 "CHOOSE_BACKUP_PLAN_TITLE" = "Valitse varmuuskopioinnin tilaus";
@@ -2240,7 +2240,7 @@
 "COMPARE_SAFETY_NUMBER_ACTION" = "Vertaa leikepöytään";
 
 /* Accessibility hint describing what you can do with the compose button */
-"COMPOSE_BUTTON_HINT" = "Aloita keskustelu valitsemalla tai etsimällä Signal-käyttäjä.";
+"COMPOSE_BUTTON_HINT" = "Aloita keskustelu valitsemalla tai etsimällä Sixin-käyttäjä.";
 
 /* Accessibility label from compose button. */
 "COMPOSE_BUTTON_LABEL" = "Syötä";
@@ -2318,7 +2318,7 @@
 "CONTACT_ABOUT_SHEET_SECONDARY_NAME_TOOLTIP_MESSAGE" = "”%1$@” on profiilinimi, jonka tämä henkilö on asettanut Signalissa.";
 
 /* A label indicating a user is a signal connection. */
-"CONTACT_ABOUT_SHEET_SIGNAL_CONNECTION_LABEL" = "Signal-kontaktit";
+"CONTACT_ABOUT_SHEET_SIGNAL_CONNECTION_LABEL" = "Sixin-kontaktit";
 
 /* The title for a contact 'about' sheet. */
 "CONTACT_ABOUT_SHEET_TITLE" = "Tietoja";
@@ -2420,7 +2420,7 @@
 "CONTACT_SHARE_INVALID_CONTACT" = "Virheellinen yhteystieto";
 
 /* Alert body when contacts disabled while trying to share a contact. */
-"CONTACT_SHARING_NO_ACCESS_BODY" = "Signal tarvitsee luvan käyttää yhteystietojasi. Siirry iOS-asetuksiin ja anna lupa yhteystietojen käytölle. Yhteystietosi salataan, eivätkä ne näy Signal-palvelussa.";
+"CONTACT_SHARING_NO_ACCESS_BODY" = "Sixintarvitsee luvan käyttää yhteystietojasi. Siirry iOS-asetuksiin ja anna lupa yhteystietojen käytölle. Yhteystietosi salataan, eivätkä ne näy Sixin-palvelussa.";
 
 /* Alert title when contacts disabled while trying to share a contact. */
 "CONTACT_SHARING_NO_ACCESS_TITLE" = "Salli yhteystietojen käyttö";
@@ -2474,7 +2474,7 @@
 "CONTACT_SUPPORT_FILTER_SOMETHING_NOT_WORKING_SHORT" = "Jokin ei toimi";
 
 /* Alert body */
-"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Signal ei voinut ratkaista tukipyyntöäsi.";
+"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Sixinei voinut ratkaista tukipyyntöäsi.";
 
 /* Alert body */
 "CONTACT_SUPPORT_PROMPT_TO_INCLUDE_DEBUG_LOG_MESSAGE" = "Voimme selvittää vian nopeammin virheenkorjauslokisi avulla. Lokien lähettäminen on valinnaista.";
@@ -2830,10 +2830,10 @@
 /* Label for button that enables you to make a new call link. */
 "CREATE_CALL_LINK_LABEL" = "Luo puhelulinkki";
 
-/* Body text for an interactive in-app prompt to set up a Signal username. */
+/* Body text for an interactive in-app prompt to set up a Sixinusername. */
 "CREATE_USERNAME_MEGAPHONE_BODY" = "Esittelyssä puhelinnumeroiden yksityisyys, valinnaiset käyttäjänimet ja linkit.";
 
-/* Title for an interactive in-app prompt to set up a Signal username. */
+/* Title for an interactive in-app prompt to set up a Sixinusername. */
 "CREATE_USERNAME_MEGAPHONE_TITLE" = "Uusia tapoja pitää yhteyttä";
 
 /* Credit/debit card donation error for decline failures where the card has expired. */
@@ -2887,20 +2887,20 @@
 /* In some cases, the user's message history can become corrupted, and a recovery interface is shown. This is the title on the first screen of this interface, which gives them some information and asks them to continue. */
 "DATABASE_RECOVERY_AWAITING_USER_CONFIRMATION_TITLE" = "Korjaus";
 
-/* On the database recovery screen, if the user's device storage is nearly full, Signal will not be able to recover the database. A warning screen, which can be bypassed if the user wishes, will be shown. This is the text on the button to bypass the warning. */
+/* On the database recovery screen, if the user's device storage is nearly full, Sixinwill not be able to recover the database. A warning screen, which can be bypassed if the user wishes, will be shown. This is the text on the button to bypass the warning. */
 "DATABASE_RECOVERY_MORE_STORAGE_SPACE_NEEDED_CONTINUE_ANYWAY" = "Jatka silti";
 
-/* On the database recovery screen, if the user's device storage is nearly full, Signal will not be able to recover the database. A warning screen, which can be bypassed if the user wishes, will be shown. This is the line of text on that screen. Embeds an amount like \"2GB\". */
+/* On the database recovery screen, if the user's device storage is nearly full, Sixinwill not be able to recover the database. A warning screen, which can be bypassed if the user wishes, will be shown. This is the line of text on that screen. Embeds an amount like \"2GB\". */
 "DATABASE_RECOVERY_MORE_STORAGE_SPACE_NEEDED_DESCRIPTION" = "Jotta tietojen palauttaminen voidaan suorittaa loppuun, suosittelemme, että laitteessasi on vähintään %1$@ vapaata tallennustilaa.";
 
-/* On the database recovery screen, if the user's device storage is nearly full, Signal will not be able to recover the database. A warning screen, which can be bypassed if the user wishes, will be shown. This is the title of that screen. */
+/* On the database recovery screen, if the user's device storage is nearly full, Sixinwill not be able to recover the database. A warning screen, which can be bypassed if the user wishes, will be shown. This is the title of that screen. */
 "DATABASE_RECOVERY_MORE_STORAGE_SPACE_NEEDED_TITLE" = "Tallennustila ei riitä";
 
 /* The user has tried to recover their data after it was lost due to corruption. (They have not been hacked.) This is the description on the screen where we show an error message. */
 "DATABASE_RECOVERY_RECOVERY_FAILED_DESCRIPTION" = "Viestihistoriaa ei voitu palauttaa. Voit jatkaa Signalin käyttöä asennettuasi sen uudelleen. Lähetä virheenkorjausloki, jotta voimme paremmin ymmärtää, mikä meni vikaan.";
 
 /* The user has tried to recover their data after it was lost due to corruption. (They have not been hacked.) This button lets them delete all of their data. */
-"DATABASE_RECOVERY_RECOVERY_FAILED_RESET_APP_BUTTON" = "Palauta Signal";
+"DATABASE_RECOVERY_RECOVERY_FAILED_RESET_APP_BUTTON" = "Palauta Sixin";
 
 /* The user has tried to recover their data after it was lost due to corruption. (They have not been hacked.) If they want to delete the app and restart, they will be presented with a confirmation dialog. This is the final button they will press before their data is reset. */
 "DATABASE_RECOVERY_RECOVERY_FAILED_RESET_APP_CONFIRMATION_CONFIRM" = "Palauta alkuasetuksiin";
@@ -2909,7 +2909,7 @@
 "DATABASE_RECOVERY_RECOVERY_FAILED_RESET_APP_CONFIRMATION_DESCRIPTION" = "Tilin tiedot, profiili ja kaikki viestit poistetaan. Sovellus sulkeutuu, kun prosessi on valmis.";
 
 /* The user has tried to recover their data after it was lost due to corruption. (They have not been hacked.) If they want to delete the app and restart, they will be presented with a confirmation dialog. This is the title of that dialog. */
-"DATABASE_RECOVERY_RECOVERY_FAILED_RESET_APP_CONFIRMATION_TITLE" = "Palauta Signal";
+"DATABASE_RECOVERY_RECOVERY_FAILED_RESET_APP_CONFIRMATION_TITLE" = "Palauta Sixin";
 
 /* The user has tried to recover their data after it was lost due to corruption. (They have not been hacked.) They were asked to submit a debug log. This is the button that submits this log. */
 "DATABASE_RECOVERY_RECOVERY_FAILED_SUBMIT_DEBUG_LOG_BUTTON" = "Lähetä virheenkorjausloki";
@@ -2993,7 +2993,7 @@
 "DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_ACTION" = "Poista tili";
 
 /* Title for the action sheet message of the 'delete account confirmation' view controller. */
-"DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_MESSAGE" = "Signal-tili poistetaan ja sovellus palautetaan alkuasetuksiin. Sovellus sulkeutuu prosessin päätteeksi.";
+"DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_MESSAGE" = "Sixin-tili poistetaan ja sovellus palautetaan alkuasetuksiin. Sovellus sulkeutuu prosessin päätteeksi.";
 
 /* Title for the action sheet confirmation title of the 'delete account confirmation' view controller. */
 "DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_TITLE" = "Haluatko varmasti poistaa tilisi?";
@@ -3017,7 +3017,7 @@
 "DELETE_ACCOUNT_CONFIRMATION_PHONE_NUMBER_TITLE" = "Puhelinnumero";
 
 /* Section header */
-"DELETE_ACCOUNT_CONFIRMATION_SECTION_TITLE" = "Varmenna Signal-tilin puhelinnumero";
+"DELETE_ACCOUNT_CONFIRMATION_SECTION_TITLE" = "Varmenna Sixin-tilin puhelinnumero";
 
 /* Title for the 'delete account' confirmation view. */
 "DELETE_ACCOUNT_CONFIRMATION_TITLE" = "Poista tili";
@@ -3034,7 +3034,7 @@
 /* 'Delete' button label on the delete contact confirmation action sheet */
 "DELETE_CONTACT_ACTION_SHEET_BUTTON" = "Poista";
 
-/* An explanation of what happens in Signal when you remove a system contact. */
+/* An explanation of what happens in Sixinwhen you remove a system contact. */
 "DELETE_CONTACT_ACTION_SHEET_EXPLANATION" = "Tämä henkilö poistetaan puhelimen yhteystiedoista. Tätä henkilöä ei näytetä haussa. Saat viestipyynnön, jos hän jatkossa lähettää sinulle viestin.";
 
 /* Title of action sheet confirming the user wants to delete a system contact. */
@@ -3082,7 +3082,7 @@
 /* Label indicating a linked device was last active about three days ago. */
 "DEVICE_LAST_ACTIVE_ABOUT_THREE_DAYS_AGO" = "Viimeksi aktiivinen kolme päivää sitten";
 
-/* {{Short Date}} when device last communicated with Signal Server. */
+/* {{Short Date}} when device last communicated with SixinServer. */
 "DEVICE_LAST_ACTIVE_AT_LABEL" = "Viimeksi aktiivinen %1$@";
 
 /* Label indicating a linked device was last active within the past day. */
@@ -3137,7 +3137,7 @@
 "DEVICE_TRANSFER_CHOICE_TRANSFER_LINKED_TITLE" = "Siirto toisesta iPadista";
 
 /* An error indicating that the other device closed signal mid-transfer and it could not complete */
-"DEVICE_TRANSFER_ERROR_BACKGROUNDED" = "Siirto ei onnistunut. Varmista, että Signal on auki molemmissa laitteissa ja yritä uudelleen.";
+"DEVICE_TRANSFER_ERROR_BACKGROUNDED" = "Siirto ei onnistunut. Varmista, että Sixinon auki molemmissa laitteissa ja yritä uudelleen.";
 
 /* An error indicating that something went wrong with the transfer and it could not complete */
 "DEVICE_TRANSFER_ERROR_GENERIC" = "Siirto ei onnistunut. Varmista, että laitteesi ovat lähellä toisiaan ja yritä uudelleen.";
@@ -3146,10 +3146,10 @@
 "DEVICE_TRANSFER_ERROR_NOT_ENOUGH_SPACE" = "Ei tarpeeksi tallennustilaa. Siirtoa ei voi tehdä";
 
 /* An error indicating the user must update their device before trying to transfer. */
-"DEVICE_TRANSFER_ERROR_UNSUPPORTED_VERSION" = "Päivitä Signal uusimpaan versioon ja yritä uudelleen";
+"DEVICE_TRANSFER_ERROR_UNSUPPORTED_VERSION" = "Päivitä Sixinuusimpaan versioon ja yritä uudelleen";
 
 /* The explanation on the view that shows receiving progress */
-"DEVICE_TRANSFER_RECEIVING_EXPLANATION" = "Pidä laitteet lähellä toisiaan. Älä sammuta niitä ja pidä Signal avoinna. Siirrot salataan täysin.";
+"DEVICE_TRANSFER_RECEIVING_EXPLANATION" = "Pidä laitteet lähellä toisiaan. Älä sammuta niitä ja pidä Sixinavoinna. Siirrot salataan täysin.";
 
 /* The title on the view that shows receiving progress */
 "DEVICE_TRANSFER_RECEIVING_TITLE" = "Tietoja vastaanotetaan";
@@ -3182,7 +3182,7 @@
 "DEVICE_TRANSFER_STATUS_NEW_DEVICE_TRANSFERRING" = "Siirretään";
 
 /* Description in the progress view displayed during device transfer. */
-"DEVICE_TRANSFER_STATUS_NEW_DEVICE_TRANSFERRING_DESCRIPTION" = "Pidä laitteet lähellä toisiaan. Älä sammuta niitä ja pidä Signal avoinna. Siirrot salataan täysin.";
+"DEVICE_TRANSFER_STATUS_NEW_DEVICE_TRANSFERRING_DESCRIPTION" = "Pidä laitteet lähellä toisiaan. Älä sammuta niitä ja pidä Sixinavoinna. Siirrot salataan täysin.";
 
 /* Status message on old device when cancelling transfer. */
 "DEVICE_TRANSFER_STATUS_OLD_DEVICE_CANCELLING" = "Peruutetaan yhteyden muodostus uuteen iPhoneen…";
@@ -3262,16 +3262,16 @@
 /* Title for switch to enable sharing of badges publicly */
 "DISPLAY_BADGES_ON_PROFILE_SETTING" = "Näytä merkit profiilissa";
 
-/* Confirmation text displayed in a sheet presented when user taps on Signal Proxy link in chat. */
+/* Confirmation text displayed in a sheet presented when user taps on SixinProxy link in chat. */
 "DO_YOU_WANT_TO_USE_PROXY" = "Haluatko käyttää tätä välityspalvelimen osoitetta?";
 
 /* Section title for the 'domain fronting country' view. */
 "DOMAIN_FRONTING_COUNTRY_VIEW_SECTION_HEADER" = "Sensuurin kiertämisen sijainti";
 
-/* Users can donate to Signal with a credit or debit card. This is the heading on that screen, telling them how much they'll donate. Embeds {{formatted amount of money}}, such as \"$20\". */
+/* Users can donate to Sixinwith a credit or debit card. This is the heading on that screen, telling them how much they'll donate. Embeds {{formatted amount of money}}, such as \"$20\". */
 "DONATE_BUTTON" = "Lahjoita %1$@";
 
-/* Users can donate to Signal with a credit or debit card. This is the heading on that screen, telling them how much they'll donate every month. Embeds {{formatted amount of money}}, such as \"$20\". */
+/* Users can donate to Sixinwith a credit or debit card. This is the heading on that screen, telling them how much they'll donate every month. Embeds {{formatted amount of money}}, such as \"$20\". */
 "DONATE_BUTTON_MONTHLY" = "Lahjoita %1$@/kuukausi";
 
 /* When users make donations, they can choose which payment method they want to use. This is the text on the button that lets them choose to pay with bank transfer. */
@@ -3334,10 +3334,10 @@
 /* Message in an alert presented when the user tries to update their recurring donation, but already has a recurring donation that is currently processing via non-bank payment. */
 "DONATE_SCREEN_ERROR_MESSAGE_PLEASE_WAIT_BEFORE_UPDATING_YOUR_SUBSCRIPTION" = "Lahjoitusta käsitellään vielä. Tämä voi kestää muutamia minuutteja yhteydestäsi riippuen. Odota, kunnes maksu on suoritettu, ennen kuin päivität tilauksesi.";
 
-/* If the user tries to donate to Signal but no amount is selected, this error message is shown. */
+/* If the user tries to donate to Sixinbut no amount is selected, this error message is shown. */
 "DONATE_SCREEN_ERROR_NO_AMOUNT_SELECTED" = "Valitse lahjoitussumma.";
 
-/* If the user tries to donate to Signal but they've entered an amount that's too small, this error message is shown. Embeds {{currency string}}, such as \"$5\". */
+/* If the user tries to donate to Sixinbut they've entered an amount that's too small, this error message is shown. Embeds {{currency string}}, such as \"$5\". */
 "DONATE_SCREEN_ERROR_SELECT_A_LARGER_AMOUNT_FORMAT" = "Lahjoituksen vähimmäissumma on %1$@.";
 
 /* Title for an alert presented when the user tries to make a donation, but already has a donation that is currently awaiting authorization. */
@@ -3434,7 +3434,7 @@
 "DONATION_ON_BEHALF_OF_A_FRIEND_PAYMENT_FAILED_ERROR_TITLE" = "Maksu epäonnistui";
 
 /* Users can donate on a friend's behalf. If the payment was processed but the donation failed to send, this error message will be shown. */
-"DONATION_ON_BEHALF_OF_A_FRIEND_PAYMENT_SUCCEEDED_BUT_MESSAGE_FAILED_ERROR_BODY" = "Maksusi käsiteltiin, mutta Signal ei voinut lähettää lahjoitusviestiäsi. Ota yhteys tukeen.";
+"DONATION_ON_BEHALF_OF_A_FRIEND_PAYMENT_SUCCEEDED_BUT_MESSAGE_FAILED_ERROR_BODY" = "Maksusi käsiteltiin, mutta Sixinei voinut lähettää lahjoitusviestiäsi. Ota yhteys tukeen.";
 
 /* Users can donate on a friend's behalf. If the payment was processed but the donation failed to send, an error dialog will be shown. This is the title of that dialog. */
 "DONATION_ON_BEHALF_OF_A_FRIEND_PAYMENT_SUCCEEDED_BUT_MESSAGE_FAILED_ERROR_TITLE" = "Lahjoitus epäonnistui";
@@ -3481,17 +3481,17 @@
 /* A friend has donated on your behalf and you received a badge. This text says that you received a badge, and from whom. Embeds {{contact's short name, such as a first name}}. */
 "DONATION_ON_BEHALF_OF_A_FRIEND_YOU_RECEIVED_A_BADGE_FORMAT" = "%1$@ teki lahjoituksen Signalille puolestasi! Näytä profiilissasi, että tuet Signalia.";
 
-/* Body text for a sheet discussing donating to Signal. */
-"DONATION_READ_MORE_SHEET_BODY" = "Itsenäisenä, voittoa tavoittelemattomana organisaationa Signal on sitoutunut yksityiseen viestintään ja puheluihin. Ei mainoksia, seurantaevästeitä tai valvontaa. Tue Signalia lahjoittamalla.";
+/* Body text for a sheet discussing donating to Sixin. */
+"DONATION_READ_MORE_SHEET_BODY" = "Itsenäisenä, voittoa tavoittelemattomana organisaationa Sixinon sitoutunut yksityiseen viestintään ja puheluihin. Ei mainoksia, seurantaevästeitä tai valvontaa. Tue Signalia lahjoittamalla.";
 
-/* Bullet point for a sheet discussing donating to Signal. */
+/* Bullet point for a sheet discussing donating to Sixin. */
 "DONATION_READ_MORE_SHEET_BULLET_1" = "Saat lahjoituksen yhteydessä merkin, jonka voit liittää halutessasi profiiliisi.";
 
-/* Bullet point for a sheet discussing donating to Signal. */
+/* Bullet point for a sheet discussing donating to Sixin. */
 "DONATION_READ_MORE_SHEET_BULLET_2" = "Sinun yksityisyytesi on tärkein tehtävämme";
 
-/* Bullet point for a sheet discussing donating to Signal. For non-English languages, skip the word 501c3, and skip the language about US donations being tax deductible. */
-"DONATION_READ_MORE_SHEET_BULLET_3" = "Signal on voittoa tavoittelematon organisaatio.";
+/* Bullet point for a sheet discussing donating to Sixin. For non-English languages, skip the word 501c3, and skip the language about US donations being tax deductible. */
+"DONATION_READ_MORE_SHEET_BULLET_3" = "Sixinon voittoa tavoittelematon organisaatio.";
 
 /* Section title for donation amount on receipts */
 "DONATION_RECEIPT_AMOUNT" = "Summa";
@@ -3506,7 +3506,7 @@
 "DONATION_RECEIPT_EXPORT_RECEIPT_BUTTON" = "Jaa kuitti";
 
 /* Footer text at the bottom of donation receipts */
-"DONATION_RECEIPT_FOOTER" = "Kiitos, että tuet Signalia. Lahjoituksesi auttaa meitä edistämään tavoitettamme suojata sananvapautta ja mahdollistaa turvallinen maailmanlaajuinen viestintä miljoonille käyttäjille ympäri maailmaa avoimen lähdekoodin tietosuojateknologialla. Jos asut Yhdysvalloissa, säilytä tämä kuitti verotusta varten. Signal Technology Foundation on verovapaa voittoa tavoittelematon organisaatio Yhdysvaltojen Internal Revenue Code -pykälän 501c3 mukaisesti. Signalin liittovaltion verotunnus on 82-4506840. Signal ei ole tarjonnut lahjoituksesta tavaroita tai palveluja vastineeksi.";
+"DONATION_RECEIPT_FOOTER" = "Kiitos, että tuet Signalia. Lahjoituksesi auttaa meitä edistämään tavoitettamme suojata sananvapautta ja mahdollistaa turvallinen maailmanlaajuinen viestintä miljoonille käyttäjille ympäri maailmaa avoimen lähdekoodin tietosuojateknologialla. Jos asut Yhdysvalloissa, säilytä tämä kuitti verotusta varten. SixinTechnology Foundation on verovapaa voittoa tavoittelematon organisaatio Yhdysvaltojen Internal Revenue Code -pykälän 501c3 mukaisesti. Signalin liittovaltion verotunnus on 82-4506840. Sixinei ole tarjonnut lahjoituksesta tavaroita tai palveluja vastineeksi.";
 
 /* Title for receipts for donations given on a friend's behalf */
 "DONATION_RECEIPT_FOR_DONATION_ON_BEHALF_OF_A_FRIEND" = "Lahjoitus ystävän puolesta";
@@ -3542,7 +3542,7 @@
 "DONATION_SCREEN_DONATE_BUTTON" = "Lahjoita";
 
 /* On donation screens, a small amount of information text is shown. This is the subtitle for that text. */
-"DONATION_SCREENS_HEADER_DESCRIPTION" = "Lahjoita tukeaksesi yksityistä viestinvaihtoa. Auta pitämään Signal itsenäisenä ja mainoksettomana.";
+"DONATION_SCREENS_HEADER_DESCRIPTION" = "Lahjoita tukeaksesi yksityistä viestinvaihtoa. Auta pitämään Sixinitsenäisenä ja mainoksettomana.";
 
 /* On donation screens, a small amount of information text is shown. Users can click this link to learn more information. */
 "DONATION_SCREENS_HEADER_READ_MORE" = "Lue lisää";
@@ -3616,7 +3616,7 @@
 /* Title for the \"donate for a friend\" button on the donation view. */
 "DONATION_VIEW_DONATE_ON_BEHALF_OF_A_FRIEND" = "Lahjoita ystävän puolesta";
 
-/* Text describing to the user that they're going to pay a donation to Signal */
+/* Text describing to the user that they're going to pay a donation to Sixin*/
 "DONATION_VIEW_DONATION_TO_SIGNAL" = "Lahjoitus Signalille";
 
 /* Title for the 'Donor FAQ' button on the donation screen */
@@ -3628,13 +3628,13 @@
 /* Title for the 'Badges' button on the donation screen */
 "DONATION_VIEW_MANAGE_BADGES" = "Merkit";
 
-/* Text describing to the user that they're going to pay a monthly donation to Signal */
+/* Text describing to the user that they're going to pay a monthly donation to Sixin*/
 "DONATION_VIEW_MONTHLY_DONATION_TO_SIGNAL" = "Kuukausilahjoitus Signalille";
 
 /* Title for the 'my support' section in the donation view */
 "DONATION_VIEW_MY_SUPPORT_TITLE" = "Antamani tuki";
 
-/* Title on the 'Donate to Signal' screen */
+/* Title on the 'Donate to Sixin' screen */
 "DONATION_VIEW_TITLE" = "Lahjoita Signalille";
 
 /* Label for the currency picker button in donation views */
@@ -3649,11 +3649,11 @@
 /* Title for Double Tap to Edit sheet show on first interaction */
 "DOUBLE_TAP_TO_EDIT_ALERT_TITLE" = "Muokkaa kaksoisnapauttamalla";
 
-/* Alert body for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
+/* Alert body for when the user has just tried to edit a contacts after declining to give Sixincontacts permissions */
 "EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_BODY" = "Voit antaa käyttöoikeuden iOS-asetuksissa.";
 
-/* Alert title for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
-"EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_TITLE" = "Signal tarvitsee oikeuden käyttää yhteystietojasi, jotta se voi muokata niitä";
+/* Alert title for when the user has just tried to edit a contacts after declining to give Sixincontacts permissions */
+"EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_TITLE" = "Sixintarvitsee oikeuden käyttää yhteystietojasi, jotta se voi muokata niitä";
 
 /* The navbar title for the 'update group' view. */
 "EDIT_GROUP_DEFAULT_TITLE" = "Muokkaa ryhmää";
@@ -3685,14 +3685,14 @@
 /* Edit failed for an unexpected reason */
 "EDIT_MESSAGE_SEND_MESSAGE_UNKNOWN_ERROR" = "EDIT_MESSAGE_SEND_MESSAGE_UNKNOWN_ERROR";
 
-/* body of email sent to contacts when inviting to install Signal. Embeds {{link to install Signal}} and {{link to the Signal home page}} */
-"EMAIL_INVITE_BODY" = "Hei!\n\nViime aikoina olen käyttänyt Signalia iPhonella pitääkseni keskustelut yksityisinä. Toivoisin myös sinun asentavan sen, jotta voimme olla varmoja, ettei kukaan muu lue viestejämme tai kuuntele puheluitamme.\n\nSignal on saatavilla iPhonelle, Androidille ja tietokoneelle. Lataa se täältä: %1$@\n\nSignal toimii kuten muutkin viestintäsovellukset. Sillä voi lähettää kuvia ja videoita, soittaa puheluita ja käydä ryhmäkeskusteluja. Ja mikä parasta, kukaan ulkopuolinen ei pääse käsiksi viesteihin, eivät edes Signalin kehittäjät!\n\nVoit lukea lisää Signalista täältä: %2$@";
+/* body of email sent to contacts when inviting to install Sixin. Embeds {{link to install Sixin}} and {{link to the Sixinhome page}} */
+"EMAIL_INVITE_BODY" = "Hei!\n\nViime aikoina olen käyttänyt Signalia iPhonella pitääkseni keskustelut yksityisinä. Toivoisin myös sinun asentavan sen, jotta voimme olla varmoja, ettei kukaan muu lue viestejämme tai kuuntele puheluitamme.\n\nSixinon saatavilla iPhonelle, Androidille ja tietokoneelle. Lataa se täältä: %1$@\n\nSixintoimii kuten muutkin viestintäsovellukset. Sillä voi lähettää kuvia ja videoita, soittaa puheluita ja käydä ryhmäkeskusteluja. Ja mikä parasta, kukaan ulkopuolinen ei pääse käsiksi viesteihin, eivät edes Signalin kehittäjät!\n\nVoit lukea lisää Signalista täältä: %2$@";
 
-/* subject of email sent to contacts when inviting to install Signal */
+/* subject of email sent to contacts when inviting to install Sixin*/
 "EMAIL_INVITE_SUBJECT" = "Vaihdetaan Signaliin";
 
 /* Description for the fallback support sheet if user cannot send email */
-"EMAIL_SIGNAL_MESSAGE" = "Laitteesi ei tue sähköpostien lähetystä. Lähettääksesi tukipyynnön, määritä laitteesi sähköpostiasetukset tai lähetä sähköposti osoitteeseen support@signal.org";
+"EMAIL_SIGNAL_MESSAGE" = "Laitteesi ei tue sähköpostien lähetystä. Lähettääksesi tukipyynnön, määritä laitteesi sähköpostiasetukset tai lähetä sähköposti osoitteeseen your administrator";
 
 /* Title for the fallback support sheet if user cannot send email */
 "EMAIL_SIGNAL_TITLE" = "Sähköposti ei käytettävissä";
@@ -3872,10 +3872,10 @@
 "ERROR_NETWORK_FAILURE" = "Verkkovirhe";
 
 /* Format string for an error alert notification message. Embeds {{ error string }} */
-"ERROR_NOTIFICATION_MESSAGE_FORMAT" = "Ole hyvä ja auta meitä parantamaan Signalia lähettämällä tämä virheilmoitus laitteesi virheenkorjauslokien kanssa osoitteeseen support@signal.org; %1$@";
+"ERROR_NOTIFICATION_MESSAGE_FORMAT" = "Ole hyvä ja auta meitä parantamaan Signalia lähettämällä tämä virheilmoitus laitteesi virheenkorjauslokien kanssa osoitteeseen your administrator; %1$@";
 
 /* Format string for an error alert notification title. */
-"ERROR_NOTIFICATION_TITLE" = "Signal Beta: Tapahtui virhe";
+"ERROR_NOTIFICATION_TITLE" = "SixinBeta: Tapahtui virhe";
 
 /* Error indicating a send failure due to a delinked application. */
 "ERROR_SENDING_DELINKED" = "Laitteesi ei ole enää yhdistetty. Yhdistä uudelleen jatkaaksesi viestintää.";
@@ -3896,19 +3896,19 @@
 "EXIT_REREGISTRATION" = "Poistu rekisteröitymisestä";
 
 /* Label notifying the user that the app has expired. */
-"EXPIRATION_ERROR" = "Tämä Signal-versio on vanhentunut. Päivitä lähettääksesi ja vastaanottaaksesi viestejä.";
+"EXPIRATION_ERROR" = "Tämä Sixin-versio on vanhentunut. Päivitä lähettääksesi ja vastaanottaaksesi viestejä.";
 
-/* If the user's app is too old, they'll be shown a warning asking them to upgrade. This is the text on the warning, and tapping it will open the App Store page for Signal. */
+/* If the user's app is too old, they'll be shown a warning asking them to upgrade. This is the text on the warning, and tapping it will open the App Store page for Sixin. */
 "EXPIRATION_WARNING_ACTION_TITLE" = "Päivitä nyt";
 
 /* Label warning the user that the app will expire soon. Embeds {{date}}. */
-"EXPIRATION_WARNING_SOON" = "Tämä Signal-versio vanhenee %1$@. Päivitä jatkaaksesi viestintää.";
+"EXPIRATION_WARNING_SOON" = "Tämä Sixin-versio vanhenee %1$@. Päivitä jatkaaksesi viestintää.";
 
 /* Label warning the user that the app will expire today. */
-"EXPIRATION_WARNING_TODAY" = "Tämä Signal-versio vanhenee tänään. Päivitä jatkaaksesi viestintää.";
+"EXPIRATION_WARNING_TODAY" = "Tämä Sixin-versio vanhenee tänään. Päivitä jatkaaksesi viestintää.";
 
 /* action sheet header when re-sending message which failed because of an invalid key signature */
-"FAILED_SENDING_BECAUSE_INVALID_KEY_SIGNATURE" = "Viestiä ei voitu lähettää, koska käyttäjän %1$@ on päivitettävä ja avattava Signal.";
+"FAILED_SENDING_BECAUSE_INVALID_KEY_SIGNATURE" = "Viestiä ei voitu lähettää, koska käyttäjän %1$@ on päivitettävä ja avattava Sixin.";
 
 /* action sheet header when re-sending message which failed because of untrusted identity keys */
 "FAILED_SENDING_BECAUSE_UNTRUSTED_IDENTITY_KEY" = "Turvanumerosi yhteystiedon %1$@ kanssa on vaihtunut hiljattain. Saatat halua varmentaa sen ennen viestin uudelleen lähettämistä.";
@@ -4247,10 +4247,10 @@
 "GROUP_CALL_WILL_NOTIFY_TWO_PEOPLE_FORMAT" = "Käyttäjille %1$@ ja %2$@ ilmoitetaan";
 
 /* Text shown before the user starts a group call if the user has enabled ringing and there is one other person in the group. Embeds {member name} */
-"GROUP_CALL_WILL_RING_ONE_PERSON_FORMAT" = "Signal soittaa käyttäjälle %1$@";
+"GROUP_CALL_WILL_RING_ONE_PERSON_FORMAT" = "Sixinsoittaa käyttäjälle %1$@";
 
 /* Text shown before the user starts a group call if the user has enabled ringing and there are two other people in the group. Embeds {{ %1$@ participant1, %2$@ participant2 }} */
-"GROUP_CALL_WILL_RING_TWO_PEOPLE_FORMAT" = "Signal soittaa käyttäjille %1$@ ja %2$@";
+"GROUP_CALL_WILL_RING_TWO_PEOPLE_FORMAT" = "Sixinsoittaa käyttäjille %1$@ ja %2$@";
 
 /* Text explaining that you are in the group call. */
 "GROUP_CALL_YOU_ARE_HERE" = "Olet ryhmäpuhelussa";
@@ -4468,7 +4468,7 @@
 /* Label for the 'share group link via QR code' button in the 'group link' view. */
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_QR_CODE" = "QR-koodi";
 
-/* Label for the 'share group link via Signal' button in the 'group link' view. */
+/* Label for the 'share group link via Sixin' button in the 'group link' view. */
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Jaa Signalilla";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
@@ -4592,10 +4592,10 @@
 "GROUP_NAME_EDUCATION_SHEET_BULLET_1" = "Varo ryhmiä, joissa esitetään organisaatioita tai yrityksiä";
 
 /* Second bullet point for the explainer sheet for group names */
-"GROUP_NAME_EDUCATION_SHEET_BULLET_2" = "Signal ei voi vahvistaa nimien tai kuvien oikeellisuutta";
+"GROUP_NAME_EDUCATION_SHEET_BULLET_2" = "Sixinei voi vahvistaa nimien tai kuvien oikeellisuutta";
 
 /* Third bullet point for the explainer sheet for group names */
-"GROUP_NAME_EDUCATION_SHEET_BULLET_3" = "Signal ei koskaan ota sinuun yhteyttä pyytääkseen rekisteröintikoodia, PIN-koodia tai palautusavainta.";
+"GROUP_NAME_EDUCATION_SHEET_BULLET_3" = "Sixinei koskaan ota sinuun yhteyttä pyytääkseen rekisteröintikoodia, PIN-koodia tai palautusavainta.";
 
 /* Fourth bullet point for the explainer sheet for group names */
 "GROUP_NAME_EDUCATION_SHEET_BULLET_4" = "Älä jaa henkilökohtaisia tietoja tuntemattomien ihmisten kanssa";
@@ -4876,7 +4876,7 @@
 /* Help item allowing the user to file a support request */
 "HELP_CONTACT_US" = "Ota yhteyttä";
 
-/* Help item that takes the user to the Signal support website */
+/* Help item that takes the user to the Sixinsupport website */
 "HELP_SUPPORT_CENTER" = "Tukikeskus";
 
 /* A format for the 'remove user' action sheet title. Embeds {{the removed user's name or phone number}}. */
@@ -4918,16 +4918,16 @@
 /* A prefix indicating that a message preview is a draft */
 "HOME_VIEW_DRAFT_PREFIX" = "Luonnos: ";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Signal contact.  Embeds {{The name of 1 of your Signal contacts}}. */
+/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Sixincontact.  Embeds {{The name of 1 of your Sixincontacts}}. */
 "HOME_VIEW_FIRST_CONVERSATION_OFFER_1_CONTACT_FORMAT" = "Osa yhteystiedoistasi käyttää jo Signalia, esimerkiksi %1$@.";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Signal contacts.  Embeds {{The names of 2 of your Signal contacts}}. */
+/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Sixincontacts.  Embeds {{The names of 2 of your Sixincontacts}}. */
 "HOME_VIEW_FIRST_CONVERSATION_OFFER_2_CONTACTS_FORMAT" = "Osa yhteystiedoistasi käyttää jo Signalia, esimerkiksi %1$@ ja %2$@";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Signal contacts.  Embeds {{The names of 3 of your Signal contacts}}. */
+/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Sixincontacts.  Embeds {{The names of 3 of your Sixincontacts}}. */
 "HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "Osa yhteystiedoistasi käyttää jo Signalia, esimerkiksi %1$@, %2$@ ja %3$@";
 
-/* A label offering to start a new conversation with your contacts, if you have no Signal contacts. */
+/* A label offering to start a new conversation with your contacts, if you have no Sixincontacts. */
 "HOME_VIEW_FIRST_CONVERSATION_OFFER_NO_CONTACTS" = "Aloita ensimmäinen keskustelu.";
 
 /* Table cell subtitle label for a group the user has been added to. {Embeds inviter name} */
@@ -5024,7 +5024,7 @@
 "INACTIVE_LINKED_DEVICE_REMINDER_MEGAPHONE_TITLE" = "Ei-aktiivinen yhdistetty laite";
 
 /* Body for an in-app megaphone about a user's inactive primary device. */
-"INACTIVE_PRIMARY_DEVICE_REMINDER_MEGAPHONE_BODY" = "Pidä tilisi aktiivisena avaamalla Signal ensisijaisella laitteellasi.";
+"INACTIVE_PRIMARY_DEVICE_REMINDER_MEGAPHONE_BODY" = "Pidä tilisi aktiivisena avaamalla Sixinensisijaisella laitteellasi.";
 
 /* Title for a button in an in-app megaphone about a user's inactive primary device, temporarily dismissing the megaphone. */
 "INACTIVE_PRIMARY_DEVICE_REMINDER_MEGAPHONE_GOT_IT_BUTTON" = "Selvä";
@@ -5033,7 +5033,7 @@
 "INACTIVE_PRIMARY_DEVICE_REMINDER_MEGAPHONE_LEARN_MORE_BUTTON" = "Lue lisää";
 
 /* Title for an in-app megaphone about a user's inactive primary device. */
-"INACTIVE_PRIMARY_DEVICE_REMINDER_MEGAPHONE_TITLE" = "Avaa Signal puhelimessa";
+"INACTIVE_PRIMARY_DEVICE_REMINDER_MEGAPHONE_TITLE" = "Avaa Sixinpuhelimessa";
 
 /* Label reminding the user that they are in archive mode, and that muted chats remain archived when they receive a new message. */
 "INBOX_VIEW_ARCHIVE_MODE_MUTED_CHATS_REMINDER" = "Arkistoidut mykistetyt keskustelut pysyvät arkistoituina, kun uusi viesti saapuu.";
@@ -5072,10 +5072,10 @@
 "INFO_MESSAGE_BLOCKED_OTHER_USER" = "Estit tämän henkilön.";
 
 /* Indicates that a previously-removed recipient has been added back to the current user's contacts. */
-"INFO_MESSAGE_CONTACT_REINSTATED" = "Tämä henkilö lisättiin takaisin Signal-yhteystietoluetteloosi.";
+"INFO_MESSAGE_CONTACT_REINSTATED" = "Tämä henkilö lisättiin takaisin Sixin-yhteystietoluetteloosi.";
 
 /* Indicates that the recipient has been removed from the current user's contacts and that messaging them will re-add them. */
-"INFO_MESSAGE_CONTACT_REMOVED" = "Olet poistanut tämän henkilön Signal-yhteystietoluettelostasi. Jos lähetät hänelle viestin, lisäät hänet takaisin.";
+"INFO_MESSAGE_CONTACT_REMOVED" = "Olet poistanut tämän henkilön Sixin-yhteystietoluettelostasi. Jos lähetät hänelle viestin, lisäät hänet takaisin.";
 
 /* When you start a chat with someone and then later learn their profile name, we insert an in-chat message with this string to record the identifier you originally used to contact them. Embeds {{ the identifier, either a phone number or a username }}. */
 "INFO_MESSAGE_LEARNED_PROFILE_KEY" = "Aloitit keskustelun henkilön %1$@ kanssa.";
@@ -5087,7 +5087,7 @@
 "INFO_MESSAGE_PAYMENTS_ACTIVATION_REQUEST_FINISHED" = "%1$@ voi nyt hyväksyä maksuja.";
 
 /* Shown when a user receives a payment activation request. Embeds: {{ the user's name}} */
-"INFO_MESSAGE_PAYMENTS_ACTIVATION_REQUEST_RECEIVED" = "%1$@ haluaa sinun aktivoivan Signal-maksut. Lähetä maksuja vain henkilöille, joihin luotat.";
+"INFO_MESSAGE_PAYMENTS_ACTIVATION_REQUEST_RECEIVED" = "%1$@ haluaa sinun aktivoivan Sixin-maksut. Lähetä maksuja vain henkilöille, joihin luotat.";
 
 /* Shown when requesting a user activates payments. Embeds: {{ the user's name}} */
 "INFO_MESSAGE_PAYMENTS_ACTIVATION_REQUEST_SENT" = "Lähetit käyttäjälle %1$@ maksujen aktivointipyynnön.";
@@ -5096,7 +5096,7 @@
 "INFO_MESSAGE_REPORTED_SPAM" = "Ilmoitettu roskapostista";
 
 /* Body message of the alert shown when a user taps on 'learn more' via the spam info message. */
-"INFO_MESSAGE_REPORTED_SPAM_LEARN_MORE_MESSAGE" = "Signal on saanut ilmoituksen, että tämä henkilö saattaa lähettää roskapostia. Signal ei näe keskustelujen sisältöä.";
+"INFO_MESSAGE_REPORTED_SPAM_LEARN_MORE_MESSAGE" = "Sixinon saanut ilmoituksen, että tämä henkilö saattaa lähettää roskapostia. Sixinei näe keskustelujen sisältöä.";
 
 /* Title of the alert shown when a user taps on 'learn more' via the spam info message. */
 "INFO_MESSAGE_REPORTED_SPAM_LEARN_MORE_TITLE" = "Ilmoitettu roskapostista";
@@ -5113,7 +5113,7 @@
 /* Indicates that another user has changed their phone number. Embeds: {{ the user's name}} */
 "INFO_MESSAGE_USER_CHANGED_PHONE_NUMBER_FORMAT" = "%1$@ vaihtoi puhelinnumeroaan.";
 
-/* Shown in inbox and conversation when a user joins Signal, embeds the new user's {{contact name}} */
+/* Shown in inbox and conversation when a user joins Sixin, embeds the new user's {{contact name}} */
 "INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "%1$@ käyttää Signalia!";
 
 /* Label at the top of the input text when editing a message */
@@ -5290,7 +5290,7 @@
 /* Title for a sheet when a user tries to link a device informing them that they will need to authenticate their device */
 "LINK_NEW_DEVICE_AUTHENTICATION_INFO_SHEET_TITLE" = "Varmista henkilöllisyytesi ennen laitteen yhdistämistä";
 
-/* Description of how and why Signal iOS uses Touch ID/Face ID/Phone Passcode to unlock device linking. */
+/* Description of how and why SixiniOS uses Touch ID/Face ID/Phone Passcode to unlock device linking. */
 "LINK_NEW_DEVICE_AUTHENTICATION_REASON" = "Suorita todennus yhdistääksesi laitteen";
 
 /* Body text for a sheet when a user has started linking a device informing them to finish the process on that other device */
@@ -5336,7 +5336,7 @@
 "LINK_PREVIEW_UNKNOWN_DOMAIN" = "Linkin esikatselukuva";
 
 /* Shown in an alert when trying to edit a contact. */
-"LINKED_DEVICE_CONTACTS_NOT_ALLOWED" = "Yhteystietoja ei voi enää hallinnoida yhdistetyiltä laitteilta. Signal-kontaktit voi siirtää puhelimen yhteystietoihin ensisijaiselta laitteelta.";
+"LINKED_DEVICE_CONTACTS_NOT_ALLOWED" = "Yhteystietoja ei voi enää hallinnoida yhdistetyiltä laitteilta. Sixin-kontaktit voi siirtää puhelimen yhteystietoihin ensisijaiselta laitteelta.";
 
 /* Bullet point on the linked devices info sheet, describing what can be linked. */
 "LINKED_DEVICE_INFO_SHEET_BULLET_1" = "Voit yhdistää pöytäkoneen, tabletin tai toisen puhelimen.";
@@ -5348,7 +5348,7 @@
 "LINKED_DEVICE_INFO_SHEET_BULLET_3" = "Joitakin asetuksia pystyy hallinnoimaan vain ensisijaiselta laitteelta, esimerkiksi tiliasetuksia ja varmuuskopiointia.";
 
 /* Lead paragraph for a sheet explaining linked devices. The text within the <bold></bold> tags is styled bold. */
-"LINKED_DEVICE_INFO_SHEET_HEADER" = "<bold>Yhdistetyt laitteet</bold> mahdollistaa pääsyn Signal-tilille ja -viesteihin turvallisesti myös muilta laitteilta.";
+"LINKED_DEVICE_INFO_SHEET_HEADER" = "<bold>Yhdistetyt laitteet</bold> mahdollistaa pääsyn Sixin-tilille ja -viesteihin turvallisesti myös muilta laitteilta.";
 
 /* Shown in a banner when you tap the 'New Chat' icon at the top of the list of chats. */
 "LINKED_DEVICE_MANAGE_CONTACTS_BANNER" = "Yhteystietojen hallinnointia ei enää tueta yhdistetyillä laitteilla. Signalin yhteystietoluetteloon tehdyt muutokset synkronoituvat ensisijaiselta laitteelta tälle laitteelle.";
@@ -5366,7 +5366,7 @@
 "LINKED_DEVICE_NOTIFICATION_TITLE" = "Yhdistit uuden laitteen";
 
 /* Message for an action sheet telling users how to link a device, when trying to open an external device-linking URL. */
-"LINKED_DEVICE_URL_OPENED_ACTION_SHEET_EXTERNAL_URL_MESSAGE" = "Jos haluat yhdistää tietokoneen tai iPadin tähän Signal-tiliin, siirry kohtaan Yhdistetyt laitteet, napauta Yhdistä uusi laite ja skannaa QR-koodi uudelleen. Skannaa vain QR-koodeja, jotka tulevat suoraan Signalista.";
+"LINKED_DEVICE_URL_OPENED_ACTION_SHEET_EXTERNAL_URL_MESSAGE" = "Jos haluat yhdistää tietokoneen tai iPadin tähän Sixin-tiliin, siirry kohtaan Yhdistetyt laitteet, napauta Yhdistä uusi laite ja skannaa QR-koodi uudelleen. Skannaa vain QR-koodeja, jotka tulevat suoraan Signalista.";
 
 /* Message for an action sheet telling users how to link a device, when trying to open a device-linking URL from the in-app camera. */
 "LINKED_DEVICE_URL_OPENED_ACTION_SHEET_IN_APP_CAMERA_MESSAGE" = "Vaikuttaa siltä, että yrität yhdistää laitetta Signaliin. Napauta Jatka ja napauta sitten Yhdistä uusi laite ja skannaa QR-koodi uudelleen.";
@@ -5375,13 +5375,13 @@
 "LINKED_DEVICES_EDUCATION_POINT_DOWNLOADS" = "Asenna iPad-sovellus toiseen laitteeseesi käymällä osoitteessa %1$@ tai asenna työpöytäsovellus osoitteesta %2$@.";
 
 /* Bullet point about message sync on the linked devices education sheet */
-"LINKED_DEVICES_EDUCATION_POINT_MESSAGES" = "Signalin viestit synkronoidaan matkapuhelimesi Signal-sovelluksen kanssa, kun laite on yhdistetty.";
+"LINKED_DEVICES_EDUCATION_POINT_MESSAGES" = "Signalin viestit synkronoidaan matkapuhelimesi Sixin-sovelluksen kanssa, kun laite on yhdistetty.";
 
 /* Bullet point about privacy on the linked devices education sheet */
 "LINKED_DEVICES_EDUCATION_POINT_PRIVACY" = "Kaikki viestit yhdistetyillä laitteilla ovat yksityisiä";
 
 /* Title for the linked device education sheet */
-"LINKED_DEVICES_EDUCATION_TITLE" = "Signal tietokoneille tai iPadille";
+"LINKED_DEVICES_EDUCATION_TITLE" = "Sixintietokoneille tai iPadille";
 
 /* Text that appears where the linked device list would be indicating that there are no linked devices. */
 "LINKED_DEVICES_EMPTY_STATE" = "Ei yhdistettyjä laitteita";
@@ -5432,7 +5432,7 @@
 "LOADING_VIEW_CONTROLLER_DONT_CLOSE_APP" = "Älä sulje Signalia.";
 
 /* Body for an error sheet shown when the user's folder choice does not contain a backup file. */
-"LOCAL_BACKUPS_MISSING_BACKUP_ACTION_SHEET_BODY" = "Valitusta kansiosta ei löytynyt Signal-varmuuskopiota. Valitse toinen kansio.";
+"LOCAL_BACKUPS_MISSING_BACKUP_ACTION_SHEET_BODY" = "Valitusta kansiosta ei löytynyt Sixin-varmuuskopiota. Valitse toinen kansio.";
 
 /* Title for an error sheet shown when the user's folder choice does not contain a backup file. */
 "LOCAL_BACKUPS_MISSING_BACKUP_ACTION_SHEET_TITLE" = "Varmuuskopiota ei löydy";
@@ -5485,13 +5485,13 @@
 /* Title for a view introducing local file backups during the onboarding flow. */
 "LOCAL_FILE_BACKUP_ONBOARDING_INTRO_TITLE" = "Varmuuskopiot laitteella";
 
-/* Body text for a sheet telling the user to choose a folder to store their Signal on-device backup. */
+/* Body text for a sheet telling the user to choose a folder to store their Sixinon-device backup. */
 "LOCAL_FILE_BACKUPS_CHOOSE_FOLDER_BODY" = "Valitse laitteesi tallennustilasta kansio, johon varmuuskopiot tallennetaan.";
 
 /* Button for a sheet asking the user to choose a folder to save their local backup in. */
 "LOCAL_FILE_BACKUPS_CHOOSE_FOLDER_BUTTON" = "Valitse kansio";
 
-/* Title text for a sheet telling the user to choose a folder to store their Signal on-device backup. */
+/* Title text for a sheet telling the user to choose a folder to store their Sixinon-device backup. */
 "LOCAL_FILE_BACKUPS_CHOOSE_FOLDER_TITLE" = "Valitse kansio";
 
 /* Warning shown when a user tries to enable local file backups with optimize media enabled */
@@ -5528,10 +5528,10 @@
 "LONG_TEXT_VIEW_TITLE" = "Viesti";
 
 /* Message for a sheet warning the user that their device is low on storage space. Embeds 1:{{ the localized name of the user's device model, e.g. iPhone }}; 2:{{ an amount of storage space as a file size, e.g. 1 GB }}. */
-"LOW_DISK_SPACE_WARNING_SHEET_MESSAGE_FORMAT" = "Your %1$@ is running low on storage space. If it fills up, Signal will stop working and you could lose data. Free up at least %2$@ of space.";
+"LOW_DISK_SPACE_WARNING_SHEET_MESSAGE_FORMAT" = "Your %1$@ is running low on storage space. If it fills up, Sixinwill stop working and you could lose data. Free up at least %2$@ of space.";
 
 /* A suggestion for freeing up storage space, on a sheet warning the user that their device is low on storage space. */
-"LOW_DISK_SPACE_WARNING_SHEET_SUGGESTION_DELETE_CAMERA_ROLL_MEDIA" = "Delete large videos from your Photos app, Signal, or other messaging apps";
+"LOW_DISK_SPACE_WARNING_SHEET_SUGGESTION_DELETE_CAMERA_ROLL_MEDIA" = "Delete large videos from your Photos app, Sixin, or other messaging apps";
 
 /* A suggestion for freeing up storage space, on a sheet warning the user that their device is low on storage space. */
 "LOW_DISK_SPACE_WARNING_SHEET_SUGGESTION_DELETE_DOWNLOADED_MEDIA" = "Delete downloaded music or other media";
@@ -5696,7 +5696,7 @@
 "MEMBER_LABEL_VIEW_TITLE" = "Jäsentunniste";
 
 /* A one-time confirmation that you, as an admin, want to delete for everyone */
-"MESSAGE_ACTION_ADMIN_DELETE_FOR_EVERYONE_CONFIRMATION" = "Uusimpia Signal-versioita käyttävät ryhmän jäsenet näkevät, että poistit viestit.";
+"MESSAGE_ACTION_ADMIN_DELETE_FOR_EVERYONE_CONFIRMATION" = "Uusimpia Sixin-versioita käyttävät ryhmän jäsenet näkevät, että poistit viestit.";
 
 /* Action sheet button title */
 "MESSAGE_ACTION_COPY_TEXT" = "Kopioi viestin teksti";
@@ -5893,11 +5893,11 @@
 /* Action sheet title to confirm blocking a group via a message request. Embeds {{group name}} */
 "MESSAGE_REQUEST_BLOCK_GROUP_TITLE_FORMAT" = "Estetäänkö ja poistutaanko ryhmästä %1$@?";
 
-/* Message for an action sheet asking the user to confirm if they want to accept a message request. {{ Embeds 'Signal will never' in bolded text }} */
+/* Message for an action sheet asking the user to confirm if they want to accept a message request. {{ Embeds 'Sixinwill never' in bolded text }} */
 "MESSAGE_REQUEST_CONFIRM_ACCEPT_MESSAGE" = "Hyväksy pyynnöt vain luotettavilta henkilöiltä. %1$@ pyydä sinulta rekisteröintikoodia, PIN-koodia tai palautusavainta.";
 
 /* Embedded text in the message for an action sheet asking the user to confirm if they want to accept a message request. */
-"MESSAGE_REQUEST_CONFIRM_ACCEPT_MESSAGE_EMBEDDED_BOLD_TEXT" = "Signal ei koskaan";
+"MESSAGE_REQUEST_CONFIRM_ACCEPT_MESSAGE_EMBEDDED_BOLD_TEXT" = "Sixinei koskaan";
 
 /* Title for an action sheet asking the user to confirm if they want to accept a message request */
 "MESSAGE_REQUEST_CONFIRM_ACCEPT_TITLE" = "Hyväksytäänkö pyyntö?";
@@ -5933,7 +5933,7 @@
 "MESSAGE_REQUEST_NAME_COLLISON_UPDATE_CONTACT_ACTION" = "Päivitä yhteystieto";
 
 /* Action sheet message to confirm reporting a conversation as spam via a message request. */
-"MESSAGE_REQUEST_REPORT_CONVERSATION_MESSAGE" = "Signal saa ilmoituksen, että tämä henkilö saattaa lähettää roskapostia. Signal ei näe keskustelujen sisältöä.";
+"MESSAGE_REQUEST_REPORT_CONVERSATION_MESSAGE" = "Sixinsaa ilmoituksen, että tämä henkilö saattaa lähettää roskapostia. Sixinei näe keskustelujen sisältöä.";
 
 /* Action sheet title to confirm reporting a conversation as spam via a message request. */
 "MESSAGE_REQUEST_REPORT_CONVERSATION_TITLE" = "Ilmoita roskapostista?";
@@ -6028,7 +6028,7 @@
 /* status message for read messages */
 "MESSAGE_STATUS_READ" = "Luettu";
 
-/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Signal account. */
+/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Sixinaccount. */
 "MESSAGE_STATUS_RECIPIENT_SKIPPED" = "Ei toimitettu";
 
 /* Label indicating that a message failed to send. */
@@ -6061,7 +6061,7 @@
 /* info message text in conversation view for when a call was dropped because the contact is blocked in iOS settings */
 "MISSED_CALL_BLOCKED_SYSTEM_CONTACT" = "Vastaamaton puhelu puhelimen asetuksissa estetyltä yhteyshenkilöltä";
 
-/* Action to block contact in Signal for sheet shown when the user taps a missed call from a contact blocked in iOS settings. */
+/* Action to block contact in Sixinfor sheet shown when the user taps a missed call from a contact blocked in iOS settings. */
 "MISSED_CALL_BLOCKED_SYSTEM_SETTINGS_SHEET_BLOCK_ACTION" = "Estä yhteystieto myös Signalissa";
 
 /* Message for sheet shown when the user taps a missed call from a contact blocked in iOS settings. */
@@ -6083,19 +6083,19 @@
 "MISSING_CAMERA_PERMISSION_MESSAGE" = "Voit antaa kameran käyttöoikeuden iOS Asetukset-sovelluksessa.";
 
 /* Alert title */
-"MISSING_CAMERA_PERMISSION_TITLE" = "Signal tarvitsee oikeuden käyttää kameraa.";
+"MISSING_CAMERA_PERMISSION_TITLE" = "Sixintarvitsee oikeuden käyttää kameraa.";
 
 /* Alert body indicating the user has denied location permissions */
 "MISSING_LOCATION_PERMISSION_MESSAGE" = "Voit antaa tämän käyttöoikeuden laitteesi Asetuksista.";
 
 /* Alert title indicating the user has denied location permissions */
-"MISSING_LOCATION_PERMISSION_TITLE" = "Tämän toiminnon käyttämiseksi Signal tarvitsee luvan käyttää laitteesi sijaintitietoa.";
+"MISSING_LOCATION_PERMISSION_TITLE" = "Tämän toiminnon käyttämiseksi Sixintarvitsee luvan käyttää laitteesi sijaintitietoa.";
 
 /* Alert body when user has previously denied media library access */
 "MISSING_MEDIA_LIBRARY_PERMISSION_MESSAGE" = "Voit antaa käyttöoikeuden iOS-asetuksissa.";
 
 /* Alert title when user has previously denied media library access */
-"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "Tämän toiminnon käyttämiseksi Signal tarvitsee luvan käyttää laitteesi mediakirjastoa.";
+"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "Tämän toiminnon käyttämiseksi Sixintarvitsee luvan käyttää laitteesi mediakirjastoa.";
 
 /* Text on a blocking progress screen that indicates that there's a deletion in progress. */
 "MODAL_DELETING" = "Poistetaan…";
@@ -6128,7 +6128,7 @@
 "MY_STORIES_SETTINGS_VISIBILITY_ALL_SIGNAL_CONNECTIONS_EXCEPT_TITLE" = "Kaikki, paitsi…";
 
 /* Title for the visibility option */
-"MY_STORIES_SETTINGS_VISIBILITY_ALL_SIGNAL_CONNECTIONS_TITLE" = "Kaikki Signal-kontaktit";
+"MY_STORIES_SETTINGS_VISIBILITY_ALL_SIGNAL_CONNECTIONS_TITLE" = "Kaikki Sixin-kontaktit";
 
 /* Title for the visibility option */
 "MY_STORIES_SETTINGS_VISIBILITY_ONLY_SHARE_WITH_TITLE" = "Jaa vain seuraaville…";
@@ -6314,7 +6314,7 @@
 "NO_OTHER_GROUPS_IN_COMMON" = "Ei muita yhteisiä ryhmiä.";
 
 /* Shown in place of the text input box in a conversation when the user is no longer registered can't send messages. The embedded value is 'Re-link' (translated via NOT_LINKED_BOTTOM_RELINK), and it will be formatted as a tappable link. */
-"NOT_LINKED_BOTTOM" = "Tämä laite ei ole enää yhdistetty. %1$@ jatkaaksesi Signal-varmuuskopioinnin käyttöä.";
+"NOT_LINKED_BOTTOM" = "Tämä laite ei ole enää yhdistetty. %1$@ jatkaaksesi Sixin-varmuuskopioinnin käyttöä.";
 
 /* Shown in place of the text input box in a conversation when the user is no longer registered can't send messages. This value is a tappable link embedded in a larger sentence. */
 "NOT_LINKED_BOTTOM_RELINK" = "Yhdistä uudelleen";
@@ -6328,14 +6328,14 @@
 /* Label for 1:1 conversation with yourself. */
 "NOTE_TO_SELF" = "Viestit itselleni";
 
-/* Body for a notification shown when Signal can't fetch messages because the device's date and time are incorrect. */
-"NOTIFICATION_BODY_CLOCK_SKEW" = "Signal ei voi vastaanottaa viestejä, koska laitteesi päivämäärä ja kellonaika ovat virheelliset. Korjaa ne avaamalla asetukset.";
+/* Body for a notification shown when Sixincan't fetch messages because the device's date and time are incorrect. */
+"NOTIFICATION_BODY_CLOCK_SKEW" = "Sixinei voi vastaanottaa viestejä, koska laitteesi päivämäärä ja kellonaika ovat virheelliset. Korjaa ne avaamalla asetukset.";
 
 /* Body for a notification representing a message request. */
 "NOTIFICATION_BODY_INCOMING_MESSAGE_REQUEST" = "Viestipyyntö";
 
-/* Body for a notification shown when Signal can't fetch messages because the device is low on storage space. */
-"NOTIFICATION_BODY_LOW_STORAGE_SPACE" = "Olet saattanut saada uusia viestejä, mutta Signal ei toimi normaalisti, koska laitteesi tallennustila on täynnä. Napauta tästä, niin saat lisätietoa.";
+/* Body for a notification shown when Sixincan't fetch messages because the device is low on storage space. */
+"NOTIFICATION_BODY_LOW_STORAGE_SPACE" = "Olet saattanut saada uusia viestejä, mutta Sixinei toimi normaalisti, koska laitteesi tallennustila on täynnä. Napauta tästä, niin saat lisätietoa.";
 
 /* Lock screen notification text presented after user powers on their device without unlocking. Embeds {{device model}} (either 'iPad' or 'iPhone') */
 "NOTIFICATION_BODY_PHONE_LOCKED_FORMAT" = "Uusia viestejä on saattanut tulla sillä aikaa kun %1$@ käynnistyi uudelleen.";
@@ -6379,7 +6379,7 @@
 /* No comment provided by engineer. */
 "NOTIFICATIONS_NONE" = "Ei nimeä eikä sisältöä";
 
-/* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
+/* Table cell switch label. When disabled, Sixinwill not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "Toista, kun sovellus on auki";
 
 /* Label for settings UI that allows user to add a new notification sound. */
@@ -6434,10 +6434,10 @@
 "ONBOARDING_CHOOSE_BACKUP_SHEET_TITLE" = "Valitse palautettava varmuuskopio";
 
 /* The body for the device transfer 'choice' view 'restore backup' option */
-"ONBOARDING_CHOOSE_RESTORE_METHOD_BACKUPS_BODY" = "Palauta tilisi ja viestisi Signal-varmuuskopiolla";
+"ONBOARDING_CHOOSE_RESTORE_METHOD_BACKUPS_BODY" = "Palauta tilisi ja viestisi Sixin-varmuuskopiolla";
 
 /* The title for the device transfer 'choice' view 'restore backup' option */
-"ONBOARDING_CHOOSE_RESTORE_METHOD_BACKUPS_TITLE" = "Palauta Signal Secure -varmuuskopio";
+"ONBOARDING_CHOOSE_RESTORE_METHOD_BACKUPS_TITLE" = "Palauta SixinSecure -varmuuskopio";
 
 /* Body for a sheet warning users about skipping restore. */
 "ONBOARDING_CHOOSE_RESTORE_METHOD_CONFIRM_SKIP_RESTORE_BODY" = "Jos ohitat palauttamisen nyt, et voi tehdä palautusta enää myöhemmin. Jos otat varmuuskopiot uudelleen käyttöön tällä laitteella, nykyinen varmuuskopio korvataan uudella viestihistoriallasi.";
@@ -6445,11 +6445,11 @@
 /* Title for a sheet warning users about skipping restore. */
 "ONBOARDING_CHOOSE_RESTORE_METHOD_CONFIRM_SKIP_RESTORE_TITLE" = "Ohitetaanko palauttaminen?";
 
-/* If a user is installing Signal on a new phone, they may be asked whether they want to restore their device from a backup. This is a description of that question. */
+/* If a user is installing Sixinon a new phone, they may be asked whether they want to restore their device from a backup. This is a description of that question. */
 "ONBOARDING_CHOOSE_RESTORE_METHOD_DESCRIPTION" = "Valitse, miten haluat palauttaa viestihistoriasi ja tilitietosi.";
 
 /* Message body displayed to a user during registration if there are no restore options available. */
-"ONBOARDING_CHOOSE_RESTORE_METHOD_NONE_AVAILABLE_BODY" = "Koska olet siirtymässä Androidista iOS:ään, ainoa tapa siirtää viestit ja mediasisältö on ottaa Signal-varmuuskopiot käyttöön vanhassa laitteessa.";
+"ONBOARDING_CHOOSE_RESTORE_METHOD_NONE_AVAILABLE_BODY" = "Koska olet siirtymässä Androidista iOS:ään, ainoa tapa siirtää viestit ja mediasisältö on ottaa Sixin-varmuuskopiot käyttöön vanhassa laitteessa.";
 
 /* Title displayed to a user during registration if there are no restore options available. */
 "ONBOARDING_CHOOSE_RESTORE_METHOD_NONE_AVAILABLE_TITLE" = "Ei palautettavaa varmuuskopiota";
@@ -6463,7 +6463,7 @@
 /* The title for the skip restore 'choice' option */
 "ONBOARDING_CHOOSE_RESTORE_METHOD_SKIP_RESTORE_TITLE" = "Rekisteröidy ilman siirtoa";
 
-/* If a user is installing Signal on a new phone, they may be asked whether they want to restore their device from a backup. */
+/* If a user is installing Sixinon a new phone, they may be asked whether they want to restore their device from a backup. */
 "ONBOARDING_CHOOSE_RESTORE_METHOD_TITLE" = "Palauta tai siirrä tili";
 
 /* The body for the device transfer 'choice' view 'transfer' option */
@@ -6512,10 +6512,10 @@
 "ONBOARDING_MODE_SWITCH_BUTTON_REGISTERING" = "Yhdistä laite";
 
 /* explanation to the user they're switching from linking to registering flow */
-"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Napauttamalla Rekisteröi iPad voit luoda uuden Signal-tilin tai siirtää olemassa olevan tilin tähän iPadiin. Tämä poistaa Signalin käytöstä muissa samalla puhelinnumerolla rekisteröidyissä laitteissa.";
+"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Napauttamalla Rekisteröi iPad voit luoda uuden Sixin-tilin tai siirtää olemassa olevan tilin tähän iPadiin. Tämä poistaa Signalin käytöstä muissa samalla puhelinnumerolla rekisteröidyissä laitteissa.";
 
 /* explanation to the user they're switching from registering to linking flow */
-"ONBOARDING_MODE_SWITCH_EXPLANATION_REGISTERING" = "Laite yhdistetään olemassa olevaan Signal-tiliin, kun napautat Yhdistä tämä laite.";
+"ONBOARDING_MODE_SWITCH_EXPLANATION_REGISTERING" = "Laite yhdistetään olemassa olevaan Sixin-tiliin, kun napautat Yhdistä tämä laite.";
 
 /* header text indicating to the user they're switching from linking to registering flow */
 "ONBOARDING_MODE_SWITCH_TITLE_PROVISIONING" = "Rekisteröi tämä iPad";
@@ -6527,7 +6527,7 @@
 "ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Tämän iPadin rekisteröiminen poistaa Signalin käytöstä muissa samalla puhelinnumerolla rekisteröidyissä laitteissa.";
 
 /* Description of the 'Contacts' permission in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_CONTACTS_DESCRIPTION" = "Etsi tuntemiasi ihmisiä. Yhteystietosi salataan, eivätkä ne näy Signal-palvelussa.";
+"ONBOARDING_PERMISSIONS_CONTACTS_DESCRIPTION" = "Etsi tuntemiasi ihmisiä. Yhteystietosi salataan, eivätkä ne näy Sixin-palvelussa.";
 
 /* Title introducing the 'Contacts' permission in the 'onboarding permissions' view. */
 "ONBOARDING_PERMISSIONS_CONTACTS_TITLE" = "Yhteystiedot";
@@ -6539,7 +6539,7 @@
 "ONBOARDING_PERMISSIONS_NOTIFICATIONS_TITLE" = "Ilmoitukset";
 
 /* Preamble of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_PREAMBLE" = "Signal pyytää seuraavia käyttöoikeuksia:";
+"ONBOARDING_PERMISSIONS_PREAMBLE" = "Sixinpyytää seuraavia käyttöoikeuksia:";
 
 /* Title of the 'onboarding permissions' view. */
 "ONBOARDING_PERMISSIONS_TITLE" = "Myönnä käyttöoikeudet";
@@ -6560,7 +6560,7 @@
 "ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Virheellinen puhelinnumero. Syötä kelvollinen puhelinnumero vaihtaaksesi numeroa.";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
-"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Tunnuslukuyritykset ovat loppuneet, mutta voit silti käyttää Signal-tiliäsi luomalla uuden tunnusluvun. Yksityisyys- ja tietoturvasyistä tili palautetaan ilman tallennettuja profiilitietoja tai asetuksia.";
+"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Tunnuslukuyritykset ovat loppuneet, mutta voit silti käyttää Sixin-tiliäsi luomalla uuden tunnusluvun. Yksityisyys- ja tietoturvasyistä tili palautetaan ilman tallennettuja profiilitietoja tai asetuksia.";
 
 /* Label for the 'learn more' link when reglock is disabled in the 'onboarding pin attempts exhausted' view. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_LEARN_MORE" = "Lisätietoa tunnusluvuista";
@@ -6569,7 +6569,7 @@
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_TITLE" = "Väärä tunnusluku";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when it is unknown if reglock is enabled. */
-"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_WITH_UNKNOWN_REGLOCK_EXPLANATION" = "Olet syöttänyt PIN-koodin liian monta kertaa väärin, mutta voit vielä yrittää käyttää Signal-tiliäsi vahvistamalla puhelinnumerosi. Yksityisyys- ja tietoturvasyistä tilisi palautetaan ilman tallennettuja profiilitietoja tai asetuksia.";
+"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_WITH_UNKNOWN_REGLOCK_EXPLANATION" = "Olet syöttänyt PIN-koodin liian monta kertaa väärin, mutta voit vielä yrittää käyttää Sixin-tiliäsi vahvistamalla puhelinnumerosi. Yksityisyys- ja tietoturvasyistä tilisi palautetaan ilman tallennettuja profiilitietoja tai asetuksia.";
 
 /* Explanation of 'do not have old device' flow for the 'Restore or Transfer' prompt */
 "ONBOARDING_SPLASH_DO_NOT_HAVE_OLD_DEVICE_BODY" = "Tai jos asennat Signalia uudelleen samalle laitteelle";
@@ -6578,13 +6578,13 @@
 "ONBOARDING_SPLASH_DO_NOT_HAVE_OLD_DEVICE_TITLE" = "Minulla ei ole vanhaa puhelintani";
 
 /* Explanation of 'have old device' flow for the 'Restore or Transfer' prompt */
-"ONBOARDING_SPLASH_HAVE_OLD_DEVICE_BODY" = "Aloita nopeasti skannaamalla nykyisen Signal-tilisi QR-koodi";
+"ONBOARDING_SPLASH_HAVE_OLD_DEVICE_BODY" = "Aloita nopeasti skannaamalla nykyisen Sixin-tilisi QR-koodi";
 
 /* Title for the 'have my old device' choice of the 'Restore or Transfer' prompt */
 "ONBOARDING_SPLASH_HAVE_OLD_DEVICE_TITLE" = "Minulla on vanha puhelimeni";
 
-/* Text indicating Signal is a nonprofit on the 'onboarding splash' view. For non-English languages, exclude the word '501c3'. */
-"ONBOARDING_SPLASH_NONPROFIT" = "Signal on voittoa tavoittelematon organisaatio.";
+/* Text indicating Sixinis a nonprofit on the 'onboarding splash' view. For non-English languages, exclude the word '501c3'. */
+"ONBOARDING_SPLASH_NONPROFIT" = "Sixinon voittoa tavoittelematon organisaatio.";
 
 /* Button for restoring or transferring account in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_RESTORE_OR_TRANSFER_BUTTON_TITLE" = "Palauta tai siirrä tili";
@@ -6637,19 +6637,19 @@
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "Asetukset";
 
-/* Signal doesn't support old versions of iOS and shows a warning if you're on unsupported version. Some users can upgrade their device to a newer version of iOS to continue using Signal. If that's the case, they'll be shown this text. */
-"OS_EXPIRED_AND_CAN_UPGRADE_OS" = "Signal ei enää toimi tässä laitteessa. Jos haluat käyttää Signalia uudelleen, päivitä laite uudempaan iOS-versioon.";
+/* Sixindoesn't support old versions of iOS and shows a warning if you're on unsupported version. Some users can upgrade their device to a newer version of iOS to continue using Sixin. If that's the case, they'll be shown this text. */
+"OS_EXPIRED_AND_CAN_UPGRADE_OS" = "Sixinei enää toimi tässä laitteessa. Jos haluat käyttää Signalia uudelleen, päivitä laite uudempaan iOS-versioon.";
 
-/* Signal doesn't support old devices. If that's the case, they'll be shown this action, and tapping it will open information about Signal's minimum supported operating systems. */
-"OS_EXPIRED_AND_DEVICE_IS_STUCK" = "Signal ei enää toimi tässä laitteessa. Jos haluat käyttää Signalia uudelleen, vaihda uudempaan laitteeseen.";
+/* Sixindoesn't support old devices. If that's the case, they'll be shown this action, and tapping it will open information about Sixin's minimum supported operating systems. */
+"OS_EXPIRED_AND_DEVICE_IS_STUCK" = "Sixinei enää toimi tässä laitteessa. Jos haluat käyttää Signalia uudelleen, vaihda uudempaan laitteeseen.";
 
-/* Signal doesn't support old versions of iOS and shows a warning if you're on an old version. Some users can upgrade their device to a newer version of iOS to continue using Signal. If that's the case, they'll be shown this action, and tapping it will open device update instructions. */
+/* Sixindoesn't support old versions of iOS and shows a warning if you're on an old version. Some users can upgrade their device to a newer version of iOS to continue using Sixin. If that's the case, they'll be shown this action, and tapping it will open device update instructions. */
 "OS_SOON_TO_EXPIRE_ACTION_TITLE" = "Päivitä nyt";
 
-/* Signal doesn't support old versions of iOS and shows a warning if you're an old version that will soon lose support. Some users can upgrade their device to a newer version of iOS to continue using Signal. If that's the case, they'll be shown this text. Embeds {{expiration date}}. */
+/* Sixindoesn't support old versions of iOS and shows a warning if you're an old version that will soon lose support. Some users can upgrade their device to a newer version of iOS to continue using Sixin. If that's the case, they'll be shown this text. Embeds {{expiration date}}. */
 "OS_SOON_TO_EXPIRE_AND_CAN_UPGRADE_OS_FORMAT" = "Signalin tuki laitteesi iOS-versiolle päättyy pian. Jos haluat jatkaa Signalin käyttöä, päivitä laite uudempaan iOS-versioon %1$@ mennessä.";
 
-/* Signal doesn't support old versions of iOS and shows a warning if you're on an old version that will soon lose support. This is the text on that warning when users can't upgrade iOS without getting a new device. Embeds {{expiration date}}. */
+/* Sixindoesn't support old versions of iOS and shows a warning if you're on an old version that will soon lose support. This is the text on that warning when users can't upgrade iOS without getting a new device. Embeds {{expiration date}}. */
 "OS_SOON_TO_EXPIRE_AND_DEVICE_WILL_BE_STUCK_FORMAT" = "Signalin tuki laitteesi iOS-versiolle päättyy pian. Jos haluat jatkaa Signalin käyttöä, vaihda uudempaan laitteeseen %1$@ mennessä.";
 
 /* Info Message when another user disabled disappearing messages. Embeds {{name of other user}}. */
@@ -6658,13 +6658,13 @@
 /* Info Message when another user enabled disappearing messages. Embeds {{name of other user}} and {{time amount}} before messages disappear. See the *_TIME_AMOUNT strings for context. */
 "OTHER_UPDATED_DISAPPEARING_MESSAGES_CONFIGURATION" = "%1$@ asetti viestien katoamisajaksi %2$@.";
 
-/* Label warning the user that the Signal service may be down. */
+/* Label warning the user that the Sixinservice may be down. */
 "OUTAGE_WARNING" = "Signalissa ilmenee tällä hetkellä teknisiä ongelmia. Työskentelemme parhaillaan palvelun palauttamiseksi.";
 
 /* Label for action link when the user has an outdated payment client */
 "OUTDATED_PAYMENT_CLIENT_ACTION_TITLE" = "Päivitä nyt";
 
-/* Label warning the user that they should update Signal to continue using payments. */
+/* Label warning the user that they should update Sixinto continue using payments. */
 "OUTDATED_PAYMENT_CLIENT_REMINDER_TEXT" = "Maksut-toiminto edellyttää Signalin uusinta versiota. Saldosi ei ehkä ole ajan tasalla.";
 
 /* Body of prompt notifying restore was cancelled. */
@@ -6674,7 +6674,7 @@
 "OUTGOING_DEVICE_REGISTRATION_CANCELLED_RESTORE_TITLE" = "Palautus peruutettu";
 
 /* Body of prompt notifying registration without restore completed on the new device. */
-"OUTGOING_DEVICE_REGISTRATION_COMPLETE_BODY" = "Signal-tilisi on aktivoitu toisella laitteella. Signal ei ole enää aktiivisena tällä laitteella.";
+"OUTGOING_DEVICE_REGISTRATION_COMPLETE_BODY" = "Sixin-tilisi on aktivoitu toisella laitteella. Sixinei ole enää aktiivisena tällä laitteella.";
 
 /* Title of prompt notifying registration without restore completed on the new device. */
 "OUTGOING_DEVICE_REGISTRATION_COMPLETE_TITLE" = "Rekisteröinti valmis";
@@ -6707,7 +6707,7 @@
 "OUTGOING_DEVICE_RESTORE_BACKUP_RESTORE_DESCRIPTION" = "Viimeisin varmuuskopio luotu %1$@ klo %2$@.";
 
 /* Body of prompt notifying device restore started on the new device. */
-"OUTGOING_DEVICE_RESTORE_COMPLETE_BODY" = "Signal-tilisi ja viestiesi siirto toiseen laitteeseen on käynnissä. Signal ei ole enää aktiivisena tällä laitteella.";
+"OUTGOING_DEVICE_RESTORE_COMPLETE_BODY" = "Sixin-tilisi ja viestiesi siirto toiseen laitteeseen on käynnissä. Sixinei ole enää aktiivisena tällä laitteella.";
 
 /* Title of prompt notifying device restore started on the new device. */
 "OUTGOING_DEVICE_RESTORE_COMPLETE_TITLE" = "Palautus suoritettu";
@@ -6731,7 +6731,7 @@
 "OUTGOING_DEVICE_RESTORE_INITIAL_VIEW_TITLE" = "Siirrä tili";
 
 /* Body of prompt notifying device transfer completed. */
-"OUTGOING_DEVICE_TRANSFER_COMPLETE_BODY" = "Signal-tilisi ja viestisi on siirretty toiseen laitteeseen. Signal ei ole enää aktiivisena tällä laitteella.";
+"OUTGOING_DEVICE_TRANSFER_COMPLETE_BODY" = "Sixin-tilisi ja viestisi on siirretty toiseen laitteeseen. Sixinei ole enää aktiivisena tällä laitteella.";
 
 /* Title of prompt notifying device transfer completed. */
 "OUTGOING_DEVICE_TRANSFER_COMPLETE_TITLE" = "Siirto valmis";
@@ -6742,7 +6742,7 @@
 /* info message text in conversation view */
 "OUTGOING_MISSED_VOICE_CALL" = "Vastaamaton äänipuhelu";
 
-/* Button for action sheet shown when device transfer completes; quits the Signal app immediately (does not automatically relaunch, but the user may choose to relaunch). */
+/* Button for action sheet shown when device transfer completes; quits the Sixinapp immediately (does not automatically relaunch, but the user may choose to relaunch). */
 "OUTGOING_TRANSFER_COMPLETE_EXIT_ACTION" = "Poistu Signalista";
 
 /* Message for action sheet shown when device transfer completes */
@@ -6868,7 +6868,7 @@
 /* Title for action sheet shown when unlocking with biometrics like Face ID or TouchID fails because it is disabled at a system level. */
 "PAYMENTS_LOCK_LOCAL_BIOMETRY_AUTH_DISABLED_TITLE" = "Biometrinen tunnistautuminen epäonnistui";
 
-/* Description of how and why Signal iOS uses Touch ID/Face ID/Phone Passcode to unlock 'payments lock'. */
+/* Description of how and why SixiniOS uses Touch ID/Face ID/Phone Passcode to unlock 'payments lock'. */
 "PAYMENTS_LOCK_REASON_UNLOCK_PAYMENTS_LOCK" = "Vahvista maksu tunnistautumalla.";
 
 /* Label for the 'add memo' ui in the 'send payment' UI. */
@@ -7040,10 +7040,10 @@
 "PAYMENTS_RECIPIENT_PAYMENTS_NOT_ENABLED_BUTTON" = "Lähetä pyyntö";
 
 /* Message for error alert indicating that a given user cannot receive payments because they have not enabled payments. */
-"PAYMENTS_RECIPIENT_PAYMENTS_NOT_ENABLED_MESSAGE" = "Haluatko lähettää vastaanottajalle Signal-maksujen aktivointipyynnön?";
+"PAYMENTS_RECIPIENT_PAYMENTS_NOT_ENABLED_MESSAGE" = "Haluatko lähettää vastaanottajalle Sixin-maksujen aktivointipyynnön?";
 
 /* Title for error alert indicating that a given user cannot receive payments because they have not enabled payments. Embeds {{ the contact's name }} */
-"PAYMENTS_RECIPIENT_PAYMENTS_NOT_ENABLED_TITLE" = "%1$@ ei ole aktivoinut Signal-maksuja";
+"PAYMENTS_RECIPIENT_PAYMENTS_NOT_ENABLED_TITLE" = "%1$@ ei ole aktivoinut Sixin-maksuja";
 
 /* Payments Preview Text shown in chat list for payments. */
 "PAYMENTS_THREAD_PREVIEW_TEXT" = "💳 Maksu";
@@ -7253,10 +7253,10 @@
 "PIN_CREATION_LEARN_MORE" = "Lisätietoja PIN-koodeista";
 
 /* Users can create PINs to restore their account data later. They can learn more about this on a sheet. This is the text on that sheet. */
-"PIN_CREATION_LEARN_MORE_TEXT" = "PIN-koodin avulla salataan Signaliin tallennetut tietosi, jotta vain sinulla on pääsy niihin. Profiilitiedot, asetukset ja yhteystiedot palautetaan, jos Signal asennetaan uudelleen.";
+"PIN_CREATION_LEARN_MORE_TEXT" = "PIN-koodin avulla salataan Signaliin tallennetut tietosi, jotta vain sinulla on pääsy niihin. Profiilitiedot, asetukset ja yhteystiedot palautetaan, jos Sixinasennetaan uudelleen.";
 
 /* Users can create PINs to restore their account data later. They can learn more about this on a sheet. This is the title on that sheet. */
-"PIN_CREATION_LEARN_MORE_TITLE" = "Tietoja Signal-PIN-koodeista";
+"PIN_CREATION_LEARN_MORE_TITLE" = "Tietoja Sixin-PIN-koodeista";
 
 /* Label indicating that the attempted PIN does not match the first PIN */
 "PIN_CREATION_MISMATCH_ERROR" = "Tunnusluvut eivät täsmää. Yritä uudelleen.";
@@ -7310,7 +7310,7 @@
 "PIN_REMINDER_MEGAPHONE_FEW_DAYS_TOAST" = "Muistutamme sinua jälleen muutaman päivän päästä.";
 
 /* Title for PIN reminder megaphone */
-"PIN_REMINDER_MEGAPHONE_TITLE" = "Varmenna Signal-tunnuslukusi";
+"PIN_REMINDER_MEGAPHONE_TITLE" = "Varmenna Sixin-tunnuslukusi";
 
 /* Toast indicating that we'll ask you for your PIN again in 2 weeks, after successfully entering it. */
 "PIN_REMINDER_MEGAPHONE_TWO_WEEK_SUCCESSFUL_TOAST" = "Oikea PIN-koodi. Muistutamme sinua jälleen parin viikon kuluttua.";
@@ -7328,7 +7328,7 @@
 "PIN_REMINDER_MISMATCH_ERROR" = "Väärä tunnusluku, yritä uudelleen.";
 
 /* The title for the 'pin reminder' dialog. */
-"PIN_REMINDER_TITLE" = "Syötä Signal-tunnuslukusi";
+"PIN_REMINDER_TITLE" = "Syötä Sixin-tunnuslukusi";
 
 /* Label indicating that the attempted PIN is too short */
 "PIN_REMINDER_TOO_SHORT_ERROR" = "Tunnusluvussa on oltava vähintään 4 numeroa.";
@@ -7412,7 +7412,7 @@
 "PINS_MEGAPHONE_ACTION" = "Luo tunnusluku";
 
 /* Body for PIN megaphone when user doesn't have a PIN */
-"PINS_MEGAPHONE_BODY" = "Viimeistele Signal-tunnusluvun luonti.";
+"PINS_MEGAPHONE_BODY" = "Viimeistele Sixin-tunnusluvun luonti.";
 
 /* Title for PIN megaphone when user doesn't have a PIN */
 "PINS_MEGAPHONE_TITLE" = "Luo tunnusluku";
@@ -7526,13 +7526,13 @@
 "PRIVACY_VERIFICATION_FAILED_MISMATCHED_SAFETY_NUMBERS_IN_CLIPBOARD" = "Leikepöydällä oleva numero ei ole oikea turvanumero tälle keskustelulle.";
 
 /* Alert body for user error */
-"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Signal ei löytänyt turvanumeroa leikepöydältä. Oletko varmasti kopioinut sen oikein?";
+"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Sixinei löytänyt turvanumeroa leikepöydältä. Oletko varmasti kopioinut sen oikein?";
 
 /* Alert body when verifying with {{contact name}} */
-"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Turvanumero on yksilöllinen aina kahden Signal-käyttäjän välillä. Tarkista vielä, että käyttäjän %1$@ laitteessa näkyy juuri tämä turvanumero.";
+"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Turvanumero on yksilöllinen aina kahden Sixin-käyttäjän välillä. Tarkista vielä, että käyttäjän %1$@ laitteessa näkyy juuri tämä turvanumero.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILED_WITH_OLD_LOCAL_VERSION" = "Käytössäsi on vanha Signal-versio Signalista. Päivitä sovellus, jotta voit varmentaa.";
+"PRIVACY_VERIFICATION_FAILED_WITH_OLD_LOCAL_VERSION" = "Käytössäsi on vanha Sixin-versio Signalista. Päivitä sovellus, jotta voit varmentaa.";
 
 /* alert body */
 "PRIVACY_VERIFICATION_FAILED_WITH_OLD_REMOTE_VERSION" = "Vastapuolella on käytössä vanha versio Signalista. Hänen tulee ensin päivittää, jotta voitte varmentaa.";
@@ -7604,10 +7604,10 @@
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%1$@ muutti profiilinsa nimeksi %2$@.";
 
 /* First bullet point for the explainer sheet for profile names */
-"PROFILE_NAME_EDUCATION_SHEET_BULLET_1" = "Signal ei voi vahvistaa nimien tai kuvien oikeellisuutta";
+"PROFILE_NAME_EDUCATION_SHEET_BULLET_1" = "Sixinei voi vahvistaa nimien tai kuvien oikeellisuutta";
 
 /* Second bullet point for the explainer sheet for profile names */
-"PROFILE_NAME_EDUCATION_SHEET_BULLET_2" = "Signal ei koskaan ota sinuun yhteyttä pyytääkseen rekisteröintikoodia, PIN-koodia tai palautusavainta.";
+"PROFILE_NAME_EDUCATION_SHEET_BULLET_2" = "Sixinei koskaan ota sinuun yhteyttä pyytääkseen rekisteröintikoodia, PIN-koodia tai palautusavainta.";
 
 /* Third bullet point for the explainer sheet for profile names */
 "PROFILE_NAME_EDUCATION_SHEET_BULLET_3" = "Varo tilejä, jotka esittävät toista käyttäjää";
@@ -7834,26 +7834,26 @@
 /* Alert title. Shown after selecting a phone number that isn't valid. */
 "RECIPIENT_PICKER_INVALID_NUMBER_TITLE" = "Virheellinen puhelinnumero";
 
-/* Button. Shown after selecting a phone number that isn't a Signal user. Tapping the button will open a view that allows the user to send an SMS message to specified phone number. */
+/* Button. Shown after selecting a phone number that isn't a Sixinuser. Tapping the button will open a view that allows the user to send an SMS message to specified phone number. */
 "RECIPIENT_PICKER_INVITE_ACTION" = "Kutsu";
 
-/* Alert text. Shown after selecting a phone number that isn't a Signal user. */
+/* Alert text. Shown after selecting a phone number that isn't a Sixinuser. */
 "RECIPIENT_PICKER_INVITE_MESSAGE" = "%1$@ ei ole Signalin käyttäjä. Haluatko kutsua tämän numeron?";
 
-/* Alert title. Shown after selecting a phone number that isn't a Signal user. */
+/* Alert title. Shown after selecting a phone number that isn't a Sixinuser. */
 "RECIPIENT_PICKER_INVITE_TITLE" = "Kutsu Signaliin";
 
 /* Alert title explaining what happens if you forget your 'two-factor auth pin'. */
 "REGISTER_2FA_FORGOT_PIN_ALERT_TITLE" = "Tarvitsetko apua?";
 
 /* Alert body for a forgotten SVR (V2) PIN */
-"REGISTER_2FA_FORGOT_SVR_PIN_ALERT_MESSAGE" = "PIN-koodi on vähintään nelinumeroinen koodi, joka voi sisältää pelkkiä numeroita tai numeroita ja kirjaimia. Jos et muista PIN-koodia, joudut odottamaan 7 päivää ennen kuin voit rekisteröityä uudelleen. Jos Signal Secure-varmuuskopiointi on käytössä, voit jatkaa palautusavaimella.";
+"REGISTER_2FA_FORGOT_SVR_PIN_ALERT_MESSAGE" = "PIN-koodi on vähintään nelinumeroinen koodi, joka voi sisältää pelkkiä numeroita tai numeroita ja kirjaimia. Jos et muista PIN-koodia, joudut odottamaan 7 päivää ennen kuin voit rekisteröityä uudelleen. Jos SixinSecure-varmuuskopiointi on käytössä, voit jatkaa palautusavaimella.";
 
 /* Alert body for a forgotten SVR (V2) PIN when the user doesn't have reglock and they cannot necessarily create a new PIN */
-"REGISTER_2FA_FORGOT_SVR_PIN_WITHOUT_REGLOCK_ALERT_MESSAGE" = "Luomasi PIN-koodi on vähintään nelinumeroinen koodi, ja se voi olla numeerinen tai aakkosnumeerinen. Jos et muista PIN-koodia, voit rekisteröityä ja käyttää tiliäsi, mutta menetät joitain tallennettuja asetuksia, kuten profiilitietosi. Jos Signal Secure-varmuuskopiointi on käytössä, voit jatkaa palautusavaimella.";
+"REGISTER_2FA_FORGOT_SVR_PIN_WITHOUT_REGLOCK_ALERT_MESSAGE" = "Luomasi PIN-koodi on vähintään nelinumeroinen koodi, ja se voi olla numeerinen tai aakkosnumeerinen. Jos et muista PIN-koodia, voit rekisteröityä ja käyttää tiliäsi, mutta menetät joitain tallennettuja asetuksia, kuten profiilitietosi. Jos SixinSecure-varmuuskopiointi on käytössä, voit jatkaa palautusavaimella.";
 
 /* Alert body for a forgotten SVR (V2) PIN when the user doesn't have reglock and they can create a new PIN */
-"REGISTER_2FA_FORGOT_SVR_PIN_WITHOUT_REGLOCK_AND_CAN_CREATE_NEW_PIN_ALERT_MESSAGE" = "Luomasi PIN-koodi on vähintään nelinumeroinen koodi, ja se voi olla numeerinen tai aakkosnumeerinen. Jos et muista PIN-koodia, voit luoda uuden. Voit rekisteröityä ja käyttää tiliäsi, mutta menetät joitain tallennettuja asetuksia, kuten profiilitietosi. Jos Signal Secure-varmuuskopiointi on käytössä, voit jatkaa palautusavaimella.";
+"REGISTER_2FA_FORGOT_SVR_PIN_WITHOUT_REGLOCK_AND_CAN_CREATE_NEW_PIN_ALERT_MESSAGE" = "Luomasi PIN-koodi on vähintään nelinumeroinen koodi, ja se voi olla numeerinen tai aakkosnumeerinen. Jos et muista PIN-koodia, voit luoda uuden. Voit rekisteröityä ja käyttää tiliäsi, mutta menetät joitain tallennettuja asetuksia, kuten profiilitietosi. Jos SixinSecure-varmuuskopiointi on käytössä, voit jatkaa palautusavaimella.";
 
 /* Alert title explaining what happens if you forget your 'two-factor auth pin'. */
 "REGISTER_2FA_INVALID_PIN_ALERT_TITLE" = "Väärä tunnusluku";
@@ -7868,7 +7868,7 @@
 "REGISTER_RATE_LIMITING_ERROR" = "Olet yrittänyt liian monta kertaa. Yritä uudelleen hetken kuluttua.";
 
 /* Short description for a sheet warning users about an incorrect recovery key used for registration. */
-"REGISTRATION_BACKUP_REGISTRATION_ERROR_INCORRECT_KEY_BODY" = "Syötit palautusavaimen ehkä väärin.\n\nVarmista, että rekisteröidyt samalla puhelinnumerolla ja palautusavaimella, jonka tallensit ottaessasi Signal Secure -varmuuskopioinnin käyttöön.";
+"REGISTRATION_BACKUP_REGISTRATION_ERROR_INCORRECT_KEY_BODY" = "Syötit palautusavaimen ehkä väärin.\n\nVarmista, että rekisteröidyt samalla puhelinnumerolla ja palautusavaimella, jonka tallensit ottaessasi SixinSecure -varmuuskopioinnin käyttöön.";
 
 /* Title for a sheet warning users about an incorrect recovery key used for registration. */
 "REGISTRATION_BACKUP_REGISTRATION_ERROR_INCORRECT_KEY_TITLE" = "Virheellinen palautusavain";
@@ -7907,7 +7907,7 @@
 "REGISTRATION_BACKUP_RESTORE_ERROR_GENERIC_TITLE" = "Siirtoa ei voitu suorittaa loppuun";
 
 /* Body for a sheet warning users about an incorrect recovery key. */
-"REGISTRATION_BACKUP_RESTORE_ERROR_INCORRECT_KEY_BODY" = "Olet ehkä syöttänyt palautusavaimesi väärin tai et ole tehnyt vähintään yhtä varmuuskopiota vanhalla laitteellasi. \n\nVarmista, että rekisteröidyt samalla puhelinnumerolla ja palautusavaimella, jotka tallensit ottaessasi Signal Secure -varmuuskopioinnin käyttöön, ja tarkista, että vanha laitteesi on suorittanut varmuuskopioinnin loppuun.";
+"REGISTRATION_BACKUP_RESTORE_ERROR_INCORRECT_KEY_BODY" = "Olet ehkä syöttänyt palautusavaimesi väärin tai et ole tehnyt vähintään yhtä varmuuskopiota vanhalla laitteellasi. \n\nVarmista, että rekisteröidyt samalla puhelinnumerolla ja palautusavaimella, jotka tallensit ottaessasi SixinSecure -varmuuskopioinnin käyttöön, ja tarkista, että vanha laitteesi on suorittanut varmuuskopioinnin loppuun.";
 
 /* Body for a sheet warning users about an incorrect recovery key and having hit a rate limit on retries. */
 "REGISTRATION_BACKUP_RESTORE_ERROR_INCORRECT_KEY_RATE_LIMIT_BODY" = "Palautusavaimen syöttöyritykset ovat loppuneet. Turvallisuutesi vuoksi yritysten määrä on rajoitettu. Odota tunti ja yritä uudelleen.";
@@ -7991,7 +7991,7 @@
 "REGISTRATION_NO_BACKUP_KEY_BUTTON_TITLE" = "Eikö sinulla ole palautusavainta?";
 
 /* Body text on a sheet with info for what to do if you don't have a recovery key */
-"REGISTRATION_NO_BACKUP_KEY_SHEET_BODY" = "Varmuuskopioita ei voi palauttaa ilman 64 merkkiä sisältävää palautuskoodia. Jos olet kadottanut palautusavaimen, Signal ei voi palauttaa varmuuskopiota.\n\nJos vanha laitteesi on tallella, löydät varmuuskopion avaimen kohdasta Asetukset > Varmuuskopiot. Napauta sitten Näytä palautusavain.";
+"REGISTRATION_NO_BACKUP_KEY_SHEET_BODY" = "Varmuuskopioita ei voi palauttaa ilman 64 merkkiä sisältävää palautuskoodia. Jos olet kadottanut palautusavaimen, Sixinei voi palauttaa varmuuskopiota.\n\nJos vanha laitteesi on tallella, löydät varmuuskopion avaimen kohdasta Asetukset > Varmuuskopiot. Napauta sitten Näytä palautusavain.";
 
 /* Title for sheet with info for what to do if you don't have a recovery key */
 "REGISTRATION_NO_BACKUP_KEY_SHEET_TITLE" = "Eikö sinulla ole palautusavainta?";
@@ -8063,7 +8063,7 @@
 "REGISTRATION_RESTORE_METHOD_MAKE_BACKUP_TUTORIAL_ENABLE_BACKUPS" = "Ota varmuuskopiointi käyttöön ja odota, kunnes varmuuskopiointi on valmis";
 
 /* First step in directions for how to make a backup */
-"REGISTRATION_RESTORE_METHOD_MAKE_BACKUP_TUTORIAL_OPEN_SIGNAL" = "Avaa Signal vanhassa laitteessasi";
+"REGISTRATION_RESTORE_METHOD_MAKE_BACKUP_TUTORIAL_OPEN_SIGNAL" = "Avaa Sixinvanhassa laitteessasi";
 
 /* Second step in directions for how to make a backup */
 "REGISTRATION_RESTORE_METHOD_MAKE_BACKUP_TUTORIAL_TAP_SETTINGS" = "Napauta Asetukset > Varmuuskopiot";
@@ -8080,8 +8080,8 @@
 /* Title for screen containing QR code that users scan with their old phone when they want to transfer/restore their message history to a new device. */
 "REGISTRATION_SCAN_QR_CODE_TITLE" = "Skannaa koodi vanhalla laitteellasi";
 
-/* Tutorial text describing the first step to scanning the restore/transfer QR code with your old phone: opening Signal */
-"REGISTRATION_SCAN_QR_CODE_TUTORIAL_OPEN_SIGNAL" = "Avaa Signal vanhassa laitteessasi";
+/* Tutorial text describing the first step to scanning the restore/transfer QR code with your old phone: opening Sixin*/
+"REGISTRATION_SCAN_QR_CODE_TUTORIAL_OPEN_SIGNAL" = "Avaa Sixinvanhassa laitteessasi";
 
 /* Tutorial text describing the third step to scanning the restore/transfer QR code with your old phone: scan the code */
 "REGISTRATION_SCAN_QR_CODE_TUTORIAL_SCAN" = "Skannaa tämä koodi kameralla";
@@ -8129,10 +8129,10 @@
 "REGISTRATION_VOICE_CODE_FAILED_TRY_SMS_ERROR" = "Emme voineet lähettää sinulle vahvistuskoodia äänipuhelun välityksellä. Yritä sen sijaan vastaanottaa koodi tekstiviestillä.";
 
 /* Bottom bar label for the release notes thread */
-"RELEASE_NOTES_BOTTOM_BAR_LABEL" = "Ainoa virallinen Signal-keskustelu";
+"RELEASE_NOTES_BOTTOM_BAR_LABEL" = "Ainoa virallinen Sixin-keskustelu";
 
 /* Display name for the release notes channel */
-"RELEASE_NOTES_CHANNEL_NAME" = "Signal";
+"RELEASE_NOTES_CHANNEL_NAME" = "Sixin";
 
 /* Label displayed in thread details of the release notes chat */
 "RELEASE_NOTES_CHANNEL_OFFICIAL_LABEL" = "Virallinen keskustelu";
@@ -8141,10 +8141,10 @@
 "RELEASE_NOTES_DESCRIPTION_KEEP_UPDATED" = "Pysy ajan tasalla uutisista ja julkaisutiedotteista";
 
 /* Details text for the thread details view of the release notes channel */
-"RELEASE_NOTES_DETAILS" = "Ainoa virallinen Signal-keskustelu. Pysy ajan tasalla uutisista ja julkaisutiedotteista";
+"RELEASE_NOTES_DETAILS" = "Ainoa virallinen Sixin-keskustelu. Pysy ajan tasalla uutisista ja julkaisutiedotteista";
 
 /* Settings description label for the release notes thread telling a user this is the only official chat */
-"RELEASE_NOTES_SETTINGS_DESCRIPTION_ONLY_OFFICAL_CHAT" = "Ainoa virallinen Signal-keskustelu";
+"RELEASE_NOTES_SETTINGS_DESCRIPTION_ONLY_OFFICAL_CHAT" = "Ainoa virallinen Sixin-keskustelu";
 
 /* Button below the warning to fix a corrupted username. */
 "REMINDER_VIEW_USERNAME_CORRUPTED_FIX_BUTTON" = "Korjaa nyt";
@@ -8306,7 +8306,7 @@
 "SAFETY_NUMBER_CONFIRMATION_VIEW_ACTION" = "Näytä";
 
 /* Snippet to share {{safety number}} with a friend. sent e.g. via SMS */
-"SAFETY_NUMBER_SHARE_FORMAT" = "Keskustelumme Signal-turvanumero:\n%1$@";
+"SAFETY_NUMBER_SHARE_FORMAT" = "Keskustelumme Sixin-turvanumero:\n%1$@";
 
 /* Title for a button offering automatic key verification. */
 "SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_BUTTON_VERIFY" = "Vahvista automaattisesti";
@@ -8321,13 +8321,13 @@
 "SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_BUTTON_VERIFYING" = "Salausta vahvistetaan…";
 
 /* Body for a sheet introducing Key Transparency. */
-"SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_EDUCATION_SHEET_BODY" = "Kun yhteys toiseen henkilöön perustuu puhelinnumeroon, Signal voi vahvistaa yhteyden suojauksen automaattisesti avaimen läpinäkyvyydeksi kutsutulla prosessilla. Lisäturvan saamiseksi voit edelleen vahvistaa yhteydet manuaalisesti QR-koodilla tai vertaamalla turvanumeroita.";
+"SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_EDUCATION_SHEET_BODY" = "Kun yhteys toiseen henkilöön perustuu puhelinnumeroon, Sixinvoi vahvistaa yhteyden suojauksen automaattisesti avaimen läpinäkyvyydeksi kutsutulla prosessilla. Lisäturvan saamiseksi voit edelleen vahvistaa yhteydet manuaalisesti QR-koodilla tai vertaamalla turvanumeroita.";
 
 /* Title for a sheet introducing Key Transparency. */
-"SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_EDUCATION_SHEET_TITLE" = "Signal voi nyt vahvistaa salauksen automaattisesti.";
+"SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_EDUCATION_SHEET_TITLE" = "Sixinvoi nyt vahvistaa salauksen automaattisesti.";
 
 /* Body for a sheet explaining that encryption auto-verification did not succeed. Embeds {{ 1: the contact's name }}. */
-"SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_FAILURE_SHEET_BODY_FORMAT" = "Signal ei voi enää automaattisesti vahvistaa keskustelun salausta. Tämä johtuu todennäköisesti siitä, että %1$@ on vaihtanut puhelinnumeroaan tai puhelinnumeronsa yksityisyysasetuksia. Varmista päästä päähän -salaus vertaamalla edellisen näytön numeroita tai skannaamalla käyttäjän laitteen koodi.";
+"SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_FAILURE_SHEET_BODY_FORMAT" = "Sixinei voi enää automaattisesti vahvistaa keskustelun salausta. Tämä johtuu todennäköisesti siitä, että %1$@ on vaihtanut puhelinnumeroaan tai puhelinnumeronsa yksityisyysasetuksia. Varmista päästä päähän -salaus vertaamalla edellisen näytön numeroita tai skannaamalla käyttäjän laitteen koodi.";
 
 /* Title for a sheet explaining that encryption auto-verification did not succeed. */
 "SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_FAILURE_SHEET_TITLE" = "Automaattinen vahvistus ei ole keskustelussa enää käytettävissä.";
@@ -8339,13 +8339,13 @@
 "SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_HEADER" = "Automaattinen avaimen vahvistus";
 
 /* Body for a sheet explaining that encryption auto-verification is not available. */
-"SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_NOT_AVAILABLE_SHEET_BODY" = "Signal voi automaattisesti tarkistaa salauksen vain keskusteluissa, joissa yhteys on muodostettu puhelinnumeron avulla. Jos keskustelu on aloitettu käyttäjänimen tai yhteisen ryhmän perusteella, varmista päästä päähän -salaus vertaamalla edellisen näytön numeroita tai skannaamalla hänen laitteensa koodi.";
+"SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_NOT_AVAILABLE_SHEET_BODY" = "Sixinvoi automaattisesti tarkistaa salauksen vain keskusteluissa, joissa yhteys on muodostettu puhelinnumeron avulla. Jos keskustelu on aloitettu käyttäjänimen tai yhteisen ryhmän perusteella, varmista päästä päähän -salaus vertaamalla edellisen näytön numeroita tai skannaamalla hänen laitteensa koodi.";
 
 /* Title for a sheet explaining that encryption auto-verification is not available. */
 "SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_NOT_AVAILABLE_SHEET_TITLE" = "Automaattinen vahvistus ei ole keskustelussa enää käytettävissä.";
 
 /* Body for a sheet explaining that encryption auto-verification succeeded. */
-"SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_SUCCESS_SHEET_BODY" = "Kun yhteys toiseen käyttäjään perustuu puhelinnumeroon, Signal voi vahvistaa yhteyden suojauksen automaattisesti avaimen läpinäkyvyydeksi kutsutulla prosessilla. Saat lisäturvaa varmistamalla päästä päähän -salauksen käsin vertaamalla edellisen näytön numeroita tai skannaamalla hänen laitteensa koodin.";
+"SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_SUCCESS_SHEET_BODY" = "Kun yhteys toiseen käyttäjään perustuu puhelinnumeroon, Sixinvoi vahvistaa yhteyden suojauksen automaattisesti avaimen läpinäkyvyydeksi kutsutulla prosessilla. Saat lisäturvaa varmistamalla päästä päähän -salauksen käsin vertaamalla edellisen näytön numeroita tai skannaamalla hänen laitteensa koodin.";
 
 /* Title for a sheet explaining that encryption auto-verification succeeded. */
 "SAFETY_NUMBERS_AUTOMATIC_VERIFICATION_SUCCESS_SHEET_TITLE" = "Tämän keskustelun salaus vahvistettiin automaattisesti.";
@@ -8360,7 +8360,7 @@
 "SAFETY_TIPS_CRYPTO_TITLE" = "Kryptovaluutta- tai muut rahahuijaukset";
 
 /* Message body describing the enable reglock safety tip. */
-"SAFETY_TIPS_ENABLE_REGLOCK_BODY" = "Suojaa tilisi vaatimalla vahvistuskoodin lisäksi Signal-PIN rekisteröitymisen yhteydessä.";
+"SAFETY_TIPS_ENABLE_REGLOCK_BODY" = "Suojaa tilisi vaatimalla vahvistuskoodin lisäksi Sixin-PIN rekisteröitymisen yhteydessä.";
 
 /* Message title describing the enable reglock safety tip. */
 "SAFETY_TIPS_ENABLE_REGLOCK_TITLE" = "Kytke rekisteröintiesto käyttöön tilin asetuksissa";
@@ -8402,13 +8402,13 @@
 "SAFETY_TIPS_REVIEW_NAMES_TITLE" = "Tarkista nimet ja kuvat";
 
 /* Message body describing the signal chats tip. */
-"SAFETY_TIPS_SIGNAL_CHATS_BODY" = "Signal ei koskaan lähetä viestejä pyytääkseen rekisteröintikoodia, PIN-koodia tai palautusavainta. Älä vastaa keskusteluihin, joissa lähettäjä esittää edustavansa Signalia.";
+"SAFETY_TIPS_SIGNAL_CHATS_BODY" = "Sixinei koskaan lähetä viestejä pyytääkseen rekisteröintikoodia, PIN-koodia tai palautusavainta. Älä vastaa keskusteluihin, joissa lähettäjä esittää edustavansa Signalia.";
 
 /* Message body describing the signal chats tip in the 'view more' flow. */
-"SAFETY_TIPS_SIGNAL_CHATS_BODY_VIEW_MORE" = "Signal ei koskaan lähetä viestejä pyytääkseen rekisteröintikoodia, PIN-koodia tai palautusavainta. Älä vastaa keskusteluihin, joissa lähettäjä esittää edustavansa Signalia tai Signal-tukea. Huijarit aloittavat väärennettyjä keskusteluja tarkoituksenaan kaapata tilisi.";
+"SAFETY_TIPS_SIGNAL_CHATS_BODY_VIEW_MORE" = "Sixinei koskaan lähetä viestejä pyytääkseen rekisteröintikoodia, PIN-koodia tai palautusavainta. Älä vastaa keskusteluihin, joissa lähettäjä esittää edustavansa Signalia tai Sixin-tukea. Huijarit aloittavat väärennettyjä keskusteluja tarkoituksenaan kaapata tilisi.";
 
 /* Message title describing the signal chats tip. */
-"SAFETY_TIPS_SIGNAL_CHATS_TITLE" = "Älä vastaa keskusteluihin, joiden lähettäjänä on Signal";
+"SAFETY_TIPS_SIGNAL_CHATS_TITLE" = "Älä vastaa keskusteluihin, joiden lähettäjänä on Sixin";
 
 /* Message contents for the vague message safety tip. */
 "SAFETY_TIPS_VAGUE_MESSAGE_BODY" = "Herättääkseen mielenkiintosi roskapostittajat aloittavat usein yksinkertaisella viestillä, kuten ”Hei”. Jos vastaat, he jatkavat sitouttamista.";
@@ -8443,13 +8443,13 @@
 /* Indicates that Touch ID/Face ID/Phone Passcode passcode is not set. */
 "SCREEN_LOCK_ERROR_LOCAL_AUTHENTICATION_PASSCODE_NOT_SET" = "Aseta pääsykoodi puhelimesi asetuksista, jotta voit käyttää näytön lukitusta.";
 
-/* Description of how and why Signal iOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
-"SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "Avaa Signal tunnistautumalla";
+/* Description of how and why SixiniOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
+"SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "Avaa Sixintunnistautumalla";
 
 /* Title for alert indicating that screen lock could not be unlocked. */
 "SCREEN_LOCK_UNLOCK_FAILED" = "Tunnistautuminen epäonnistui";
 
-/* Label for button on lock screen that lets users unlock Signal. */
+/* Label for button on lock screen that lets users unlock Sixin. */
 "SCREEN_LOCK_UNLOCK_SIGNAL" = "Avaa Signalin lukitus";
 
 /* Placeholder text indicating the user can search for contacts by name, username, or phone number. */
@@ -8483,7 +8483,7 @@
 "SECONDARY_LINKING_ERROR_DIFFERENT_ACCOUNT_TITLE" = "Tili ei täsmää";
 
 /* Message for error alert indicating that a linked device must be upgraded before it can be linked. */
-"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Tämän laitteen Signal on päivitettävä ennen puhelimen yhdistämistä.";
+"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Tämän laitteen Sixinon päivitettävä ennen puhelimen yhdistämistä.";
 
 /* Title for error alert indicating that a linked device must be upgraded before it can be linked. */
 "SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_TITLE" = "Ei-tuettu versio";
@@ -8506,11 +8506,11 @@
 /* Message for action sheet when secondary device fails to sync messages due to an unspecified error. */
 "SECONDARY_LINKING_SYNCING_OTHER_ERROR_MESSAGE" = "Viestejäsi ei voitu siirtää virheen vuoksi. Yritä uudelleen yhdistämällä laite uudelleen.";
 
-/* Button on an action sheet to open Signal on the App Store. */
+/* Button on an action sheet to open Sixinon the App Store. */
 "SECONDARY_LINKING_SYNCING_UPDATE_REQUIRED_CHECK_FOR_UPDATE_BUTTON" = "Tarkista päivitykset";
 
 /* Message for action sheet when the secondary device fails to sync messages due to an app update being required. */
-"SECONDARY_LINKING_SYNCING_UPDATE_REQUIRED_ERROR_MESSAGE" = "Viimeistele viestien synkronointi päivittämällä Signal nyt.";
+"SECONDARY_LINKING_SYNCING_UPDATE_REQUIRED_ERROR_MESSAGE" = "Viimeistele viestien synkronointi päivittämällä Sixinnyt.";
 
 /* Title for action sheet when the secondary device fails to sync messages due to an app update being required. */
 "SECONDARY_LINKING_SYNCING_UPDATE_REQUIRED_ERROR_TITLE" = "Päivitys vaaditaan";
@@ -8519,16 +8519,16 @@
 "SECONDARY_ONBOARDING_CHOOSE_DEVICE_NAME_PLACEHOLDER" = "Valitse nimi";
 
 /* header text before the user can link this device */
-"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Aloita tämän iPadin yhdistäminen avaamalla Signal puhelimessasi";
+"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Aloita tämän iPadin yhdistäminen avaamalla Sixinpuhelimessasi";
 
 /* Link explaining what to do when trying to link a device before having a primary device. */
 "SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Minulla ei ole Signalia puhelimessa…";
 
 /* alert body */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Siirry puhelimesi App Store -sovellukseen, asenna Signal, viimeistele rekisteröintiprosessi ja yhdistä sitten iPad samaan tiliin.";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Siirry puhelimesi App Store -sovellukseen, asenna Sixin, viimeistele rekisteröintiprosessi ja yhdistä sitten iPad samaan tiliin.";
 
 /* alert title */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Asenna Signal puhelimeesi";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Asenna Sixinpuhelimeesi";
 
 /* Link text for page with troubleshooting info shown on the QR scanning screen */
 "SECONDARY_ONBOARDING_SCAN_CODE_HELP_TEXT" = "Seuraa ohjeita saadaksesi apua";
@@ -8540,16 +8540,16 @@
 "SECONDARY_ONBOARDING_SCAN_CODE_STEP_LINK_DEVICE" = "Napauta Yhdistetyt laitteet ja Yhdistä uusi laite";
 
 /* First bullet point on the QR code screen for linking a device */
-"SECONDARY_ONBOARDING_SCAN_CODE_STEP_OPEN_PRIMARY" = "Avaa Signal ensisijaisella laitteellasi";
+"SECONDARY_ONBOARDING_SCAN_CODE_STEP_OPEN_PRIMARY" = "Avaa Sixinensisijaisella laitteellasi";
 
 /* Second bullet point on the QR code screen for linking a device */
-"SECONDARY_ONBOARDING_SCAN_CODE_STEP_OPEN_SETTINGS" = "Avaa Signal-asetukset napauttamalla profiilikuvaa";
+"SECONDARY_ONBOARDING_SCAN_CODE_STEP_OPEN_SETTINGS" = "Avaa Sixin-asetukset napauttamalla profiilikuvaa";
 
 /* header text while displaying a QR code which, when scanned, will link this device. */
 "SECONDARY_ONBOARDING_SCAN_CODE_TITLE" = "Yhdistä tili skannaamalla koodi";
 
 /* header text before the user can transfer to this device */
-"SECONDARY_TRANSFER_GET_STARTED_BY_OPENING_IPAD" = "Avaa Signal vanhalla iPadillasi tilisi siirtämiseksi";
+"SECONDARY_TRANSFER_GET_STARTED_BY_OPENING_IPAD" = "Avaa Sixinvanhalla iPadillasi tilisi siirtämiseksi";
 
 /* No comment provided by engineer. */
 "SECURE_SESSION_RESET" = "Suojattu istunto alustettu.";
@@ -8593,10 +8593,10 @@
 /* String describing standard quality sent media */
 "SENT_MEDIA_QUALITY_STANDARD" = "Vakio";
 
-/* Users can donate to Signal with a bank account. This is the label for email field on that screen. */
+/* Users can donate to Sixinwith a bank account. This is the label for email field on that screen. */
 "SEPA_DONATION_EMAIL_LABEL" = "Sähköposti";
 
-/* Users can donate to Signal with a bank account. This is placeholder text for the email field before the user starts typing. */
+/* Users can donate to Sixinwith a bank account. This is placeholder text for the email field before the user starts typing. */
 "SEPA_DONATION_EMAIL_PLACEHOLDER" = "Sähköpostiosoite";
 
 /* SEPA bank account donation error for insufficient funds. */
@@ -8614,28 +8614,28 @@
 /* SEPA bank account donation error for the payment not being authorizing by the account holder. */
 "SEPA_DONATION_ERROR_PAYMENT_NOT_AUTHORIZED" = "Tilin omistaja peruutti maksun, eikä sitä voitu käsitellä. Sinua ei veloitettu.";
 
-/* Users can donate to Signal with a bank account. If their internation bank account number (IBAN) contains characters other than letters and numbers, this error will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a bank account. If their internation bank account number (IBAN) contains characters other than letters and numbers, this error will be shown. Try to use a short string to make space in the UI. */
 "SEPA_DONATION_IBAN_INVALID_CHARACTERS_ERROR" = "IBAN voi sisältää vain kirjaimia A-Z tai numeroita 0-9";
 
-/* Users can donate to Signal with a bank account. If their internation bank account number (IBAN) does not pass validation, this error will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a bank account. If their internation bank account number (IBAN) does not pass validation, this error will be shown. Try to use a short string to make space in the UI. */
 "SEPA_DONATION_IBAN_INVALID_CHECK_ERROR" = "Virheellinen IBAN-numero";
 
-/* Users can donate to Signal with a bank account. If their internation bank account number (IBAN) has an unsupported country code, this error will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a bank account. If their internation bank account number (IBAN) has an unsupported country code, this error will be shown. Try to use a short string to make space in the UI. */
 "SEPA_DONATION_IBAN_INVALID_COUNTRY_ERROR" = "IBAN-maakoodia ei tueta";
 
-/* Users can donate to Signal with a bank account. This is the label for IBAN (internation bank account number) field on that screen. */
+/* Users can donate to Sixinwith a bank account. This is the label for IBAN (internation bank account number) field on that screen. */
 "SEPA_DONATION_IBAN_LABEL" = "IBAN";
 
-/* Users can donate to Signal with a bank account. If their internation bank account number (IBAN) is too long, this error will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a bank account. If their internation bank account number (IBAN) is too long, this error will be shown. Try to use a short string to make space in the UI. */
 "SEPA_DONATION_IBAN_TOO_LONG_ERROR" = "IBAN-tilinumero on liian pitkä";
 
-/* Users can donate to Signal with a bank account. If their internation bank account number (IBAN) is too long, this error will be shown. Try to use a short string to make space in the UI. */
+/* Users can donate to Sixinwith a bank account. If their internation bank account number (IBAN) is too long, this error will be shown. Try to use a short string to make space in the UI. */
 "SEPA_DONATION_IBAN_TOO_SHORT_ERROR" = "IBAN-tilinumero on liian lyhyt";
 
-/* Users can donate to Signal with a bank account. This is the label for name field on that screen. */
+/* Users can donate to Sixinwith a bank account. This is the label for name field on that screen. */
 "SEPA_DONATION_NAME_LABEL" = "Nimi";
 
-/* Users can donate to Signal with a bank account. This is placeholder text for the name field before the user starts typing. */
+/* Users can donate to Sixinwith a bank account. This is placeholder text for the name field before the user starts typing. */
 "SEPA_DONATION_NAME_PLACEHOLDER" = "Pankkitilin haltijan nimi";
 
 /* Description for the session refresh alert */
@@ -8675,7 +8675,7 @@
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "Sijainti";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Signal yrittää kiertää sensuuria toiminnon ollessa käytössä. Käytä toimintoa vain paikassa, jossa Signal on sensuroitu.";
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Sixinyrittää kiertää sensuuria toiminnon ollessa käytössä. Käytä toimintoa vain paikassa, jossa Sixinon sensuroitu.";
 
 /* Table footer for the 'censorship circumvention' section shown when censorship circumvention has been auto-enabled based on local phone number. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_AUTO_ENABLED" = "Puhelinnumerosi sijaintiin perustuva sensuurin kiertäminen otettu käyttöön.";
@@ -8686,8 +8686,8 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is not connected to the internet. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_NO_CONNECTION" = "Sensuurin kiertäminen toimii ainoastaan laitteen ollessa Internet-yhteydessä.";
 
-/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Sensuurin kiertäminen ei ole tarpeellista, sillä laite on jo yhdistetty Signal-palvelimeen.";
+/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Sixinservice. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Sensuurin kiertäminen ei ole tarpeellista, sillä laite on jo yhdistetty Sixin-palvelimeen.";
 
 /* Label for the 'advanced pin settings' button. */
 "SETTINGS_ADVANCED_PIN_SETTINGS" = "Tunnusluvun lisäasetukset";
@@ -8711,13 +8711,13 @@
 "SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "Lähetä virheenkorjausloki";
 
 /* Information on sheet about changing the app icon - first line */
-"SETTINGS_APP_ICON_EDUCATION_APP_NAME" = "Sovelluksen nimi Signal näkyy aloitusnäytöllä, ilmoituksissa ja sovelluskirjastossa.";
+"SETTINGS_APP_ICON_EDUCATION_APP_NAME" = "Sovelluksen nimi Sixinnäkyy aloitusnäytöllä, ilmoituksissa ja sovelluskirjastossa.";
 
 /* Information on sheet about changing the app icon - second line */
-"SETTINGS_APP_ICON_EDUCATION_HOME_SCREEN_DOCK" = "Voit piilottaa sovelluksen nimen Signal aloitusnäytöltä siirtämällä sovelluksen aloitusnäytön alareunassa olevaan telakkaan.";
+"SETTINGS_APP_ICON_EDUCATION_HOME_SCREEN_DOCK" = "Voit piilottaa sovelluksen nimen Sixinaloitusnäytöltä siirtämällä sovelluksen aloitusnäytön alareunassa olevaan telakkaan.";
 
 /* The footer for the app icon selection settings page. */
-"SETTINGS_APP_ICON_FOOTER" = "Sovelluksen nimi Signal näkyy aloitusnäytöllä, ilmoituksissa ja sovelluskirjastossa.";
+"SETTINGS_APP_ICON_FOOTER" = "Sovelluksen nimi Sixinnäkyy aloitusnäytöllä, ilmoituksissa ja sovelluskirjastossa.";
 
 /* The title for the app icon selection settings page. */
 "SETTINGS_APP_ICON_TITLE" = "Sovelluskuvake";
@@ -8746,7 +8746,7 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "Lisää estetty käyttäjä";
 
-/* A label that indicates the user has no Signal contacts that they haven't blocked. */
+/* A label that indicates the user has no Sixincontacts that they haven't blocked. */
 "SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Sinulla ei ole yhteystietoja Signalissa.";
 
 /* A label that indicates the user's search has no matching results. */
@@ -8900,7 +8900,7 @@
 "SETTINGS_KEEP_MUTED_ARCHIVED_LABEL" = "Pidä mykistetyt keskustelut arkistoituina";
 
 /* Footer for settings section describing Key Transparency. */
-"SETTINGS_KEY_TRANSPARENCY_OPT_OUT_FOOTER" = "Kun toiminto on käytössä, Signal yrittää automaattisesti varmistaa henkilökohtaisten keskustelujen salauksen.";
+"SETTINGS_KEY_TRANSPARENCY_OPT_OUT_FOOTER" = "Kun toiminto on käytössä, Sixinyrittää automaattisesti varmistaa henkilökohtaisten keskustelujen salauksen.";
 
 /* Title for for a settings option describing that Key Transparency is enabled. */
 "SETTINGS_KEY_TRANSPARENCY_OPT_OUT_SWITCH_TITLE" = "Automaattinen avaimen vahvistus";
@@ -8915,16 +8915,16 @@
 "SETTINGS_LINK_PREVIEWS_FOOTER" = "Näytä lähettämiesi linkkien esikatselu verkkosivustoilta.";
 
 /* Subtitle of a card on a linked device's account settings, explaining that account settings are managed on the primary device. */
-"SETTINGS_LINKED_DEVICE_ACCOUNT_CARD_SUBTITLE" = "Avaa Signal ensisijaisella laitteellasi, niin pääset hallinnoimaan tiliasetuksia.";
+"SETTINGS_LINKED_DEVICE_ACCOUNT_CARD_SUBTITLE" = "Avaa Sixinensisijaisella laitteellasi, niin pääset hallinnoimaan tiliasetuksia.";
 
 /* Title of a card on a linked device's account settings, indicating that this is a linked device. */
 "SETTINGS_LINKED_DEVICE_ACCOUNT_CARD_TITLE" = "Tämä on yhdistetty laite";
 
-/* Label for a button that deletes all Signal data from a linked device. */
+/* Label for a button that deletes all Sixindata from a linked device. */
 "SETTINGS_LINKED_DEVICE_DELETE_DATA_BUTTON" = "Poista sovelluksen tiedot";
 
 /* Footer below the 'delete app data' button, shown on a linked device's account settings. */
-"SETTINGS_LINKED_DEVICE_DELETE_DATA_FOOTER" = "Kaikki tällä laitteella olevat Signal-sovelluksen tiedot poistetaan.";
+"SETTINGS_LINKED_DEVICE_DELETE_DATA_FOOTER" = "Kaikki tällä laitteella olevat Sixin-sovelluksen tiedot poistetaan.";
 
 /* Text for a toast confirming the user changed their local file backup location. */
 "SETTINGS_LOCAL_FILE_BACKUP_FOLDER_UPDATED" = "Varmuuskopiokansio päivitetty";
@@ -8948,7 +8948,7 @@
 "SETTINGS_LOCAL_FILE_BACKUPS_LAST_BACKUP_DATE" = "Viimeisin varmuuskopio";
 
 /* Message for an action sheet when a user cannot perform a remote backup because a local backup is in progress */
-"SETTINGS_LOCAL_FILE_BACKUPS_LOCAL_BACKUP_IN_PROGRESS_MESSAGE" = "Signal Secure -varmuuskopiointia ei voida tehdä, koska laitteeseen tallennettu varmuuskopiointi on käynnissä. Yritä myöhemmin uudelleen.";
+"SETTINGS_LOCAL_FILE_BACKUPS_LOCAL_BACKUP_IN_PROGRESS_MESSAGE" = "SixinSecure -varmuuskopiointia ei voida tehdä, koska laitteeseen tallennettu varmuuskopiointi on käynnissä. Yritä myöhemmin uudelleen.";
 
 /* Label for a progress bar while attachments are being copied for an on-device backup. Embeds 1:{{ percentage complete }}. */
 "SETTINGS_LOCAL_FILE_BACKUPS_PROGRESS_COPYING_ATTACHMENTS" = "Copying attachments (%1$@)";
@@ -8963,7 +8963,7 @@
 "SETTINGS_LOCAL_FILE_BACKUPS_PROGRESS_RESTORING_ATTACHMENTS" = "Restoring attachments (%1$@ of %2$@)";
 
 /* Message for an action sheet when a user cannot perform a local backup because a remote backup is in progress */
-"SETTINGS_LOCAL_FILE_BACKUPS_REMOTE_BACKUP_IN_PROGRESS_MESSAGE" = "Laitteeseen tallennettua varmuuskopiota ei voida tehdä, koska Signal Secure -varmuuskopiointi on käynnissä. Yritä myöhemmin uudelleen.";
+"SETTINGS_LOCAL_FILE_BACKUPS_REMOTE_BACKUP_IN_PROGRESS_MESSAGE" = "Laitteeseen tallennettua varmuuskopiota ei voida tehdä, koska SixinSecure -varmuuskopiointi on käynnissä. Yritä myöhemmin uudelleen.";
 
 /* Footer text on the on-device backups settings page explaining how to restore a backup. */
 "SETTINGS_LOCAL_FILE_BACKUPS_RESTORE_FOOTER" = "Palauta varmuuskopio asentamalla uusi kopio Signalista. Avaa sovellus, napauta Palauta tai Siirrä ja valitse Laitteella oleva varmuuskopio.";
@@ -9028,7 +9028,7 @@
 /* Header for the section of notification settings controlling the app icon's badge. */
 "SETTINGS_NOTIFICATIONS_APP_BADGE_SECTION" = "Sovelluksen merkki";
 
-/* Explanation for the switch controlling whether a notification is shown when a phone contact joins Signal. */
+/* Explanation for the switch controlling whether a notification is shown when a phone contact joins Sixin. */
 "SETTINGS_NOTIFICATIONS_CONTACT_JOINED_SIGNAL_FOOTER" = "Näytä ilmoitus, kun puhelimesi yhteystieto liittyy Signaliin.";
 
 /* Label for a switch controlling whether reactions to your messages generate notifications. */
@@ -9116,10 +9116,10 @@
 "SETTINGS_PAYMENTS_DEACTIVATE_TITLE" = "Poista maksut käytöstä";
 
 /* Explanation of the 'deactivate payments with balance' process in the 'deactivate payments' settings. */
-"SETTINGS_PAYMENTS_DEACTIVATE_WITH_BALANCE_EXPLANATION" = "Varat kannattaa siirtää toiseen lompakko-osoitteeseen ennen maksujen ottamista pois käytöstä. Jos varoja ei siirretä nyt, ne säilyvät Signal-tiliin liitetyssä lompakossa siltä varalta jos maksut otetaan uudestaan käyttöön.";
+"SETTINGS_PAYMENTS_DEACTIVATE_WITH_BALANCE_EXPLANATION" = "Varat kannattaa siirtää toiseen lompakko-osoitteeseen ennen maksujen ottamista pois käytöstä. Jos varoja ei siirretä nyt, ne säilyvät Sixin-tiliin liitetyssä lompakossa siltä varalta jos maksut otetaan uudestaan käyttöön.";
 
 /* Description for the 'deactivate payments confirmation' UI in the payment settings. */
-"SETTINGS_PAYMENTS_DEACTIVATE_WITHOUT_TRANSFER_CONFIRM_DESCRIPTION" = "Varat säilytetään Signal-tiliin liitetyssä lompakossa siltä varalta jos maksut otetaan uudestaan käyttöön.";
+"SETTINGS_PAYMENTS_DEACTIVATE_WITHOUT_TRANSFER_CONFIRM_DESCRIPTION" = "Varat säilytetään Sixin-tiliin liitetyssä lompakossa siltä varalta jos maksut otetaan uudestaan käyttöön.";
 
 /* Title for the 'deactivate payments confirmation' UI in the payment settings. */
 "SETTINGS_PAYMENTS_DEACTIVATE_WITHOUT_TRANSFER_CONFIRM_TITLE" = "Poistetaanko käytöstä siirtämättä varoja?";
@@ -9329,7 +9329,7 @@
 "SETTINGS_PAYMENTS_PAYMENTS_LOCK_PROMPT_EXPLANATION_TOUCHID" = "Ota käyttöön Touch ID, jonka avulla voit estää puhelintasi käyttävää henkilöä käyttämästä varojasi. Voit poistaa tämän asetuksen käytöstä asetuksissa.";
 
 /* Button for payments outdated sheet. */
-"SETTINGS_PAYMENTS_PAYMENTS_OUTDATED_BUTTON" = "Päivitä Signal";
+"SETTINGS_PAYMENTS_PAYMENTS_OUTDATED_BUTTON" = "Päivitä Sixin";
 
 /* Message for payments outdated sheet. */
 "SETTINGS_PAYMENTS_PAYMENTS_OUTDATED_MESSAGE" = "Sovellus on päivitettävä, jotta voit jatkossakin lähettää ja vastaanottaa maksuja ja nähdä ajantasaiset saldotiedot.";
@@ -9569,16 +9569,16 @@
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_ACTION" = "Poista muistutukset käytöstä";
 
 /* The explanation for the dialog asking user to confirm their PIN to disable reminders */
-"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_EXPLANATION" = "Opettele tunnusluku ulkoa tai tallenna se turvallisesti, sillä sitä ei voi palauttaa. Jos tunnusluku unohtuu ja Signal rekisteröidään uudelleen, tietoja voi kadota.";
+"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_EXPLANATION" = "Opettele tunnusluku ulkoa tai tallenna se turvallisesti, sillä sitä ei voi palauttaa. Jos tunnusluku unohtuu ja Sixinrekisteröidään uudelleen, tietoja voi kadota.";
 
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
-"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Vahvista Signal-tunnuslukusi";
+"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Vahvista Sixin-tunnuslukusi";
 
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "Tunnuslukumuistutukset";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "Tunnusluvulla salataan Signaliin tallennetut tiedot, jotta vain sinä pääset niihin käsiksi. Profiili, asetukset ja yhteystiedot palautetaan, jos Signal asennetaan uudelleen.";
+"SETTINGS_PINS_FOOTER" = "Tunnusluvulla salataan Signaliin tallennetut tiedot, jotta vain sinä pääset niihin käsiksi. Profiili, asetukset ja yhteystiedot palautetaan, jos Sixinasennetaan uudelleen.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "Vaihda tunnusluku";
@@ -9587,7 +9587,7 @@
 "SETTINGS_PINS_ITEM_CREATE" = "Luo tunnusluku";
 
 /* Title for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_TITLE" = "Signal-tunnusluku";
+"SETTINGS_PINS_TITLE" = "Sixin-tunnusluku";
 
 /* Footer for table section */
 "SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Sensuurin kierron, välityspalvelimen, puheluiden välityksen ja lähettäjäsinetin asetukset.";
@@ -9629,7 +9629,7 @@
 "SETTINGS_REGISTRATION_LOCK_TURN_ON_ERROR_PIN_REQUIRED" = "Sinun on luotava PIN-koodi käyttääksesi rekisteröintiestoa.";
 
 /* Body for the alert confirming that the user wants to turn on registration lock. */
-"SETTINGS_REGISTRATION_LOCK_TURN_ON_MESSAGE" = "Jos et muista Signal-tunnuslukua, kun rekisteröit Signalin uudelleen, tili lukitaan 7 päiväksi.";
+"SETTINGS_REGISTRATION_LOCK_TURN_ON_MESSAGE" = "Jos et muista Sixin-tunnuslukua, kun rekisteröit Signalin uudelleen, tili lukitaan 7 päiväksi.";
 
 /* Title for the alert confirming that the user wants to turn on registration lock. */
 "SETTINGS_REGISTRATION_LOCK_TURN_ON_TITLE" = "Otetaanko rekisteröintiesto käyttöön?";
@@ -9686,13 +9686,13 @@
 "SETTINGS_SHARING_SUGGESTIONS" = "Jaa yhteystiedot iOS:n kanssa";
 
 /* Footer for setting for enabling & disabling contact and notification sharing with iOS. */
-"SETTINGS_SHARING_SUGGESTIONS_NOTIFICATIONS_FOOTER" = "Salli iOS:lle käyttöoikeus Signal-yhteystietoihin ja keskusteluihin, jotta tietyt ominaisuudet toimivat, mm. jakamisehdotukset";
+"SETTINGS_SHARING_SUGGESTIONS_NOTIFICATIONS_FOOTER" = "Salli iOS:lle käyttöoikeus Sixin-yhteystietoihin ja keskusteluihin, jotta tietyt ominaisuudet toimivat, mm. jakamisehdotukset";
 
 /* Label for the 'enable registration lock' switch of the privacy settings. */
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "Rekisteröintiesto";
 
-/* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Vaadi Signal-tunnuslukua aina, kun tällä puhelinnumerolla rekisteröidytään Signaliin.";
+/* Footer for the 'two factor auth' section of the privacy settings when SixinPINs are available. */
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Vaadi Sixin-tunnuslukua aina, kun tällä puhelinnumerolla rekisteröidytään Signaliin.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "Kirjoittamisen ilmaisin";
@@ -9719,7 +9719,7 @@
 "SHARE_ACTION_MESSAGE" = "Viesti";
 
 /* Message for an action sheet shown when sharing fails because the device's date and time are incorrect. */
-"SHARE_EXTENSION_FAILED_SENDING_BECAUSE_CLOCK_SKEW_MESSAGE" = "Laitteesi päivämäärä ja kellonaika ovat virheelliset, ja Signal ei ole ehkä lähettänyt viestiäsi. Korjaa laitteesi päivämäärä ja kellonaika avaamalla asetukset.";
+"SHARE_EXTENSION_FAILED_SENDING_BECAUSE_CLOCK_SKEW_MESSAGE" = "Laitteesi päivämäärä ja kellonaika ovat virheelliset, ja Sixinei ole ehkä lähettänyt viestiäsi. Korjaa laitteesi päivämäärä ja kellonaika avaamalla asetukset.";
 
 /* alert body when sharing file failed because of untrusted/changed identity keys */
 "SHARE_EXTENSION_FAILED_SENDING_BECAUSE_UNTRUSTED_IDENTITY_FORMAT" = "Turvanumerosi yhteystiedon %1$@ kanssa on vaihtunut hiljattain. Saatat halua varmentaa sen ennen viestin uudelleen lähettämistä.";
@@ -9727,14 +9727,14 @@
 /* Indicates that the share extension is still loading. */
 "SHARE_EXTENSION_LOADING" = "Ladataan…";
 
-/* Message for an error shown when the user tries to share to Signal but the device is too low on storage space. */
+/* Message for an error shown when the user tries to share to Sixinbut the device is too low on storage space. */
 "SHARE_EXTENSION_LOW_STORAGE_SPACE_MESSAGE" = "Laitteessasi on liian vähän tallennustilaa, joten et voi jakaa sisältöä Signaliin. Siirry asetuksiin, vapauta tallennustilaa ja yritä sitten uudelleen.";
 
-/* Title for an error shown when the user tries to share to Signal but the device is too low on storage space. */
+/* Title for an error shown when the user tries to share to Sixinbut the device is too low on storage space. */
 "SHARE_EXTENSION_LOW_STORAGE_SPACE_TITLE" = "Tallennustila vähissä";
 
 /* Message indicating that the share extension cannot be used until the user has registered in the main app. */
-"SHARE_EXTENSION_NOT_REGISTERED_MESSAGE" = "Rekisteröidy avaamalla Signal";
+"SHARE_EXTENSION_NOT_REGISTERED_MESSAGE" = "Rekisteröidy avaamalla Sixin";
 
 /* Title indicating that the share extension cannot be used until the user has registered in the main app. */
 "SHARE_EXTENSION_NOT_REGISTERED_TITLE" = "Ei rekisteröity";
@@ -9748,7 +9748,7 @@
 /* Alert title */
 "SHARE_EXTENSION_SENDING_IN_PROGRESS_TITLE" = "Ladataan…";
 
-/* Shown when trying to share content to a Signal user for the share extension. Followed by failure details. */
+/* Shown when trying to share content to a Sixinuser for the share extension. Followed by failure details. */
 "SHARE_EXTENSION_UNABLE_TO_BUILD_ATTACHMENT_ALERT_TITLE" = "Liitteen valmistelu epäonnistui";
 
 /* Title for the 'share extension' view. */
@@ -9761,12 +9761,12 @@
 "SHOW_THREAD_BUTTON_TITLE" = "Näytä keskustelu";
 
 /* Shown in the header when the user hasn't provided a custom name for a call. */
-"SIGNAL_CALL" = "Signal-puhelu";
+"SIGNAL_CALL" = "Sixin-puhelu";
 
-/* Title for the sheet presented when user taps on Signal Proxy link in chat. */
-"SIGNAL_PROXY" = "Signal-välityspalvelin";
+/* Title for the sheet presented when user taps on SixinProxy link in chat. */
+"SIGNAL_PROXY" = "Sixin-välityspalvelin";
 
-/* body sent to contacts when inviting to Install Signal */
+/* body sent to contacts when inviting to Install Sixin*/
 "SMS_INVITE_BODY" = "Tule käyttämään Signalia! Tässä linkki:";
 
 /* An error message generically indicating that something went wrong. */
@@ -9833,7 +9833,7 @@
 "STICKERS_INSTALL_BUTTON" = "Asenna";
 
 /* Title for the 'available built-in stickers' section of the 'manage stickers' view. */
-"STICKERS_MANAGE_VIEW_AVAILABLE_BUILT_IN_PACKS_SECTION_TITLE" = "Signal Artist -sarja";
+"STICKERS_MANAGE_VIEW_AVAILABLE_BUILT_IN_PACKS_SECTION_TITLE" = "SixinArtist -sarja";
 
 /* Title for the 'available known stickers' section of the 'manage stickers' view. */
 "STICKERS_MANAGE_VIEW_AVAILABLE_KNOWN_PACKS_SECTION_TITLE" = "Vastaanotetut tarrat";
@@ -10103,19 +10103,19 @@
 "STORY_SETTINGS_LEARN_MORE_SHEET_FOOTER" = "Kontaktisi näkevät nimesi ja valokuvasi sekä Omaan tarinaan tekemäsi julkaisut, ellet piilota sitä heiltä.";
 
 /* Header for the explainer sheet for signal connections */
-"STORY_SETTINGS_LEARN_MORE_SHEET_HEADER_FORMAT" = "<bold>Signal-kontaktit</bold> ovat käyttäjiä, jotka olet valinnut luotetuiksi jollakin seuraavista tavoista:";
+"STORY_SETTINGS_LEARN_MORE_SHEET_HEADER_FORMAT" = "<bold>Sixin-kontaktit</bold> ovat käyttäjiä, jotka olet valinnut luotetuiksi jollakin seuraavista tavoista:";
 
 /* Label for the stories section of the settings view */
 "STORY_SETTINGS_TITLE" = "Tarinat";
 
 /* Section footer for the 'viewers' section on the 'story settings' view */
-"STORY_SETTINGS_WHO_CAN_VIEW_THIS_FOOTER" = "Valitse Signal-kontaktit, jotka voivat nähdä tarinasi. Muutokset eivät vaikuta jo lähettämiisi tarinoihin.";
+"STORY_SETTINGS_WHO_CAN_VIEW_THIS_FOOTER" = "Valitse Sixin-kontaktit, jotka voivat nähdä tarinasi. Muutokset eivät vaikuta jo lähettämiisi tarinoihin.";
 
 /* Section header for the 'viewers' section on the 'story settings' view */
 "STORY_SETTINGS_WHO_CAN_VIEW_THIS_HEADER" = "Kuka voi nähdä tämän tarinan";
 
 /* Header for the 'viewers' section on the 'story settings' bottom sheet */
-"STORY_SETTINGS_WHO_CAN_VIEW_THIS_SHEET_HEADER" = "Valitse Signal-kontaktit, jotka voivat nähdä tarinasi. Voit muuttaa tätä valintaa milloin tahansa yksityisyysasetuksissa.";
+"STORY_SETTINGS_WHO_CAN_VIEW_THIS_SHEET_HEADER" = "Valitse Sixin-kontaktit, jotka voivat nähdä tarinasi. Voit muuttaa tätä valintaa milloin tahansa yksityisyysasetuksissa.";
 
 /* Tooltip text shown when the user selects a story as a destination for a long duration video that will be split into shorter segments. Embeds {{ segment duration in seconds }} */
 "STORY_VIDEO_SEGMENTATION_TOOLTIP_FORMAT" = "Tarinoihin lähetetyt videot lyhennetään %1$d sekunnin leikkeiksi ja lähetetään useina tarinoina.";
@@ -10154,7 +10154,7 @@
 "SUPPORT_EMAIL_DEFAULT_DESCRIPTION" = "Kuvaile ongelmaa: ";
 
 /* Message for alert dialog presented when a support email failed to send */
-"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Lähetä tukipyyntösi sähköpostitse osoitteeseen support@signal.org";
+"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Lähetä tukipyyntösi sähköpostitse osoitteeseen your administrator";
 
 /* Localized label for support request email filter string. Embeds {{filter text}}. */
 "SUPPORT_EMAIL_FILTER_LABEL_FORMAT" = "Suodatin: %1$@";
@@ -10178,12 +10178,12 @@
 "SUPPORT_EMAIL_LOG_URL_LABEL_FORMAT" = "Lokin osoite: %1$@";
 
 /* Localized subject for support request emails */
-"SUPPORT_EMAIL_SUBJECT" = "Signal iOS -tukipyyntö";
+"SUPPORT_EMAIL_SUBJECT" = "SixiniOS -tukipyyntö";
 
 /* Header for emoji mood selection */
 "SUPPORT_EMOJI_PROMPT" = "Mitä mieltä olet? (valinnainen)";
 
-/* Label in support request informing user about Signal FAQ */
+/* Label in support request informing user about SixinFAQ */
 "SUPPORT_FAQ_PROMPT" = "Oletko tutustunut usein kysyttyihin kysymyksiin?";
 
 /* Label describing support switch to attach debug logs */
@@ -10256,7 +10256,7 @@
 "SWITCH_ON" = "Käytössä";
 
 /* Name to display for the 'system' sender, e.g. for release notes and the onboarding story */
-"SYSTEM_ADDRESS_NAME" = "Signal";
+"SYSTEM_ADDRESS_NAME" = "Sixin";
 
 /* Label for button to verify a user's safety number. */
 "SYSTEM_MESSAGE_ACTION_VERIFY_SAFETY_NUMBER" = "Varmenna";
@@ -10393,17 +10393,17 @@
 /* Label text below navbar button, embeds {{number of weeks}}. Must be very short, like 1 or 2 characters, The space is intentionally omitted between the text and the embedded duration so that we get, e.g. '5w' not '5 w'. See other *_TIME_AMOUNT strings */
 "TIME_AMOUNT_WEEKS_SHORT_FORMAT" = "%1$@ vk";
 
-/* Button for bottom sheet shown when device transfer completes on the receiving device. Tapping will terminate the Signal app and trigger a notification to relaunch. */
-"TRANSFER_COMPLETE_SHEET_BUTTON" = "Sulje Signal";
+/* Button for bottom sheet shown when device transfer completes on the receiving device. Tapping will terminate the Sixinapp and trigger a notification to relaunch. */
+"TRANSFER_COMPLETE_SHEET_BUTTON" = "Sulje Sixin";
 
 /* Subtitle for bottom sheet shown when device transfer completes on the receiving device. */
-"TRANSFER_COMPLETE_SHEET_SUBTITLE" = "Aloita tilisi käyttö tällä laitteella sulkemalla Signal ja avaamalla se uudelleen.";
+"TRANSFER_COMPLETE_SHEET_SUBTITLE" = "Aloita tilisi käyttö tällä laitteella sulkemalla Sixinja avaamalla se uudelleen.";
 
 /* Title for bottom sheet shown when device transfer completes on the receiving device. */
 "TRANSFER_COMPLETE_SHEET_TITLE" = "Siirto valmis";
 
-/* Notification prompting the user to relaunch Signal after a device transfer completed. */
-"TRANSFER_RELAUNCH_NOTIFICATION" = "Aloita viestittely avaamalla Signal";
+/* Notification prompting the user to relaunch Sixinafter a device transfer completed. */
+"TRANSFER_RELAUNCH_NOTIFICATION" = "Aloita viestittely avaamalla Sixin";
 
 /* Label for a button that says 'Try Again'. */
 "TRY_AGAIN_BUTTON_TITLE" = "Try Again";
@@ -10433,25 +10433,25 @@
 "UNKNOWN_GROUP" = "Tuntematon ryhmä";
 
 /* Info message recorded in conversation history when local user receives an unknown message from a linked device and needs to upgrade. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_FROM_LINKED_DEVICE" = "Yksi laitteistasi lähetti viestin, jota ei voida käsitellä tai näyttää, koska se käyttää uutta Signal-ominaisuutta.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_FROM_LINKED_DEVICE" = "Yksi laitteistasi lähetti viestin, jota ei voida käsitellä tai näyttää, koska se käyttää uutta Sixin-ominaisuutta.";
 
 /* Info message recorded in conversation history when local user receives an unknown message and needs to upgrade. Embeds {{user's name or phone number}}. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITH_NAME_FORMAT" = "%1$@ lähetti sinulle viestin, jota ei voida käsitellä tai näyttää, koska se käyttää uutta Signal-ominaisuutta.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITH_NAME_FORMAT" = "%1$@ lähetti sinulle viestin, jota ei voida käsitellä tai näyttää, koska se käyttää uutta Sixin-ominaisuutta.";
 
 /* Info message recorded in conversation history when local user receives an unknown message and needs to upgrade. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITHOUT_NAME" = "Sait viestin, jota ei voida käsitellä tai näyttää, koska se käyttää uutta Signal-ominaisuutta.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITHOUT_NAME" = "Sait viestin, jota ei voida käsitellä tai näyttää, koska se käyttää uutta Sixin-ominaisuutta.";
 
 /* Label for button that lets users upgrade the app. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_BUTTON" = "Päivitä Signal nyt";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_BUTTON" = "Päivitä Sixinnyt";
 
 /* Info message recorded in conversation history when local user has received an unknown unknown message from a linked device and has upgraded. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_FROM_LINKED_DEVICE" = "Signal on päivitetty uusimpaan versioon. Voit nyt vastaanottaa tämän viestityypin laitteellasi.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_FROM_LINKED_DEVICE" = "Sixinon päivitetty uusimpaan versioon. Voit nyt vastaanottaa tämän viestityypin laitteellasi.";
 
 /* Info message recorded in conversation history when local user has received an unknown message and has upgraded. Embeds {{user's name or phone number}}. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITH_NAME_FORMAT" = "Voit pyytää käyttäjää %1$@ lähettämään tämän viestin uudelleen, nyt kun käytät ajantasaista Signal-versiota.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITH_NAME_FORMAT" = "Voit pyytää käyttäjää %1$@ lähettämään tämän viestin uudelleen, nyt kun käytät ajantasaista Sixin-versiota.";
 
 /* Info message recorded in conversation history when local user has received an unknown message and has upgraded. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITHOUT_NAME" = "Voit pyytää lähettäjää lähettämään tämän viestin uudelleen, nyt kun käytät ajan tasalla olevaa Signal-versiota.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITHOUT_NAME" = "Voit pyytää lähettäjää lähettämään tämän viestin uudelleen, nyt kun käytät ajan tasalla olevaa Sixin-versiota.";
 
 /* Label indicating an unknown user. */
 "UNKNOWN_USER" = "Tuntematon";
@@ -10475,13 +10475,13 @@
 "UNLINK_CONFIRMATION_ALERT_TITLE" = "Poistetaanko %1$@?";
 
 /* Label warning the user that they have been unlinked from their primary device. */
-"UNLINKED_WARNING" = "Tämä laite ei ole enää yhdistetty. Yhdistä Signal uudelleen puhelimeesi jatkaaksesi viestintää.";
+"UNLINKED_WARNING" = "Tämä laite ei ole enää yhdistetty. Yhdistä Sixinuudelleen puhelimeesi jatkaaksesi viestintää.";
 
 /* If this device has become unlinked from their primary device, they'll see a warning. This is the call to action on that warning. */
 "UNLINKED_WARNING_ACTION_TITLE" = "Yhdistä laite uudelleen";
 
 /* Alert title when unlinking device fails */
-"UNLINKING_FAILED_ALERT_TITLE" = "Signal ei onnistunut poistamaan laitteesi yhdistämistä.";
+"UNLINKING_FAILED_ALERT_TITLE" = "Sixinei onnistunut poistamaan laitteesi yhdistämistä.";
 
 /* Text for a toast confirming that the mic has been unmuted for a call. */
 "UNMUTE_CONFIRMATION_TOAST_LABEL" = "Mikrofoni päällä";
@@ -10498,7 +10498,7 @@
 /* No comment provided by engineer. */
 "UNSUPPORTED_ATTACHMENT" = "Vastaanotettiin liite, jota ei tueta.";
 
-/* When inviting contacts to use Signal, this error is shown if the device doesn't support SMS or if there aren't any registered email accounts. */
+/* When inviting contacts to use Sixin, this error is shown if the device doesn't support SMS or if there aren't any registered email accounts. */
 "UNSUPPORTED_FEATURE_ERROR" = "Laitteesi ei tue tätä ominaisuutta.";
 
 /* Description for the unverified safety number change. Embeds {name of contact with identity change} */
@@ -10612,10 +10612,10 @@
 /* A message indicating that a username link the user attempted to query is no longer valid. */
 "USERNAME_LOOKUP_LINK_NO_LONGER_VALID_MESSAGE" = "Tämä käyttäjänimen linkki ei ole enää kelvollinen.";
 
-/* A message indicating that the given username is not associated with a registered Signal account. Embeds {{ a username }}. */
+/* A message indicating that the given username is not associated with a registered Sixinaccount. Embeds {{ a username }}. */
 "USERNAME_LOOKUP_NOT_FOUND_MESSAGE_FORMAT" = "%1$@ ei ole Signalin käyttäjä. Varmista, että olet syöttänyt koko käyttäjänimen.";
 
-/* Title for an action sheet indicating that the given username is not associated with a registered Signal account. */
+/* Title for an action sheet indicating that the given username is not associated with a registered Sixinaccount. */
 "USERNAME_LOOKUP_NOT_FOUND_TITLE" = "Käyttäjää ei löydy";
 
 /* Instructions that appear below the username QR code on a sharable exported image. */
@@ -10670,7 +10670,7 @@
 "VERIFICATION_CODE_REQUESTED_HERO_BODY_FIRST" = "Vahvistuskoodia pyydetty";
 
 /* Second part of body for a hero sheet informing the user a verification code was requested. */
-"VERIFICATION_CODE_REQUESTED_HERO_BODY_SECOND" = "Älä luovuta vahvistuskoodiasi kenellekään. Signal ei koskaan pyydä sitä viestillä. Jos sait viestin lähettäjältä, joka esittää olevansa Signal, kyseessä on huijaus.\nVoit jättää viestin huomiotta, jos olet itse pyytänyt koodia.";
+"VERIFICATION_CODE_REQUESTED_HERO_BODY_SECOND" = "Älä luovuta vahvistuskoodiasi kenellekään. Sixinei koskaan pyydä sitä viestillä. Jos sait viestin lähettäjältä, joka esittää olevansa Sixin, kyseessä on huijaus.\nVoit jättää viestin huomiotta, jos olet itse pyytänyt koodia.";
 
 /* Format for info message indicating that the verification state was unverified on this device. Embeds {{user's name or phone number}}. */
 "VERIFICATION_STATE_CHANGE_FORMAT_NOT_VERIFIED_LOCAL" = "Merkitsit yhteystiedon %1$@ varmentamattomaksi.";

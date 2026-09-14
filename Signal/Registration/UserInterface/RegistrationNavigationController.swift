@@ -40,13 +40,7 @@ public class RegistrationNavigationController: OWSNavigationController {
             pushNextController(Guarantee.wrapAsync { await self.coordinator.nextStep() })
         }
 
-        let submitLogsGesture = UITapGestureRecognizer(
-            target: self,
-            action: #selector(didRequestToSubmitDebugLogs),
-        )
-        submitLogsGesture.numberOfTapsRequired = 8
-        submitLogsGesture.delaysTouchesEnded = false
-        view.addGestureRecognizer(submitLogsGesture)
+        // Self-host debrand: hidden 8-tap debug log gesture disabled for test users.
     }
 
     private var isLoading = false

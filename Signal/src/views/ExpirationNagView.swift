@@ -193,7 +193,7 @@ private extension String {
     static var osExpiredAndDeviceIsStuck: String {
         return OWSLocalizedString(
             "OS_EXPIRED_AND_DEVICE_IS_STUCK",
-            value: "Signal no longer works on this device. To use Signal again, switch to a newer device.",
+            value: "Sixin no longer works on this device. To use Sixin again, switch to a newer device.",
             comment: "Signal doesn't support old devices. If that's the case, they'll be shown this action, and tapping it will open information about Signal's minimum supported operating systems.",
         )
     }

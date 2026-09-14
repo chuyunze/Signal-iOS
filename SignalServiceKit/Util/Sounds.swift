@@ -129,7 +129,7 @@ public extension StandardSound {
         case .popcorn: return "Popcorn"
         case .pulse: return "Pulse"
         case .synth: return "Synth"
-        case .signalClassic: return "Signal Classic"
+        case .signalClassic: return "Classic"
         // Calls
         case .callConnecting: return "Call Connecting"
         case .callOutboundRinging: return "Call Outbound Ringing"

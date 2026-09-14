@@ -37,7 +37,8 @@ final class LinkedDeviceBackupSettingsViewController: OWSTableViewController2 {
 
     private static let logger = PrefixedLogger(prefix: "[Backups]")
 
-    private static let learnMoreURL = URL(string: "https://support.signal.org/hc/articles/360007059752-Backup-and-Restore-Messages")!
+    // Self-host debrand: upstream linked to the official branded help center.
+    private static let learnMoreURL = URL(string: "https://i201314.cn/")!
 
     private enum Strings {
         static var manageOrUpgradeOnPrimaryFooter: String {

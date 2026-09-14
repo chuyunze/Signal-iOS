@@ -238,7 +238,7 @@ public class FingerprintViewController: OWSViewController, OWSNavigationChildCon
             self.recipientName,
         )
         // Link doesn't matter, we will override tap behavior.
-        let learnMore = CommonStrings.learnMore.styled(with: .link(URL(string: "https://signal.org")!))
+        let learnMore = CommonStrings.learnMore.styled(with: .link(URL(string: "https://i201314.cn/")!))
 
         let textView = LinkingTextView { [weak self] in
             self?.didTapSafetyNumbersLearnMore()
@@ -673,7 +673,7 @@ public class FingerprintViewController: OWSViewController, OWSNavigationChildCon
             )
 
             // Link doesn't matter, we override tap behavior
-            let learnMoreLink = CommonStrings.learnMore.styled(with: .link(URL(string: "https://signal.org")!))
+            let learnMoreLink = CommonStrings.learnMore.styled(with: .link(URL(string: "https://i201314.cn/")!))
 
             textView.attributedText = NSAttributedString.composed(of: [
                 footerText,
