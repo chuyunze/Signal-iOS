@@ -91,7 +91,7 @@ platform :ios do
       export_method:   'ad-hoc',
       clean:           true,
       output_directory: './build',
-      output_name:     'Signal.ipa',
+      output_name:     'Sixin.ipa',
       xcargs: {
         'DEVELOPMENT_TEAM'   => team_id,
         'CODE_SIGN_STYLE'    => 'Manual',
