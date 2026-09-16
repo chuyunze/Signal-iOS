@@ -3,7 +3,7 @@ name: Build Ad-Hoc IPA
 on:
   workflow_dispatch:
   push:
-    branches: [ selfhost-patch ]
+    branches: [ selfhost-patch, jack-patch ]
 
 jobs:
   build:
