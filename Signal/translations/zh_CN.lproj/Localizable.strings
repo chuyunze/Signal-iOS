@@ -5714,7 +5714,7 @@
 "PARTICIPANT_DELETE_CONFIRMATION_TITLE" = "从会话成员的设备删除？";
 
 /* Explains that participant delete is best-effort and only affects compatible devices. */
-"PARTICIPANT_DELETE_CONFIRMATION_MESSAGE" = "这会向会话中的兼容设备发送删除请求。已经看过、截图、转发、导出或保存在不兼容设备上的内容无法撤回。";
+"PARTICIPANT_DELETE_CONFIRMATION_MESSAGE" = "这会向会话中的兼容设备发送删除请求。截图、转发、导出或保存在不兼容设备上的内容无法撤回。";
 
 /* Status shown below a participant-deleted message. Embeds confirmed and expected known-device counts. */
 "PARTICIPANT_DELETE_DEVICE_CONFIRMATION_FORMAT" = "已在 %1$d/%2$d 台已知设备上确认";
