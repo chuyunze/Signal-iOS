@@ -392,7 +392,7 @@ final class ContactsViewController: RecipientPickerContainerViewController {
     }
 }
 
-extension ContactsViewController: RecipientPickerDelegate {
+extension ContactsViewController: RecipientPickerDelegate, UsernameLinkScanDelegate {
 
     func recipientPicker(
         _ recipientPickerViewController: RecipientPickerViewController,
