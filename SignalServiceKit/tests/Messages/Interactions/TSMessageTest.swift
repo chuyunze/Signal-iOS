@@ -170,6 +170,54 @@ class TSMessageTest: SSKBaseTest {
         }
     }
 
+    func testParticipantDeleteLocalInitiationDeletesIncomingMessage() throws {
+        let localIdentifiers: LocalIdentifiers = .forUnitTests
+        let contactAci = Aci.randomForTesting()
+        let targetTimestamp = Date.ows_millisecondTimestamp()
+
+        try SSKEnvironment.shared.databaseStorageRef.write { tx in
+            (DependenciesBridge.shared.registrationStateChangeManager as! RegistrationStateChangeManagerImpl).registerForTests(
+                localIdentifiers: localIdentifiers,
+                tx: tx,
+            )
+            let thread = TSContactThread.getOrCreateThread(
+                withContactAddress: SignalServiceAddress(contactAci),
+                transaction: tx,
+            )
+            let builder: TSIncomingMessageBuilder = .withDefaultValues(
+                thread: thread,
+                authorAci: contactAci,
+                messageBody: AttachmentContentValidatorMock.mockValidatedBody("sensitive incoming body"),
+            )
+            builder.timestamp = targetTimestamp
+            let message = builder.build()
+            message.anyInsert(transaction: tx)
+
+            try DependenciesBridge.shared.participantDeleteManager.processLocalInitiation(
+                requestId: UUID().data,
+                targetAuthor: contactAci,
+                targetSentTimestamp: targetTimestamp,
+                scope: .directChatBothAccounts,
+                groupRevision: nil,
+                thread: thread,
+                localAci: localIdentifiers.aci,
+                tx: tx,
+            )
+
+            XCTAssertTrue(message.wasRemotelyDeleted)
+            XCTAssertNil(message.body)
+            XCTAssertEqual(
+                DependenciesBridge.shared.participantDeleteManager.participantDeleteAuthor(
+                    interactionId: message.sqliteRowId!,
+                    tx: tx,
+                ),
+                localIdentifiers.aci,
+            )
+            XCTAssertEqual(try ParticipantDeleteRequestRecord.fetchCount(tx.database), 1)
+            XCTAssertEqual(try ParticipantDeleteTombstoneRecord.fetchCount(tx.database), 1)
+        }
+    }
+
     func testParticipantDeletePendingRequestConsumesLaterMessage() throws {
         let localIdentifiers: LocalIdentifiers = .forUnitTests
         let contactAci = Aci.randomForTesting()

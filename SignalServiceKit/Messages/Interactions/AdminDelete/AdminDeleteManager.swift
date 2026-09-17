@@ -431,20 +431,33 @@ public final class ParticipantDeleteManager {
             trustedServerTimestamp: nil,
             tx: tx,
         )
-        try snapshotExpectedDevices(
-            requestId: requestId,
-            thread: thread,
-            localAci: localAci,
-            tx: tx,
-        )
+        // Device confirmation is diagnostic metadata. A failure to record it
+        // must never cancel an otherwise valid delete request.
+        do {
+            try tx.database.inSavepoint {
+                try snapshotExpectedDevices(
+                    requestId: requestId,
+                    thread: thread,
+                    localAci: localAci,
+                    tx: tx,
+                )
+                return .commit
+            }
+        } catch {
+            logger.error("Failed to snapshot participant-delete devices: \(error)")
+        }
         if let localDeviceId = tsAccountManager.storedDeviceId(tx: tx).ifValid {
-            try ParticipantDeleteDeviceReceiptRecord(
-                requestId: requestId,
-                responderAci: localAci.serviceIdBinary,
-                responderDeviceId: Int64(localDeviceId.rawValue),
-                result: Int(SSKProtoDataMessageParticipantDeleteReceiptResult.applied.rawValue),
-                receivedAt: Int64(Date.ows_millisecondTimestamp()),
-            ).insert(tx.database)
+            do {
+                try ParticipantDeleteDeviceReceiptRecord(
+                    requestId: requestId,
+                    responderAci: localAci.serviceIdBinary,
+                    responderDeviceId: Int64(localDeviceId.rawValue),
+                    result: Int(SSKProtoDataMessageParticipantDeleteReceiptResult.applied.rawValue),
+                    receivedAt: Int64(Date.ows_millisecondTimestamp()),
+                ).insert(tx.database)
+            } catch {
+                logger.error("Failed to record local participant-delete confirmation: \(error)")
+            }
         }
     }
 
@@ -632,14 +645,14 @@ public final class ParticipantDeleteManager {
                             tx: tx,
                         )
                     }
-                    try scrubQuotedReplySnapshots(
-                        targetAuthor: authorAci,
-                        targetSentTimestamp: message.timestamp,
-                        threadUniqueId: thread.uniqueId,
-                        tx: tx,
-                    )
                     return .commit
                 }
+                scrubQuotedReplySnapshotsBestEffort(
+                    targetAuthor: authorAci,
+                    targetSentTimestamp: message.timestamp,
+                    threadUniqueId: thread.uniqueId,
+                    tx: tx,
+                )
             } catch {
                 logger.error("Failed to reapply participant-delete tombstone")
             }
@@ -700,12 +713,6 @@ public final class ParticipantDeleteManager {
                     recordAuthorMetadata: didApplyDelete,
                     tx: tx,
                 )
-                try scrubQuotedReplySnapshots(
-                    targetAuthor: authorAci,
-                    targetSentTimestamp: message.timestamp,
-                    threadUniqueId: thread.uniqueId,
-                    tx: tx,
-                )
                 try PendingParticipantDeleteRecord
                     .filter(Column("stableConversationId") == pending.stableConversationId)
                     .filter(Column("targetAuthorAci") == pending.targetAuthorAci)
@@ -731,6 +738,12 @@ public final class ParticipantDeleteManager {
                 }
                 return .commit
             }
+            scrubQuotedReplySnapshotsBestEffort(
+                targetAuthor: authorAci,
+                targetSentTimestamp: message.timestamp,
+                threadUniqueId: thread.uniqueId,
+                tx: tx,
+            )
         } catch {
             logger.error("Failed to consume pending participant delete")
         }
@@ -970,14 +983,14 @@ public final class ParticipantDeleteManager {
         if try tombstoneExists(for: validated, tx: tx) {
             try tx.database.inSavepoint {
                 try insertRequest(validated, result: .alreadyApplied, tx: tx)
-                try scrubQuotedReplySnapshots(
-                    targetAuthor: request.targetAuthor,
-                    targetSentTimestamp: request.targetSentTimestamp,
-                    threadUniqueId: validated.localThreadUniqueId,
-                    tx: tx,
-                )
                 return .commit
             }
+            scrubQuotedReplySnapshotsBestEffort(
+                targetAuthor: request.targetAuthor,
+                targetSentTimestamp: request.targetSentTimestamp,
+                threadUniqueId: validated.localThreadUniqueId,
+                tx: tx,
+            )
             if origin.shouldSendReceipt {
                 queueReceipt(requestId: request.requestId, result: .alreadyApplied, recipient: origin.requester, tx: tx)
             }
@@ -1023,12 +1036,6 @@ public final class ParticipantDeleteManager {
                     recordAuthorMetadata: false,
                     tx: tx,
                 )
-                try scrubQuotedReplySnapshots(
-                    targetAuthor: request.targetAuthor,
-                    targetSentTimestamp: request.targetSentTimestamp,
-                    threadUniqueId: validated.localThreadUniqueId,
-                    tx: tx,
-                )
             } else {
                 let latestMessage = try TSMessage.applyAuthorizedRemoteDelete(target, transaction: tx)
                 try insertTombstone(
@@ -1042,16 +1049,16 @@ public final class ParticipantDeleteManager {
                     recordAuthorMetadata: true,
                     tx: tx,
                 )
-                try scrubQuotedReplySnapshots(
-                    targetAuthor: request.targetAuthor,
-                    targetSentTimestamp: request.targetSentTimestamp,
-                    threadUniqueId: validated.localThreadUniqueId,
-                    tx: tx,
-                )
             }
             try insertRequest(validated, result: result, tx: tx)
             return .commit
         }
+        scrubQuotedReplySnapshotsBestEffort(
+            targetAuthor: request.targetAuthor,
+            targetSentTimestamp: request.targetSentTimestamp,
+            threadUniqueId: validated.localThreadUniqueId,
+            tx: tx,
+        )
         if origin.shouldSendReceipt {
             queueReceipt(requestId: request.requestId, result: result, recipient: origin.requester, tx: tx)
         }
@@ -1195,6 +1202,26 @@ public final class ParticipantDeleteManager {
     /// Removes cached quote text and thumbnails that would otherwise retain a
     /// copy of participant-deleted content. Row IDs are fetched in small pages
     /// so large conversations don't allocate all messages at once.
+    private func scrubQuotedReplySnapshotsBestEffort(
+        targetAuthor: Aci,
+        targetSentTimestamp: UInt64,
+        threadUniqueId: String,
+        tx: DBWriteTransaction,
+    ) {
+        do {
+            try scrubQuotedReplySnapshots(
+                targetAuthor: targetAuthor,
+                targetSentTimestamp: targetSentTimestamp,
+                threadUniqueId: threadUniqueId,
+                tx: tx,
+            )
+        } catch {
+            // The target has already been deleted and tombstoned. Keep that
+            // durable result even if cleaning a secondary quote cache fails.
+            logger.error("Failed to scrub participant-delete quote snapshots: \(error)")
+        }
+    }
+
     private func scrubQuotedReplySnapshots(
         targetAuthor: Aci,
         targetSentTimestamp: UInt64,

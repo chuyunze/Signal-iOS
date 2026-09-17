@@ -71,6 +71,49 @@ class SSKMessageSenderJobRecordTest: SSKBaseTest {
             ))
         }
 
+        try assertParticipantDeleteMessageSurvivesSecureCodingRoundTrip(
+            participantDeleteMessage,
+            expectsLegacyDelete: true,
+        )
+    }
+
+    func testParticipantDeleteForIncomingMessageSurvivesSecureCodingRoundTrip() throws {
+        let localIdentifiers: LocalIdentifiers = .forUnitTests
+        let participantDeleteMessage: OutgoingParticipantDeleteMessage = try SSKEnvironment.shared.databaseStorageRef.write { tx in
+            (DependenciesBridge.shared.registrationStateChangeManager as! RegistrationStateChangeManagerImpl).registerForTests(
+                localIdentifiers: localIdentifiers,
+                tx: tx,
+            )
+            let contactAci = Aci.randomForTesting()
+            let thread = TSContactThread.getOrCreateThread(
+                withContactAddress: SignalServiceAddress(contactAci),
+                transaction: tx,
+            )
+            let messageBuilder: TSIncomingMessageBuilder = .withDefaultValues(
+                thread: thread,
+                authorAci: contactAci,
+            )
+            messageBuilder.timestamp = Date.ows_millisecondTimestamp()
+            let targetMessage = messageBuilder.build()
+            targetMessage.anyInsert(transaction: tx)
+            return try XCTUnwrap(OutgoingParticipantDeleteMessage(
+                thread: thread,
+                message: targetMessage,
+                localIdentifiers: localIdentifiers,
+                tx: tx,
+            ))
+        }
+
+        try assertParticipantDeleteMessageSurvivesSecureCodingRoundTrip(
+            participantDeleteMessage,
+            expectsLegacyDelete: false,
+        )
+    }
+
+    private func assertParticipantDeleteMessageSurvivesSecureCodingRoundTrip(
+        _ participantDeleteMessage: OutgoingParticipantDeleteMessage,
+        expectsLegacyDelete: Bool,
+    ) throws {
         let archivedData = try NSKeyedArchiver.archivedData(
             withRootObject: participantDeleteMessage,
             requiringSecureCoding: true,
@@ -93,6 +136,6 @@ class SSKMessageSenderJobRecordTest: SSKBaseTest {
             return try builder.build()
         }
         XCTAssertNotNil(dataMessage.participantDelete)
-        XCTAssertNotNil(dataMessage.delete)
+        XCTAssertEqual(dataMessage.delete != nil, expectsLegacyDelete)
     }
 }
