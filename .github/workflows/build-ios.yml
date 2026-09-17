@@ -88,13 +88,14 @@ jobs:
         bundler-cache: true
         working-directory: app
 
-    - name: Cache CocoaPods dependencies
+    # Pods/ contains generated projects and RingRTC symlinks whose targets are
+    # created during pod install. Restoring that directory can leave broken
+    # references, so cache only CocoaPods' immutable download artifacts.
+    - name: Cache CocoaPods downloads
       uses: actions/cache@v5
       with:
-        path: |
-          app/Pods
-          ~/Library/Caches/CocoaPods
-        key: cocoapods-v1-${{ runner.os }}-${{ steps.libsignal-revision.outputs.sha }}-${{ hashFiles('app/Podfile.lock') }}
+        path: ~/Library/Caches/CocoaPods
+        key: cocoapods-v2-${{ runner.os }}-${{ hashFiles('app/Podfile.lock') }}
 
     - name: Install CocoaPods dependencies
       working-directory: app
