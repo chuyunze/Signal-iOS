@@ -77,3 +77,78 @@ public struct AdminDeleteRecord: Codable, FetchableRecord, MutablePersistableRec
         }
     }
 }
+
+// MARK: - Participant Delete
+
+struct ParticipantDeleteRequestRecord: Codable, FetchableRecord, PersistableRecord {
+    static let databaseTableName = "ParticipantDeleteRequest"
+
+    let requestId: Data
+    let requesterAci: Data
+    let requesterDeviceId: Int64?
+    let stableConversationId: Data
+    let localThreadUniqueId: String
+    let targetAuthorAci: Data
+    let targetSentTimestamp: Int64
+    let protocolVersion: Int
+    let processingResult: Int
+    let createdAt: Int64
+
+    static let persistenceConflictPolicy = PersistenceConflictPolicy(insert: .ignore, update: .abort)
+}
+
+struct ParticipantDeleteTombstoneRecord: Codable, FetchableRecord, PersistableRecord {
+    static let databaseTableName = "ParticipantDeleteTombstone"
+
+    let stableConversationId: Data
+    let localThreadUniqueId: String
+    let targetAuthorAci: Data
+    let targetSentTimestamp: Int64
+    let interactionId: Int64?
+    let firstRequestId: Data
+    let requesterAci: Data
+    let appliedAt: Int64
+    let protocolVersion: Int
+
+    static let persistenceConflictPolicy = PersistenceConflictPolicy(insert: .ignore, update: .abort)
+}
+
+struct PendingParticipantDeleteRecord: Codable, FetchableRecord, PersistableRecord {
+    static let databaseTableName = "PendingParticipantDelete"
+
+    let firstRequestId: Data
+    let stableConversationId: Data
+    let localThreadUniqueId: String
+    let targetAuthorAci: Data
+    let targetSentTimestamp: Int64
+    let requesterAci: Data
+    let requesterDeviceId: Int64?
+    let requestServerTimestamp: Int64
+    let conversationScope: Int
+    let groupRevision: Int64?
+    let expiresAt: Int64
+    let protocolVersion: Int
+
+    static let persistenceConflictPolicy = PersistenceConflictPolicy(insert: .ignore, update: .abort)
+}
+
+struct ParticipantDeleteDeviceReceiptRecord: Codable, FetchableRecord, PersistableRecord {
+    static let databaseTableName = "ParticipantDeleteDeviceReceipt"
+
+    let requestId: Data
+    let responderAci: Data
+    let responderDeviceId: Int64
+    let result: Int
+    let receivedAt: Int64
+
+    static let persistenceConflictPolicy = PersistenceConflictPolicy(insert: .replace, update: .abort)
+}
+
+struct ParticipantDeleteAuthorRecord: Codable, FetchableRecord, PersistableRecord {
+    static let databaseTableName = "ParticipantDeleteAuthor"
+
+    let interactionId: Int64
+    let deleteAuthorId: SignalRecipient.RowId
+
+    static let persistenceConflictPolicy = PersistenceConflictPolicy(insert: .replace, update: .abort)
+}

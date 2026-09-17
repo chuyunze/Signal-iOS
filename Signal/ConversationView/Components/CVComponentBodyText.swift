@@ -512,6 +512,22 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
         return attributedString
     }
 
+    private func buildParticipantDeleteAttributedString(displayName: String, nameColor: UIColor) -> NSAttributedString {
+        let format = OWSLocalizedString(
+            "DELETED_BY_PARTICIPANT",
+            comment: "Text indicating the message was remotely deleted by a conversation participant. Embeds {{participant display name}}.",
+        )
+        return NSAttributedString.make(
+            fromFormat: format,
+            attributedFormatArgs: [
+                .string(
+                    displayName,
+                    attributes: [.font: textMessageFont.bold(), .foregroundColor: nameColor],
+                ),
+            ],
+        )
+    }
+
     private func rangeOfFirstSubstring(
         in attributedString: NSAttributedString,
         withColor color: UIColor,
@@ -575,6 +591,25 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
                     )))
                 } else {
                     owsFailDebug("Admin delete is missing tappable range")
+                }
+
+            case .participant(let aci, let displayName):
+                let participantNameColor: UIColor
+                if conversationStyle.hasWallpaper, isOutgoing {
+                    participantNameColor = .white
+                } else {
+                    participantNameColor = GroupNameColors.forThread(thread).color(for: aci)
+                }
+                text.append(buildParticipantDeleteAttributedString(
+                    displayName: displayName,
+                    nameColor: participantNameColor,
+                ))
+
+                if let tapItemRange = rangeOfFirstSubstring(in: text, withColor: participantNameColor) {
+                    linkItems.append(.deleteAuthor(deleteAuthorItem: CVTextLabel.DeleteAuthorItem(
+                        deleteAuthorAci: aci,
+                        range: tapItemRange,
+                    )))
                 }
 
             case .regular(let displayName):

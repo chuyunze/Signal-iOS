@@ -1204,7 +1204,6 @@ struct SignalServiceProtos_DataMessage: @unchecked Sendable {
   /// Clears the value of `unpinMessage`. Subsequent reads from it will return its default value.
   mutating func clearUnpinMessage() {_uniqueStorage()._unpinMessage = nil}
 
-  /// NEXT ID: 30
   var adminDelete: SignalServiceProtos_DataMessage.AdminDelete {
     get {_storage._adminDelete ?? SignalServiceProtos_DataMessage.AdminDelete()}
     set {_uniqueStorage()._adminDelete = newValue}
@@ -1213,6 +1212,25 @@ struct SignalServiceProtos_DataMessage: @unchecked Sendable {
   var hasAdminDelete: Bool {_storage._adminDelete != nil}
   /// Clears the value of `adminDelete`. Subsequent reads from it will return its default value.
   mutating func clearAdminDelete() {_uniqueStorage()._adminDelete = nil}
+
+  var participantDelete: SignalServiceProtos_DataMessage.ParticipantDelete {
+    get {_storage._participantDelete ?? SignalServiceProtos_DataMessage.ParticipantDelete()}
+    set {_uniqueStorage()._participantDelete = newValue}
+  }
+  /// Returns true if `participantDelete` has been explicitly set.
+  var hasParticipantDelete: Bool {_storage._participantDelete != nil}
+  /// Clears the value of `participantDelete`. Subsequent reads from it will return its default value.
+  mutating func clearParticipantDelete() {_uniqueStorage()._participantDelete = nil}
+
+  /// NEXT ID: 32
+  var participantDeleteReceipt: SignalServiceProtos_DataMessage.ParticipantDeleteReceipt {
+    get {_storage._participantDeleteReceipt ?? SignalServiceProtos_DataMessage.ParticipantDeleteReceipt()}
+    set {_uniqueStorage()._participantDeleteReceipt = newValue}
+  }
+  /// Returns true if `participantDeleteReceipt` has been explicitly set.
+  var hasParticipantDeleteReceipt: Bool {_storage._participantDeleteReceipt != nil}
+  /// Clears the value of `participantDeleteReceipt`. Subsequent reads from it will return its default value.
+  mutating func clearParticipantDeleteReceipt() {_uniqueStorage()._participantDeleteReceipt = nil}
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -2324,6 +2342,160 @@ struct SignalServiceProtos_DataMessage: @unchecked Sendable {
 
     fileprivate var _targetAuthorAciBinary: Data? = nil
     fileprivate var _targetSentTimestamp: UInt64? = nil
+  }
+
+  /// A cooperative delete request sent by any current conversation member.
+  /// The requester identity is always taken from the authenticated envelope (or
+  /// the trusted local sent-transcript context), never from this payload.
+  struct ParticipantDelete: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    var version: UInt32 {
+      get {_version ?? 0}
+      set {_version = newValue}
+    }
+    /// Returns true if `version` has been explicitly set.
+    var hasVersion: Bool {self._version != nil}
+    /// Clears the value of `version`. Subsequent reads from it will return its default value.
+    mutating func clearVersion() {self._version = nil}
+
+    /// 16-byte UUID
+    var targetAuthorAciBinary: Data {
+      get {_targetAuthorAciBinary ?? Data()}
+      set {_targetAuthorAciBinary = newValue}
+    }
+    /// Returns true if `targetAuthorAciBinary` has been explicitly set.
+    var hasTargetAuthorAciBinary: Bool {self._targetAuthorAciBinary != nil}
+    /// Clears the value of `targetAuthorAciBinary`. Subsequent reads from it will return its default value.
+    mutating func clearTargetAuthorAciBinary() {self._targetAuthorAciBinary = nil}
+
+    var targetSentTimestamp: UInt64 {
+      get {_targetSentTimestamp ?? 0}
+      set {_targetSentTimestamp = newValue}
+    }
+    /// Returns true if `targetSentTimestamp` has been explicitly set.
+    var hasTargetSentTimestamp: Bool {self._targetSentTimestamp != nil}
+    /// Clears the value of `targetSentTimestamp`. Subsequent reads from it will return its default value.
+    mutating func clearTargetSentTimestamp() {self._targetSentTimestamp = nil}
+
+    /// 16-byte UUID
+    var requestID: Data {
+      get {_requestID ?? Data()}
+      set {_requestID = newValue}
+    }
+    /// Returns true if `requestID` has been explicitly set.
+    var hasRequestID: Bool {self._requestID != nil}
+    /// Clears the value of `requestID`. Subsequent reads from it will return its default value.
+    mutating func clearRequestID() {self._requestID = nil}
+
+    var clientRequestedAt: UInt64 {
+      get {_clientRequestedAt ?? 0}
+      set {_clientRequestedAt = newValue}
+    }
+    /// Returns true if `clientRequestedAt` has been explicitly set.
+    var hasClientRequestedAt: Bool {self._clientRequestedAt != nil}
+    /// Clears the value of `clientRequestedAt`. Subsequent reads from it will return its default value.
+    mutating func clearClientRequestedAt() {self._clientRequestedAt = nil}
+
+    var scope: SignalServiceProtos_DataMessage.ParticipantDelete.Scope {
+      get {_scope ?? .unknown}
+      set {_scope = newValue}
+    }
+    /// Returns true if `scope` has been explicitly set.
+    var hasScope: Bool {self._scope != nil}
+    /// Clears the value of `scope`. Subsequent reads from it will return its default value.
+    mutating func clearScope() {self._scope = nil}
+
+    var groupRevision: UInt32 {
+      get {_groupRevision ?? 0}
+      set {_groupRevision = newValue}
+    }
+    /// Returns true if `groupRevision` has been explicitly set.
+    var hasGroupRevision: Bool {self._groupRevision != nil}
+    /// Clears the value of `groupRevision`. Subsequent reads from it will return its default value.
+    mutating func clearGroupRevision() {self._groupRevision = nil}
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    enum Scope: Int, SwiftProtobuf.Enum, Swift.CaseIterable {
+      case unknown = 0
+      case directChatBothAccounts = 1
+      case groupAllCurrentMembers = 2
+
+      init() {
+        self = .unknown
+      }
+
+    }
+
+    init() {}
+
+    fileprivate var _version: UInt32? = nil
+    fileprivate var _targetAuthorAciBinary: Data? = nil
+    fileprivate var _targetSentTimestamp: UInt64? = nil
+    fileprivate var _requestID: Data? = nil
+    fileprivate var _clientRequestedAt: UInt64? = nil
+    fileprivate var _scope: SignalServiceProtos_DataMessage.ParticipantDelete.Scope? = nil
+    fileprivate var _groupRevision: UInt32? = nil
+  }
+
+  struct ParticipantDeleteReceipt: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    var version: UInt32 {
+      get {_version ?? 0}
+      set {_version = newValue}
+    }
+    /// Returns true if `version` has been explicitly set.
+    var hasVersion: Bool {self._version != nil}
+    /// Clears the value of `version`. Subsequent reads from it will return its default value.
+    mutating func clearVersion() {self._version = nil}
+
+    /// 16-byte UUID
+    var requestID: Data {
+      get {_requestID ?? Data()}
+      set {_requestID = newValue}
+    }
+    /// Returns true if `requestID` has been explicitly set.
+    var hasRequestID: Bool {self._requestID != nil}
+    /// Clears the value of `requestID`. Subsequent reads from it will return its default value.
+    mutating func clearRequestID() {self._requestID = nil}
+
+    var result: SignalServiceProtos_DataMessage.ParticipantDeleteReceipt.Result {
+      get {_result ?? .unknown}
+      set {_result = newValue}
+    }
+    /// Returns true if `result` has been explicitly set.
+    var hasResult: Bool {self._result != nil}
+    /// Clears the value of `result`. Subsequent reads from it will return its default value.
+    mutating func clearResult() {self._result = nil}
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    enum Result: Int, SwiftProtobuf.Enum, Swift.CaseIterable {
+      case unknown = 0
+      case applied = 1
+      case alreadyApplied = 2
+      case targetPending = 3
+      case rejectedNotCurrentMember = 4
+      case rejectedNotSupported = 5
+      case rejectedInvalidTarget = 6
+
+      init() {
+        self = .unknown
+      }
+
+    }
+
+    init() {}
+
+    fileprivate var _version: UInt32? = nil
+    fileprivate var _requestID: Data? = nil
+    fileprivate var _result: SignalServiceProtos_DataMessage.ParticipantDeleteReceipt.Result? = nil
   }
 
   init() {}
@@ -5828,7 +6000,7 @@ extension SignalServiceProtos_CallMessage.Opaque.Urgency: SwiftProtobuf._ProtoNa
 
 extension SignalServiceProtos_DataMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".DataMessage"
-  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}body\0\u{1}attachments\0\u{2}\u{2}flags\0\u{1}expireTimer\0\u{1}profileKey\0\u{1}timestamp\0\u{1}quote\0\u{1}contact\0\u{1}preview\0\u{1}sticker\0\u{1}requiredProtocolVersion\0\u{2}\u{2}isViewOnce\0\u{1}groupV2\0\u{1}reaction\0\u{1}delete\0\u{1}bodyRanges\0\u{1}groupCallUpdate\0\u{1}payment\0\u{1}storyContext\0\u{1}giftBadge\0\u{1}expireTimerVersion\0\u{1}pollCreate\0\u{1}pollTerminate\0\u{1}pollVote\0\u{1}pinMessage\0\u{1}unpinMessage\0\u{1}adminDelete\0\u{c}\u{3}\u{1}")
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}body\0\u{1}attachments\0\u{2}\u{2}flags\0\u{1}expireTimer\0\u{1}profileKey\0\u{1}timestamp\0\u{1}quote\0\u{1}contact\0\u{1}preview\0\u{1}sticker\0\u{1}requiredProtocolVersion\0\u{2}\u{2}isViewOnce\0\u{1}groupV2\0\u{1}reaction\0\u{1}delete\0\u{1}bodyRanges\0\u{1}groupCallUpdate\0\u{1}payment\0\u{1}storyContext\0\u{1}giftBadge\0\u{1}expireTimerVersion\0\u{1}pollCreate\0\u{1}pollTerminate\0\u{1}pollVote\0\u{1}pinMessage\0\u{1}unpinMessage\0\u{1}adminDelete\0\u{1}participantDelete\0\u{1}participantDeleteReceipt\0\u{c}\u{3}\u{1}")
 
   fileprivate class _StorageClass {
     var _body: String? = nil
@@ -5858,6 +6030,8 @@ extension SignalServiceProtos_DataMessage: SwiftProtobuf.Message, SwiftProtobuf.
     var _pinMessage: SignalServiceProtos_DataMessage.PinMessage? = nil
     var _unpinMessage: SignalServiceProtos_DataMessage.UnpinMessage? = nil
     var _adminDelete: SignalServiceProtos_DataMessage.AdminDelete? = nil
+    var _participantDelete: SignalServiceProtos_DataMessage.ParticipantDelete? = nil
+    var _participantDeleteReceipt: SignalServiceProtos_DataMessage.ParticipantDeleteReceipt? = nil
 
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
@@ -5895,6 +6069,8 @@ extension SignalServiceProtos_DataMessage: SwiftProtobuf.Message, SwiftProtobuf.
       _pinMessage = source._pinMessage
       _unpinMessage = source._unpinMessage
       _adminDelete = source._adminDelete
+      _participantDelete = source._participantDelete
+      _participantDeleteReceipt = source._participantDeleteReceipt
     }
   }
 
@@ -5940,6 +6116,8 @@ extension SignalServiceProtos_DataMessage: SwiftProtobuf.Message, SwiftProtobuf.
         case 27: try { try decoder.decodeSingularMessageField(value: &_storage._pinMessage) }()
         case 28: try { try decoder.decodeSingularMessageField(value: &_storage._unpinMessage) }()
         case 29: try { try decoder.decodeSingularMessageField(value: &_storage._adminDelete) }()
+        case 30: try { try decoder.decodeSingularMessageField(value: &_storage._participantDelete) }()
+        case 31: try { try decoder.decodeSingularMessageField(value: &_storage._participantDeleteReceipt) }()
         default: break
         }
       }
@@ -6033,6 +6211,12 @@ extension SignalServiceProtos_DataMessage: SwiftProtobuf.Message, SwiftProtobuf.
       try { if let v = _storage._adminDelete {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 29)
       } }()
+      try { if let v = _storage._participantDelete {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 30)
+      } }()
+      try { if let v = _storage._participantDeleteReceipt {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 31)
+      } }()
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -6069,6 +6253,8 @@ extension SignalServiceProtos_DataMessage: SwiftProtobuf.Message, SwiftProtobuf.
         if _storage._pinMessage != rhs_storage._pinMessage {return false}
         if _storage._unpinMessage != rhs_storage._unpinMessage {return false}
         if _storage._adminDelete != rhs_storage._adminDelete {return false}
+        if _storage._participantDelete != rhs_storage._participantDelete {return false}
+        if _storage._participantDeleteReceipt != rhs_storage._participantDeleteReceipt {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -7370,6 +7556,122 @@ extension SignalServiceProtos_DataMessage.AdminDelete: SwiftProtobuf.Message, Sw
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
+}
+
+extension SignalServiceProtos_DataMessage.ParticipantDelete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = SignalServiceProtos_DataMessage.protoMessageName + ".ParticipantDelete"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}version\0\u{1}targetAuthorAciBinary\0\u{1}targetSentTimestamp\0\u{1}requestId\0\u{1}clientRequestedAt\0\u{1}scope\0\u{1}groupRevision\0")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt32Field(value: &self._version) }()
+      case 2: try { try decoder.decodeSingularBytesField(value: &self._targetAuthorAciBinary) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self._targetSentTimestamp) }()
+      case 4: try { try decoder.decodeSingularBytesField(value: &self._requestID) }()
+      case 5: try { try decoder.decodeSingularUInt64Field(value: &self._clientRequestedAt) }()
+      case 6: try { try decoder.decodeSingularEnumField(value: &self._scope) }()
+      case 7: try { try decoder.decodeSingularUInt32Field(value: &self._groupRevision) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._version {
+      try visitor.visitSingularUInt32Field(value: v, fieldNumber: 1)
+    } }()
+    try { if let v = self._targetAuthorAciBinary {
+      try visitor.visitSingularBytesField(value: v, fieldNumber: 2)
+    } }()
+    try { if let v = self._targetSentTimestamp {
+      try visitor.visitSingularUInt64Field(value: v, fieldNumber: 3)
+    } }()
+    try { if let v = self._requestID {
+      try visitor.visitSingularBytesField(value: v, fieldNumber: 4)
+    } }()
+    try { if let v = self._clientRequestedAt {
+      try visitor.visitSingularUInt64Field(value: v, fieldNumber: 5)
+    } }()
+    try { if let v = self._scope {
+      try visitor.visitSingularEnumField(value: v, fieldNumber: 6)
+    } }()
+    try { if let v = self._groupRevision {
+      try visitor.visitSingularUInt32Field(value: v, fieldNumber: 7)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SignalServiceProtos_DataMessage.ParticipantDelete, rhs: SignalServiceProtos_DataMessage.ParticipantDelete) -> Bool {
+    if lhs._version != rhs._version {return false}
+    if lhs._targetAuthorAciBinary != rhs._targetAuthorAciBinary {return false}
+    if lhs._targetSentTimestamp != rhs._targetSentTimestamp {return false}
+    if lhs._requestID != rhs._requestID {return false}
+    if lhs._clientRequestedAt != rhs._clientRequestedAt {return false}
+    if lhs._scope != rhs._scope {return false}
+    if lhs._groupRevision != rhs._groupRevision {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension SignalServiceProtos_DataMessage.ParticipantDelete.Scope: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0\u{1}DIRECT_CHAT_BOTH_ACCOUNTS\0\u{1}GROUP_ALL_CURRENT_MEMBERS\0")
+}
+
+extension SignalServiceProtos_DataMessage.ParticipantDeleteReceipt: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = SignalServiceProtos_DataMessage.protoMessageName + ".ParticipantDeleteReceipt"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}version\0\u{1}requestId\0\u{1}result\0")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt32Field(value: &self._version) }()
+      case 2: try { try decoder.decodeSingularBytesField(value: &self._requestID) }()
+      case 3: try { try decoder.decodeSingularEnumField(value: &self._result) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._version {
+      try visitor.visitSingularUInt32Field(value: v, fieldNumber: 1)
+    } }()
+    try { if let v = self._requestID {
+      try visitor.visitSingularBytesField(value: v, fieldNumber: 2)
+    } }()
+    try { if let v = self._result {
+      try visitor.visitSingularEnumField(value: v, fieldNumber: 3)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SignalServiceProtos_DataMessage.ParticipantDeleteReceipt, rhs: SignalServiceProtos_DataMessage.ParticipantDeleteReceipt) -> Bool {
+    if lhs._version != rhs._version {return false}
+    if lhs._requestID != rhs._requestID {return false}
+    if lhs._result != rhs._result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension SignalServiceProtos_DataMessage.ParticipantDeleteReceipt.Result: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0\u{1}APPLIED\0\u{1}ALREADY_APPLIED\0\u{1}TARGET_PENDING\0\u{1}REJECTED_NOT_CURRENT_MEMBER\0\u{1}REJECTED_NOT_SUPPORTED\0\u{1}REJECTED_INVALID_TARGET\0")
 }
 
 extension SignalServiceProtos_NullMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {

@@ -3058,6 +3058,9 @@
 /* Text indicating the message was remotely deleted by an admin. Embeds {{admin display name}} */
 "DELETED_BY_ADMIN" = "管理员%1$@删除了此消息";
 
+/* Text indicating the message was remotely deleted by a conversation participant. Embeds {{participant display name}}. */
+"DELETED_BY_PARTICIPANT" = "%1$@从会话设备中删除了此消息";
+
 /* Text indicating the message was remotely deleted by its author. Embeds {{ author name }} */
 "DELETED_THIS_MESSAGE" = "%1$@删除了此消息";
 
@@ -5706,6 +5709,12 @@
 
 /* A one-time confirmation that you want to delete for everyone */
 "MESSAGE_ACTION_DELETE_FOR_EVERYONE_CONFIRMATION" = "将对所有使用较新版本 私信的群组用户永久删除此消息，群成员将看到您删除了一条消息。";
+
+/* Title confirming a cooperative delete request for all compatible conversation devices. */
+"PARTICIPANT_DELETE_CONFIRMATION_TITLE" = "从会话成员的设备删除？";
+
+/* Explains that participant delete is best-effort and only affects compatible devices. */
+"PARTICIPANT_DELETE_CONFIRMATION_MESSAGE" = "这会向会话中的兼容设备发送删除请求。已经看过、截图、转发、导出或保存在不兼容设备上的内容无法撤回。";
 
 /* The title for the action sheet asking who the user wants to delete the message for. */
 "MESSAGE_ACTION_DELETE_FOR_TITLE" = "您想要对谁删除此消息？";

@@ -356,11 +356,11 @@ public extension TSMessage {
         case invalidDelete
     }
 
-    static func remotelyDeleteMessage(
+    /// Resolves an edit revision to the latest visible revision before applying
+    /// a remote-delete tombstone. Authorization and age policy must be checked
+    /// by the caller before invoking `applyAuthorizedRemoteDelete`.
+    private static func resolvedRemoteDeleteTarget(
         _ message: TSMessage,
-        deleteAuthorAci: Aci,
-        allowedDeleteTimeframeSeconds: TimeInterval,
-        serverTimestamp: UInt64,
         transaction: DBWriteTransaction,
     ) throws(RemoteDeleteError) -> TSMessage {
         guard message.isIncoming || message.isOutgoing else {
@@ -368,33 +368,51 @@ public extension TSMessage {
             throw .invalidDelete
         }
 
-        guard let localAci = DependenciesBridge.shared.tsAccountManager.localIdentifiers(tx: transaction)?.aci else {
-            throw .invalidDelete
-        }
-
-        var latestMessage = message
         if message.editState == .pastRevision {
-            // The remote delete targeted an old revision, fetch
-            // swap out the target message for the latest (or return an error)
-            // This avoids cases where older edits could be deleted and
-            // leave newer revisions
-            if
+            guard
                 let latestEdit = DependenciesBridge.shared.editMessageStore.findMessage(
                     fromEdit: message,
                     tx: transaction,
                 )
-            {
-                latestMessage = latestEdit
-            } else {
+            else {
                 Logger.info("Ignoring delete for missing edit target.")
                 throw .invalidDelete
             }
+            return latestEdit
         }
+
+        return message
+    }
+
+    /// Applies the destructive portion of a remote delete after the caller has
+    /// fully validated its authorization, conversation and target. This method
+    /// intentionally contains no author/admin or message-age policy.
+    @discardableResult
+    static func applyAuthorizedRemoteDelete(
+        _ message: TSMessage,
+        transaction: DBWriteTransaction,
+    ) throws(RemoteDeleteError) -> TSMessage {
+        let latestMessage = try resolvedRemoteDeleteTarget(message, transaction: transaction)
+        latestMessage.markMessageAsRemotelyDeleted(transaction: transaction)
+        return latestMessage
+    }
+
+    static func remotelyDeleteMessage(
+        _ message: TSMessage,
+        deleteAuthorAci: Aci,
+        allowedDeleteTimeframeSeconds: TimeInterval,
+        serverTimestamp: UInt64,
+        transaction: DBWriteTransaction,
+    ) throws(RemoteDeleteError) -> TSMessage {
+        guard let localAci = DependenciesBridge.shared.tsAccountManager.localIdentifiers(tx: transaction)?.aci else {
+            throw .invalidDelete
+        }
+
+        let latestMessage = try resolvedRemoteDeleteTarget(message, transaction: transaction)
 
         // Client has already validated timestamp if local user is deleting a message.
         if deleteAuthorAci == localAci {
-            latestMessage.markMessageAsRemotelyDeleted(transaction: transaction)
-            return latestMessage
+            return try applyAuthorizedRemoteDelete(latestMessage, transaction: transaction)
         }
 
         let deleteThreshold = TimeInterval(allowedDeleteTimeframeSeconds)
@@ -408,8 +426,7 @@ public extension TSMessage {
                 throw .invalidDelete
             }
 
-            latestMessage.markMessageAsRemotelyDeleted(transaction: transaction)
-            return latestMessage
+            return try applyAuthorizedRemoteDelete(latestMessage, transaction: transaction)
         } else if let incoming = latestMessage as? TSIncomingMessage {
             guard let messageToDeleteServerTimestamp = incoming.serverTimestamp else {
                 // Older messages might be missing this, but since we only allow deleting for a small
@@ -426,8 +443,7 @@ public extension TSMessage {
                 throw .invalidDelete
             }
 
-            latestMessage.markMessageAsRemotelyDeleted(transaction: transaction)
-            return latestMessage
+            return try applyAuthorizedRemoteDelete(latestMessage, transaction: transaction)
         }
 
         owsFailDebug("Message not incoming or outgoing")
@@ -639,6 +655,12 @@ public extension TSMessage {
             switch deleteAuthor {
             case .admin(_, let displayName):
                 let format = OWSLocalizedString("DELETED_BY_ADMIN", comment: "Text indicating the message was remotely deleted by an admin. Embeds {{admin display name}}")
+                remoteDeleteString = String.nonPluralLocalizedStringWithFormat(format, displayName)
+            case .participant(_, let displayName):
+                let format = OWSLocalizedString(
+                    "DELETED_BY_PARTICIPANT",
+                    comment: "Text indicating the message was remotely deleted by a conversation participant. Embeds {{participant display name}}.",
+                )
                 remoteDeleteString = String.nonPluralLocalizedStringWithFormat(format, displayName)
             case .regular(let displayName):
                 let format = OWSLocalizedString(
@@ -878,6 +900,23 @@ extension TSMessage {
     // MARK: - Remote Delete String
 
     public func displayNameForDeleteMessage(localAci: Aci, transaction: DBReadTransaction) -> RemoteDeleteAuthor {
+        if let participantAuthorAci = DependenciesBridge.shared.participantDeleteManager.participantDeleteAuthor(
+            interactionId: self.sqliteRowId!,
+            tx: transaction,
+        ) {
+            if participantAuthorAci == localAci {
+                return .localUser
+            }
+            let displayName = SSKEnvironment.shared.contactManagerRef.displayName(
+                for: SignalServiceAddress(participantAuthorAci),
+                tx: transaction,
+            ).resolvedValue(useShortNameIfAvailable: true)
+            if let incomingMessage = self as? TSIncomingMessage, incomingMessage.authorAddress.aci == participantAuthorAci {
+                return .regular(displayName: displayName)
+            }
+            return .participant(aci: participantAuthorAci, displayName: displayName)
+        }
+
         let adminDeleteManager = DependenciesBridge.shared.adminDeleteManager
 
         let adminAuthorAci = adminDeleteManager.adminDeleteAuthor(

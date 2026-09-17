@@ -3058,6 +3058,9 @@
 /* Text indicating the message was remotely deleted by an admin. Embeds {{admin display name}} */
 "DELETED_BY_ADMIN" = "Admin %@ deleted this message";
 
+/* Text indicating the message was remotely deleted by a conversation participant. Embeds {{participant display name}}. */
+"DELETED_BY_PARTICIPANT" = "%@ deleted this message for the conversation";
+
 /* Text indicating the message was remotely deleted by its author. Embeds {{ author name }} */
 "DELETED_THIS_MESSAGE" = "%@ deleted this message";
 
@@ -5706,6 +5709,12 @@
 
 /* A one-time confirmation that you want to delete for everyone */
 "MESSAGE_ACTION_DELETE_FOR_EVERYONE_CONFIRMATION" = "This message will be deleted for everyone in the chat if they’re on a recent version of Sixin. They will be able to see that you deleted a message.";
+
+/* Title confirming a cooperative delete request for all compatible conversation devices. */
+"PARTICIPANT_DELETE_CONFIRMATION_TITLE" = "Delete from conversation devices?";
+
+/* Explains that participant delete is best-effort and only affects compatible devices. */
+"PARTICIPANT_DELETE_CONFIRMATION_MESSAGE" = "This sends a delete request to compatible devices in the conversation. Content already viewed, captured, forwarded, exported, or stored on incompatible devices can’t be recalled.";
 
 /* The title for the action sheet asking who the user wants to delete the message for. */
 "MESSAGE_ACTION_DELETE_FOR_TITLE" = "Who would you like to delete this message for?";
