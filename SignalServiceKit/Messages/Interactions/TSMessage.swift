@@ -905,7 +905,10 @@ extension TSMessage {
             tx: transaction,
         ) {
             if participantAuthorAci == localAci {
-                return .localUser
+                return .localUser(participantDeleteConfirmation: DependenciesBridge.shared.participantDeleteManager.confirmationSummary(
+                    interactionId: self.sqliteRowId!,
+                    tx: transaction,
+                ))
             }
             let displayName = SSKEnvironment.shared.contactManagerRef.displayName(
                 for: SignalServiceAddress(participantAuthorAci),
@@ -927,7 +930,7 @@ extension TSMessage {
         if let adminAuthorAci {
             if adminAuthorAci == localAci {
                 // Display usual self delete message for outgoing self-deletion.
-                return .localUser
+                return .localUser(participantDeleteConfirmation: nil)
             } else if let incomingMessage = self as? TSIncomingMessage, incomingMessage.authorAddress.aci == adminAuthorAci {
                 // Display usual (non-admin) other user delete for incoming self-deletion.
                 let displayName = SSKEnvironment.shared.contactManagerRef.displayName(
@@ -947,7 +950,7 @@ extension TSMessage {
 
         // Non-admin outgoing message must be deleted by local user.
         guard let incomingMessage = self as? TSIncomingMessage else {
-            return .localUser
+            return .localUser(participantDeleteConfirmation: nil)
         }
 
         // Non-admin incoming message must be deleted by its author.

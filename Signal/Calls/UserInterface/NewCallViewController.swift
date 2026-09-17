@@ -24,6 +24,7 @@ class NewCallViewController: RecipientPickerContainerViewController {
 
         recipientPicker.allowsAddByAddress = true
         recipientPicker.shouldShowInvites = true
+        recipientPicker.groupsToShow = BuildFlags.videoCalling ? .groupsThatUserIsMemberOfWhenSearching : .noGroups
         recipientPicker.delegate = self
 
         addRecipientPicker()
@@ -90,35 +91,16 @@ extension NewCallViewController: RecipientContextMenuHelperDelegate {
         }
     }
 
-    private func startVideoCallAction(handler: @escaping UIActionHandler) -> UIAction {
-        UIAction(
-            title: OWSLocalizedString(
-                "NEW_CALL_VIDEO_CALL_ACTION_TITLE",
-                comment: "Title for a long-press context menu action to start a video call, triggered from a recipient in the New Call contact picker",
-            ),
-            image: Theme.iconImage(.contextMenuVideoCall),
-            handler: handler,
-        )
-    }
-
     func additionalActions(for address: SignalServiceAddress) -> [UIAction] {
         let thread = TSContactThread.getOrCreateThread(contactAddress: address)
         return [
             goToChatAction(thread: thread),
             startVoiceCallAction(thread: thread),
-            startVideoCallAction { [weak self] _ in
-                self?.startIndividualCall(thread: thread, withVideo: true)
-            },
         ]
     }
 
     func additionalActions(for groupThread: TSGroupThread) -> [UIAction] {
-        [
-            goToChatAction(thread: groupThread),
-            startVideoCallAction { [weak self] _ in
-                self?.startGroupCall(groupId: try! groupThread.groupIdentifier)
-            },
-        ]
+        [goToChatAction(thread: groupThread)]
     }
 }
 
@@ -143,6 +125,7 @@ extension NewCallViewController: RecipientPickerDelegate, UsernameLinkScanDelega
             let thread = TSContactThread.getOrCreateThread(contactAddress: address)
             startIndividualCall(thread: thread, withVideo: false)
         case let .group(groupThread):
+            guard BuildFlags.videoCalling else { return }
             startGroupCall(groupId: try! groupThread.groupIdentifier)
         }
     }
@@ -159,30 +142,16 @@ extension NewCallViewController: RecipientPickerDelegate, UsernameLinkScanDelega
         stackView.tintColor = Theme.primaryTextColor
 
         switch recipient.identifier {
-        case .address(let address):
+        case .address:
             // This doesn't actually need to be hooked up to any action
             // since tapping the row already starts a voice call.
             let voiceCallImageView = UIImageView(image: Theme.iconImage(.buttonVoiceCall))
-
-            var videoCallButtonConfig = UIButton.Configuration.plain()
-            videoCallButtonConfig.image = Theme.iconImage(.buttonVideoCall)
-            videoCallButtonConfig.contentInsets = .zero
-            let videoCallButton = UIButton(
-                configuration: videoCallButtonConfig,
-                primaryAction: UIAction { [weak self] _ in
-                    let thread = TSContactThread.getOrCreateThread(contactAddress: address)
-                    self?.startIndividualCall(thread: thread, withVideo: true)
-                },
-            )
-            stackView.addArrangedSubviews([
-                voiceCallImageView,
-                videoCallButton,
-            ])
+            stackView.addArrangedSubview(voiceCallImageView)
         case .group:
-            stackView.addArrangedSubview(UIImageView(image: Theme.iconImage(.buttonVideoCall)))
+            return nil
         }
 
-        return .init(accessoryView: stackView, size: .init(width: 24 * 2 + 20, height: 24))
+        return .init(accessoryView: stackView, size: .init(width: 24, height: 24))
     }
 
     func recipientPicker(_ recipientPickerViewController: RecipientPickerViewController, shouldAllowUserInteractionForRecipient recipient: PickedRecipient, transaction: DBReadTransaction) -> Bool {

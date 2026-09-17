@@ -416,10 +416,12 @@ private class CallControlsViewModel {
     }
 
     var videoButtonIsHidden: Bool {
-        return false
+        return !BuildFlags.videoCalling
     }
 
     var flipCameraButtonIsHidden: Bool {
+        guard BuildFlags.videoCalling else { return true }
+
         if call.isOutgoingVideoMuted {
             return true
         }
@@ -701,6 +703,8 @@ extension CallControlsViewModel {
 
     @MainActor
     func didPressVideo() {
+        guard BuildFlags.videoCalling else { return }
+
         callService.updateIsLocalVideoMuted(isLocalVideoMuted: !call.isOutgoingVideoMuted)
 
         // When turning off video, default speakerphone to on.

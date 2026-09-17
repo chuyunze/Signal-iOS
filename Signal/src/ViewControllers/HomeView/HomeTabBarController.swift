@@ -21,7 +21,7 @@ class HomeTabBarController: UITabBarController {
 
     enum Tabs: Int {
         case chatList = 0
-        case calls = 1
+        case contacts = 1
         case stories = 2
 
         var title: String {
@@ -31,10 +31,10 @@ class HomeTabBarController: UITabBarController {
                     "CHAT_LIST_TITLE_INBOX",
                     comment: "Title for the chat list's default mode.",
                 )
-            case .calls:
+            case .contacts:
                 return OWSLocalizedString(
-                    "CALLS_LIST_TITLE",
-                    comment: "Title for the calls list view.",
+                    "COMPOSE_MESSAGE_CONTACT_SECTION_TITLE",
+                    comment: "Title for the contacts tab.",
                 )
             case .stories:
                 return OWSLocalizedString(
@@ -48,8 +48,8 @@ class HomeTabBarController: UITabBarController {
             switch self {
             case .chatList:
                 return UIImage(imageLiteralResourceName: "tab-chats")
-            case .calls:
-                return UIImage(named: "tab-calls")
+            case .contacts:
+                return UIImage(named: "group")
             case .stories:
                 return UIImage(named: "tab-stories")
             }
@@ -59,8 +59,8 @@ class HomeTabBarController: UITabBarController {
             switch self {
             case .chatList:
                 return UIImage(named: "tab-chats")
-            case .calls:
-                return UIImage(named: "tab-calls")
+            case .contacts:
+                return UIImage(named: "group-fill")
             case .stories:
                 return UIImage(named: "tab-stories")
             }
@@ -78,8 +78,8 @@ class HomeTabBarController: UITabBarController {
             switch self {
             case .chatList:
                 return "chats"
-            case .calls:
-                return "calls"
+            case .contacts:
+                return "contacts"
             case .stories:
                 return "stories"
             }
@@ -95,9 +95,9 @@ class HomeTabBarController: UITabBarController {
     lazy var storiesNavController = OWSNavigationController(rootViewController: storiesViewController)
     lazy var storiesTabBarItem = Tabs.stories.tabBarItem
 
-    lazy var callsListViewController = CallsListViewController()
-    lazy var callsListNavController = OWSNavigationController(rootViewController: callsListViewController)
-    lazy var callsListTabBarItem = Tabs.calls.tabBarItem
+    lazy var contactsViewController = ContactsViewController()
+    lazy var contactsNavController = OWSNavigationController(rootViewController: contactsViewController)
+    lazy var contactsTabBarItem = Tabs.contacts.tabBarItem
 
     // There are two things going on here that require this code. The first is a stored property can't
     // conditionally include itself with an @available property, so some type erasing hoops need to be
@@ -199,15 +199,15 @@ class HomeTabBarController: UITabBarController {
         switch tab {
         case .chatList:
             return (chatListNavController, chatListTabBarItem)
-        case .calls:
-            return (callsListNavController, callsListTabBarItem)
+        case .contacts:
+            return (contactsNavController, contactsTabBarItem)
         case .stories:
             return (storiesNavController, storiesTabBarItem)
         }
     }
 
     private func tabsToShow(areStoriesEnabled: Bool) -> [Tabs] {
-        var tabs = [Tabs.chatList, Tabs.calls]
+        var tabs = [Tabs.chatList, Tabs.contacts]
         if areStoriesEnabled {
             tabs.append(Tabs.stories)
         }
@@ -298,13 +298,9 @@ extension HomeTabBarController: BadgeObserver {
         if #available(iOS 18, *), UIDevice.current.isIPad {
             uiTab(for: .chatList).badgeValue = stringify(badgeCount.unreadChatCount)
             uiTab(for: .chatList).accessibilityValue = stringify(badgeCount.unreadChatCount)
-            uiTab(for: .calls).badgeValue = stringify(badgeCount.unreadCallsCount)
-            uiTab(for: .calls).accessibilityValue = stringify(badgeCount.unreadCallsCount)
         } else {
             chatListTabBarItem.badgeValue = stringify(badgeCount.unreadChatCount)
             chatListTabBarItem.accessibilityValue = stringify(badgeCount.unreadChatCount)
-            callsListTabBarItem.badgeValue = stringify(badgeCount.unreadCallsCount)
-            callsListTabBarItem.accessibilityValue = stringify(badgeCount.unreadCallsCount)
         }
     }
 }
@@ -355,8 +351,8 @@ extension HomeTabBarController: UITabBarControllerDelegate {
                 tableView = chatListViewController.tableView
             case .stories:
                 tableView = storiesViewController.tableView
-            case .calls:
-                tableView = callsListViewController.tableView
+            case .contacts:
+                tableView = contactsViewController.tableView
             }
 
             tableView.setContentOffset(CGPoint(x: 0, y: -tableView.safeAreaInsets.top), animated: true)
@@ -369,6 +365,60 @@ extension HomeTabBarController: UITabBarControllerDelegate {
         if isStoriesTabActive {
             storyBadgeCountManager.markAllStoriesRead()
         }
+    }
+}
+
+final class ContactsViewController: RecipientPickerContainerViewController {
+
+    var tableView: UITableView { recipientPicker.tableView }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        title = OWSLocalizedString(
+            "COMPOSE_MESSAGE_CONTACT_SECTION_TITLE",
+            comment: "Title for the contacts tab.",
+        )
+        view.backgroundColor = Theme.backgroundColor
+
+        recipientPicker.allowsAddByAddress = false
+        recipientPicker.shouldShowInvites = false
+        recipientPicker.shouldShowNewGroup = false
+        recipientPicker.groupsToShow = .noGroups
+        recipientPicker.shouldHideLocalRecipient = true
+        recipientPicker.delegate = self
+
+        addRecipientPicker()
+    }
+}
+
+extension ContactsViewController: RecipientPickerDelegate {
+
+    func recipientPicker(
+        _ recipientPickerViewController: RecipientPickerViewController,
+        selectionStyleForRecipient recipient: PickedRecipient,
+        transaction: DBReadTransaction,
+    ) -> UITableViewCell.SelectionStyle {
+        return .default
+    }
+
+    func recipientPicker(
+        _ recipientPickerViewController: RecipientPickerViewController,
+        didSelectRecipient recipient: PickedRecipient,
+    ) {
+        guard case .address(let address) = recipient.identifier else { return }
+
+        let thread = SSKEnvironment.shared.databaseStorageRef.write { transaction in
+            TSContactThread.getOrCreateThread(
+                withContactAddress: address,
+                transaction: transaction,
+            )
+        }
+        SignalApp.shared.presentConversationForThread(
+            threadUniqueId: thread.uniqueId,
+            action: .compose,
+            animated: true,
+        )
     }
 }
 

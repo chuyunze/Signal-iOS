@@ -237,7 +237,7 @@ public class RecipientPickerViewController: OWSViewController, OWSNavigationChil
 
     private lazy var noSignalContactsView = createNoSignalContactsView()
 
-    var tableView: UITableView { tableViewController.tableView }
+    public var tableView: UITableView { tableViewController.tableView }
 
     private func applyTheme() {
         tableViewController.tableView.sectionIndexColor = Theme.primaryTextColor

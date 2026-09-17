@@ -12,7 +12,7 @@ class ConversationSplitViewController: UISplitViewController, ConversationSplit 
     private let detailPlaceholderVC = NoSelectedConversationViewController()
 
     private var chatListNavController: OWSNavigationController { homeVC.chatListNavController }
-    private var callsListNavController: OWSNavigationController { homeVC.callsListNavController }
+    private var contactsNavController: OWSNavigationController { homeVC.contactsNavController }
     private var storiesNavController: OWSNavigationController { homeVC.storiesNavController }
 
     private lazy var detailNavController = OWSNavigationController()
@@ -49,8 +49,8 @@ class ConversationSplitViewController: UISplitViewController, ConversationSplit 
         let selectedNavController: OWSNavigationController = switch homeVC.selectedHomeTab {
         case .chatList:
             chatListNavController
-        case .calls:
-            callsListNavController
+        case .contacts:
+            contactsNavController
         case .stories:
             storiesNavController
         }
@@ -142,8 +142,8 @@ class ConversationSplitViewController: UISplitViewController, ConversationSplit 
 
     private func selectedTabPopToRoot(animated: Bool) {
         switch homeVC.selectedHomeTab {
-        case .calls:
-            callsListNavController.popToRootViewController(animated: animated)
+        case .contacts:
+            contactsNavController.popToRootViewController(animated: animated)
         case .chatList:
             chatListNavController.popToRootViewController(animated: animated)
         case .stories:
@@ -696,13 +696,11 @@ extension ConversationSplitViewController: UISplitViewControllerDelegate {
 
     func splitViewControllerDidExpand(_ svc: UISplitViewController) {
         homeVC.chatListViewController.updateBarButtonItems()
-        homeVC.callsListViewController.updateBarButtonItems()
         homeVC.storiesViewController.updateNavigationBar()
     }
 
     func splitViewControllerDidCollapse(_ svc: UISplitViewController) {
         homeVC.chatListViewController.updateBarButtonItems()
-        homeVC.callsListViewController.updateBarButtonItems()
         homeVC.storiesViewController.updateNavigationBar()
     }
 }

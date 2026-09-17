@@ -251,4 +251,326 @@ class TSMessageTest: SSKBaseTest {
             XCTAssertEqual(try ParticipantDeleteTombstoneRecord.fetchCount(tx.database), 0)
         }
     }
+
+    func testParticipantDeleteTracksKnownDeviceConfirmations() throws {
+        let localIdentifiers: LocalIdentifiers = .forUnitTests
+        let contactAci = Aci.randomForTesting()
+        let requestId = UUID().data
+        let targetTimestamp = Date.ows_millisecondTimestamp()
+
+        try SSKEnvironment.shared.databaseStorageRef.write { tx in
+            (DependenciesBridge.shared.registrationStateChangeManager as! RegistrationStateChangeManagerImpl).registerForTests(
+                localIdentifiers: localIdentifiers,
+                tx: tx,
+            )
+            let linkedDeviceId = DeviceId(validating: 2)!
+            var localRecipient = DependenciesBridge.shared.recipientFetcher.fetchOrCreate(
+                serviceId: localIdentifiers.aci,
+                tx: tx,
+            )
+            DependenciesBridge.shared.recipientManager.modifyAndSave(
+                &localRecipient,
+                deviceIdsToAdd: [linkedDeviceId],
+                deviceIdsToRemove: [],
+                shouldUpdateStorageService: false,
+                tx: tx,
+            )
+            _ = try SignalRecipient.insertRecord(aci: contactAci, deviceIds: [.primary], tx: tx)
+            let thread = TSContactThread.getOrCreateThread(
+                withContactAddress: SignalServiceAddress(contactAci),
+                transaction: tx,
+            )
+            let builder = TSOutgoingMessageBuilder.outgoingMessageBuilder(
+                thread: thread,
+                messageBody: AttachmentContentValidatorMock.mockValidatedBody("sensitive body"),
+            )
+            builder.timestamp = targetTimestamp
+            let message = builder.build(transaction: tx)
+            message.anyInsert(transaction: tx)
+
+            try DependenciesBridge.shared.participantDeleteManager.processLocalInitiation(
+                requestId: requestId,
+                targetAuthor: localIdentifiers.aci,
+                targetSentTimestamp: targetTimestamp,
+                scope: .directChatBothAccounts,
+                groupRevision: nil,
+                thread: thread,
+                localAci: localIdentifiers.aci,
+                tx: tx,
+            )
+
+            var summary = DependenciesBridge.shared.participantDeleteManager.confirmationSummary(
+                interactionId: message.sqliteRowId!,
+                tx: tx,
+            )
+            XCTAssertEqual(summary?.expectedDeviceCount, 3)
+            XCTAssertEqual(summary?.confirmedDeviceCount, 1)
+
+            let receiptBuilder = SSKProtoDataMessageParticipantDeleteReceipt.builder()
+            receiptBuilder.setVersion(ParticipantDeleteConfiguration.protocolVersion)
+            receiptBuilder.setRequestID(requestId)
+            receiptBuilder.setResult(.targetPending)
+            DependenciesBridge.shared.participantDeleteManager.processReceipt(
+                receiptBuilder.buildInfallibly(),
+                responder: contactAci,
+                sourceDeviceId: .primary,
+                tx: tx,
+            )
+            summary = DependenciesBridge.shared.participantDeleteManager.confirmationSummary(
+                interactionId: message.sqliteRowId!,
+                tx: tx,
+            )
+            XCTAssertEqual(summary?.confirmedDeviceCount, 1)
+            XCTAssertEqual(summary?.rejectedDeviceCount, 0)
+            XCTAssertEqual(summary?.pendingDeviceCount, 2)
+
+            receiptBuilder.setResult(.applied)
+            DependenciesBridge.shared.participantDeleteManager.processReceipt(
+                receiptBuilder.buildInfallibly(),
+                responder: contactAci,
+                sourceDeviceId: .primary,
+                tx: tx,
+            )
+
+            summary = DependenciesBridge.shared.participantDeleteManager.confirmationSummary(
+                interactionId: message.sqliteRowId!,
+                tx: tx,
+            )
+            XCTAssertEqual(summary?.confirmedDeviceCount, 2)
+            XCTAssertFalse(summary?.isComplete == true)
+
+            DependenciesBridge.shared.participantDeleteManager.processReceipt(
+                receiptBuilder.buildInfallibly(),
+                responder: localIdentifiers.aci,
+                sourceDeviceId: linkedDeviceId,
+                tx: tx,
+            )
+            summary = DependenciesBridge.shared.participantDeleteManager.confirmationSummary(
+                interactionId: message.sqliteRowId!,
+                tx: tx,
+            )
+            XCTAssertEqual(summary?.confirmedDeviceCount, 3)
+            XCTAssertTrue(summary?.isComplete == true)
+        }
+    }
+
+    func testParticipantDeleteScrubsStoredQuotedReplySnapshot() throws {
+        let localIdentifiers: LocalIdentifiers = .forUnitTests
+        let contactAci = Aci.randomForTesting()
+        let targetTimestamp = Date.ows_millisecondTimestamp()
+
+        try SSKEnvironment.shared.databaseStorageRef.write { tx in
+            (DependenciesBridge.shared.registrationStateChangeManager as! RegistrationStateChangeManagerImpl).registerForTests(
+                localIdentifiers: localIdentifiers,
+                tx: tx,
+            )
+            let thread = TSContactThread.getOrCreateThread(
+                withContactAddress: SignalServiceAddress(contactAci),
+                transaction: tx,
+            )
+            let targetBuilder = TSOutgoingMessageBuilder.outgoingMessageBuilder(
+                thread: thread,
+                messageBody: AttachmentContentValidatorMock.mockValidatedBody("original secret"),
+            )
+            targetBuilder.timestamp = targetTimestamp
+            let target = targetBuilder.build(transaction: tx)
+            target.anyInsert(transaction: tx)
+
+            let quoteBuilder = TSOutgoingMessageBuilder.outgoingMessageBuilder(
+                thread: thread,
+                messageBody: AttachmentContentValidatorMock.mockValidatedBody("reply"),
+            )
+            quoteBuilder.timestamp = targetTimestamp + 1
+            quoteBuilder.quotedMessage = TSQuotedMessage(
+                timestamp: NSNumber(value: targetTimestamp),
+                authorAddress: SignalServiceAddress(localIdentifiers.aci),
+                body: "original secret",
+                bodyRanges: nil,
+                quotedAttachmentForSending: nil,
+                isGiftBadge: false,
+                isTargetMessageViewOnce: false,
+                isPoll: false,
+            )
+            let reply = quoteBuilder.build(transaction: tx)
+            reply.anyInsert(transaction: tx)
+
+            try DependenciesBridge.shared.participantDeleteManager.processLocalInitiation(
+                requestId: UUID().data,
+                targetAuthor: localIdentifiers.aci,
+                targetSentTimestamp: targetTimestamp,
+                scope: .directChatBothAccounts,
+                groupRevision: nil,
+                thread: thread,
+                localAci: localIdentifiers.aci,
+                tx: tx,
+            )
+
+            let updatedReply = InteractionFinder.fetch(rowId: reply.sqliteRowId!, transaction: tx) as! TSMessage
+            XCTAssertNotEqual(updatedReply.quotedMessage?.body, "original secret")
+            XCTAssertNil(updatedReply.quotedMessage?.attachmentInfo())
+        }
+    }
+
+    func testParticipantDeleteRejectsRequestIdReuseForDifferentTarget() throws {
+        let localIdentifiers: LocalIdentifiers = .forUnitTests
+        let contactAci = Aci.randomForTesting()
+        let requestId = UUID().data
+        let firstTimestamp = Date.ows_millisecondTimestamp()
+
+        try SSKEnvironment.shared.databaseStorageRef.write { tx in
+            (DependenciesBridge.shared.registrationStateChangeManager as! RegistrationStateChangeManagerImpl).registerForTests(
+                localIdentifiers: localIdentifiers,
+                tx: tx,
+            )
+            let thread = TSContactThread.getOrCreateThread(
+                withContactAddress: SignalServiceAddress(contactAci),
+                transaction: tx,
+            )
+            let firstBuilder = TSOutgoingMessageBuilder.outgoingMessageBuilder(thread: thread)
+            firstBuilder.timestamp = firstTimestamp
+            let firstMessage = firstBuilder.build(transaction: tx)
+            firstMessage.anyInsert(transaction: tx)
+
+            let secondBuilder = TSOutgoingMessageBuilder.outgoingMessageBuilder(thread: thread)
+            secondBuilder.timestamp = firstTimestamp + 1
+            let secondMessage = secondBuilder.build(transaction: tx)
+            secondMessage.anyInsert(transaction: tx)
+
+            try DependenciesBridge.shared.participantDeleteManager.processLocalInitiation(
+                requestId: requestId,
+                targetAuthor: localIdentifiers.aci,
+                targetSentTimestamp: firstTimestamp,
+                scope: .directChatBothAccounts,
+                groupRevision: nil,
+                thread: thread,
+                localAci: localIdentifiers.aci,
+                tx: tx,
+            )
+            XCTAssertThrowsError(try DependenciesBridge.shared.participantDeleteManager.processLocalInitiation(
+                requestId: requestId,
+                targetAuthor: localIdentifiers.aci,
+                targetSentTimestamp: firstTimestamp + 1,
+                scope: .directChatBothAccounts,
+                groupRevision: nil,
+                thread: thread,
+                localAci: localIdentifiers.aci,
+                tx: tx,
+            ))
+            XCTAssertFalse(secondMessage.wasRemotelyDeleted)
+        }
+    }
+
+    func testRestoredRemoteDeleteRebuildsAntiResurrectionTombstone() throws {
+        let localIdentifiers: LocalIdentifiers = .forUnitTests
+        let contactAci = Aci.randomForTesting()
+        let targetTimestamp = Date.ows_millisecondTimestamp()
+
+        try SSKEnvironment.shared.databaseStorageRef.write { tx in
+            (DependenciesBridge.shared.registrationStateChangeManager as! RegistrationStateChangeManagerImpl).registerForTests(
+                localIdentifiers: localIdentifiers,
+                tx: tx,
+            )
+            let thread = TSContactThread.getOrCreateThread(
+                withContactAddress: SignalServiceAddress(contactAci),
+                transaction: tx,
+            )
+            let builder = TSOutgoingMessageBuilder.outgoingMessageBuilder(thread: thread)
+            builder.timestamp = targetTimestamp
+            builder.wasRemotelyDeleted = true
+            let message = builder.build(transaction: tx)
+            message.anyInsert(transaction: tx)
+
+            DependenciesBridge.shared.participantDeleteManager.recordRestoredTombstone(
+                message: message,
+                thread: thread,
+                targetAuthor: localIdentifiers.aci,
+                tx: tx,
+            )
+
+            XCTAssertTrue(DependenciesBridge.shared.participantDeleteManager.isTargetDeleted(
+                author: localIdentifiers.aci,
+                sentTimestamp: targetTimestamp,
+                threadUniqueId: thread.uniqueId,
+                tx: tx,
+            ))
+
+            message.anyRemove(transaction: tx)
+            let duplicateBuilder = TSOutgoingMessageBuilder.outgoingMessageBuilder(
+                thread: thread,
+                messageBody: AttachmentContentValidatorMock.mockValidatedBody("restored duplicate"),
+            )
+            duplicateBuilder.timestamp = targetTimestamp
+            let duplicate = duplicateBuilder.build(transaction: tx)
+            duplicate.anyInsert(transaction: tx)
+            DependenciesBridge.shared.participantDeleteManager.applyPendingDeleteIfNecessary(
+                to: duplicate,
+                thread: thread,
+                tx: tx,
+            )
+
+            XCTAssertTrue(duplicate.wasRemotelyDeleted)
+            XCTAssertNil(duplicate.body)
+            XCTAssertNil(DependenciesBridge.shared.participantDeleteManager.participantDeleteAuthor(
+                interactionId: duplicate.sqliteRowId!,
+                tx: tx,
+            ))
+        }
+    }
+
+    func testParticipantDeleteWaitsForGroupRevisionBeforeApplying() throws {
+        let localIdentifiers: LocalIdentifiers = .forUnitTests
+        let requesterAci = Aci.randomForTesting()
+        let targetTimestamp = Date.ows_millisecondTimestamp()
+
+        try SSKEnvironment.shared.databaseStorageRef.write { tx in
+            (DependenciesBridge.shared.registrationStateChangeManager as! RegistrationStateChangeManagerImpl).registerForTests(
+                localIdentifiers: localIdentifiers,
+                tx: tx,
+            )
+
+            var membershipBuilder = GroupMembership.Builder()
+            membershipBuilder.addFullMember(localIdentifiers.aci, role: .normal)
+            membershipBuilder.addFullMember(requesterAci, role: .normal)
+            var modelBuilder = TSGroupModelBuilder(secretParams: try GroupSecretParams.generate())
+            modelBuilder.groupMembership = membershipBuilder.build()
+            modelBuilder.groupV2Revision = 1
+            let initialModel = try modelBuilder.buildAsV2()
+            let thread = TSGroupThread(groupModel: initialModel)
+            thread.anyInsert(transaction: tx)
+
+            let targetBuilder = TSOutgoingMessageBuilder.outgoingMessageBuilder(
+                thread: thread,
+                messageBody: AttachmentContentValidatorMock.mockValidatedBody("sensitive body"),
+            )
+            targetBuilder.timestamp = targetTimestamp
+            let target = targetBuilder.build(transaction: tx)
+            target.anyInsert(transaction: tx)
+
+            let deleteBuilder = SSKProtoDataMessageParticipantDelete.builder()
+            deleteBuilder.setVersion(ParticipantDeleteConfiguration.protocolVersion)
+            deleteBuilder.setTargetAuthorAciBinary(localIdentifiers.aci.serviceIdBinary)
+            deleteBuilder.setTargetSentTimestamp(targetTimestamp)
+            deleteBuilder.setRequestID(UUID().data)
+            deleteBuilder.setScope(.groupAllCurrentMembers)
+            deleteBuilder.setGroupRevision(2)
+
+            let result = try DependenciesBridge.shared.participantDeleteManager.process(
+                proto: deleteBuilder.buildInfallibly(),
+                origin: .remoteEnvelope(requester: requesterAci, sourceDeviceId: .primary),
+                thread: thread,
+                trustedServerTimestamp: targetTimestamp + 1,
+                tx: tx,
+            )
+            XCTAssertEqual(result, .targetPending)
+            XCTAssertFalse(target.wasRemotelyDeleted)
+
+            var updatedModelBuilder = initialModel.asBuilder
+            updatedModelBuilder.groupV2Revision = 2
+            thread.update(with: try updatedModelBuilder.buildAsV2(), transaction: tx)
+            DependenciesBridge.shared.participantDeleteManager.reprocessPendingDeletes(in: thread, tx: tx)
+
+            XCTAssertTrue(target.wasRemotelyDeleted)
+            XCTAssertEqual(try PendingParticipantDeleteRecord.fetchCount(tx.database), 0)
+        }
+    }
 }

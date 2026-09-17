@@ -26,6 +26,10 @@ private let build = FeatureBuild.current
 /// it's easier to review which feature flags are in play.
 public enum BuildFlags {
 
+    /// This product variant supports voice calls but does not expose video calling.
+    /// Media capture and photo attachments are intentionally unaffected.
+    public static let videoCalling = false
+
     public static let failDebug = build <= .internal
 
     public static let isPrerelease = build <= .beta

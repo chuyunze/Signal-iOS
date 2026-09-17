@@ -1107,6 +1107,10 @@ public class GroupManager: NSObject {
             with: newGroupModel,
             transaction: transaction,
         )
+        DependenciesBridge.shared.participantDeleteManager.reprocessPendingDeletes(
+            in: groupThread,
+            tx: transaction,
+        )
 
         if let updatedLastVerifiedGroupNameHash {
             let threadAssociatedDataStore = DependenciesBridge.shared.threadAssociatedDataStore

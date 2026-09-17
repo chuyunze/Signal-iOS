@@ -1836,6 +1836,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
         let isVideo = isVideoCall(intent)
+        guard !isVideo || BuildFlags.videoCalling else {
+            Logger.info("Ignoring video call intent because video calling is disabled.")
+            return true
+        }
 
         Task { @MainActor [appReadiness] in
             do {

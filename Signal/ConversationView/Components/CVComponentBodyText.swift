@@ -623,8 +623,21 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
                     ),
                 )
 
-            case .localUser:
+            case .localUser(let participantDeleteConfirmation):
                 text.append(NSAttributedString(string: OWSLocalizedString("YOU_DELETED_THIS_MESSAGE", comment: "text indicating the message was remotely deleted by you")))
+                if let participantDeleteConfirmation {
+                    let format = OWSLocalizedString(
+                        "PARTICIPANT_DELETE_DEVICE_CONFIRMATION_FORMAT",
+                        comment: "Status shown below a participant-deleted message. Embeds confirmed and expected known-device counts.",
+                    )
+                    text.append(NSAttributedString(
+                        string: "\n" + String.localizedStringWithFormat(
+                            format,
+                            participantDeleteConfirmation.confirmedDeviceCount,
+                            participantDeleteConfirmation.expectedDeviceCount,
+                        ),
+                    ))
+                }
             }
         default:
             owsFailDebug("Should be remotelyDeleted")

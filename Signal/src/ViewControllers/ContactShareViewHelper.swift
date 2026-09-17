@@ -39,6 +39,7 @@ class ContactShareViewHelper: NSObject, CNContactViewControllerDelegate {
     }
 
     func videoCall(to phoneNumbers: [String], from viewController: UIViewController) {
+        guard BuildFlags.videoCalling else { return }
         Logger.info("")
 
         presentThread(performAction: .videoCall, to: phoneNumbers, from: viewController)

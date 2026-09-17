@@ -144,6 +144,16 @@ struct ParticipantDeleteDeviceReceiptRecord: Codable, FetchableRecord, Persistab
     static let persistenceConflictPolicy = PersistenceConflictPolicy(insert: .replace, update: .abort)
 }
 
+struct ParticipantDeleteExpectedDeviceRecord: Codable, FetchableRecord, PersistableRecord {
+    static let databaseTableName = "ParticipantDeleteExpectedDevice"
+
+    let requestId: Data
+    let recipientAci: Data
+    let recipientDeviceId: Int64
+
+    static let persistenceConflictPolicy = PersistenceConflictPolicy(insert: .ignore, update: .abort)
+}
+
 struct ParticipantDeleteAuthorRecord: Codable, FetchableRecord, PersistableRecord {
     static let databaseTableName = "ParticipantDeleteAuthor"
 

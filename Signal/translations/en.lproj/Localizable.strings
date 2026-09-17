@@ -5716,6 +5716,9 @@
 /* Explains that participant delete is best-effort and only affects compatible devices. */
 "PARTICIPANT_DELETE_CONFIRMATION_MESSAGE" = "This sends a delete request to compatible devices in the conversation. Content already viewed, captured, forwarded, exported, or stored on incompatible devices can’t be recalled.";
 
+/* Status shown below a participant-deleted message. Embeds confirmed and expected known-device counts. */
+"PARTICIPANT_DELETE_DEVICE_CONFIRMATION_FORMAT" = "Confirmed on %1$d of %2$d known devices";
+
 /* The title for the action sheet asking who the user wants to delete the message for. */
 "MESSAGE_ACTION_DELETE_FOR_TITLE" = "Who would you like to delete this message for?";
 

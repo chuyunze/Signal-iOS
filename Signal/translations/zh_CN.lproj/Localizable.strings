@@ -2246,7 +2246,7 @@
 "COMPOSE_BUTTON_LABEL" = "撰写";
 
 /* Table section header for contact listing when composing a new message */
-"COMPOSE_MESSAGE_CONTACT_SECTION_TITLE" = "联系人";
+"COMPOSE_MESSAGE_CONTACT_SECTION_TITLE" = "通讯录";
 
 /* Table section header for group listing when composing a new message */
 "COMPOSE_MESSAGE_GROUP_SECTION_TITLE" = "群组";
@@ -5715,6 +5715,9 @@
 
 /* Explains that participant delete is best-effort and only affects compatible devices. */
 "PARTICIPANT_DELETE_CONFIRMATION_MESSAGE" = "这会向会话中的兼容设备发送删除请求。已经看过、截图、转发、导出或保存在不兼容设备上的内容无法撤回。";
+
+/* Status shown below a participant-deleted message. Embeds confirmed and expected known-device counts. */
+"PARTICIPANT_DELETE_DEVICE_CONFIRMATION_FORMAT" = "已在 %1$d/%2$d 台已知设备上确认";
 
 /* The title for the action sheet asking who the user wants to delete the message for. */
 "MESSAGE_ACTION_DELETE_FOR_TITLE" = "您想要对谁删除此消息？";

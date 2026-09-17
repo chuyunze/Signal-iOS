@@ -91,6 +91,31 @@ class QuotedReplyManagerImpl: QuotedReplyManager {
             throw OWSAssertionError("Quoted message missing or invalid author!")
         }
 
+        if DependenciesBridge.shared.participantDeleteManager.isTargetDeleted(
+            author: quoteAuthor,
+            sentTimestamp: timestamp,
+            threadUniqueId: threadUniqueId,
+            tx: tx,
+        ) {
+            return ValidatedQuotedReply(
+                quotedReply: TSQuotedMessage(
+                    timestamp: timestamp,
+                    authorAddress: SignalServiceAddress(quoteAuthor),
+                    body: OWSLocalizedString(
+                        "QUOTED_REPLY_CONTENT_FROM_REMOTE_SOURCE",
+                        comment: "Placeholder shown after the original quoted message was deleted.",
+                    ),
+                    bodyRanges: nil,
+                    bodySource: .local,
+                    receivedQuotedAttachmentInfo: nil,
+                    isGiftBadge: false,
+                    isTargetMessageViewOnce: false,
+                    isPoll: false,
+                ),
+                thumbnailDataSource: nil,
+            )
+        }
+
         let originalMessage = InteractionFinder.findMessage(
             withTimestamp: timestamp,
             threadId: threadUniqueId,

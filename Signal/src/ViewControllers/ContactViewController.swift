@@ -128,7 +128,7 @@ class ContactViewController: OWSTableViewController2 {
         // Contact Actions
         let actionsSection = OWSTableSection()
 
-        // Message, Video, Audio buttons for Signal contacts as a horizontal stack of buttons
+        // Message and Audio buttons for Signal contacts as a horizontal stack of buttons.
         if viewMode == .systemContactWithSignal {
             let buttonMessage = SettingsHeaderButton(
                 title: OWSLocalizedString(
@@ -139,15 +139,6 @@ class ContactViewController: OWSTableViewController2 {
             ) { [weak self] in
                 self?.didPressSendMessage()
             }
-            let buttonVideoCall = SettingsHeaderButton(
-                title: OWSLocalizedString(
-                    "CONVERSATION_SETTINGS_VIDEO_CALL_BUTTON",
-                    comment: "Button to start a video call",
-                ).capitalized,
-                icon: .buttonVideoCall,
-            ) { [weak self] in
-                self?.didPressVideoCall()
-            }
             let buttonAudioCall = SettingsHeaderButton(
                 title: OWSLocalizedString(
                     "CONVERSATION_SETTINGS_VOICE_CALL_BUTTON",
@@ -157,7 +148,7 @@ class ContactViewController: OWSTableViewController2 {
             ) { [weak self] in
                 self?.didPressAudioCall()
             }
-            let buttonStack = UIStackView(arrangedSubviews: [buttonMessage, buttonVideoCall, buttonAudioCall])
+            let buttonStack = UIStackView(arrangedSubviews: [buttonMessage, buttonAudioCall])
             buttonStack.axis = .horizontal
             buttonStack.spacing = 8
             buttonStack.distribution = .fillEqually
@@ -339,12 +330,6 @@ extension ContactViewController {
         contactShareViewHelper.audioCall(to: sendablePhoneNumbers, from: self)
     }
 
-    private func didPressVideoCall() {
-        Logger.info("")
-
-        contactShareViewHelper.videoCall(to: sendablePhoneNumbers, from: self)
-    }
-
     private func didPressInvite() {
         Logger.info("")
 
@@ -380,13 +365,6 @@ extension ContactViewController {
                     title: OWSLocalizedString(
                         "ACTION_VOICE_CALL",
                         comment: "Label for 'voice call' button in contact view.",
-                    ),
-                    action: .voiceCall,
-                )
-                addAction(
-                    title: OWSLocalizedString(
-                        "ACTION_VIDEO_CALL",
-                        comment: "Label for 'video call' button in contact view.",
                     ),
                     action: .voiceCall,
                 )

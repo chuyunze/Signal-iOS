@@ -303,6 +303,8 @@ public class NotificationActionHandler {
 
     @MainActor
     private class func showCallLobby(userInfo: AppNotificationUserInfo) {
+        guard BuildFlags.videoCalling else { return }
+
         let threadUniqueId = userInfo.threadId
         let callLinkRoomId = userInfo.roomId
 

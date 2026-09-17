@@ -37,6 +37,7 @@ struct GRDBSchemaMigratorTest {
                         'ParticipantDeleteTombstone',
                         'PendingParticipantDelete',
                         'ParticipantDeleteDeviceReceipt',
+                        'ParticipantDeleteExpectedDevice',
                         'ParticipantDeleteAuthor'
                       )
                     """,
@@ -47,6 +48,7 @@ struct GRDBSchemaMigratorTest {
             "ParticipantDeleteTombstone",
             "PendingParticipantDelete",
             "ParticipantDeleteDeviceReceipt",
+            "ParticipantDeleteExpectedDevice",
             "ParticipantDeleteAuthor",
         ])
         try extractSchema(databaseStorage: databaseStorage)

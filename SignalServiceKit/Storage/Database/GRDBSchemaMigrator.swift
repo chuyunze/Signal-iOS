@@ -356,6 +356,7 @@ public class GRDBSchemaMigrator {
         case migrateNotificationPreferences
         case addGroupsPendingRestore
         case addParticipantDeleteTables
+        case addParticipantDeleteExpectedDevices
 
         // NOTE: Every time we add a migration id, consider
         // incrementing grdbSchemaVersionLatest.
@@ -5588,6 +5589,32 @@ public class GRDBSchemaMigrator {
                 table.column("deleteAuthorId", .integer)
                     .notNull()
                     .references("model_SignalRecipient", column: "id", onDelete: .cascade, onUpdate: .cascade)
+            }
+            return .success(())
+        }
+
+        migrator.registerMigration(.addParticipantDeleteExpectedDevices) { tx in
+            try tx.database.create(
+                index: "PendingParticipantDelete_localThreadUniqueId",
+                on: "PendingParticipantDelete",
+                columns: ["localThreadUniqueId"],
+            )
+            try tx.database.create(
+                index: "ParticipantDeleteTombstone_interactionId",
+                on: "ParticipantDeleteTombstone",
+                columns: ["interactionId"],
+            )
+            try tx.database.create(
+                index: "ParticipantDeleteTombstone_firstRequestId",
+                on: "ParticipantDeleteTombstone",
+                columns: ["firstRequestId"],
+            )
+            try tx.database.create(table: "ParticipantDeleteExpectedDevice") { table in
+                table.column("requestId", .blob).notNull()
+                    .references("ParticipantDeleteRequest", column: "requestId", onDelete: .cascade, onUpdate: .cascade)
+                table.column("recipientAci", .blob).notNull()
+                table.column("recipientDeviceId", .integer).notNull()
+                table.primaryKey(["requestId", "recipientAci", "recipientDeviceId"])
             }
             return .success(())
         }

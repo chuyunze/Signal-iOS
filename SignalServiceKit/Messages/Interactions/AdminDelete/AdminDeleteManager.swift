@@ -11,7 +11,7 @@ public enum RemoteDeleteAuthor: Equatable {
     case admin(aci: Aci, displayName: String)
     case participant(aci: Aci, displayName: String)
     case regular(displayName: String)
-    case localUser
+    case localUser(participantDeleteConfirmation: ParticipantDeleteConfirmationSummary?)
 }
 
 public class AdminDeleteManager {
@@ -254,7 +254,8 @@ public class AdminDeleteManager {
 public enum ParticipantDeleteConfiguration {
     public static let protocolVersion: UInt32 = 1
     public static let allowsUnlimitedMessageAge = true
-    public static let featureEnabled = true
+    public static let sendEnabled = true
+    public static let receiveEnabled = true
 
     static let pendingLifetime: UInt64 = 45 * UInt64.dayInMs
     static let receiptLifetime: UInt64 = 45 * UInt64.dayInMs
@@ -262,6 +263,20 @@ public enum ParticipantDeleteConfiguration {
     static let maximumPendingPerConversation = 512
     static let maximumPendingGlobally = 10_000
     static let maximumOrphanReceipts = 2_048
+}
+
+public struct ParticipantDeleteConfirmationSummary: Equatable {
+    public let expectedDeviceCount: Int
+    public let confirmedDeviceCount: Int
+    public let rejectedDeviceCount: Int
+
+    public var pendingDeviceCount: Int {
+        max(0, expectedDeviceCount - confirmedDeviceCount - rejectedDeviceCount)
+    }
+
+    public var isComplete: Bool {
+        expectedDeviceCount > 0 && confirmedDeviceCount == expectedDeviceCount
+    }
 }
 
 public enum ParticipantDeleteOrigin {
@@ -284,8 +299,12 @@ public enum ParticipantDeleteOrigin {
     }
 
     var shouldSendReceipt: Bool {
-        if case .remoteEnvelope = self { return true }
-        return false
+        switch self {
+        case .remoteEnvelope, .localSentTranscript:
+            return true
+        case .localInitiation:
+            return false
+        }
     }
 }
 
@@ -316,6 +335,7 @@ public final class ParticipantDeleteManager {
         let requesterDeviceId: DeviceId?
         let stableConversationId: Data
         let localThreadUniqueId: String
+        let isWaitingForGroupRevision: Bool
     }
 
     private let recipientDatabaseTable: RecipientDatabaseTable
@@ -328,7 +348,7 @@ public final class ParticipantDeleteManager {
     }
 
     public func canParticipantDelete(message: TSMessage, thread: TSThread, tx: DBReadTransaction) -> Bool {
-        guard ParticipantDeleteConfiguration.featureEnabled else { return false }
+        guard ParticipantDeleteConfiguration.sendEnabled else { return false }
         guard !thread.isNoteToSelf, !thread.isTerminatedGroup else { return false }
         guard message.uniqueThreadId == thread.uniqueId else { return false }
         guard message.isIncoming || message.isOutgoing else { return false }
@@ -357,6 +377,9 @@ public final class ParticipantDeleteManager {
         trustedServerTimestamp: UInt64?,
         tx: DBWriteTransaction,
     ) throws -> SSKProtoDataMessageParticipantDeleteReceiptResult {
+        guard ParticipantDeleteConfiguration.receiveEnabled else {
+            throw ParticipantDeleteError.unsupportedVersion
+        }
         let request = try Self.parse(proto: proto)
         return try process(
             request: request,
@@ -377,6 +400,9 @@ public final class ParticipantDeleteManager {
         localAci: Aci,
         tx: DBWriteTransaction,
     ) throws {
+        guard ParticipantDeleteConfiguration.sendEnabled else {
+            throw ParticipantDeleteError.unsupportedVersion
+        }
         guard requestId.count == 16 else { throw ParticipantDeleteError.invalidRequestId }
         guard
             targetSentTimestamp > 0,
@@ -405,6 +431,21 @@ public final class ParticipantDeleteManager {
             trustedServerTimestamp: nil,
             tx: tx,
         )
+        try snapshotExpectedDevices(
+            requestId: requestId,
+            thread: thread,
+            localAci: localAci,
+            tx: tx,
+        )
+        if let localDeviceId = tsAccountManager.storedDeviceId(tx: tx).ifValid {
+            try ParticipantDeleteDeviceReceiptRecord(
+                requestId: requestId,
+                responderAci: localAci.serviceIdBinary,
+                responderDeviceId: Int64(localDeviceId.rawValue),
+                result: Int(SSKProtoDataMessageParticipantDeleteReceiptResult.applied.rawValue),
+                receivedAt: Int64(Date.ows_millisecondTimestamp()),
+            ).insert(tx.database)
+        }
     }
 
     public func processReceipt(
@@ -453,6 +494,16 @@ public final class ParticipantDeleteManager {
                 result: Int(result.rawValue),
                 receivedAt: Int64(now),
             ).insert(tx.database)
+
+            if
+                let tombstone = try ParticipantDeleteTombstoneRecord
+                    .filter(Column("firstRequestId") == requestId)
+                    .fetchOne(tx.database),
+                let interactionId = tombstone.interactionId,
+                let interaction = InteractionFinder.fetch(rowId: interactionId, transaction: tx)
+            {
+                DependenciesBridge.shared.db.touch(interaction: interaction, shouldReindex: false, tx: tx)
+            }
         }
     }
 
@@ -476,6 +527,9 @@ public final class ParticipantDeleteManager {
         requestRecord: ParticipantDeleteRequestRecord,
         tx: DBReadTransaction,
     ) -> Bool {
+        if requestRecord.requesterAci == responder.serviceIdBinary {
+            return true
+        }
         guard let thread = TSThread.fetchViaCache(uniqueId: requestRecord.localThreadUniqueId, transaction: tx) else {
             return false
         }
@@ -544,6 +598,7 @@ public final class ParticipantDeleteManager {
             }
             do {
                 try tx.database.inSavepoint {
+                    let didApplyDelete = !message.wasRemotelyDeleted
                     let latestMessage: TSMessage
                     if message.wasRemotelyDeleted {
                         latestMessage = message
@@ -564,9 +619,23 @@ public final class ParticipantDeleteManager {
                             Int64(message.timestamp),
                         ],
                     )
-                    try insertAuthorMetadata(
-                        interactionId: latestMessage.sqliteRowId,
-                        requester: try Aci.parseFrom(serviceIdBinary: tombstone.requesterAci),
+                    if
+                        didApplyDelete,
+                        try ParticipantDeleteRequestRecord.fetchOne(
+                            tx.database,
+                            key: tombstone.firstRequestId,
+                        ) != nil
+                    {
+                        try insertAuthorMetadata(
+                            interactionId: latestMessage.sqliteRowId,
+                            requester: try Aci.parseFrom(serviceIdBinary: tombstone.requesterAci),
+                            tx: tx,
+                        )
+                    }
+                    try scrubQuotedReplySnapshots(
+                        targetAuthor: authorAci,
+                        targetSentTimestamp: message.timestamp,
+                        threadUniqueId: thread.uniqueId,
                         tx: tx,
                     )
                     return .commit
@@ -585,13 +654,35 @@ public final class ParticipantDeleteManager {
                 .fetchOne(tx.database)
         }
         guard let pending else { return }
+        guard pending.expiresAt > Int64(Date.ows_millisecondTimestamp()) else {
+            rejectPendingDelete(pending, localAci: localAci, result: .rejectedInvalidTarget, tx: tx)
+            return
+        }
+        if
+            let groupThread = thread as? TSGroupThread,
+            let groupModel = groupThread.groupModel as? TSGroupModelV2
+        {
+            guard let groupRevision = pending.groupRevision else {
+                rejectPendingDelete(pending, localAci: localAci, result: .rejectedInvalidTarget, tx: tx)
+                return
+            }
+            guard groupRevision <= Int64(groupModel.revision) else { return }
+            guard
+                let requester = try? Aci.parseFrom(serviceIdBinary: pending.requesterAci),
+                groupModel.membership.isFullMember(requester)
+            else {
+                rejectPendingDelete(pending, localAci: localAci, result: .rejectedNotCurrentMember, tx: tx)
+                return
+            }
+        }
         guard Self.isSupportedTarget(message) else {
-            rejectPendingDelete(pending, localAci: localAci, tx: tx)
+            rejectPendingDelete(pending, localAci: localAci, result: .rejectedInvalidTarget, tx: tx)
             return
         }
 
         do {
             try tx.database.inSavepoint {
+                let didApplyDelete = !message.wasRemotelyDeleted
                 let latestMessage: TSMessage
                 if message.wasRemotelyDeleted {
                     latestMessage = message
@@ -606,6 +697,13 @@ public final class ParticipantDeleteManager {
                     interactionId: latestMessage.sqliteRowId,
                     firstRequestId: pending.firstRequestId,
                     requester: try Aci.parseFrom(serviceIdBinary: pending.requesterAci),
+                    recordAuthorMetadata: didApplyDelete,
+                    tx: tx,
+                )
+                try scrubQuotedReplySnapshots(
+                    targetAuthor: authorAci,
+                    targetSentTimestamp: message.timestamp,
+                    threadUniqueId: thread.uniqueId,
                     tx: tx,
                 )
                 try PendingParticipantDeleteRecord
@@ -638,6 +736,29 @@ public final class ParticipantDeleteManager {
         }
     }
 
+    /// Rechecks deferred group-revision requests whenever the local group state
+    /// advances, with later group messages providing an additional fallback.
+    public func reprocessPendingDeletes(in thread: TSGroupThread, tx: DBWriteTransaction) {
+        let pendingRecords: [PendingParticipantDeleteRecord] = failIfThrows {
+            try PendingParticipantDeleteRecord
+                .filter(Column("localThreadUniqueId") == thread.uniqueId)
+                .fetchAll(tx.database)
+        }
+        for pending in pendingRecords {
+            guard
+                pending.targetSentTimestamp > 0,
+                let author = try? Aci.parseFrom(serviceIdBinary: pending.targetAuthorAci),
+                let message = InteractionFinder.findMessage(
+                    withTimestamp: UInt64(pending.targetSentTimestamp),
+                    threadId: thread.uniqueId,
+                    author: SignalServiceAddress(author),
+                    transaction: tx,
+                )
+            else { continue }
+            applyPendingDeleteIfNecessary(to: message, thread: thread, tx: tx)
+        }
+    }
+
     public func participantDeleteAuthor(interactionId: Int64, tx: DBReadTransaction) -> Aci? {
         return failIfThrows {
             guard
@@ -645,6 +766,160 @@ public final class ParticipantDeleteManager {
                 let recipient = recipientDatabaseTable.fetchRecipient(rowId: record.deleteAuthorId, tx: tx)
             else { return nil }
             return recipient.aci
+        }
+    }
+
+    public func confirmationSummary(
+        interactionId: Int64,
+        tx: DBReadTransaction,
+    ) -> ParticipantDeleteConfirmationSummary? {
+        struct DeviceKey: Hashable {
+            let aci: Data
+            let deviceId: Int64
+        }
+
+        return failIfThrows {
+            guard
+                let tombstone = try ParticipantDeleteTombstoneRecord
+                    .filter(Column("interactionId") == interactionId)
+                    .fetchOne(tx.database),
+                !tombstone.firstRequestId.isEmpty
+            else { return nil }
+
+            let expectedDevices = try ParticipantDeleteExpectedDeviceRecord
+                .filter(Column("requestId") == tombstone.firstRequestId)
+                .fetchAll(tx.database)
+            guard !expectedDevices.isEmpty else { return nil }
+
+            let expectedKeys = Set(expectedDevices.map {
+                DeviceKey(aci: $0.recipientAci, deviceId: $0.recipientDeviceId)
+            })
+            let receipts = try ParticipantDeleteDeviceReceiptRecord
+                .filter(Column("requestId") == tombstone.firstRequestId)
+                .fetchAll(tx.database)
+                .filter { expectedKeys.contains(DeviceKey(aci: $0.responderAci, deviceId: $0.responderDeviceId)) }
+
+            let confirmedResults: Set<Int32> = [
+                SSKProtoDataMessageParticipantDeleteReceiptResult.applied.rawValue,
+                SSKProtoDataMessageParticipantDeleteReceiptResult.alreadyApplied.rawValue,
+            ]
+            let rejectedResults: Set<Int32> = [
+                SSKProtoDataMessageParticipantDeleteReceiptResult.rejectedNotCurrentMember.rawValue,
+                SSKProtoDataMessageParticipantDeleteReceiptResult.rejectedNotSupported.rawValue,
+                SSKProtoDataMessageParticipantDeleteReceiptResult.rejectedInvalidTarget.rawValue,
+            ]
+            let confirmedCount = receipts.filter { confirmedResults.contains(Int32($0.result)) }.count
+            let rejectedCount = receipts.filter { rejectedResults.contains(Int32($0.result)) }.count
+            return ParticipantDeleteConfirmationSummary(
+                expectedDeviceCount: expectedDevices.count,
+                confirmedDeviceCount: confirmedCount,
+                rejectedDeviceCount: rejectedCount,
+            )
+        }
+    }
+
+    public func isTargetDeleted(
+        author: Aci,
+        sentTimestamp: UInt64,
+        threadUniqueId: String,
+        tx: DBReadTransaction,
+    ) -> Bool {
+        guard
+            sentTimestamp > 0,
+            SDS.fitsInInt64(sentTimestamp),
+            let localAci = tsAccountManager.localIdentifiers(tx: tx)?.aci,
+            let thread = TSThread.fetchViaCache(uniqueId: threadUniqueId, transaction: tx),
+            let stableConversationId = try? stableConversationId(for: thread, localAci: localAci)
+        else { return false }
+
+        return failIfThrows {
+            try ParticipantDeleteTombstoneRecord
+                .filter(Column("stableConversationId") == stableConversationId)
+                .filter(Column("targetAuthorAci") == author.serviceIdBinary)
+                .filter(Column("targetSentTimestamp") == Int64(sentTimestamp))
+                .fetchCount(tx.database) > 0
+        }
+    }
+
+    /// Rebuilds the durable anti-resurrection key for tombstones restored from
+    /// the standard Signal backup format. The format doesn't preserve the
+    /// participant deleter, so this intentionally does not create UI author metadata.
+    public func recordRestoredTombstone(
+        message: TSMessage,
+        thread: TSThread,
+        targetAuthor: Aci,
+        tx: DBWriteTransaction,
+    ) {
+        guard
+            message.wasRemotelyDeleted,
+            message.timestamp > 0,
+            SDS.fitsInInt64(message.timestamp),
+            let localAci = tsAccountManager.localIdentifiers(tx: tx)?.aci,
+            let stableConversationId = try? stableConversationId(for: thread, localAci: localAci)
+        else { return }
+
+        failIfThrows {
+            try ParticipantDeleteTombstoneRecord(
+                stableConversationId: stableConversationId,
+                localThreadUniqueId: thread.uniqueId,
+                targetAuthorAci: targetAuthor.serviceIdBinary,
+                targetSentTimestamp: Int64(message.timestamp),
+                interactionId: message.sqliteRowId,
+                firstRequestId: UUID().data,
+                requesterAci: targetAuthor.serviceIdBinary,
+                appliedAt: Int64(Date.ows_millisecondTimestamp()),
+                protocolVersion: Int(ParticipantDeleteConfiguration.protocolVersion),
+            ).insert(tx.database)
+            try tx.database.execute(
+                sql: """
+                    UPDATE ParticipantDeleteTombstone
+                    SET interactionId = ?, localThreadUniqueId = ?
+                    WHERE stableConversationId = ? AND targetAuthorAci = ? AND targetSentTimestamp = ?
+                    """,
+                arguments: [
+                    message.sqliteRowId,
+                    thread.uniqueId,
+                    stableConversationId,
+                    targetAuthor.serviceIdBinary,
+                    Int64(message.timestamp),
+                ],
+            )
+        }
+    }
+
+    private func snapshotExpectedDevices(
+        requestId: Data,
+        thread: TSThread,
+        localAci: Aci,
+        tx: DBWriteTransaction,
+    ) throws {
+        let participantAcis: Set<Aci>
+        if let contactThread = thread as? TSContactThread, let contactAci = contactThread.contactAddress.aci {
+            participantAcis = [localAci, contactAci]
+        } else if
+            let groupThread = thread as? TSGroupThread,
+            let groupModel = groupThread.groupModel as? TSGroupModelV2
+        {
+            participantAcis = Set(groupModel.membership.fullMembers.compactMap(\.aci))
+        } else {
+            throw ParticipantDeleteError.invalidThread
+        }
+
+        let localDeviceId = tsAccountManager.storedDeviceId(tx: tx).ifValid
+        for participantAci in participantAcis {
+            var deviceIds = recipientDatabaseTable
+                .fetchRecipient(serviceId: participantAci, transaction: tx)?
+                .deviceIds ?? []
+            if participantAci == localAci, let localDeviceId, !deviceIds.contains(localDeviceId) {
+                deviceIds.append(localDeviceId)
+            }
+            for deviceId in deviceIds {
+                try ParticipantDeleteExpectedDeviceRecord(
+                    requestId: requestId,
+                    recipientAci: participantAci.serviceIdBinary,
+                    recipientDeviceId: Int64(deviceId.rawValue),
+                ).insert(tx.database)
+            }
         }
     }
 
@@ -664,6 +939,15 @@ public final class ParticipantDeleteManager {
         )
 
         if let previous = try ParticipantDeleteRequestRecord.fetchOne(tx.database, key: request.requestId) {
+            guard
+                previous.requesterAci == validated.requester.serviceIdBinary,
+                previous.stableConversationId == validated.stableConversationId,
+                previous.targetAuthorAci == request.targetAuthor.serviceIdBinary,
+                previous.targetSentTimestamp == Int64(request.targetSentTimestamp),
+                previous.protocolVersion == Int(request.version)
+            else {
+                throw ParticipantDeleteError.invalidRequestId
+            }
             let result = SSKProtoDataMessageParticipantDeleteReceiptResult(rawValue: Int32(previous.processingResult)) ?? .alreadyApplied
             if origin.shouldSendReceipt {
                 queueReceipt(requestId: request.requestId, result: result, recipient: origin.requester, tx: tx)
@@ -671,8 +955,29 @@ public final class ParticipantDeleteManager {
             return result
         }
 
+        if validated.isWaitingForGroupRevision {
+            try tx.database.inSavepoint {
+                try insertPending(validated, trustedServerTimestamp: trustedServerTimestamp, tx: tx)
+                try insertRequest(validated, result: .targetPending, tx: tx)
+                return .commit
+            }
+            if origin.shouldSendReceipt {
+                queueReceipt(requestId: request.requestId, result: .targetPending, recipient: origin.requester, tx: tx)
+            }
+            return .targetPending
+        }
+
         if try tombstoneExists(for: validated, tx: tx) {
-            try insertRequest(validated, result: .alreadyApplied, tx: tx)
+            try tx.database.inSavepoint {
+                try insertRequest(validated, result: .alreadyApplied, tx: tx)
+                try scrubQuotedReplySnapshots(
+                    targetAuthor: request.targetAuthor,
+                    targetSentTimestamp: request.targetSentTimestamp,
+                    threadUniqueId: validated.localThreadUniqueId,
+                    tx: tx,
+                )
+                return .commit
+            }
             if origin.shouldSendReceipt {
                 queueReceipt(requestId: request.requestId, result: .alreadyApplied, recipient: origin.requester, tx: tx)
             }
@@ -715,6 +1020,13 @@ public final class ParticipantDeleteManager {
                     interactionId: target.sqliteRowId,
                     firstRequestId: request.requestId,
                     requester: validated.requester,
+                    recordAuthorMetadata: false,
+                    tx: tx,
+                )
+                try scrubQuotedReplySnapshots(
+                    targetAuthor: request.targetAuthor,
+                    targetSentTimestamp: request.targetSentTimestamp,
+                    threadUniqueId: validated.localThreadUniqueId,
                     tx: tx,
                 )
             } else {
@@ -727,6 +1039,13 @@ public final class ParticipantDeleteManager {
                     interactionId: latestMessage.sqliteRowId,
                     firstRequestId: request.requestId,
                     requester: validated.requester,
+                    recordAuthorMetadata: true,
+                    tx: tx,
+                )
+                try scrubQuotedReplySnapshots(
+                    targetAuthor: request.targetAuthor,
+                    targetSentTimestamp: request.targetSentTimestamp,
+                    threadUniqueId: validated.localThreadUniqueId,
                     tx: tx,
                 )
             }
@@ -790,6 +1109,7 @@ public final class ParticipantDeleteManager {
         }
 
         let stableConversationId: Data
+        let isWaitingForGroupRevision: Bool
         if let contactThread = thread as? TSContactThread {
             guard
                 request.scope == .directChatBothAccounts,
@@ -804,15 +1124,20 @@ public final class ParticipantDeleteManager {
                 guard transcriptAci == localAci else { throw ParticipantDeleteError.invalidThread }
             }
             stableConversationId = Self.directConversationId(localAci: localAci, contactAci: contactAci)
+            isWaitingForGroupRevision = false
         } else if
             let groupThread = thread as? TSGroupThread,
             let groupModel = groupThread.groupModel as? TSGroupModelV2
         {
             guard request.scope == .groupAllCurrentMembers else { throw ParticipantDeleteError.scopeMismatch }
+            guard let requestGroupRevision = request.groupRevision else {
+                throw ParticipantDeleteError.invalidTarget
+            }
             guard groupModel.membership.isFullMember(localAci) else {
                 throw ParticipantDeleteError.invalidThread
             }
-            guard groupModel.membership.isFullMember(origin.requester) else {
+            isWaitingForGroupRevision = requestGroupRevision > groupModel.revision
+            guard isWaitingForGroupRevision || groupModel.membership.isFullMember(origin.requester) else {
                 throw ParticipantDeleteError.requesterIsNotCurrentMember
             }
             stableConversationId = Data([0x02]) + groupModel.groupId
@@ -830,6 +1155,7 @@ public final class ParticipantDeleteManager {
             requesterDeviceId: origin.sourceDeviceId,
             stableConversationId: stableConversationId,
             localThreadUniqueId: thread.uniqueId,
+            isWaitingForGroupRevision: isWaitingForGroupRevision,
         )
     }
 
@@ -864,6 +1190,72 @@ public final class ParticipantDeleteManager {
         guard !(message is OWSPaymentMessage), !(message is OWSArchivedPaymentMessage) else { return false }
         guard !message.isStoryReply else { return false }
         return true
+    }
+
+    /// Removes cached quote text and thumbnails that would otherwise retain a
+    /// copy of participant-deleted content. Row IDs are fetched in small pages
+    /// so large conversations don't allocate all messages at once.
+    private func scrubQuotedReplySnapshots(
+        targetAuthor: Aci,
+        targetSentTimestamp: UInt64,
+        threadUniqueId: String,
+        tx: DBWriteTransaction,
+    ) throws {
+        let pageSize = 100
+        var lastRowId: Int64 = 0
+        let attachmentStore = DependenciesBridge.shared.attachmentStore
+
+        while true {
+            let rowIds = try Int64.fetchAll(
+                tx.database,
+                sql: """
+                    SELECT id
+                    FROM \(InteractionRecord.databaseTableName)
+                    WHERE threadUniqueId = ?
+                        AND quotedMessage IS NOT NULL
+                        AND id > ?
+                    ORDER BY id ASC
+                    LIMIT ?
+                    """,
+                arguments: [threadUniqueId, lastRowId, pageSize],
+            )
+            guard !rowIds.isEmpty else { return }
+
+            for rowId in rowIds {
+                guard
+                    let message = InteractionFinder.fetch(rowId: rowId, transaction: tx) as? TSMessage,
+                    let quotedMessage = message.quotedMessage,
+                    quotedMessage.timestampValue?.uint64Value == targetSentTimestamp,
+                    quotedMessage.authorAddress.aci == targetAuthor
+                else { continue }
+
+                for reference in attachmentStore.fetchReferences(
+                    owner: .quotedReplyAttachment(messageRowId: rowId),
+                    tx: tx,
+                ) {
+                    attachmentStore.removeReference(reference: reference, tx: tx)
+                }
+
+                let sanitizedQuote = TSQuotedMessage(
+                    timestamp: targetSentTimestamp,
+                    authorAddress: SignalServiceAddress(targetAuthor),
+                    body: OWSLocalizedString(
+                        "QUOTED_REPLY_CONTENT_FROM_REMOTE_SOURCE",
+                        comment: "Placeholder shown after the original quoted message was deleted.",
+                    ),
+                    bodyRanges: nil,
+                    bodySource: .local,
+                    receivedQuotedAttachmentInfo: nil,
+                    isGiftBadge: false,
+                    isTargetMessageViewOnce: false,
+                    isPoll: false,
+                )
+                message.update(withQuotedMessage: sanitizedQuote, transaction: tx)
+            }
+
+            lastRowId = rowIds.last!
+            if rowIds.count < pageSize { return }
+        }
     }
 
     private func tombstoneExists(for validated: ValidatedRequest, tx: DBReadTransaction) throws -> Bool {
@@ -973,6 +1365,7 @@ public final class ParticipantDeleteManager {
         interactionId: Int64?,
         firstRequestId: Data,
         requester: Aci,
+        recordAuthorMetadata: Bool,
         tx: DBWriteTransaction,
     ) throws {
         try ParticipantDeleteTombstoneRecord(
@@ -988,6 +1381,7 @@ public final class ParticipantDeleteManager {
         ).insert(tx.database)
 
         guard
+            recordAuthorMetadata,
             let interactionId,
             interactionId > 0
         else { return }
@@ -1009,6 +1403,7 @@ public final class ParticipantDeleteManager {
     private func rejectPendingDelete(
         _ pending: PendingParticipantDeleteRecord,
         localAci: Aci,
+        result: SSKProtoDataMessageParticipantDeleteReceiptResult,
         tx: DBWriteTransaction,
     ) {
         failIfThrows {
@@ -1021,7 +1416,7 @@ public final class ParticipantDeleteManager {
                 try tx.database.execute(
                     sql: "UPDATE ParticipantDeleteRequest SET processingResult = ? WHERE requestId = ?",
                     arguments: [
-                        SSKProtoDataMessageParticipantDeleteReceiptResult.rejectedInvalidTarget.rawValue,
+                        result.rawValue,
                         requestRecord.requestId,
                     ],
                 )
@@ -1031,7 +1426,7 @@ public final class ParticipantDeleteManager {
                 {
                     queueReceipt(
                         requestId: requestRecord.requestId,
-                        result: .rejectedInvalidTarget,
+                        result: result,
                         recipient: requester,
                         tx: tx,
                     )

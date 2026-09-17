@@ -425,6 +425,9 @@ final class CallService: CallServiceStateObserver, CallServiceStateDelegate {
      * Local user toggled video.
      */
     func updateIsLocalVideoMuted(isLocalVideoMuted: Bool) {
+        // Always allow video to be muted, but never allow this build to turn a camera on.
+        guard isLocalVideoMuted || BuildFlags.videoCalling else { return }
+
         // Keep a reference to the call before permissions were requested...
         guard let currentCall = callServiceState.currentCall else {
             owsFailDebug("missing currentCall")

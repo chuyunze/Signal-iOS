@@ -432,6 +432,20 @@ extension BackupArchiveTSIncomingMessageArchiver: BackupArchive.TSMessageEditHis
             return .messageFailure(partialErrors + [.restoreFrameError(.databaseInsertionFailed(error))])
         }
 
+        switch contents {
+        case .remoteDeleteTombstone, .adminDeleteTombstone:
+            if let authorAci {
+                DependenciesBridge.shared.participantDeleteManager.recordRestoredTombstone(
+                    message: incomingMessage,
+                    thread: chatThread.tsThread,
+                    targetAuthor: authorAci,
+                    tx: context.tx,
+                )
+            }
+        default:
+            break
+        }
+
         if authorAci == nil {
             context.recipientContext.setHasIncomingMessagesMissingAci(recipientId: chatItem.authorRecipientId)
         }

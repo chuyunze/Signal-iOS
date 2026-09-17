@@ -1927,14 +1927,16 @@ extension CallsListViewController: UITableViewDelegate {
                 break
             }
 
-            let videoCallAction = UIAction(
-                title: Strings.startVideoCallActionTitle,
-                image: Theme.iconImage(.contextMenuVideoCall),
-                attributes: [],
-            ) { [weak self] _ in
-                self?.startCall(from: viewModel, withVideo: true)
+            if BuildFlags.videoCalling {
+                let videoCallAction = UIAction(
+                    title: Strings.startVideoCallActionTitle,
+                    image: Theme.iconImage(.contextMenuVideoCall),
+                    attributes: [],
+                ) { [weak self] _ in
+                    self?.startCall(from: viewModel, withVideo: true)
+                }
+                actions.append(videoCallAction)
             }
-            actions.append(videoCallAction)
         }
 
         if let chatThread = goToChatThread(from: viewModel) {

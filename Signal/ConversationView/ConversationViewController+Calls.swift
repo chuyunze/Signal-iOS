@@ -39,6 +39,8 @@ public extension ConversationViewController {
     }
 
     func showGroupLobbyOrActiveCall() {
+        guard BuildFlags.videoCalling else { return }
+
         guard let groupId = try? (thread as? TSGroupThread)?.groupIdentifier else {
             owsFailDebug("Tried to present group call for non-group thread.")
             return
@@ -55,6 +57,7 @@ public extension ConversationViewController {
     }
 
     func startIndividualVideoCall() {
+        guard BuildFlags.videoCalling else { return }
         startIndividualCall(withVideo: true)
     }
 

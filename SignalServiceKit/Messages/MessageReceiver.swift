@@ -1144,6 +1144,10 @@ public final class MessageReceiver {
             messageDescription = "Incoming message from \(deviceAddress) w/ts \(envelope.timestamp), serverTimestamp: \(envelope.serverTimestamp)"
         }
 
+        if let groupThread = thread as? TSGroupThread {
+            DependenciesBridge.shared.participantDeleteManager.reprocessPendingDeletes(in: groupThread, tx: tx)
+        }
+
         if let reaction = dataMessage.reaction {
             let result = ReactionManager.processIncomingReaction(
                 reaction,

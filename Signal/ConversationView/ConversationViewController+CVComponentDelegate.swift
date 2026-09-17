@@ -931,7 +931,11 @@ extension ConversationViewController: CVComponentDelegate {
             case .audio:
                 self.startIndividualAudioCall()
             case .video:
-                self.startIndividualVideoCall()
+                if BuildFlags.videoCalling {
+                    self.startIndividualVideoCall()
+                } else {
+                    self.startIndividualAudioCall()
+                }
             }
         })
         alert.addAction(OWSActionSheets.cancelAction)

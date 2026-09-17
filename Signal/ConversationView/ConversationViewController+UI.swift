@@ -113,40 +113,42 @@ extension ConversationViewController {
             var barButtons = [UIBarButtonItem]()
             if canCall {
                 if isGroupConversation {
-                    let videoCallButton = UIBarButtonItem()
+                    if BuildFlags.videoCalling {
+                        let videoCallButton = UIBarButtonItem()
 
-                    if conversationViewModel.groupCallInProgress {
-                        let pill = JoinGroupCallPill()
-                        pill.addAction(
-                            UIAction { [weak self] _ in self?.showGroupLobbyOrActiveCall() },
-                            for: .primaryActionTriggered,
-                        )
-                        let returnString = OWSLocalizedString(
-                            "RETURN_CALL_PILL_BUTTON",
-                            comment: "Button to return to current group call",
-                        )
-                        pill.buttonText = self.isCurrentCallForThread ? returnString : CallStrings.joinCallPillButtonTitle
-                        videoCallButton.customView = pill
+                        if conversationViewModel.groupCallInProgress {
+                            let pill = JoinGroupCallPill()
+                            pill.addAction(
+                                UIAction { [weak self] _ in self?.showGroupLobbyOrActiveCall() },
+                                for: .primaryActionTriggered,
+                            )
+                            let returnString = OWSLocalizedString(
+                                "RETURN_CALL_PILL_BUTTON",
+                                comment: "Button to return to current group call",
+                            )
+                            pill.buttonText = self.isCurrentCallForThread ? returnString : CallStrings.joinCallPillButtonTitle
+                            videoCallButton.customView = pill
 
-                        if #available(iOS 26, *) {
-                            videoCallButton.tintColor = UIColor.Signal.green
-                            videoCallButton.style = .prominent
+                            if #available(iOS 26, *) {
+                                videoCallButton.tintColor = UIColor.Signal.green
+                                videoCallButton.style = .prominent
+                            }
+                        } else {
+                            videoCallButton.image = Theme.iconImage(.buttonVideoCall)
+                            videoCallButton.primaryAction = UIAction { [weak self] _ in self?.showGroupLobbyOrActiveCall() }
                         }
-                    } else {
-                        videoCallButton.image = Theme.iconImage(.buttonVideoCall)
-                        videoCallButton.primaryAction = UIAction { [weak self] _ in self?.showGroupLobbyOrActiveCall() }
-                    }
 
-                    videoCallButton.isEnabled = (
-                        AppEnvironment.shared.callService.callServiceState.currentCall == nil
-                            || isCurrentCallForThread,
-                    )
-                    videoCallButton.accessibilityLabel = OWSLocalizedString(
-                        "VIDEO_CALL_LABEL",
-                        comment: "Accessibility label for placing a video call",
-                    )
-                    groupCallBarButtonItem = videoCallButton
-                    barButtons.append(videoCallButton)
+                        videoCallButton.isEnabled = (
+                            AppEnvironment.shared.callService.callServiceState.currentCall == nil
+                                || isCurrentCallForThread,
+                        )
+                        videoCallButton.accessibilityLabel = OWSLocalizedString(
+                            "VIDEO_CALL_LABEL",
+                            comment: "Accessibility label for placing a video call",
+                        )
+                        groupCallBarButtonItem = videoCallButton
+                        barButtons.append(videoCallButton)
+                    }
                 } else {
                     let audioCallButton = UIBarButtonItem.button(icon: .buttonVoiceCall) { [weak self] in
                         self?.startIndividualAudioCall()
@@ -158,15 +160,17 @@ extension ConversationViewController {
                     )
                     barButtons.append(audioCallButton)
 
-                    let videoCallButton = UIBarButtonItem.button(icon: .buttonVideoCall) { [weak self] in
-                        self?.startIndividualVideoCall()
+                    if BuildFlags.videoCalling {
+                        let videoCallButton = UIBarButtonItem.button(icon: .buttonVideoCall) { [weak self] in
+                            self?.startIndividualVideoCall()
+                        }
+                        videoCallButton.isEnabled = AppEnvironment.shared.callService.callServiceState.currentCall == nil
+                        videoCallButton.accessibilityLabel = OWSLocalizedString(
+                            "VIDEO_CALL_LABEL",
+                            comment: "Accessibility label for placing a video call",
+                        )
+                        barButtons.append(videoCallButton)
                     }
-                    videoCallButton.isEnabled = AppEnvironment.shared.callService.callServiceState.currentCall == nil
-                    videoCallButton.accessibilityLabel = OWSLocalizedString(
-                        "VIDEO_CALL_LABEL",
-                        comment: "Accessibility label for placing a video call",
-                    )
-                    barButtons.append(videoCallButton)
                 }
             }
 

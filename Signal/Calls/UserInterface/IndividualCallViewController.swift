@@ -1070,7 +1070,7 @@ class IndividualCallViewController: OWSViewController, IndividualCallObserver {
     private func didPressAnswerCall(audioOnly: Bool) {
         Logger.info("")
 
-        if audioOnly {
+        if audioOnly || !BuildFlags.videoCalling {
             // Answer without video, set state before answering.
             callService.callUIAdapter.setHasLocalVideo(call: call, hasLocalVideo: false)
         }

@@ -348,6 +348,7 @@ public enum DatabaseRecovery {
             ParticipantDeleteTombstoneRecord.databaseTableName,
             PendingParticipantDeleteRecord.databaseTableName,
             ParticipantDeleteDeviceReceiptRecord.databaseTableName,
+            ParticipantDeleteExpectedDeviceRecord.databaseTableName,
             ParticipantDeleteAuthorRecord.databaseTableName,
             AttachmentBackfillInboundRequestRecord.databaseTableName,
             SignalServiceKit.SessionRecord.databaseTableName,

@@ -321,7 +321,7 @@ struct ConversationHeaderBuilder {
                 }
             }()
 
-            if options.contains(.videoCall) {
+            if BuildFlags.videoCalling, options.contains(.videoCall) {
                 buttons.append(buildIconButton(
                     icon: .buttonVideoCall,
                     title: OWSLocalizedString(

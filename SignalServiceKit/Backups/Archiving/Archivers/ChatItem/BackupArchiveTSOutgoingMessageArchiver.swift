@@ -638,6 +638,18 @@ extension BackupArchiveTSOutgoingMessageArchiver: BackupArchive.TSMessageEditHis
             return .messageFailure(partialErrors + [.restoreFrameError(.databaseInsertionFailed(error))])
         }
 
+        switch contents {
+        case .remoteDeleteTombstone, .adminDeleteTombstone:
+            DependenciesBridge.shared.participantDeleteManager.recordRestoredTombstone(
+                message: outgoingMessage,
+                thread: chatThread.tsThread,
+                targetAuthor: context.recipientContext.localIdentifiers.aci,
+                tx: context.tx,
+            )
+        default:
+            break
+        }
+
         guard outgoingMessage.sqliteRowId != nil else {
             // Failed insert!
             return .messageFailure(partialErrors + [.restoreFrameError(

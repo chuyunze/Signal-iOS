@@ -549,13 +549,15 @@ private class MiniPreviewView: UIView {
 
         hStackView.addArrangedSubview(.hStretchingSpacer())
 
-        let videoCallImageView = UIImageView()
-        videoCallImageView.contentMode = .scaleAspectFit
-        videoCallImageView.autoSetDimension(.width, toSize: 10)
-        videoCallImageView.setTemplateImageName(Theme.iconName(.buttonVideoCall), tintColor: Theme.primaryIconColor)
-        hStackView.addArrangedSubview(videoCallImageView)
+        if BuildFlags.videoCalling {
+            let videoCallImageView = UIImageView()
+            videoCallImageView.contentMode = .scaleAspectFit
+            videoCallImageView.autoSetDimension(.width, toSize: 10)
+            videoCallImageView.setTemplateImageName(Theme.iconName(.buttonVideoCall), tintColor: Theme.primaryIconColor)
+            hStackView.addArrangedSubview(videoCallImageView)
 
-        hStackView.addArrangedSubview(.spacer(withWidth: 8))
+            hStackView.addArrangedSubview(.spacer(withWidth: 8))
+        }
 
         let audioCallImageView = UIImageView()
         audioCallImageView.contentMode = .scaleAspectFit
