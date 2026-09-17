@@ -2,8 +2,19 @@ name: Build Ad-Hoc IPA
 
 on:
   workflow_dispatch:
+    inputs:
+      clean_build:
+        description: Force a clean Xcode build and ignore DerivedData
+        required: false
+        default: false
+        type: boolean
   push:
     branches: [ selfhost-patch, jack-patch ]
+
+# 同一分支只保留最新构建，新的提交会自动取消尚未完成的旧构建。
+concurrency:
+  group: build-ios-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -32,6 +43,21 @@ jobs:
       with:
         xcode-version: '26.6'
 
+    # libsignal 分支名不变时仍可能继续提交，缓存键必须使用实际 commit SHA。
+    - name: Resolve libsignal revision
+      id: libsignal-revision
+      run: echo "sha=$(git -C libsignal rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+    - name: Cache libsignal build
+      id: cache-libsignal
+      uses: actions/cache@v5
+      with:
+        path: |
+          libsignal/target/aarch64-apple-ios/release
+          ~/.cargo/registry
+          ~/.cargo/git
+        key: libsignal-v1-${{ runner.os }}-xcode-26.6-${{ steps.libsignal-revision.outputs.sha }}-${{ hashFiles('libsignal/Cargo.lock', 'libsignal/rust-toolchain') }}
+
     # libsignal 的 Rust 依赖（spqr / prost-build）在构建时需要 protoc
     - name: Install protoc
       run: brew install protobuf
@@ -42,6 +68,7 @@ jobs:
     # 本地开发版 libsignal pod 不会下载预编译产物，
     # 需要先用 Rust 交叉编译出 target/aarch64-apple-ios/release/libsignal_ffi.a
     - name: Build libsignal-ffi for iOS (arm64 device)
+      if: steps.cache-libsignal.outputs.cache-hit != 'true'
       working-directory: libsignal
       run: |
         set -euo pipefail
@@ -51,6 +78,9 @@ jobs:
         CARGO_BUILD_TARGET=aarch64-apple-ios ./swift/build_ffi.sh --release
         ls -lh target/aarch64-apple-ios/release/libsignal_ffi.a
 
+    - name: Verify libsignal-ffi artifact
+      run: test -s libsignal/target/aarch64-apple-ios/release/libsignal_ffi.a
+
     - name: Setup Ruby and Fastlane
       uses: ruby/setup-ruby@v1
       with:
@@ -58,9 +88,30 @@ jobs:
         bundler-cache: true
         working-directory: app
 
+    - name: Cache CocoaPods dependencies
+      uses: actions/cache@v5
+      with:
+        path: |
+          app/Pods
+          ~/Library/Caches/CocoaPods
+        key: cocoapods-v1-${{ runner.os }}-${{ steps.libsignal-revision.outputs.sha }}-${{ hashFiles('app/Podfile.lock') }}
+
     - name: Install CocoaPods dependencies
       working-directory: app
       run: bundle exec pod install
+
+    # 只缓存编译中间产物，不缓存 Products，避免复用带旧签名或旧描述文件的 App。
+    - name: Cache Xcode DerivedData
+      if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.clean_build) }}
+      uses: actions/cache@v5
+      with:
+        path: |
+          app/DerivedData/Build/Intermediates.noindex
+          app/DerivedData/ModuleCache.noindex
+          app/DerivedData/SourcePackages
+        key: deriveddata-v1-${{ runner.os }}-xcode-26.6-${{ steps.libsignal-revision.outputs.sha }}-${{ hashFiles('app/Podfile.lock') }}-${{ github.sha }}
+        restore-keys: |
+          deriveddata-v1-${{ runner.os }}-xcode-26.6-${{ steps.libsignal-revision.outputs.sha }}-${{ hashFiles('app/Podfile.lock') }}-
 
     - name: Decode signing files
       working-directory: app
@@ -86,6 +137,7 @@ jobs:
         PP_SHAREEXT_PATH:    ${{ github.workspace }}/app/shareext.mobileprovision
         TEAM_ID:             ${{ secrets.TEAM_ID }}
         CODE_SIGNING_IDENTITY: ${{ secrets.CODE_SIGNING_IDENTITY }}
+        CLEAN_BUILD:         ${{ github.event_name == 'workflow_dispatch' && inputs.clean_build && 'true' || 'false' }}
       run: bundle exec fastlane build_adhoc
 
     - name: Upload IPA

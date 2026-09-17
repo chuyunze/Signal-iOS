@@ -89,7 +89,9 @@ platform :ios do
       scheme:          'Signal',
       configuration:   'App Store Release',
       export_method:   'ad-hoc',
-      clean:           true,
+      # 默认复用 CI 恢复的编译中间产物；手动触发时可用 clean_build 强制全量构建。
+      clean:           ENV.fetch('CLEAN_BUILD', 'false') == 'true',
+      derived_data_path: './DerivedData',
       output_directory: './build',
       output_name:     'Sixin.ipa',
       xcargs: {
