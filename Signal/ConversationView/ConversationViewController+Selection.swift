@@ -313,7 +313,7 @@ extension ConversationViewController {
 
     func didTapDeleteSelectedItems() {
         let db = DependenciesBridge.shared.db
-        let adminDeleteManager = DependenciesBridge.shared.adminDeleteManager
+        let participantDeleteManager = DependenciesBridge.shared.participantDeleteManager
 
         let selectionItems = self.selectionState.selectionItems
         guard !selectionItems.isEmpty else {
@@ -363,7 +363,7 @@ extension ConversationViewController {
         }
         alert.addAction(deleteForMeAction)
 
-        var deleteType: AdminDeleteManager.DeleteType = []
+        let deleteType: AdminDeleteManager.DeleteType = .regular
         let canDeleteForEveryone: Bool = db.read { tx in
             selectionItems.allSatisfy { selectionItem in
                 guard
@@ -375,14 +375,7 @@ extension ConversationViewController {
                     return false
                 }
 
-                if message.isIncoming {
-                    deleteType.update(with: .admin)
-                } else {
-                    deleteType.update(with: .regular)
-                }
-
-                let canAdminDelete = adminDeleteManager.canAdminDeleteMessage(message: message, thread: thread, tx: tx)
-                return message.canBeRemotelyDeletedByNonAdmin || canAdminDelete
+                return participantDeleteManager.canParticipantDelete(message: message, thread: thread, tx: tx)
             }
         }
 
@@ -451,7 +444,7 @@ extension ConversationViewController {
         thread: TSThread,
         tx: DBWriteTransaction,
     ) {
-        let adminDeleteManager = DependenciesBridge.shared.adminDeleteManager
+        let participantDeleteManager = DependenciesBridge.shared.participantDeleteManager
 
         guard !selectionItems.isEmpty else { return }
         guard let latestThread = TSThread.fetchViaCache(uniqueId: thread.uniqueId, transaction: tx) else {
@@ -472,16 +465,14 @@ extension ConversationViewController {
                 return
             }
 
-            let canAdminDelete = adminDeleteManager.canAdminDeleteMessage(message: message, thread: thread, tx: tx)
-
             guard
                 let deleteMessage = TSInteraction.buildDeleteMessage(
                     thread: thread,
                     message: message,
                     localIdentifiers: localIdentifiers,
-                    canAdminDelete: canAdminDelete,
+                    canAdminDelete: false,
                     tx: tx,
-                )
+                ) as? OutgoingParticipantDeleteMessage
             else {
                 return owsFailDebug("Failure to build outgoing delete for everyone.")
             }
@@ -492,49 +483,19 @@ extension ConversationViewController {
                 tx: tx,
             )
 
-            if message.canBeRemotelyDeletedByNonAdmin {
-                do {
-                    try TSMessage.tryToRemotelyDeleteMessageAsNonAdmin(
-                        fromAuthor: localIdentifiers.aci,
-                        sentAtTimestamp: message.timestamp,
-                        threadUniqueId: latestThread.uniqueId,
-                        serverTimestamp: 0, // TSOutgoingMessage won't have server timestamp.
-                        transaction: tx,
-                    )
-                } catch {
-                    return owsFailDebug("Unable to remotely delete message")
-                }
-            } else if
-                canAdminDelete,
-                let groupThread = thread as? TSGroupThread
-            {
-                let originalMessageAuthorAci: Aci?
-                if let incomingMessage = (message as? TSIncomingMessage) {
-                    originalMessageAuthorAci = incomingMessage.authorAddress.aci
-                } else {
-                    originalMessageAuthorAci = localIdentifiers.aci
-                }
-
-                guard let originalMessageAuthorAci else {
-                    owsFailDebug("Unable to admin delete without original message author")
-                    return
-                }
-                do {
-                    try DependenciesBridge.shared.adminDeleteManager.tryToAdminDeleteMessage(
-                        originalMessageAuthorAci: originalMessageAuthorAci,
-                        deleteAuthorAci: localIdentifiers.aci,
-                        sentAtTimestamp: message.timestamp,
-                        groupThread: groupThread,
-                        threadUniqueId: latestThread.uniqueId,
-                        serverTimestamp: 0, // TSOutgoingMessage won't have server timestamp.
-                        transaction: tx,
-                    )
-                } catch {
-                    return owsFailDebug("Unable to remotely delete message")
-                }
-            } else {
-                owsFailDebug("Unable to delete as admin or as non-admin")
-                return
+            do {
+                try participantDeleteManager.processLocalInitiation(
+                    requestId: deleteMessage.requestId,
+                    targetAuthor: deleteMessage.targetAuthor,
+                    targetSentTimestamp: deleteMessage.targetSentTimestamp,
+                    scope: deleteMessage.participantScope,
+                    groupRevision: deleteMessage.groupRevision,
+                    thread: latestThread,
+                    localAci: localIdentifiers.aci,
+                    tx: tx,
+                )
+            } catch {
+                return owsFailDebug("Unable to participant-delete message: \(error)")
             }
 
             let preparedMessage = PreparedOutgoingMessage.preprepared(

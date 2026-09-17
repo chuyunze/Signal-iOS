@@ -9010,6 +9010,543 @@ extension SSKProtoDataMessageAdminDeleteBuilder {
 
 #endif
 
+// MARK: - SSKProtoDataMessageParticipantDeleteScope
+
+@objc
+public enum SSKProtoDataMessageParticipantDeleteScope: Int32 {
+    case unknown = 0
+    case directChatBothAccounts = 1
+    case groupAllCurrentMembers = 2
+}
+
+private func SSKProtoDataMessageParticipantDeleteScopeWrap(_ value: SignalServiceProtos_DataMessage.ParticipantDelete.Scope) -> SSKProtoDataMessageParticipantDeleteScope {
+    switch value {
+    case .unknown: return .unknown
+    case .directChatBothAccounts: return .directChatBothAccounts
+    case .groupAllCurrentMembers: return .groupAllCurrentMembers
+    }
+}
+
+private func SSKProtoDataMessageParticipantDeleteScopeUnwrap(_ value: SSKProtoDataMessageParticipantDeleteScope) -> SignalServiceProtos_DataMessage.ParticipantDelete.Scope {
+    switch value {
+    case .unknown: return .unknown
+    case .directChatBothAccounts: return .directChatBothAccounts
+    case .groupAllCurrentMembers: return .groupAllCurrentMembers
+    }
+}
+
+// MARK: - SSKProtoDataMessageParticipantDelete
+
+@objc
+public class SSKProtoDataMessageParticipantDelete: NSObject, Codable, NSSecureCoding {
+
+    fileprivate let proto: SignalServiceProtos_DataMessage.ParticipantDelete
+
+    @objc
+    public var version: UInt32 {
+        return proto.version
+    }
+    @objc
+    public var hasVersion: Bool {
+        return proto.hasVersion
+    }
+
+    @objc
+    public var targetAuthorAciBinary: Data? {
+        guard hasTargetAuthorAciBinary else {
+            return nil
+        }
+        return proto.targetAuthorAciBinary
+    }
+    @objc
+    public var hasTargetAuthorAciBinary: Bool {
+        return proto.hasTargetAuthorAciBinary
+    }
+
+    @objc
+    public var targetSentTimestamp: UInt64 {
+        return proto.targetSentTimestamp
+    }
+    @objc
+    public var hasTargetSentTimestamp: Bool {
+        return proto.hasTargetSentTimestamp
+    }
+
+    @objc
+    public var requestID: Data? {
+        guard hasRequestID else {
+            return nil
+        }
+        return proto.requestID
+    }
+    @objc
+    public var hasRequestID: Bool {
+        return proto.hasRequestID
+    }
+
+    @objc
+    public var clientRequestedAt: UInt64 {
+        return proto.clientRequestedAt
+    }
+    @objc
+    public var hasClientRequestedAt: Bool {
+        return proto.hasClientRequestedAt
+    }
+
+    public var scope: SSKProtoDataMessageParticipantDeleteScope? {
+        guard hasScope else {
+            return nil
+        }
+        return SSKProtoDataMessageParticipantDeleteScopeWrap(proto.scope)
+    }
+    // This "unwrapped" accessor should only be used if the "has value" accessor has already been checked.
+    @objc
+    public var unwrappedScope: SSKProtoDataMessageParticipantDeleteScope {
+        if !hasScope {
+            // TODO: We could make this a crashing assert.
+            owsFailDebug("Unsafe unwrap of missing optional: ParticipantDelete.scope.")
+        }
+        return SSKProtoDataMessageParticipantDeleteScopeWrap(proto.scope)
+    }
+    @objc
+    public var hasScope: Bool {
+        return proto.hasScope
+    }
+
+    @objc
+    public var groupRevision: UInt32 {
+        return proto.groupRevision
+    }
+    @objc
+    public var hasGroupRevision: Bool {
+        return proto.hasGroupRevision
+    }
+
+    public var hasUnknownFields: Bool {
+        return !proto.unknownFields.data.isEmpty
+    }
+    public var unknownFields: SwiftProtobuf.UnknownStorage? {
+        guard hasUnknownFields else { return nil }
+        return proto.unknownFields
+    }
+
+    private init(proto: SignalServiceProtos_DataMessage.ParticipantDelete) {
+        self.proto = proto
+    }
+
+    @objc
+    public func serializedData() throws -> Data {
+        return try self.proto.serializedData()
+    }
+
+    @objc
+    public required convenience init(serializedData: Data) throws {
+        let proto = try SignalServiceProtos_DataMessage.ParticipantDelete(serializedBytes: serializedData)
+        self.init(proto)
+    }
+
+    fileprivate convenience init(_ proto: SignalServiceProtos_DataMessage.ParticipantDelete) {
+        self.init(proto: proto)
+    }
+
+    public required convenience init(from decoder: Swift.Decoder) throws {
+        let singleValueContainer = try decoder.singleValueContainer()
+        let serializedData = try singleValueContainer.decode(Data.self)
+        try self.init(serializedData: serializedData)
+    }
+    public func encode(to encoder: Swift.Encoder) throws {
+        var singleValueContainer = encoder.singleValueContainer()
+        try singleValueContainer.encode(try serializedData())
+    }
+
+    public static var supportsSecureCoding: Bool { true }
+
+    public required convenience init?(coder: NSCoder) {
+        guard let serializedData = coder.decodeData() else { return nil }
+        do {
+            try self.init(serializedData: serializedData)
+        } catch {
+            owsFailDebug("Failed to decode serialized data \(error)")
+            return nil
+        }
+    }
+
+    public func encode(with coder: NSCoder) {
+        do {
+            coder.encode(try serializedData())
+        } catch {
+            owsFailDebug("Failed to encode serialized data \(error)")
+        }
+    }
+
+    @objc
+    public override var debugDescription: String {
+        return "\(proto)"
+    }
+}
+
+extension SSKProtoDataMessageParticipantDelete {
+    @objc
+    public static func builder() -> SSKProtoDataMessageParticipantDeleteBuilder {
+        return SSKProtoDataMessageParticipantDeleteBuilder()
+    }
+
+    // asBuilder() constructs a builder that reflects the proto's contents.
+    @objc
+    public func asBuilder() -> SSKProtoDataMessageParticipantDeleteBuilder {
+        let builder = SSKProtoDataMessageParticipantDeleteBuilder()
+        if hasVersion {
+            builder.setVersion(version)
+        }
+        if let _value = targetAuthorAciBinary {
+            builder.setTargetAuthorAciBinary(_value)
+        }
+        if hasTargetSentTimestamp {
+            builder.setTargetSentTimestamp(targetSentTimestamp)
+        }
+        if let _value = requestID {
+            builder.setRequestID(_value)
+        }
+        if hasClientRequestedAt {
+            builder.setClientRequestedAt(clientRequestedAt)
+        }
+        if let _value = scope {
+            builder.setScope(_value)
+        }
+        if hasGroupRevision {
+            builder.setGroupRevision(groupRevision)
+        }
+        if let _value = unknownFields {
+            builder.setUnknownFields(_value)
+        }
+        return builder
+    }
+}
+
+@objc
+public class SSKProtoDataMessageParticipantDeleteBuilder: NSObject {
+
+    private var proto = SignalServiceProtos_DataMessage.ParticipantDelete()
+
+    @objc
+    fileprivate override init() {}
+
+    @objc
+    public func setVersion(_ valueParam: UInt32) {
+        proto.version = valueParam
+    }
+
+    @objc
+    @available(swift, obsoleted: 1.0)
+    public func setTargetAuthorAciBinary(_ valueParam: Data?) {
+        guard let valueParam = valueParam else { return }
+        proto.targetAuthorAciBinary = valueParam
+    }
+
+    public func setTargetAuthorAciBinary(_ valueParam: Data) {
+        proto.targetAuthorAciBinary = valueParam
+    }
+
+    @objc
+    public func setTargetSentTimestamp(_ valueParam: UInt64) {
+        proto.targetSentTimestamp = valueParam
+    }
+
+    @objc
+    @available(swift, obsoleted: 1.0)
+    public func setRequestID(_ valueParam: Data?) {
+        guard let valueParam = valueParam else { return }
+        proto.requestID = valueParam
+    }
+
+    public func setRequestID(_ valueParam: Data) {
+        proto.requestID = valueParam
+    }
+
+    @objc
+    public func setClientRequestedAt(_ valueParam: UInt64) {
+        proto.clientRequestedAt = valueParam
+    }
+
+    @objc
+    public func setScope(_ valueParam: SSKProtoDataMessageParticipantDeleteScope) {
+        proto.scope = SSKProtoDataMessageParticipantDeleteScopeUnwrap(valueParam)
+    }
+
+    @objc
+    public func setGroupRevision(_ valueParam: UInt32) {
+        proto.groupRevision = valueParam
+    }
+
+    public func setUnknownFields(_ unknownFields: SwiftProtobuf.UnknownStorage) {
+        proto.unknownFields = unknownFields
+    }
+
+    @objc
+    public func buildInfallibly() -> SSKProtoDataMessageParticipantDelete {
+        return SSKProtoDataMessageParticipantDelete(proto)
+    }
+
+    @objc
+    public func buildSerializedData() throws -> Data {
+        return try SSKProtoDataMessageParticipantDelete(proto).serializedData()
+    }
+}
+
+#if TESTABLE_BUILD
+
+extension SSKProtoDataMessageParticipantDelete {
+    @objc
+    public func serializedDataIgnoringErrors() -> Data? {
+        return try! self.serializedData()
+    }
+}
+
+extension SSKProtoDataMessageParticipantDeleteBuilder {
+    @objc
+    public func buildIgnoringErrors() -> SSKProtoDataMessageParticipantDelete? {
+        return self.buildInfallibly()
+    }
+}
+
+#endif
+
+// MARK: - SSKProtoDataMessageParticipantDeleteReceiptResult
+
+@objc
+public enum SSKProtoDataMessageParticipantDeleteReceiptResult: Int32 {
+    case unknown = 0
+    case applied = 1
+    case alreadyApplied = 2
+    case targetPending = 3
+    case rejectedNotCurrentMember = 4
+    case rejectedNotSupported = 5
+    case rejectedInvalidTarget = 6
+}
+
+private func SSKProtoDataMessageParticipantDeleteReceiptResultWrap(_ value: SignalServiceProtos_DataMessage.ParticipantDeleteReceipt.Result) -> SSKProtoDataMessageParticipantDeleteReceiptResult {
+    switch value {
+    case .unknown: return .unknown
+    case .applied: return .applied
+    case .alreadyApplied: return .alreadyApplied
+    case .targetPending: return .targetPending
+    case .rejectedNotCurrentMember: return .rejectedNotCurrentMember
+    case .rejectedNotSupported: return .rejectedNotSupported
+    case .rejectedInvalidTarget: return .rejectedInvalidTarget
+    }
+}
+
+private func SSKProtoDataMessageParticipantDeleteReceiptResultUnwrap(_ value: SSKProtoDataMessageParticipantDeleteReceiptResult) -> SignalServiceProtos_DataMessage.ParticipantDeleteReceipt.Result {
+    switch value {
+    case .unknown: return .unknown
+    case .applied: return .applied
+    case .alreadyApplied: return .alreadyApplied
+    case .targetPending: return .targetPending
+    case .rejectedNotCurrentMember: return .rejectedNotCurrentMember
+    case .rejectedNotSupported: return .rejectedNotSupported
+    case .rejectedInvalidTarget: return .rejectedInvalidTarget
+    }
+}
+
+// MARK: - SSKProtoDataMessageParticipantDeleteReceipt
+
+@objc
+public class SSKProtoDataMessageParticipantDeleteReceipt: NSObject, Codable, NSSecureCoding {
+
+    fileprivate let proto: SignalServiceProtos_DataMessage.ParticipantDeleteReceipt
+
+    @objc
+    public var version: UInt32 {
+        return proto.version
+    }
+    @objc
+    public var hasVersion: Bool {
+        return proto.hasVersion
+    }
+
+    @objc
+    public var requestID: Data? {
+        guard hasRequestID else {
+            return nil
+        }
+        return proto.requestID
+    }
+    @objc
+    public var hasRequestID: Bool {
+        return proto.hasRequestID
+    }
+
+    public var result: SSKProtoDataMessageParticipantDeleteReceiptResult? {
+        guard hasResult else {
+            return nil
+        }
+        return SSKProtoDataMessageParticipantDeleteReceiptResultWrap(proto.result)
+    }
+    // This "unwrapped" accessor should only be used if the "has value" accessor has already been checked.
+    @objc
+    public var unwrappedResult: SSKProtoDataMessageParticipantDeleteReceiptResult {
+        if !hasResult {
+            // TODO: We could make this a crashing assert.
+            owsFailDebug("Unsafe unwrap of missing optional: ParticipantDeleteReceipt.result.")
+        }
+        return SSKProtoDataMessageParticipantDeleteReceiptResultWrap(proto.result)
+    }
+    @objc
+    public var hasResult: Bool {
+        return proto.hasResult
+    }
+
+    public var hasUnknownFields: Bool {
+        return !proto.unknownFields.data.isEmpty
+    }
+    public var unknownFields: SwiftProtobuf.UnknownStorage? {
+        guard hasUnknownFields else { return nil }
+        return proto.unknownFields
+    }
+
+    private init(proto: SignalServiceProtos_DataMessage.ParticipantDeleteReceipt) {
+        self.proto = proto
+    }
+
+    @objc
+    public func serializedData() throws -> Data {
+        return try self.proto.serializedData()
+    }
+
+    @objc
+    public required convenience init(serializedData: Data) throws {
+        let proto = try SignalServiceProtos_DataMessage.ParticipantDeleteReceipt(serializedBytes: serializedData)
+        self.init(proto)
+    }
+
+    fileprivate convenience init(_ proto: SignalServiceProtos_DataMessage.ParticipantDeleteReceipt) {
+        self.init(proto: proto)
+    }
+
+    public required convenience init(from decoder: Swift.Decoder) throws {
+        let singleValueContainer = try decoder.singleValueContainer()
+        let serializedData = try singleValueContainer.decode(Data.self)
+        try self.init(serializedData: serializedData)
+    }
+    public func encode(to encoder: Swift.Encoder) throws {
+        var singleValueContainer = encoder.singleValueContainer()
+        try singleValueContainer.encode(try serializedData())
+    }
+
+    public static var supportsSecureCoding: Bool { true }
+
+    public required convenience init?(coder: NSCoder) {
+        guard let serializedData = coder.decodeData() else { return nil }
+        do {
+            try self.init(serializedData: serializedData)
+        } catch {
+            owsFailDebug("Failed to decode serialized data \(error)")
+            return nil
+        }
+    }
+
+    public func encode(with coder: NSCoder) {
+        do {
+            coder.encode(try serializedData())
+        } catch {
+            owsFailDebug("Failed to encode serialized data \(error)")
+        }
+    }
+
+    @objc
+    public override var debugDescription: String {
+        return "\(proto)"
+    }
+}
+
+extension SSKProtoDataMessageParticipantDeleteReceipt {
+    @objc
+    public static func builder() -> SSKProtoDataMessageParticipantDeleteReceiptBuilder {
+        return SSKProtoDataMessageParticipantDeleteReceiptBuilder()
+    }
+
+    // asBuilder() constructs a builder that reflects the proto's contents.
+    @objc
+    public func asBuilder() -> SSKProtoDataMessageParticipantDeleteReceiptBuilder {
+        let builder = SSKProtoDataMessageParticipantDeleteReceiptBuilder()
+        if hasVersion {
+            builder.setVersion(version)
+        }
+        if let _value = requestID {
+            builder.setRequestID(_value)
+        }
+        if let _value = result {
+            builder.setResult(_value)
+        }
+        if let _value = unknownFields {
+            builder.setUnknownFields(_value)
+        }
+        return builder
+    }
+}
+
+@objc
+public class SSKProtoDataMessageParticipantDeleteReceiptBuilder: NSObject {
+
+    private var proto = SignalServiceProtos_DataMessage.ParticipantDeleteReceipt()
+
+    @objc
+    fileprivate override init() {}
+
+    @objc
+    public func setVersion(_ valueParam: UInt32) {
+        proto.version = valueParam
+    }
+
+    @objc
+    @available(swift, obsoleted: 1.0)
+    public func setRequestID(_ valueParam: Data?) {
+        guard let valueParam = valueParam else { return }
+        proto.requestID = valueParam
+    }
+
+    public func setRequestID(_ valueParam: Data) {
+        proto.requestID = valueParam
+    }
+
+    @objc
+    public func setResult(_ valueParam: SSKProtoDataMessageParticipantDeleteReceiptResult) {
+        proto.result = SSKProtoDataMessageParticipantDeleteReceiptResultUnwrap(valueParam)
+    }
+
+    public func setUnknownFields(_ unknownFields: SwiftProtobuf.UnknownStorage) {
+        proto.unknownFields = unknownFields
+    }
+
+    @objc
+    public func buildInfallibly() -> SSKProtoDataMessageParticipantDeleteReceipt {
+        return SSKProtoDataMessageParticipantDeleteReceipt(proto)
+    }
+
+    @objc
+    public func buildSerializedData() throws -> Data {
+        return try SSKProtoDataMessageParticipantDeleteReceipt(proto).serializedData()
+    }
+}
+
+#if TESTABLE_BUILD
+
+extension SSKProtoDataMessageParticipantDeleteReceipt {
+    @objc
+    public func serializedDataIgnoringErrors() -> Data? {
+        return try! self.serializedData()
+    }
+}
+
+extension SSKProtoDataMessageParticipantDeleteReceiptBuilder {
+    @objc
+    public func buildIgnoringErrors() -> SSKProtoDataMessageParticipantDeleteReceipt? {
+        return self.buildInfallibly()
+    }
+}
+
+#endif
+
 // MARK: - SSKProtoDataMessageFlags
 
 @objc
@@ -9140,6 +9677,12 @@ public class SSKProtoDataMessage: NSObject, Codable, NSSecureCoding {
     public let adminDelete: SSKProtoDataMessageAdminDelete?
 
     @objc
+    public let participantDelete: SSKProtoDataMessageParticipantDelete?
+
+    @objc
+    public let participantDeleteReceipt: SSKProtoDataMessageParticipantDeleteReceipt?
+
+    @objc
     public var body: String? {
         guard hasBody else {
             return nil
@@ -9244,7 +9787,9 @@ public class SSKProtoDataMessage: NSObject, Codable, NSSecureCoding {
                  pollVote: SSKProtoDataMessagePollVote?,
                  pinMessage: SSKProtoDataMessagePinMessage?,
                  unpinMessage: SSKProtoDataMessageUnpinMessage?,
-                 adminDelete: SSKProtoDataMessageAdminDelete?) {
+                 adminDelete: SSKProtoDataMessageAdminDelete?,
+                 participantDelete: SSKProtoDataMessageParticipantDelete?,
+                 participantDeleteReceipt: SSKProtoDataMessageParticipantDeleteReceipt?) {
         self.proto = proto
         self.attachments = attachments
         self.groupV2 = groupV2
@@ -9265,6 +9810,8 @@ public class SSKProtoDataMessage: NSObject, Codable, NSSecureCoding {
         self.pinMessage = pinMessage
         self.unpinMessage = unpinMessage
         self.adminDelete = adminDelete
+        self.participantDelete = participantDelete
+        self.participantDeleteReceipt = participantDeleteReceipt
     }
 
     @objc
@@ -9366,6 +9913,16 @@ public class SSKProtoDataMessage: NSObject, Codable, NSSecureCoding {
             adminDelete = SSKProtoDataMessageAdminDelete(proto.adminDelete)
         }
 
+        var participantDelete: SSKProtoDataMessageParticipantDelete?
+        if proto.hasParticipantDelete {
+            participantDelete = SSKProtoDataMessageParticipantDelete(proto.participantDelete)
+        }
+
+        var participantDeleteReceipt: SSKProtoDataMessageParticipantDeleteReceipt?
+        if proto.hasParticipantDeleteReceipt {
+            participantDeleteReceipt = SSKProtoDataMessageParticipantDeleteReceipt(proto.participantDeleteReceipt)
+        }
+
         self.init(proto: proto,
                   attachments: attachments,
                   groupV2: groupV2,
@@ -9385,7 +9942,9 @@ public class SSKProtoDataMessage: NSObject, Codable, NSSecureCoding {
                   pollVote: pollVote,
                   pinMessage: pinMessage,
                   unpinMessage: unpinMessage,
-                  adminDelete: adminDelete)
+                  adminDelete: adminDelete,
+                  participantDelete: participantDelete,
+                  participantDeleteReceipt: participantDeleteReceipt)
     }
 
     public required convenience init(from decoder: Swift.Decoder) throws {
@@ -9506,6 +10065,12 @@ extension SSKProtoDataMessage {
         }
         if let _value = adminDelete {
             builder.setAdminDelete(_value)
+        }
+        if let _value = participantDelete {
+            builder.setParticipantDelete(_value)
+        }
+        if let _value = participantDeleteReceipt {
+            builder.setParticipantDeleteReceipt(_value)
         }
         if let _value = unknownFields {
             builder.setUnknownFields(_value)
@@ -9777,6 +10342,28 @@ public class SSKProtoDataMessageBuilder: NSObject {
 
     public func setAdminDelete(_ valueParam: SSKProtoDataMessageAdminDelete) {
         proto.adminDelete = valueParam.proto
+    }
+
+    @objc
+    @available(swift, obsoleted: 1.0)
+    public func setParticipantDelete(_ valueParam: SSKProtoDataMessageParticipantDelete?) {
+        guard let valueParam = valueParam else { return }
+        proto.participantDelete = valueParam.proto
+    }
+
+    public func setParticipantDelete(_ valueParam: SSKProtoDataMessageParticipantDelete) {
+        proto.participantDelete = valueParam.proto
+    }
+
+    @objc
+    @available(swift, obsoleted: 1.0)
+    public func setParticipantDeleteReceipt(_ valueParam: SSKProtoDataMessageParticipantDeleteReceipt?) {
+        guard let valueParam = valueParam else { return }
+        proto.participantDeleteReceipt = valueParam.proto
+    }
+
+    public func setParticipantDeleteReceipt(_ valueParam: SSKProtoDataMessageParticipantDeleteReceipt) {
+        proto.participantDeleteReceipt = valueParam.proto
     }
 
     public func setUnknownFields(_ unknownFields: SwiftProtobuf.UnknownStorage) {

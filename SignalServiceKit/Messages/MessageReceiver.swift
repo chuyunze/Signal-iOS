@@ -464,6 +464,25 @@ public final class MessageReceiver {
                             transaction: tx,
                         )
                     }
+                } else if let participantDelete = dataMessage.participantDelete {
+                    guard let participantThread = transcript.threadForDataMessage else {
+                        Logger.warn("Couldn't process participant delete without transcript thread")
+                        return
+                    }
+                    do {
+                        _ = try DependenciesBridge.shared.participantDeleteManager.process(
+                            proto: participantDelete,
+                            origin: .localSentTranscript(
+                                localAci: localIdentifiers.aci,
+                                sourceDeviceId: decryptedEnvelope.sourceDeviceId,
+                            ),
+                            thread: participantThread,
+                            trustedServerTimestamp: decryptedEnvelope.serverTimestamp,
+                            tx: tx,
+                        )
+                    } catch {
+                        Logger.warn("Couldn't process participant delete from sent transcript: \(error)")
+                    }
                 } else if let delete = dataMessage.delete {
                     do {
                         try TSMessage.tryToRemotelyDeleteMessageAsNonAdmin(
@@ -1157,6 +1176,40 @@ public final class MessageReceiver {
             return nil
         }
 
+        if let participantDelete = dataMessage.participantDelete {
+            do {
+                _ = try DependenciesBridge.shared.participantDeleteManager.process(
+                    proto: participantDelete,
+                    origin: .remoteEnvelope(
+                        requester: envelope.sourceAci,
+                        sourceDeviceId: envelope.sourceDeviceId,
+                    ),
+                    thread: thread,
+                    trustedServerTimestamp: envelope.serverTimestamp,
+                    tx: tx,
+                )
+            } catch {
+                Logger.warn("Couldn't process participant delete: \(error)")
+                DependenciesBridge.shared.participantDeleteManager.processFailure(
+                    proto: participantDelete,
+                    error: error,
+                    requester: envelope.sourceAci,
+                    tx: tx,
+                )
+            }
+            return nil
+        }
+
+        if let participantDeleteReceipt = dataMessage.participantDeleteReceipt {
+            DependenciesBridge.shared.participantDeleteManager.processReceipt(
+                participantDeleteReceipt,
+                responder: envelope.sourceAci,
+                sourceDeviceId: envelope.sourceDeviceId,
+                tx: tx,
+            )
+            return nil
+        }
+
         if let delete = dataMessage.delete {
             do {
                 try TSMessage.tryToRemotelyDeleteMessageAsNonAdmin(
@@ -1720,6 +1773,11 @@ public final class MessageReceiver {
         owsAssertDebug(message.insertedMessageHasRenderableContent(rowId: message.sqliteRowId!, tx: tx))
 
         SSKEnvironment.shared.earlyMessageManagerRef.applyPendingMessages(for: message, registeredState: registeredState, transaction: tx)
+        DependenciesBridge.shared.participantDeleteManager.applyPendingDeleteIfNecessary(
+            to: message,
+            thread: updatedThread,
+            tx: tx,
+        )
 
         // Any messages sent from the current user - from this device or another -
         // should be automatically marked as read.

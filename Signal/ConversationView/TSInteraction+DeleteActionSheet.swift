@@ -89,28 +89,19 @@ public extension TSInteraction {
         fromViewController.presentActionSheet(actionSheet)
     }
 
-    /// If the local user is an admin, we prefer regular remote delete. We only fallback to
-    /// admin delete if the remote delete timeframe has expired and admin delete timeframe has not.
     class func buildDeleteMessage(
         thread: TSThread,
         message: TSMessage,
         localIdentifiers: LocalIdentifiers,
-        canAdminDelete: Bool,
+        canAdminDelete _: Bool,
         tx: DBReadTransaction,
     ) -> TransientOutgoingMessage? {
-        if
-            message.canBeRemotelyDeletedByNonAdmin,
-            let outgoingMessage = message as? TSOutgoingMessage
-        {
-            return OutgoingDeleteMessage(thread: thread, message: outgoingMessage, tx: tx)
-        }
-
-        guard canAdminDelete else {
-            owsFailDebug("Unable to admin-delete incoming message")
-            return nil
-        }
-
-        return OutgoingAdminDeleteMessage(
+        guard DependenciesBridge.shared.participantDeleteManager.canParticipantDelete(
+            message: message,
+            thread: thread,
+            tx: tx,
+        ) else { return nil }
+        return OutgoingParticipantDeleteMessage(
             thread: thread,
             message: message,
             localIdentifiers: localIdentifiers,
@@ -119,30 +110,25 @@ public extension TSInteraction {
     }
 
     private func buildDeleteForEveryoneAction(thread: TSThread) -> ActionSheetAction? {
-        let adminDeleteManager = DependenciesBridge.shared.adminDeleteManager
+        let participantDeleteManager = DependenciesBridge.shared.participantDeleteManager
         let db = DependenciesBridge.shared.db
 
         guard let message = self as? TSMessage else {
             return nil
         }
 
-        let canAdminDelete = db.read { tx in adminDeleteManager.canAdminDeleteMessage(message: message, thread: thread, tx: tx) }
-        if !thread.isTerminatedGroup, message.canBeRemotelyDeletedByNonAdmin || canAdminDelete {
+        let canParticipantDelete = db.read { tx in
+            participantDeleteManager.canParticipantDelete(message: message, thread: thread, tx: tx)
+        }
+        if canParticipantDelete {
             return ActionSheetAction(
                 title: CommonStrings.deleteForEveryoneButton,
                 style: .destructive,
             ) { [weak self] _ in
                 guard self != nil else { return }
 
-                var deleteType: AdminDeleteManager.DeleteType
-                if message.isIncoming {
-                    deleteType = .admin
-                } else {
-                    deleteType = .regular
-                }
-
                 Self.showDeleteForEveryoneConfirmationIfNecessary(
-                    deleteType: deleteType,
+                    deleteType: .regular,
                     completion: {
                         SSKEnvironment.shared.databaseStorageRef.write { tx in
                             let latestMessage = TSMessage.fetchMessageViaCache(
@@ -167,15 +153,13 @@ public extension TSInteraction {
                                 return owsFailDebug("LocalIdentifiers missing during message deletion.")
                             }
 
-                            guard
-                                let deleteMessage = Self.buildDeleteMessage(
+                            guard let deleteMessage = Self.buildDeleteMessage(
                                     thread: latestThread,
                                     message: latestMessage,
                                     localIdentifiers: localIdentifiers,
-                                    canAdminDelete: canAdminDelete,
+                                    canAdminDelete: false,
                                     tx: tx,
-                                )
-                            else {
+                                ) as? OutgoingParticipantDeleteMessage else {
                                 return owsFailDebug("Failure to build outgoing delete for everyone.")
                             }
                             // Reset the sending states, so we can render the sending state of the
@@ -184,50 +168,19 @@ public extension TSInteraction {
                             // TODO: support sending state animation for incoming messages.
                             (latestMessage as? TSOutgoingMessage)?.updateWithRecipientAddressStates(deleteMessage.recipientAddressStates, tx: tx)
 
-                            if message.canBeRemotelyDeletedByNonAdmin {
-                                do {
-                                    try TSMessage.tryToRemotelyDeleteMessageAsNonAdmin(
-                                        fromAuthor: localIdentifiers.aci,
-                                        sentAtTimestamp: latestMessage.timestamp,
-                                        threadUniqueId: latestThread.uniqueId,
-                                        serverTimestamp: 0, // TSOutgoingMessage won't have server timestamp.
-                                        transaction: tx,
-                                    )
-                                } catch {
-                                    return owsFailDebug("Unable to remotely delete message")
-                                }
-                            } else if
-                                canAdminDelete,
-                                let groupThread = thread as? TSGroupThread
-                            {
-                                let originalMessageAuthorAci: Aci?
-                                if let incomingMessage = (latestMessage as? TSIncomingMessage) {
-                                    originalMessageAuthorAci = incomingMessage.authorAddress.aci
-                                } else {
-                                    originalMessageAuthorAci = localIdentifiers.aci
-                                }
-
-                                guard let originalMessageAuthorAci else {
-                                    owsFailDebug("Unable to admin delete without original message author")
-                                    return
-                                }
-
-                                do {
-                                    try DependenciesBridge.shared.adminDeleteManager.tryToAdminDeleteMessage(
-                                        originalMessageAuthorAci: originalMessageAuthorAci,
-                                        deleteAuthorAci: localIdentifiers.aci,
-                                        sentAtTimestamp: latestMessage.timestamp,
-                                        groupThread: groupThread,
-                                        threadUniqueId: latestThread.uniqueId,
-                                        serverTimestamp: 0, // TSOutgoingMessage won't have server timestamp.
-                                        transaction: tx,
-                                    )
-                                } catch {
-                                    return owsFailDebug("Unable to remotely delete message")
-                                }
-                            } else {
-                                owsFailDebug("Unable to delete as admin or as non-admin")
-                                return
+                            do {
+                                try participantDeleteManager.processLocalInitiation(
+                                    requestId: deleteMessage.requestId,
+                                    targetAuthor: deleteMessage.targetAuthor,
+                                    targetSentTimestamp: deleteMessage.targetSentTimestamp,
+                                    scope: deleteMessage.participantScope,
+                                    groupRevision: deleteMessage.groupRevision,
+                                    thread: latestThread,
+                                    localAci: localIdentifiers.aci,
+                                    tx: tx,
+                                )
+                            } catch {
+                                return owsFailDebug("Unable to participant-delete message: \(error)")
                             }
 
                             let preparedMessage = PreparedOutgoingMessage.preprepared(
@@ -272,37 +225,19 @@ public extension TSInteraction {
         fromViewController.presentActionSheet(actionSheetController)
     }
 
-    static func showDeleteForEveryoneConfirmationIfNecessary(deleteType: AdminDeleteManager.DeleteType, completion: @escaping () -> Void) {
-        let adminDeleteManager = DependenciesBridge.shared.adminDeleteManager
-        let db = DependenciesBridge.shared.db
-
-        let shouldShowAdminDeleteConfirmation = deleteType.contains(.admin) && db.read { tx in adminDeleteManager.adminDeleteEducationReadStatus(tx: tx) == false }
-        let shouldShowRegularDeleteConfirmation = deleteType.contains(.regular) && !SSKEnvironment.shared.preferencesRef.wasDeleteForEveryoneConfirmationShown
-
-        guard shouldShowAdminDeleteConfirmation || shouldShowRegularDeleteConfirmation else { return completion() }
-
-        let title: String
-        if shouldShowAdminDeleteConfirmation {
-            title = OWSLocalizedString("MESSAGE_ACTION_ADMIN_DELETE_FOR_EVERYONE_CONFIRMATION", comment: "A one-time confirmation that you, as an admin, want to delete for everyone")
-        } else {
-            title = OWSLocalizedString(
-                "MESSAGE_ACTION_DELETE_FOR_EVERYONE_CONFIRMATION",
-                comment: "A one-time confirmation that you want to delete for everyone",
-            )
-        }
-
+    static func showDeleteForEveryoneConfirmationIfNecessary(deleteType _: AdminDeleteManager.DeleteType, completion: @escaping () -> Void) {
         OWSActionSheets.showConfirmationAlert(
-            title: title,
+            title: OWSLocalizedString(
+                "PARTICIPANT_DELETE_CONFIRMATION_TITLE",
+                comment: "Title confirming a cooperative delete request for all compatible conversation devices.",
+            ),
+            message: OWSLocalizedString(
+                "PARTICIPANT_DELETE_CONFIRMATION_MESSAGE",
+                comment: "Explains that participant delete is best-effort and only affects compatible devices.",
+            ),
             proceedTitle: CommonStrings.deleteForEveryoneButton,
             proceedStyle: .destructive,
         ) { _ in
-            if shouldShowAdminDeleteConfirmation {
-                db.write { tx in
-                    adminDeleteManager.setAdminDeleteEducationRead(tx: tx, updateStorageService: true)
-                }
-            } else {
-                SSKEnvironment.shared.preferencesRef.setWasDeleteForEveryoneConfirmationShown()
-            }
             completion()
         }
     }

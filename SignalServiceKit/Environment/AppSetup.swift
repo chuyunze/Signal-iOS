@@ -1449,6 +1449,10 @@ extension AppSetup.GlobalsContinuation {
             tsAccountManager: tsAccountManager,
             storageServiceManager: storageServiceManager,
         )
+        let participantDeleteManager = ParticipantDeleteManager(
+            recipientDatabaseTable: recipientDatabaseTable,
+            tsAccountManager: tsAccountManager,
+        )
 
         let backupChatStyleArchiver = BackupArchiveChatStyleArchiver(
             attachmentManager: attachmentManager,
@@ -1787,6 +1791,7 @@ extension AppSetup.GlobalsContinuation {
             accountEntropyPoolManager: accountEntropyPoolManager,
             adHocCallRecordManager: adHocCallRecordManager,
             adminDeleteManager: adminDeleteManager,
+            participantDeleteManager: participantDeleteManager,
             appExpiry: appExpiry,
             attachmentContentValidator: attachmentContentValidator,
             attachmentDownloadManager: attachmentDownloadManager,

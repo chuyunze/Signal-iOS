@@ -26,6 +26,29 @@ struct GRDBSchemaMigratorTest {
             databaseStorage: databaseStorage,
             runDataMigrations: false,
         )
+        let participantDeleteTables = try databaseStorage.read { tx in
+            try Set(String.fetchAll(
+                tx.database,
+                sql: """
+                    SELECT name FROM sqlite_master
+                    WHERE type = 'table'
+                      AND name IN (
+                        'ParticipantDeleteRequest',
+                        'ParticipantDeleteTombstone',
+                        'PendingParticipantDelete',
+                        'ParticipantDeleteDeviceReceipt',
+                        'ParticipantDeleteAuthor'
+                      )
+                    """,
+            ))
+        }
+        #expect(participantDeleteTables == [
+            "ParticipantDeleteRequest",
+            "ParticipantDeleteTombstone",
+            "PendingParticipantDelete",
+            "ParticipantDeleteDeviceReceipt",
+            "ParticipantDeleteAuthor",
+        ])
         try extractSchema(databaseStorage: databaseStorage)
     }
 

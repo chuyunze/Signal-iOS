@@ -355,6 +355,7 @@ public class GRDBSchemaMigrator {
         case rebuildInteractionUnendedGroupCallIndex
         case migrateNotificationPreferences
         case addGroupsPendingRestore
+        case addParticipantDeleteTables
 
         // NOTE: Every time we add a migration id, consider
         // incrementing grdbSchemaVersionLatest.
@@ -5503,6 +5504,91 @@ public class GRDBSchemaMigrator {
 
         migrator.registerMigration(.addGroupsPendingRestore) { tx in
             try addGroupsPendingRestore(tx: tx)
+            return .success(())
+        }
+
+        migrator.registerMigration(.addParticipantDeleteTables) { tx in
+            try tx.database.create(table: "ParticipantDeleteRequest") { table in
+                table.column("requestId", .blob).primaryKey().notNull()
+                table.column("requesterAci", .blob).notNull()
+                table.column("requesterDeviceId", .integer)
+                table.column("stableConversationId", .blob).notNull()
+                table.column("localThreadUniqueId", .text).notNull()
+                table.column("targetAuthorAci", .blob).notNull()
+                table.column("targetSentTimestamp", .integer).notNull()
+                table.column("protocolVersion", .integer).notNull()
+                table.column("processingResult", .integer).notNull()
+                table.column("createdAt", .integer).notNull()
+            }
+            try tx.database.create(
+                index: "ParticipantDeleteRequest_target",
+                on: "ParticipantDeleteRequest",
+                columns: ["stableConversationId", "targetAuthorAci", "targetSentTimestamp"],
+            )
+
+            try tx.database.create(table: "ParticipantDeleteTombstone") { table in
+                table.column("stableConversationId", .blob).notNull()
+                table.column("localThreadUniqueId", .text).notNull()
+                table.column("targetAuthorAci", .blob).notNull()
+                table.column("targetSentTimestamp", .integer).notNull()
+                table.column("interactionId", .integer)
+                    .references("model_TSInteraction", column: "id", onDelete: .setNull, onUpdate: .cascade)
+                table.column("firstRequestId", .blob).notNull()
+                table.column("requesterAci", .blob).notNull()
+                table.column("appliedAt", .integer).notNull()
+                table.column("protocolVersion", .integer).notNull()
+                table.primaryKey(["stableConversationId", "targetAuthorAci", "targetSentTimestamp"])
+            }
+
+            try tx.database.create(table: "PendingParticipantDelete") { table in
+                table.column("firstRequestId", .blob).notNull()
+                table.column("stableConversationId", .blob).notNull()
+                table.column("localThreadUniqueId", .text).notNull()
+                table.column("targetAuthorAci", .blob).notNull()
+                table.column("targetSentTimestamp", .integer).notNull()
+                table.column("requesterAci", .blob).notNull()
+                table.column("requesterDeviceId", .integer)
+                table.column("requestServerTimestamp", .integer).notNull()
+                table.column("conversationScope", .integer).notNull()
+                table.column("groupRevision", .integer)
+                table.column("expiresAt", .integer).notNull()
+                table.column("protocolVersion", .integer).notNull()
+                table.primaryKey(["stableConversationId", "targetAuthorAci", "targetSentTimestamp"])
+            }
+            try tx.database.create(
+                index: "PendingParticipantDelete_expiresAt",
+                on: "PendingParticipantDelete",
+                columns: ["expiresAt"],
+            )
+            try tx.database.create(
+                index: "PendingParticipantDelete_requesterAci",
+                on: "PendingParticipantDelete",
+                columns: ["requesterAci"],
+            )
+
+            try tx.database.create(table: "ParticipantDeleteDeviceReceipt") { table in
+                table.column("requestId", .blob).notNull()
+                table.column("responderAci", .blob).notNull()
+                table.column("responderDeviceId", .integer).notNull()
+                table.column("result", .integer).notNull()
+                table.column("receivedAt", .integer).notNull()
+                table.primaryKey(["requestId", "responderAci", "responderDeviceId"])
+            }
+            try tx.database.create(
+                index: "ParticipantDeleteDeviceReceipt_receivedAt",
+                on: "ParticipantDeleteDeviceReceipt",
+                columns: ["receivedAt"],
+            )
+
+            try tx.database.create(table: "ParticipantDeleteAuthor") { table in
+                table.column("interactionId", .integer)
+                    .primaryKey()
+                    .notNull()
+                    .references("model_TSInteraction", column: "id", onDelete: .cascade, onUpdate: .cascade)
+                table.column("deleteAuthorId", .integer)
+                    .notNull()
+                    .references("model_SignalRecipient", column: "id", onDelete: .cascade, onUpdate: .cascade)
+            }
             return .success(())
         }
 

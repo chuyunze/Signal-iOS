@@ -90,4 +90,41 @@ class SSKProtoEnvelopeTest: XCTestCase {
         XCTAssertTrue(envelope.hasContent)
         XCTAssertEqual(envelope.content, phonyContent)
     }
+
+    func testParticipantDeleteRoundTrip() throws {
+        let targetAuthor = Aci.constantForTesting("CE599F9B-8C64-4C58-B5D0-E8014501C8A3")
+        let requestId = UUID(uuidString: "14201C6D-3E38-4B96-9A8F-093EDAD7B670")!.data
+        let builder = SSKProtoDataMessageParticipantDelete.builder()
+        builder.setVersion(ParticipantDeleteConfiguration.protocolVersion)
+        builder.setTargetAuthorAciBinary(targetAuthor.serviceIdBinary)
+        builder.setTargetSentTimestamp(1_725_555_123_456)
+        builder.setRequestID(requestId)
+        builder.setClientRequestedAt(1_725_555_999_999)
+        builder.setScope(.groupAllCurrentMembers)
+        builder.setGroupRevision(42)
+
+        let decoded = try SSKProtoDataMessageParticipantDelete(serializedData: builder.buildSerializedData())
+
+        XCTAssertEqual(decoded.version, ParticipantDeleteConfiguration.protocolVersion)
+        XCTAssertEqual(decoded.targetAuthorAciBinary, targetAuthor.serviceIdBinary)
+        XCTAssertEqual(decoded.targetSentTimestamp, 1_725_555_123_456)
+        XCTAssertEqual(decoded.requestID, requestId)
+        XCTAssertEqual(decoded.clientRequestedAt, 1_725_555_999_999)
+        XCTAssertEqual(decoded.scope, .groupAllCurrentMembers)
+        XCTAssertEqual(decoded.groupRevision, 42)
+    }
+
+    func testParticipantDeleteReceiptRoundTrip() throws {
+        let requestId = UUID(uuidString: "14201C6D-3E38-4B96-9A8F-093EDAD7B670")!.data
+        let builder = SSKProtoDataMessageParticipantDeleteReceipt.builder()
+        builder.setVersion(ParticipantDeleteConfiguration.protocolVersion)
+        builder.setRequestID(requestId)
+        builder.setResult(.targetPending)
+
+        let decoded = try SSKProtoDataMessageParticipantDeleteReceipt(serializedData: builder.buildSerializedData())
+
+        XCTAssertEqual(decoded.version, ParticipantDeleteConfiguration.protocolVersion)
+        XCTAssertEqual(decoded.requestID, requestId)
+        XCTAssertEqual(decoded.result, .targetPending)
+    }
 }
