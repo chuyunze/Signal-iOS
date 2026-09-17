@@ -1250,7 +1250,7 @@ public final class ParticipantDeleteManager {
                     isTargetMessageViewOnce: false,
                     isPoll: false,
                 )
-                message.update(withQuotedMessage: sanitizedQuote, transaction: tx)
+                message.update(with: sanitizedQuote, transaction: tx)
             }
 
             lastRowId = rowIds.last!
