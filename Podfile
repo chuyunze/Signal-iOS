@@ -99,8 +99,8 @@ post_install do |installer|
   strip_valid_archs(installer)
   update_frameworks_script(installer)
   disable_non_development_pod_warnings(installer)
-  fix_ringrtc_project_symlink(installer)
   fetch_ringrtc
+  fix_ringrtc_project_symlink(installer)
   copy_acknowledgements
 end
 
@@ -246,7 +246,10 @@ def fix_ringrtc_project_symlink(installer)
 end
 
 def fetch_ringrtc
-  `make fetch-ringrtc`
+  system('make', 'fetch-ringrtc', exception: true)
+
+  ringrtc_header = 'Pods/SignalRingRTC/out/release/libringrtc/ringrtc.h'
+  raise "RingRTC setup did not produce #{ringrtc_header}" unless File.size?(ringrtc_header)
 end
 
 def copy_acknowledgements
