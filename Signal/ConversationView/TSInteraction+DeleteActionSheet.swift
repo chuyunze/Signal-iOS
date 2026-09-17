@@ -96,6 +96,16 @@ public extension TSInteraction {
         canAdminDelete _: Bool,
         tx: DBReadTransaction,
     ) -> TransientOutgoingMessage? {
+        // Preserve Signal's proven delete path for the author's own messages.
+        // ParticipantDelete extends deletion to other participants and to messages
+        // outside the native time window; it should not replace this path.
+        if
+            message.canBeRemotelyDeletedByNonAdmin,
+            let outgoingMessage = message as? TSOutgoingMessage
+        {
+            return OutgoingDeleteMessage(thread: thread, message: outgoingMessage, tx: tx)
+        }
+
         guard DependenciesBridge.shared.participantDeleteManager.canParticipantDelete(
             message: message,
             thread: thread,
@@ -154,12 +164,12 @@ public extension TSInteraction {
                             }
 
                             guard let deleteMessage = Self.buildDeleteMessage(
-                                    thread: latestThread,
-                                    message: latestMessage,
-                                    localIdentifiers: localIdentifiers,
-                                    canAdminDelete: false,
-                                    tx: tx,
-                                ) as? OutgoingParticipantDeleteMessage else {
+                                thread: latestThread,
+                                message: latestMessage,
+                                localIdentifiers: localIdentifiers,
+                                canAdminDelete: false,
+                                tx: tx,
+                            ) else {
                                 return owsFailDebug("Failure to build outgoing delete for everyone.")
                             }
                             // Reset the sending states, so we can render the sending state of the
@@ -168,26 +178,49 @@ public extension TSInteraction {
                             // TODO: support sending state animation for incoming messages.
                             (latestMessage as? TSOutgoingMessage)?.updateWithRecipientAddressStates(deleteMessage.recipientAddressStates, tx: tx)
 
-                            do {
-                                try participantDeleteManager.processLocalInitiation(
-                                    requestId: deleteMessage.requestId,
-                                    targetAuthor: deleteMessage.targetAuthor,
-                                    targetSentTimestamp: deleteMessage.targetSentTimestamp,
-                                    scope: deleteMessage.participantScope,
-                                    groupRevision: deleteMessage.groupRevision,
-                                    thread: latestThread,
-                                    localAci: localIdentifiers.aci,
-                                    tx: tx,
-                                )
-                            } catch {
-                                return owsFailDebug("Unable to participant-delete message: \(error)")
+                            if let participantDeleteMessage = deleteMessage as? OutgoingParticipantDeleteMessage {
+                                do {
+                                    try participantDeleteManager.processLocalInitiation(
+                                        requestId: participantDeleteMessage.requestId,
+                                        targetAuthor: participantDeleteMessage.targetAuthor,
+                                        targetSentTimestamp: participantDeleteMessage.targetSentTimestamp,
+                                        scope: participantDeleteMessage.participantScope,
+                                        groupRevision: participantDeleteMessage.groupRevision,
+                                        thread: latestThread,
+                                        localAci: localIdentifiers.aci,
+                                        tx: tx,
+                                    )
+                                } catch {
+                                    return owsFailDebug("Unable to participant-delete message: \(error)")
+                                }
+                            } else if deleteMessage is OutgoingDeleteMessage {
+                                do {
+                                    try TSMessage.tryToRemotelyDeleteMessageAsNonAdmin(
+                                        fromAuthor: localIdentifiers.aci,
+                                        sentAtTimestamp: latestMessage.timestamp,
+                                        threadUniqueId: latestThread.uniqueId,
+                                        serverTimestamp: 0,
+                                        transaction: tx,
+                                    )
+                                } catch {
+                                    return owsFailDebug("Unable to remotely delete message: \(error)")
+                                }
+                            } else {
+                                return owsFailDebug("Unexpected delete message type: \(type(of: deleteMessage))")
                             }
 
                             let preparedMessage = PreparedOutgoingMessage.preprepared(
                                 transientMessageWithoutAttachments: deleteMessage,
                             )
 
-                            SSKEnvironment.shared.messageSenderJobQueueRef.add(message: preparedMessage, transaction: tx)
+                            // A delete is a user-initiated control message. Keep it
+                            // ahead of background traffic so its send state cannot sit behind
+                            // low-priority sync and receipt work.
+                            SSKEnvironment.shared.messageSenderJobQueueRef.add(
+                                message: preparedMessage,
+                                isHighPriority: true,
+                                transaction: tx,
+                            )
                         }
                     },
                 )

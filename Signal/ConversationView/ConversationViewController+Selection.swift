@@ -465,15 +465,13 @@ extension ConversationViewController {
                 return
             }
 
-            guard
-                let deleteMessage = TSInteraction.buildDeleteMessage(
-                    thread: thread,
-                    message: message,
-                    localIdentifiers: localIdentifiers,
-                    canAdminDelete: false,
-                    tx: tx,
-                ) as? OutgoingParticipantDeleteMessage
-            else {
+            guard let deleteMessage = TSInteraction.buildDeleteMessage(
+                thread: latestThread,
+                message: message,
+                localIdentifiers: localIdentifiers,
+                canAdminDelete: false,
+                tx: tx,
+            ) else {
                 return owsFailDebug("Failure to build outgoing delete for everyone.")
             }
 
@@ -483,26 +481,46 @@ extension ConversationViewController {
                 tx: tx,
             )
 
-            do {
-                try participantDeleteManager.processLocalInitiation(
-                    requestId: deleteMessage.requestId,
-                    targetAuthor: deleteMessage.targetAuthor,
-                    targetSentTimestamp: deleteMessage.targetSentTimestamp,
-                    scope: deleteMessage.participantScope,
-                    groupRevision: deleteMessage.groupRevision,
-                    thread: latestThread,
-                    localAci: localIdentifiers.aci,
-                    tx: tx,
-                )
-            } catch {
-                return owsFailDebug("Unable to participant-delete message: \(error)")
+            if let participantDeleteMessage = deleteMessage as? OutgoingParticipantDeleteMessage {
+                do {
+                    try participantDeleteManager.processLocalInitiation(
+                        requestId: participantDeleteMessage.requestId,
+                        targetAuthor: participantDeleteMessage.targetAuthor,
+                        targetSentTimestamp: participantDeleteMessage.targetSentTimestamp,
+                        scope: participantDeleteMessage.participantScope,
+                        groupRevision: participantDeleteMessage.groupRevision,
+                        thread: latestThread,
+                        localAci: localIdentifiers.aci,
+                        tx: tx,
+                    )
+                } catch {
+                    return owsFailDebug("Unable to participant-delete message: \(error)")
+                }
+            } else if deleteMessage is OutgoingDeleteMessage {
+                do {
+                    try TSMessage.tryToRemotelyDeleteMessageAsNonAdmin(
+                        fromAuthor: localIdentifiers.aci,
+                        sentAtTimestamp: message.timestamp,
+                        threadUniqueId: latestThread.uniqueId,
+                        serverTimestamp: 0,
+                        transaction: tx,
+                    )
+                } catch {
+                    return owsFailDebug("Unable to remotely delete message: \(error)")
+                }
+            } else {
+                return owsFailDebug("Unexpected delete message type: \(type(of: deleteMessage))")
             }
 
             let preparedMessage = PreparedOutgoingMessage.preprepared(
                 transientMessageWithoutAttachments: deleteMessage,
             )
 
-            SSKEnvironment.shared.messageSenderJobQueueRef.add(message: preparedMessage, transaction: tx)
+            SSKEnvironment.shared.messageSenderJobQueueRef.add(
+                message: preparedMessage,
+                isHighPriority: true,
+                transaction: tx,
+            )
         }
     }
 

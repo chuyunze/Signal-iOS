@@ -48,4 +48,51 @@ class SSKMessageSenderJobRecordTest: SSKBaseTest {
             XCTAssertNotNil(jobRecord.threadId)
         }
     }
+
+    func testParticipantDeleteMessageSurvivesSecureCodingRoundTrip() throws {
+        let localIdentifiers: LocalIdentifiers = .forUnitTests
+        let participantDeleteMessage: OutgoingParticipantDeleteMessage = try SSKEnvironment.shared.databaseStorageRef.write { tx in
+            (DependenciesBridge.shared.registrationStateChangeManager as! RegistrationStateChangeManagerImpl).registerForTests(
+                localIdentifiers: localIdentifiers,
+                tx: tx,
+            )
+            let thread = TSContactThread.getOrCreateThread(
+                withContactAddress: SignalServiceAddress(Aci.randomForTesting()),
+                transaction: tx,
+            )
+            let messageBuilder = TSOutgoingMessageBuilder.outgoingMessageBuilder(thread: thread)
+            messageBuilder.timestamp = Date.ows_millisecondTimestamp()
+            let targetMessage = messageBuilder.build(transaction: tx)
+            return try XCTUnwrap(OutgoingParticipantDeleteMessage(
+                thread: thread,
+                message: targetMessage,
+                localIdentifiers: localIdentifiers,
+                tx: tx,
+            ))
+        }
+
+        let archivedData = try NSKeyedArchiver.archivedData(
+            withRootObject: participantDeleteMessage,
+            requiringSecureCoding: true,
+        )
+        let restoredMessage = try XCTUnwrap(NSKeyedUnarchiver.unarchivedObject(
+            ofClass: TransientOutgoingMessage.self,
+            from: archivedData,
+        ) as? OutgoingParticipantDeleteMessage)
+
+        XCTAssertEqual(restoredMessage.requestId, participantDeleteMessage.requestId)
+        XCTAssertEqual(restoredMessage.targetAuthor, participantDeleteMessage.targetAuthor)
+        XCTAssertEqual(restoredMessage.targetSentTimestamp, participantDeleteMessage.targetSentTimestamp)
+
+        let dataMessage = try SSKEnvironment.shared.databaseStorageRef.read { tx in
+            let thread = try XCTUnwrap(restoredMessage.thread(tx: tx))
+            let builder = try XCTUnwrap(restoredMessage.dataMessageBuilder(
+                with: thread,
+                transaction: tx,
+            ))
+            return try builder.build()
+        }
+        XCTAssertNotNil(dataMessage.participantDelete)
+        XCTAssertNotNil(dataMessage.delete)
+    }
 }

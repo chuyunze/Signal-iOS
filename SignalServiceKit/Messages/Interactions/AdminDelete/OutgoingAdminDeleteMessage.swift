@@ -232,6 +232,20 @@ public final class OutgoingParticipantDeleteMessage: TransientOutgoingMessage {
         let builder = super.dataMessageBuilder(with: thread, transaction: transaction)
         builder?.setTimestamp(timestamp)
         builder?.setParticipantDelete(participantDeleteBuilder.buildInfallibly())
+        if DependenciesBridge.shared.tsAccountManager.localIdentifiers(tx: transaction)?.aci == targetAuthor {
+            // Keep the cooperative request as the authoritative operation for
+            // compatible clients. The standard delete is a safe fallback for the
+            // author's own messages and also makes this control message recognizable
+            // to clients that predate ParticipantDelete.
+            do {
+                builder?.setDelete(try SSKProtoDataMessageDelete.builder(
+                    targetSentTimestamp: targetSentTimestamp,
+                ).build())
+            } catch {
+                owsFailDebug("Could not build legacy delete fallback: \(error)")
+                return nil
+            }
+        }
         return builder
     }
 
