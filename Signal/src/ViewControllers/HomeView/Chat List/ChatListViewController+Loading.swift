@@ -98,6 +98,7 @@ extension ChatListViewController {
         // We need to perform this regardless of the load result type.
         updateViewState()
         viewState.updateViewInfo(renderState.viewInfo)
+        updateFilterControl(animated: false)
     }
 
     private func applyRowChanges(_ rowChanges: [CLVRowChange], renderState: CLVRenderState, animated: Bool) {

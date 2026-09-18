@@ -23,24 +23,39 @@ class HomeTabBarController: UITabBarController {
         case chatList = 0
         case contacts = 1
         case stories = 2
+        case settings = 3
 
         var title: String {
             switch self {
             case .chatList:
                 return OWSLocalizedString(
-                    "CHAT_LIST_TITLE_INBOX",
-                    comment: "Title for the chat list's default mode.",
+                    "SEARCH_SECTION_MESSAGES",
+                    comment: "Title for the messages tab in the main tab bar.",
                 )
             case .contacts:
                 return OWSLocalizedString(
                     "COMPOSE_MESSAGE_CONTACT_SECTION_TITLE",
-                    comment: "Title for the contacts tab.",
+                    comment: "Title for the contacts tab in the main tab bar.",
                 )
             case .stories:
                 return OWSLocalizedString(
                     "STORIES_TITLE",
-                    comment: "Title for the stories view.",
+                    comment: "Title for the activity tab in the main tab bar.",
                 )
+            case .settings:
+                let storiesTitle = OWSLocalizedString("STORIES_TITLE", comment: "Title for the stories view.")
+                let myStoriesTitle = OWSLocalizedString("MY_STORIES_TITLE", comment: "Title for the current user's stories.")
+                let personalTitle = myStoriesTitle
+                    .replacingOccurrences(of: storiesTitle, with: "", options: .caseInsensitive)
+                    .trimmingCharacters(in: .whitespacesAndNewlines)
+                let settingsTitle = OWSLocalizedString(
+                    "SETTINGS_NAV_BAR_TITLE",
+                    comment: "Fallback title for the personal settings tab.",
+                )
+                guard personalTitle.caseInsensitiveCompare(myStoriesTitle) != .orderedSame else {
+                    return settingsTitle
+                }
+                return personalTitle.nilIfEmpty ?? settingsTitle
             }
         }
 
@@ -52,6 +67,8 @@ class HomeTabBarController: UITabBarController {
                 return UIImage(named: "group")
             case .stories:
                 return UIImage(named: "tab-stories")
+            case .settings:
+                return UIImage(systemName: "gearshape")
             }
         }
 
@@ -63,6 +80,8 @@ class HomeTabBarController: UITabBarController {
                 return UIImage(named: "group-fill")
             case .stories:
                 return UIImage(named: "tab-stories")
+            case .settings:
+                return UIImage(systemName: "gearshape.fill")
             }
         }
 
@@ -82,6 +101,8 @@ class HomeTabBarController: UITabBarController {
                 return "contacts"
             case .stories:
                 return "stories"
+            case .settings:
+                return "settings"
             }
         }
     }
@@ -98,6 +119,12 @@ class HomeTabBarController: UITabBarController {
     lazy var contactsViewController = ContactsViewController()
     lazy var contactsNavController = OWSNavigationController(rootViewController: contactsViewController)
     lazy var contactsTabBarItem = Tabs.contacts.tabBarItem
+
+    private lazy var settingsViewController = HomeSettingsViewController()
+    lazy var settingsNavController = OWSNavigationController(rootViewController: settingsViewController)
+    lazy var settingsTabBarItem = Tabs.settings.tabBarItem
+
+    private var visibleTabs: [Tabs] = []
 
     // There are two things going on here that require this code. The first is a stored property can't
     // conditionally include itself with an @available property, so some type erasing hoops need to be
@@ -122,8 +149,11 @@ class HomeTabBarController: UITabBarController {
     }
 
     var selectedHomeTab: Tabs {
-        get { Tabs(rawValue: selectedIndex) ?? .chatList }
-        set { selectedIndex = newValue.rawValue }
+        get { visibleTabs[safe: selectedIndex] ?? .chatList }
+        set {
+            guard let index = visibleTabs.firstIndex(of: newValue) else { return }
+            selectedIndex = index
+        }
     }
 
     var owsTabBar: OWSTabBar? {
@@ -164,11 +194,16 @@ class HomeTabBarController: UITabBarController {
 
     @objc
     private func applyTheme() {
-        tabBar.tintColor = Theme.primaryTextColor
+        tabBar.tintColor = UIColor(
+            light: UIColor(rgbHex: 0x6558F5),
+            dark: UIColor(rgbHex: 0x8176FF),
+        )
+        tabBar.unselectedItemTintColor = .Signal.secondaryLabel
     }
 
     private func updateTabBars(areStoriesEnabled: Bool) {
         let newTabs = tabsToShow(areStoriesEnabled: areStoriesEnabled)
+        visibleTabs = newTabs
         if #available(iOS 18, *), UIDevice.current.isIPad {
             self.tabs = newTabs.map(uiTab(for:))
         } else {
@@ -203,6 +238,8 @@ class HomeTabBarController: UITabBarController {
             return (contactsNavController, contactsTabBarItem)
         case .stories:
             return (storiesNavController, storiesTabBarItem)
+        case .settings:
+            return (settingsNavController, settingsTabBarItem)
         }
     }
 
@@ -211,6 +248,7 @@ class HomeTabBarController: UITabBarController {
         if areStoriesEnabled {
             tabs.append(Tabs.stories)
         }
+        tabs.append(Tabs.settings)
         return tabs
     }
 
@@ -334,7 +372,7 @@ extension HomeTabBarController: StoryBadgeCountObserver {
                 return lhsX < rhsX
             }
         }
-        let badgeView = sortedBadgeViews[safe: Tabs.stories.rawValue]
+        let badgeView = visibleTabs.firstIndex(of: .stories).flatMap { sortedBadgeViews[safe: $0] }
         badgeView?.layer.transform = CATransform3DIdentity
         let xOffset: CGFloat = CurrentAppContext().isRTL ? 0 : -5
         badgeView?.layer.transform = CATransform3DMakeTranslation(xOffset, 1, 1)
@@ -353,6 +391,8 @@ extension HomeTabBarController: UITabBarControllerDelegate {
                 tableView = storiesViewController.tableView
             case .contacts:
                 tableView = contactsViewController.tableView
+            case .settings:
+                tableView = settingsViewController.tableView
             }
 
             tableView.setContentOffset(CGPoint(x: 0, y: -tableView.safeAreaInsets.top), animated: true)
@@ -365,6 +405,16 @@ extension HomeTabBarController: UITabBarControllerDelegate {
         if isStoriesTabActive {
             storyBadgeCountManager.markAllStoriesRead()
         }
+    }
+}
+
+/// Presents the existing Settings experience as a first-class tab. Modal presentations still
+/// use `AppSettingsViewController` directly and retain their Done button.
+private final class HomeSettingsViewController: AppSettingsViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = HomeTabBarController.Tabs.settings.title
+        navigationItem.rightBarButtonItem = nil
     }
 }
 

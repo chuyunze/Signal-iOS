@@ -425,7 +425,9 @@ public class ThreadFinder {
                 \(requiredVisibleThreadsClause(forThreadIds: requiredVisibleThreadIds))
             )
             """
-        case .unfiltered, nil:
+        // Pinned membership is stored separately from the thread table. Callers apply that
+        // local-only filter after this query while preserving the user's pinned order.
+        case .unfiltered, .pinned, nil:
             ""
         }
 

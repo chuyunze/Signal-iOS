@@ -656,7 +656,7 @@
 "BACKUP_ONBOARDING_CONFIRM_KEY_TITLE" = "确认您的恢复密钥";
 
 /* Bullet point on a view introducing Backups during an onboarding flow. */
-"BACKUP_ONBOARDING_INTRO_BULLET_1" = "端对端加密";
+"BACKUP_ONBOARDING_INTRO_BULLET_1" = "端到端加密";
 
 /* Bullet point on a view introducing Backups during an onboarding flow. */
 "BACKUP_ONBOARDING_INTRO_BULLET_2" = "始终任选";
@@ -2246,7 +2246,7 @@
 "COMPOSE_BUTTON_LABEL" = "撰写";
 
 /* Table section header for contact listing when composing a new message */
-"COMPOSE_MESSAGE_CONTACT_SECTION_TITLE" = "通讯录";
+"COMPOSE_MESSAGE_CONTACT_SECTION_TITLE" = "联系人";
 
 /* Table section header for group listing when composing a new message */
 "COMPOSE_MESSAGE_GROUP_SECTION_TITLE" = "群组";
@@ -4916,7 +4916,7 @@
 "HOME_VIEW_BLOCKED_CONVERSATION" = "已屏蔽";
 
 /* Placeholder text for search bar which filters conversations. */
-"HOME_VIEW_CONVERSATION_SEARCHBAR_PLACEHOLDER" = "搜索";
+"HOME_VIEW_CONVERSATION_SEARCHBAR_PLACEHOLDER" = "搜索对话";
 
 /* A prefix indicating that a message preview is a draft */
 "HOME_VIEW_DRAFT_PREFIX" = "草稿： ";
@@ -10505,7 +10505,7 @@
 "UNPINNED_SECTION_TITLE" = "聊天";
 
 /* Pressing this button marks a thread as unread */
-"UNREAD_ACTION" = "标为未读";
+"UNREAD_ACTION" = "未读";
 
 /* No comment provided by engineer. */
 "UNSUPPORTED_ATTACHMENT" = "收到了不支持的附件类型。";

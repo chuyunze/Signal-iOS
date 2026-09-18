@@ -11,4 +11,7 @@ public enum InboxFilter: Int, Hashable, Sendable {
 
     /// Include only chats that have unread messages, or are explicitly marked unread.
     case unread = 1
+
+    /// Include only chats pinned by the local user.
+    case pinned = 2
 }

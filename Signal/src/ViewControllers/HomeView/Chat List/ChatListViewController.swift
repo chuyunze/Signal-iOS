@@ -8,6 +8,11 @@ public import SignalUI
 import StoreKit
 
 public class ChatListViewController: OWSViewController, HomeTabViewController {
+    private lazy var inboxFilterHeader = LuminousInboxFilterView { [weak self] filter in
+        self?.selectInboxFilter(filter)
+    }
+    private lazy var luminousNavigationTitleView = LuminousNavigationTitleView()
+
     init(
         chatListMode: ChatListMode,
     ) {
@@ -45,7 +50,7 @@ public class ChatListViewController: OWSViewController, HomeTabViewController {
 
         switch viewState.chatListMode {
         case .inbox:
-            title = NSLocalizedString("CHAT_LIST_TITLE_INBOX", comment: "Title for the chat list's default mode.")
+            title = OWSLocalizedString("SEARCH_SECTION_MESSAGES", comment: "Title for the chat list's default mode.")
         case .archive:
             title = NSLocalizedString("HOME_VIEW_TITLE_ARCHIVE", comment: "Title for the conversation list's 'archive' mode.")
         }
@@ -57,15 +62,10 @@ public class ChatListViewController: OWSViewController, HomeTabViewController {
         // Table View
         tableView.accessibilityIdentifier = "ChatListViewController.tableView"
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 60
+        tableView.estimatedRowHeight = 64
         tableView.allowsSelectionDuringEditing = true
         tableView.allowsMultipleSelectionDuringEditing = true
         tableView.selectionFollowsFocus = false
-
-        if let filterControl {
-            filterControl.clearAction = .disableChatListFilter(target: self)
-            filterControl.delegate = self
-        }
 
         // Empty Inbox
         view.addSubview(emptyChatListView)
@@ -86,6 +86,8 @@ public class ChatListViewController: OWSViewController, HomeTabViewController {
         navigationItem.searchController = viewState.searchController
         viewState.searchController.searchResultsUpdater = self
         searchResultsController.delegate = self
+        configureLuminousInboxHeader()
+        restoreLuminousNavigationTitle()
 
         // Backups
         viewState.backupDownloadProgressView.startTracking()
@@ -236,7 +238,6 @@ public class ChatListViewController: OWSViewController, HomeTabViewController {
             hasEverAppeared = true
         }
 
-        presentGetStartedBannerIfNecessary()
         reconcileExperienceUpgrades()
         requestReviewIfAppropriate()
         showFYISheetIfNecessary()
@@ -288,18 +289,14 @@ public class ChatListViewController: OWSViewController, HomeTabViewController {
     override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        let bottomInset = if let getStartedBanner, getStartedBanner.isViewLoaded, getStartedBanner.view.alpha > 0 {
-            getStartedBanner.opaqueHeight
-        } else {
-            CGFloat(0.0)
-        }
-
-        if tableView.contentInset.bottom != bottomInset {
-            UIView.animate(withDuration: CATransaction.animationDuration()) {
-                self.tableView.contentInset.bottom = bottomInset
-                self.tableView.verticalScrollIndicatorInsets.bottom = bottomInset
+        if tableView.tableHeaderView === inboxFilterHeader {
+            let headerSize = CGSize(width: tableView.bounds.width, height: LuminousInboxFilterView.preferredHeight)
+            if inboxFilterHeader.frame.size != headerSize {
+                inboxFilterHeader.frame.size = headerSize
+                tableView.tableHeaderView = inboxFilterHeader
             }
         }
+
     }
 
     // MARK: Theme, content size, and layout changes
@@ -323,8 +320,6 @@ public class ChatListViewController: OWSViewController, HomeTabViewController {
 
         guard isViewLoaded else { return }
 
-        containerView.willTransition(to: size, with: coordinator)
-
         // There is a subtle difference in when the split view controller
         // transitions between collapsed and expanded state on iPad vs
         // when it does on iPhone. We reloadData here in order to ensure
@@ -345,15 +340,6 @@ public class ChatListViewController: OWSViewController, HomeTabViewController {
                 self.reloadTableDataAndResetCellContentCache()
             }
 
-            // The Get Started banner will occupy most of the screen in landscape
-            // If we're transitioning to landscape, fade out the view (if it exists)
-            if let getStartedBanner = self.getStartedBanner, getStartedBanner.isViewLoaded {
-                if size.width > size.height {
-                    getStartedBanner.view.alpha = 0
-                } else {
-                    getStartedBanner.view.alpha = 1
-                }
-            }
         }
     }
 
@@ -613,14 +599,6 @@ public class ChatListViewController: OWSViewController, HomeTabViewController {
                     )
                 }
 
-                // FIXME: combine viewState.inboxFilter and renderState.viewInfo.inboxFilter to avoid bugs with them getting out of sync
-                switch viewState.inboxFilter {
-                case .unread:
-                    contextMenuActions.append(.disableChatListFilter(target: self))
-                case .unfiltered, nil:
-                    contextMenuActions.append(.enableChatListFilter(target: self))
-                }
-
                 if viewState.settingsButtonCreator.hasInboxChats {
                     contextMenuActions.append(
                         UIAction(
@@ -753,8 +731,6 @@ public class ChatListViewController: OWSViewController, HomeTabViewController {
 
     // MARK: UI Helpers
 
-    private var getStartedBanner: GetStartedBannerViewController?
-
     private var hasEverPresentedExperienceUpgrade = false
 
     var lastViewedThreadUniqueId: String?
@@ -776,25 +752,15 @@ public class ChatListViewController: OWSViewController, HomeTabViewController {
 
         var rightBarButtonItems = [UIBarButtonItem]()
 
-        let compose = UIBarButtonItem.button(icon: .buttonCompose) { [weak self] in
+        let composeButton = LuminousComposeButton { [weak self] in
             self?.showNewConversationView()
         }
-        compose.accessibilityLabel = NSLocalizedString("COMPOSE_BUTTON_LABEL", comment: "Accessibility label from compose button.")
-        compose.accessibilityHint = NSLocalizedString(
+        composeButton.accessibilityLabel = NSLocalizedString("COMPOSE_BUTTON_LABEL", comment: "Accessibility label from compose button.")
+        composeButton.accessibilityHint = NSLocalizedString(
             "COMPOSE_BUTTON_HINT",
             comment: "Accessibility hint describing what you can do with the compose button",
         )
-        rightBarButtonItems.append(compose)
-
-        let camera = UIBarButtonItem.button(icon: .buttonCamera) { [weak self] in
-            self?.showCameraView()
-        }
-        camera.accessibilityLabel = NSLocalizedString("CAMERA_BUTTON_LABEL", comment: "Accessibility label for camera button.")
-        camera.accessibilityHint = NSLocalizedString(
-            "CAMERA_BUTTON_HINT",
-            comment: "Accessibility hint describing what you can do with the camera button",
-        )
-        rightBarButtonItems.append(camera)
+        rightBarButtonItems.append(UIBarButtonItem(customView: composeButton))
 
         if let proxyButton = viewState.proxyButtonCreator.buildButton() {
             rightBarButtonItems.append(proxyButton)
@@ -1292,46 +1258,58 @@ public class ChatListViewController: OWSViewController, HomeTabViewController {
 // MARK: - ChatListFilterActions
 
 extension ChatListViewController {
-    func enableChatListFilter(_ sender: AnyObject?) {
+    func enableChatListFilter(_: AnyObject?) {
         updateChatListFilter(.unread)
-        updateBarButtonItems()
-
-        if filterControl?.isFiltering == true {
-            // No need to update the filter control if it's already in the
-            // filtering state.
-            loadCoordinator.loadIfNecessary()
-        } else {
-            tableView.performBatchUpdates {
-                filterControl?.startFiltering(animated: true)
-                loadCoordinator.loadIfNecessary()
-            }
-        }
+        loadCoordinator.loadIfNecessary(shouldForceLoad: true)
     }
 
-    func disableChatListFilter(_ sender: AnyObject?) {
+    func disableChatListFilter(_: AnyObject?) {
         updateChatListFilter(.unfiltered)
-        updateBarButtonItems()
-
-        tableView.performBatchUpdates {
-            filterControl?.stopFiltering(animated: true)
-            loadCoordinator.loadIfNecessary()
-        }
+        loadCoordinator.loadIfNecessary(shouldForceLoad: true)
     }
 
-    private func updateFilterControl(animated: Bool) {
-        guard let filterControl else { return }
-        switch viewState.inboxFilter {
-        case .unread:
-            filterControl.startFiltering(animated: animated)
-        case .unfiltered, nil:
-            filterControl.stopFiltering(animated: animated)
-        }
+    func updateFilterControl(animated _: Bool) {
+        inboxFilterHeader.selectedFilter = viewState.inboxFilter ?? .unfiltered
     }
 
     private func updateChatListFilter(_ inboxFilter: InboxFilter) {
         viewState.inboxFilter = inboxFilter
         loadCoordinator.saveInboxFilter(inboxFilter)
+        inboxFilterHeader.selectedFilter = inboxFilter
         updateBarButtonItems()
+    }
+
+    private func configureLuminousInboxHeader() {
+        guard viewState.chatListMode == .inbox else { return }
+        inboxFilterHeader.selectedFilter = viewState.inboxFilter ?? .unfiltered
+        inboxFilterHeader.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: tableView.bounds.width,
+            height: LuminousInboxFilterView.preferredHeight,
+        )
+        tableView.tableHeaderView = inboxFilterHeader
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchBar.placeholder = OWSLocalizedString(
+            "HOME_VIEW_CONVERSATION_SEARCHBAR_PLACEHOLDER",
+            comment: "Placeholder text for the conversation search field.",
+        )
+        searchBar.searchTextField.backgroundColor = UIColor(
+            light: UIColor(rgbHex: 0xF0F2F7),
+            dark: UIColor(rgbHex: 0x1C2028),
+        )
+    }
+
+    func restoreLuminousNavigationTitle() {
+        guard viewState.chatListMode == .inbox, !viewState.multiSelectState.isActive else { return }
+        navigationItem.titleView = luminousNavigationTitleView
+    }
+
+    private func selectInboxFilter(_ inboxFilter: InboxFilter) {
+        guard viewState.inboxFilter != inboxFilter else { return }
+        updateChatListFilter(inboxFilter)
+        updateFilterControl(animated: false)
+        loadCoordinator.loadIfNecessary(shouldForceLoad: true)
     }
 }
 
@@ -1553,62 +1531,6 @@ extension ChatListViewController: ThreadContextualActionProvider {
     }
 }
 
-// MARK: - GetStartedBannerViewControllerDelegate
-
-extension ChatListViewController: GetStartedBannerViewControllerDelegate {
-    func presentGetStartedBannerIfNecessary() {
-        guard getStartedBanner == nil, viewState.chatListMode == .inbox else { return }
-
-        let getStartedVC = GetStartedBannerViewController(delegate: self)
-        if getStartedVC.hasIncompleteCards {
-            getStartedBanner = getStartedVC
-
-            addChild(getStartedVC)
-            view.addSubview(getStartedVC.view)
-            getStartedVC.view.autoPinEdgesToSuperviewEdges(with: .zero, excludingEdge: .top)
-
-            // If we're in landscape, the banner covers most of the screen
-            // Hide it until we transition to portrait
-            if view.bounds.width > view.bounds.height {
-                getStartedVC.view.alpha = 0
-            }
-        }
-    }
-
-    func getStartedBannerDidTapInviteFriends(_ banner: GetStartedBannerViewController) {
-        let inviteFlow = InviteFlow(presentingViewController: self)
-        inviteFlow.present(isAnimated: true, completion: nil)
-    }
-
-    func getStartedBannerDidTapCreateGroup(_ banner: GetStartedBannerViewController) {
-        showNewGroupView()
-    }
-
-    func getStartedBannerDidTapAppearance(_ banner: GetStartedBannerViewController) {
-        showAppSettings(mode: .appearance)
-    }
-
-    func getStartedBannerDidDismissAllCards(_ banner: GetStartedBannerViewController, animated: Bool) {
-        let dismissBlock = {
-            banner.view.removeFromSuperview()
-            banner.removeFromParent()
-            self.getStartedBanner = nil
-        }
-
-        if animated {
-            banner.view.setIsHidden(true, withAnimationDuration: 0.5) { _ in
-                dismissBlock()
-            }
-        } else {
-            dismissBlock()
-        }
-    }
-
-    func getStartedBannerDidTapAvatarBuilder(_ banner: GetStartedBannerViewController) {
-        showAppSettings(mode: .avatarBuilder)
-    }
-}
-
 // MARK: - First conversation label
 
 extension ChatListViewController {
@@ -1671,43 +1593,168 @@ extension ChatListViewController {
 }
 
 extension ChatListViewController: UIScrollViewDelegate {
-    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        filterControl?.draggingWillBegin(in: scrollView)
+    public func scrollViewWillBeginDragging(_: UIScrollView) {
         cancelSearch()
-    }
-
-    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        filterControl?.draggingWillEnd(in: scrollView)
-    }
-
-    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate: Bool) {
-        filterControl?.draggingDidEnd(in: scrollView)
-    }
-
-    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        filterControl?.scrollingDidStop(in: scrollView)
-    }
-
-    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        filterControl?.scrollingDidStop(in: scrollView)
     }
 }
 
-extension ChatListViewController: ChatListFilterControlDelegate {
-    func filterControlWillChangeState(to state: ChatListFilterControl.FilterState) {
-        switch state {
-        case .on:
-            updateChatListFilter(.unread)
-        case .off:
-            updateChatListFilter(.unfiltered)
-        }
+private final class LuminousInboxFilterView: UIView {
+    static let preferredHeight: CGFloat = 54
 
-        // Because this happens in response to an interactive gesture, it feels
-        // better to go a little slower than the default animation duration (0.25 sec).
-        UIView.animate(withDuration: 0.4) { [self] in
-            tableView.performBatchUpdates {
-                loadCoordinator.loadIfNecessary()
+    var selectedFilter: InboxFilter {
+        get { filters[safe: segmentedControl.selectedSegmentIndex] ?? .unfiltered }
+        set {
+            if let selectedIndex = filters.firstIndex(of: newValue) {
+                segmentedControl.selectedSegmentIndex = selectedIndex
             }
         }
+    }
+
+    private let filters: [InboxFilter] = [.unfiltered, .unread, .pinned]
+    private let didSelectFilter: (InboxFilter) -> Void
+    private lazy var segmentedControl: UISegmentedControl = {
+        let control = UISegmentedControl(items: [
+            OWSLocalizedString("CALLS_TAB_FILTER_PICKER_OPTION_ALL", comment: "Filter title that shows all chats."),
+            OWSLocalizedString("UNREAD_ACTION", comment: "Filter title that shows unread chats."),
+            OWSLocalizedString("PIN_ACTION", comment: "Filter title that shows pinned chats."),
+        ])
+        control.selectedSegmentIndex = 0
+        control.selectedSegmentTintColor = UIColor(
+            light: UIColor(rgbHex: 0x6558F5),
+            dark: UIColor(rgbHex: 0x7D72FF),
+        )
+        control.backgroundColor = UIColor(
+            light: UIColor(rgbHex: 0xEEF0F5),
+            dark: UIColor(rgbHex: 0x20252F),
+        )
+        control.setTitleTextAttributes([.foregroundColor: UIColor.ows_white], for: .selected)
+        control.setTitleTextAttributes([.foregroundColor: UIColor.Signal.secondaryLabel], for: .normal)
+        control.addTarget(self, action: #selector(selectionDidChange), for: .valueChanged)
+        return control
+    }()
+
+    init(didSelectFilter: @escaping (InboxFilter) -> Void) {
+        self.didSelectFilter = didSelectFilter
+        super.init(frame: .zero)
+        backgroundColor = .Signal.background
+        addSubview(segmentedControl)
+        segmentedControl.autoPinEdge(toSuperviewEdge: .top, withInset: 6)
+        segmentedControl.autoPinEdge(toSuperviewEdge: .leading, withInset: 16)
+        segmentedControl.autoPinEdge(toSuperviewEdge: .trailing, withInset: 16)
+        segmentedControl.autoSetDimension(.height, toSize: 40)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    @objc
+    private func selectionDidChange() {
+        didSelectFilter(selectedFilter)
+    }
+}
+
+private final class LuminousNavigationTitleView: UIView {
+    private let titleLabel = UILabel()
+    private let subtitleLabel = UILabel()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        titleLabel.text = OWSLocalizedString("SEARCH_SECTION_MESSAGES", comment: "Title for the messages tab in the main tab bar.")
+        titleLabel.font = .dynamicTypeHeadlineClamped.semibold()
+        titleLabel.textColor = .Signal.label
+        titleLabel.textAlignment = .center
+
+        subtitleLabel.text = OWSLocalizedString(
+            "BACKUP_ONBOARDING_INTRO_BULLET_1",
+            comment: "Short subtitle below the chat list title indicating that messages are end-to-end encrypted.",
+        )
+        subtitleLabel.font = .dynamicTypeCaption1Clamped
+        subtitleLabel.textColor = .Signal.secondaryLabel
+        subtitleLabel.textAlignment = .center
+        subtitleLabel.adjustsFontSizeToFitWidth = true
+        subtitleLabel.minimumScaleFactor = 0.75
+
+        let lockImageView = UIImageView(image: UIImage(systemName: "lock.fill"))
+        lockImageView.tintColor = .Signal.secondaryLabel
+        lockImageView.contentMode = .scaleAspectFit
+        lockImageView.autoSetDimensions(to: CGSize(square: 12))
+
+        let subtitleStack = UIStackView(arrangedSubviews: [lockImageView, subtitleLabel])
+        subtitleStack.axis = .horizontal
+        subtitleStack.alignment = .center
+        subtitleStack.spacing = 5
+
+        let stack = UIStackView(arrangedSubviews: [titleLabel, subtitleStack])
+        stack.axis = .vertical
+        stack.alignment = .center
+        stack.spacing = 1
+        addSubview(stack)
+        stack.autoPinEdgesToSuperviewEdges()
+    }
+
+    override var intrinsicContentSize: CGSize {
+        CGSize(width: 160, height: 44)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+private final class LuminousComposeButton: UIButton {
+    private let gradientLayer = CAGradientLayer()
+    private let action: () -> Void
+
+    init(action: @escaping () -> Void) {
+        self.action = action
+        super.init(frame: CGRect(origin: .zero, size: CGSize(square: 42)))
+
+        accessibilityTraits = .button
+        layer.cornerRadius = 13
+        layer.masksToBounds = true
+
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        layer.insertSublayer(gradientLayer, at: 0)
+        updateGradientColors()
+
+        setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
+        tintColor = .ows_white
+        imageView?.contentMode = .scaleAspectFit
+        addTarget(self, action: #selector(didTap), for: .touchUpInside)
+        autoSetDimensions(to: CGSize(square: 42))
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer.frame = bounds
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateGradientColors()
+    }
+
+    private func updateGradientColors() {
+        let leading = UIColor(light: UIColor(rgbHex: 0x6558F5), dark: UIColor(rgbHex: 0x8176FF))
+        let trailing = UIColor(light: UIColor(rgbHex: 0x28CFE3), dark: UIColor(rgbHex: 0x36D7E8))
+        gradientLayer.colors = [
+            leading.resolvedColor(with: traitCollection).cgColor,
+            trailing.resolvedColor(with: traitCollection).cgColor,
+        ]
+    }
+
+    @objc
+    private func didTap() {
+        action()
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

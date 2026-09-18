@@ -20,6 +20,7 @@ class ChatListCell: UITableViewCell, ReusableTableViewCell {
 
     private let unreadBadge = NeverClearView(name: "unreadBadge")
     private let unreadLabel = CVLabel()
+    private let unreadBadgeGradientLayer = CAGradientLayer()
 
     private let outerHStack = ManualStackViewWithLayer(name: "outerHStack")
     private let avatarStack = ManualStackView(name: "avatarStack")
@@ -147,7 +148,7 @@ class ChatListCell: UITableViewCell, ReusableTableViewCell {
     }
 
     // This value is now larger than AvatarBuilder.standardAvatarSizePoints.
-    private static let avatarSize: UInt = 56
+    private static let avatarSize: UInt = 48
     private static let muteIconSize: CGFloat = 16
 
     // MARK: -
@@ -175,6 +176,25 @@ class ChatListCell: UITableViewCell, ReusableTableViewCell {
 
         selectionStyle = .default
         automaticallyUpdatesBackgroundConfiguration = false
+
+        unreadBadgeGradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        unreadBadgeGradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        unreadBadge.layer.insertSublayer(unreadBadgeGradientLayer, at: 0)
+        updateUnreadBadgeGradientColors()
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateUnreadBadgeGradientColors()
+    }
+
+    private func updateUnreadBadgeGradientColors() {
+        let leading = UIColor(light: UIColor(rgbHex: 0x6558F5), dark: UIColor(rgbHex: 0x8176FF))
+        let trailing = UIColor(light: UIColor(rgbHex: 0x28CFE3), dark: UIColor(rgbHex: 0x36D7E8))
+        unreadBadgeGradientLayer.colors = [
+            leading.resolvedColor(with: traitCollection).cgColor,
+            trailing.resolvedColor(with: traitCollection).cgColor,
+        ]
     }
 
     override func updateConfiguration(using state: UICellConfigurationState) {
@@ -266,34 +286,28 @@ class ChatListCell: UITableViewCell, ReusableTableViewCell {
         )
         let topRowStackSize = topRowStackMeasurement.measuredSize
 
-        // Reserve space for two lines of snippet text, taking into account
-        // the worst-case snippet content.
+        // Reserve space for one line of snippet text, keeping the conversation list compact
+        // while still accounting for the worst-case snippet content.
         let snippetLineHeight = CGFloat(ceil(snippetLabelConfig.font.semibold().lineHeight * 1.2))
 
         // Use a fixed size for the snippet label and its wrapper.
-        let bottomRowWrapperSize = CGSize(width: 0, height: snippetLineHeight * 2)
+        let bottomRowWrapperSize = CGSize(width: 0, height: snippetLineHeight)
         var bottomRowStackSubviewInfos: [ManualStackSubviewInfo] = [
             bottomRowWrapperSize.asManualSubviewInfo(),
         ]
 
         if let messageStatusToken = configuration.messageStatusToken {
             let statusIndicatorSize = messageStatusToken.image.size
-            // The status indicator should vertically align with the
-            // first line of the snippet.
-            let locationOffset = CGPoint(x: 0, y: snippetLineHeight * -0.5)
             bottomRowStackSubviewInfos.append(
-                statusIndicatorSize.asManualSubviewInfo(hasFixedSize: true, locationOffset: locationOffset),
+                statusIndicatorSize.asManualSubviewInfo(hasFixedSize: true),
             )
         }
 
         let unreadBadgeMeasurements = measureUnreadBadge(unreadIndicatorLabelConfig: configuration.unreadIndicatorLabelConfig)
         if let unreadBadgeMeasurements {
             let unreadBadgeSize = unreadBadgeMeasurements.badgeSize
-            // The unread indicator should vertically align with the
-            // first line of the snippet.
-            let locationOffset = CGPoint(x: 0, y: snippetLineHeight * -0.5)
             bottomRowStackSubviewInfos.append(
-                unreadBadgeSize.asManualSubviewInfo(hasFixedSize: true, locationOffset: locationOffset),
+                unreadBadgeSize.asManualSubviewInfo(hasFixedSize: true),
             )
         }
 
@@ -358,7 +372,7 @@ class ChatListCell: UITableViewCell, ReusableTableViewCell {
         spoilerConfigBuilder.animationManager = spoilerAnimationManager
 
         owsAssertDebug(avatarView == nil, "ChatListCell.configure without prior reset called")
-        avatarView = ConversationAvatarView(sizeClass: .fiftySix, localUserDisplayMode: .noteToSelf, useAutolayout: true)
+        avatarView = ConversationAvatarView(sizeClass: .fortyEight, localUserDisplayMode: .noteToSelf, useAutolayout: true)
         avatarView?.updateWithSneakyTransactionIfNecessary({ config in
             if configuration.thread.isReleaseNotesThread {
                 config.dataSource = .asset(avatar: AvatarBuilder.releaseNotesIcon(), badge: nil)
@@ -441,7 +455,7 @@ class ChatListCell: UITableViewCell, ReusableTableViewCell {
             let snippetSize = self.snippetLabel.sizeThatFits(view.bounds.size)
             if
                 DebugFlags.internalLogging,
-                snippetSize.height > snippetLineHeight * 2
+                snippetSize.height > snippetLineHeight
             {
                 owsFailDebug("view: \(view.bounds.size), snippetSize: \(snippetSize), snippetLineHeight: \(snippetLineHeight), snippetLabelConfig: \(snippetLabelConfig)")
             }
@@ -576,7 +590,7 @@ class ChatListCell: UITableViewCell, ReusableTableViewCell {
             axis: .vertical,
             alignment: .fill,
             spacing: 1,
-            layoutMargins: UIEdgeInsets(top: 7, leading: 0, bottom: 9, trailing: 0),
+            layoutMargins: UIEdgeInsets(top: 6, leading: 0, bottom: 6, trailing: 0),
         )
     }
 
@@ -594,7 +608,7 @@ class ChatListCell: UITableViewCell, ReusableTableViewCell {
             axis: .horizontal,
             alignment: .center,
             spacing: 0,
-            layoutMargins: UIEdgeInsets(hMargin: 0, vMargin: 12),
+            layoutMargins: UIEdgeInsets(hMargin: 0, vMargin: 8),
         )
     }
 
@@ -730,14 +744,17 @@ class ChatListCell: UITableViewCell, ReusableTableViewCell {
         let unreadLabelSize = unreadBadgeMeasurements.unreadLabelSize
 
         let unreadBadge = self.unreadBadge
-        unreadBadge.backgroundColor = .Signal.accent
-        unreadBadge.addSubview(unreadLabel) { view in
+        unreadBadge.backgroundColor = .clear
+        unreadBadge.addSubview(unreadLabel) { [weak self] view in
+            guard let self else { return }
+            self.unreadBadgeGradientLayer.frame = view.bounds
             // Center within badge.
             unreadLabel.frame = CGRect(origin: (view.frame.size - unreadLabelSize).asPoint * 0.5, size: unreadLabelSize)
         }
 
         let unreadBadgeHeight = unreadBadgeMeasurements.badgeSize.height
         unreadBadge.layer.cornerRadius = unreadBadgeHeight / 2
+        unreadBadge.layer.masksToBounds = true
         return unreadBadge
     }
 
@@ -919,7 +936,7 @@ class ChatListCell: UITableViewCell, ReusableTableViewCell {
             displayConfig: displayConfig,
             font: snippetFont,
             textColor: snippetColor,
-            numberOfLines: 2,
+            numberOfLines: 1,
             lineBreakMode: .byTruncatingTail,
         )
     }

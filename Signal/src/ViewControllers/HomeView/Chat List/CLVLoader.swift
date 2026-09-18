@@ -77,11 +77,17 @@ public class CLVLoader {
         } else {
             let pinnedThreadManager = DependenciesBridge.shared.pinnedThreadManager
             pinnedThreadUniqueIds = pinnedThreadManager.pinnedThreads(tx: transaction).map(\.uniqueId)
-            visibleThreadUniqueIds = try threadFinder.visibleInboxThreadUniqueIds(
+            let allVisibleThreadUniqueIds = try threadFinder.visibleInboxThreadUniqueIds(
                 filteredBy: viewInfo.inboxFilter,
                 requiredVisibleThreadIds: viewInfo.requiredVisibleThreadIds,
                 transaction: transaction,
             )
+            if viewInfo.inboxFilter == .pinned {
+                let visibleThreadUniqueIdSet = Set(allVisibleThreadUniqueIds)
+                visibleThreadUniqueIds = pinnedThreadUniqueIds.filter(visibleThreadUniqueIdSet.contains)
+            } else {
+                visibleThreadUniqueIds = allVisibleThreadUniqueIds
+            }
         }
 
         let pinnedThreadUniqueIdsToRender = Set(pinnedThreadUniqueIds).intersection(visibleThreadUniqueIds)

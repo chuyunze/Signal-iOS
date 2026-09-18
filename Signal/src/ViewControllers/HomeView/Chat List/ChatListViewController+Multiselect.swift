@@ -24,6 +24,7 @@ extension ChatListViewController {
         // multi selection does not work well with displaying search results, so let's clear the search for now
         searchBar.delegate?.searchBarCancelButtonClicked?(searchBar)
         viewState.multiSelectState.title = title
+        navigationItem.titleView = nil
         if viewState.chatListMode == .inbox {
             let doneButton: UIBarButtonItem = .cancelButton { [weak self] in
                 self?.done()
@@ -58,6 +59,7 @@ extension ChatListViewController {
         searchBar.alpha = 1
         viewState.multiSelectState.setIsActive(false, tableView: tableView)
         title = viewState.multiSelectState.title
+        restoreLuminousNavigationTitle()
         hideToolbar()
         viewState.multiSelectState.toolbarButtons = nil
         loadCoordinator.loadIfNecessary(shouldForceLoad: true)

@@ -12,8 +12,10 @@ struct ChatListInboxFilterSection: Hashable, Identifiable {
 
     var message: String? {
         guard isEmptyState else { return nil }
-        return OWSLocalizedString("CHAT_LIST_UNREAD_FILTER_NO_CHATS", comment: "Message displayed on chat list when Filter by Unread is enabled but no unread chats are available")
+        return emptyStateMessage
     }
+
+    private var emptyStateMessage: String
 
     init?(renderState: CLVRenderState) {
         switch renderState.viewInfo.inboxFilter {
@@ -21,6 +23,16 @@ struct ChatListInboxFilterSection: Hashable, Identifiable {
             return nil
         case .unread:
             isEmptyState = renderState.visibleThreadCount == 0
+            emptyStateMessage = OWSLocalizedString(
+                "CHAT_LIST_UNREAD_FILTER_NO_CHATS",
+                comment: "Message displayed on chat list when Filter by Unread is enabled but no unread chats are available",
+            )
+        case .pinned:
+            isEmptyState = renderState.visibleThreadCount == 0
+            emptyStateMessage = OWSLocalizedString(
+                "CHAT_LIST_NO_CHATS_TITLE",
+                comment: "Message displayed on chat list when the Pinned filter is enabled but no pinned chats are available.",
+            )
         }
     }
 }

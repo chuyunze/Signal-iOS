@@ -57,7 +57,7 @@ struct CLVViewInfo: Equatable {
             let requiredThreadIds: Set<String> = switch (inboxFilter, lastSelectedThreadId) {
             case (.unread, .some(let lastSelectedThreadId)):
                 [lastSelectedThreadId]
-            case (.unread, nil), (.unfiltered, _):
+            case (.unread, nil), (.unfiltered, _), (.pinned, _):
                 []
             }
             let threadFinder = ThreadFinder()

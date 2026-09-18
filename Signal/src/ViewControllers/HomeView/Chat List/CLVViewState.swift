@@ -179,7 +179,6 @@ extension ChatListViewController {
     var searchResultsController: ConversationSearchViewController { viewState.searchResultsController }
 
     var containerView: ChatListContainerView { viewState.containerView }
-    var filterControl: ChatListFilterControl? { containerView.filterControl }
 
     // MARK: - State
 
