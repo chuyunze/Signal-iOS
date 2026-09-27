@@ -9,7 +9,7 @@ import SignalUI
 
 struct NumberlessRecoveryInput {
     let accountId: Aci
-    let accountEntropyPool: AccountEntropyPool
+    let accountEntropyPool: SignalServiceKit.AccountEntropyPool
     let totp: UInt32?
 }
 
