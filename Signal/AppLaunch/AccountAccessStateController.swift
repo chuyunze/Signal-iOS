@@ -57,7 +57,7 @@ final class AccountAccessStateController {
             do {
                 let response = try await SSKEnvironment.shared.networkManagerRef.asyncRequest(
                     request,
-                    retryPolicy: .doNotRetry,
+                    retryPolicy: .dont,
                 )
                 guard response.responseStatusCode == 200 else { return }
                 let decoder = JSONDecoder()
