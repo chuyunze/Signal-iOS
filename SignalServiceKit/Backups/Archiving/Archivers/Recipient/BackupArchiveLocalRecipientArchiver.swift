@@ -95,7 +95,7 @@ public class BackupArchiveLocalRecipientArchiver: BackupArchiveProtoStreamWriter
         do throws(GRDB.DatabaseError) {
             localSignalRecipient = try SignalRecipient.insertRecord(
                 aci: context.localIdentifiers.aci,
-                phoneNumber: E164(context.localIdentifiers.phoneNumber),
+                phoneNumber: context.localIdentifiers.phoneNumber.flatMap(E164.init),
                 pni: context.localIdentifiers.pni,
                 tx: context.tx,
             )

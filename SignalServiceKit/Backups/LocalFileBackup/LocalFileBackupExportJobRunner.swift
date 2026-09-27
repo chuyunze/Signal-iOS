@@ -146,6 +146,7 @@ public class LocalFileBackupExportJobRunnerImpl: LocalFileBackupExportJobRunner 
     // MARK: -
 
     public func resumeIfNecessary() -> Task<Void, Error>? {
+        guard BuildFlags.Backups.enabled || CurrentAppContext().isRunningTests else { return nil }
         let resumptionPoint: LocalFileBackupExportJobStore.ResumptionPoint? = db.read { tx in
             localFileBackupExportJobStore.lastReachedResumptionPoint(tx: tx)
         }
@@ -171,6 +172,9 @@ public class LocalFileBackupExportJobRunnerImpl: LocalFileBackupExportJobRunner 
     // MARK: -
 
     public func startIfNecessary(mode: LocalFileBackupExportJobMode) -> Task<Void, Error> {
+        guard BuildFlags.Backups.enabled || CurrentAppContext().isRunningTests else {
+            return Task { throw OWSAssertionError("Local message history export is disabled") }
+        }
         return _startIfNecessary(mode: mode, resumptionPoint: nil)
     }
 

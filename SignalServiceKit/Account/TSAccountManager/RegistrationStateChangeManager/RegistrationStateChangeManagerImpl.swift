@@ -112,10 +112,35 @@ public class RegistrationStateChangeManagerImpl: RegistrationStateChangeManager 
         }
     }
 
-    public func didProvisionSecondary(
-        e164: E164,
+    public func didRegisterNumberlessPrimary(
         aci: Aci,
-        pni: Pni,
+        authToken: String,
+        tx: DBWriteTransaction,
+    ) {
+        tsAccountManager.initializeNumberlessLocalIdentifiers(
+            aci: aci,
+            serverAuthToken: authToken,
+            tx: tx,
+        )
+
+        didUpdateLocalIdentifiers(
+            e164: nil,
+            aci: aci,
+            pni: nil,
+            deviceId: .primary,
+            shouldUpdateStorageService: true,
+            tx: tx,
+        )
+
+        tx.addSyncCompletion {
+            self.postRegistrationStateDidChangeNotification()
+        }
+    }
+
+    public func didProvisionSecondary(
+        e164: E164?,
+        aci: Aci,
+        pni: Pni?,
         authToken: String,
         deviceId: DeviceId,
         tx: DBWriteTransaction,
@@ -337,9 +362,9 @@ public class RegistrationStateChangeManagerImpl: RegistrationStateChangeManager 
     // MARK: - Helpers
 
     private func didUpdateLocalIdentifiers(
-        e164: E164,
+        e164: E164?,
         aci: Aci,
-        pni: Pni,
+        pni: Pni?,
         deviceId: DeviceId,
         shouldUpdateStorageService: Bool,
         tx: DBWriteTransaction,
@@ -351,7 +376,11 @@ public class RegistrationStateChangeManagerImpl: RegistrationStateChangeManager 
         authCredentialStore.removeAllCallLinkAuthCredentials(tx: tx)
         cron.resetMostRecentDates(tx: tx)
 
-        storageServiceManager.setLocalIdentifiers(LocalIdentifiers(aci: aci, pni: pni, e164: e164))
+        storageServiceManager.setLocalIdentifiers(LocalIdentifiers(
+            aci: aci,
+            pni: pni,
+            phoneNumber: e164?.stringValue,
+        ))
 
         var recipient = recipientMerger.applyMergeForLocalAccount(
             aci: aci,
@@ -402,19 +431,22 @@ extension RegistrationStateChangeManagerImpl {
         tx: DBWriteTransaction,
     ) {
         owsAssertDebug(CurrentAppContext().isRunningTests)
+        guard let phoneNumber = localIdentifiers.phoneNumber, let e164 = E164(phoneNumber), let pni = localIdentifiers.pni else {
+            owsFail("Legacy test registration requires phone identifiers")
+        }
 
         tsAccountManager.initializeLocalIdentifiers(
-            e164: E164(localIdentifiers.phoneNumber)!,
+            e164: e164,
             aci: localIdentifiers.aci,
-            pni: localIdentifiers.pni!,
+            pni: pni,
             deviceId: .primary,
             serverAuthToken: "",
             tx: tx,
         )
         didUpdateLocalIdentifiers(
-            e164: E164(localIdentifiers.phoneNumber)!,
+            e164: e164,
             aci: localIdentifiers.aci,
-            pni: localIdentifiers.pni!,
+            pni: pni,
             deviceId: .primary,
             shouldUpdateStorageService: false,
             tx: tx,

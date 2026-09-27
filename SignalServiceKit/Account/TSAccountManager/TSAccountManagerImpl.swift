@@ -162,6 +162,26 @@ extension TSAccountManagerImpl: PhoneNumberDiscoverabilitySetter {
 
 extension TSAccountManagerImpl: LocalIdentifiersSetter {
 
+    public func initializeNumberlessLocalIdentifiers(
+        aci: Aci,
+        serverAuthToken: String,
+        tx: DBWriteTransaction,
+    ) {
+        mutateWithLock(tx: tx) {
+            // Explicitly clear legacy phone identifiers; never synthesize a placeholder number or PNI.
+            kvStore.removeValue(forKey: Keys.localPhoneNumber, tx: tx)
+            kvStore.removeValue(forKey: Keys.localPni, tx: tx)
+            kvStore.writeValue(aci.serviceIdUppercaseString, forKey: Keys.localAci, tx: tx)
+            kvStore.writeValue(Int64(DeviceId.primary.uint32Value), forKey: Keys.deviceId, tx: tx)
+            kvStore.writeValue(serverAuthToken, forKey: Keys.serverAuthToken, tx: tx)
+            kvStore.writeValue(dateProvider(), forKey: Keys.registrationDate, tx: tx)
+            kvStore.removeValue(forKey: Keys.isDeregisteredOrDelinked, tx: tx)
+            kvStore.removeValue(forKey: Keys.reregistrationPhoneNumber, tx: tx)
+            kvStore.removeValue(forKey: Keys.reregistrationAci, tx: tx)
+            kvStore.removeValue(forKey: Keys.reregistrationWasPrimaryDevice, tx: tx)
+        }
+    }
+
     public func initializeLocalIdentifiers(
         e164: E164,
         aci: Aci,
@@ -504,8 +524,8 @@ extension TSAccountManagerImpl {
             let localNumber = kvStore.fetchValue(String.self, forKey: Keys.localPhoneNumber, tx: tx)
             let localAci = Aci.parseFrom(aciString: kvStore.fetchValue(String.self, forKey: Keys.localAci, tx: tx))
             let localPni = Pni.parseFrom(pniString: kvStore.fetchValue(String.self, forKey: Keys.localPni, tx: tx))
-            guard let localNumber, let localAci else {
-                owsAssertDebug((localNumber == nil) == (localAci == nil), "ACI/phone number presence must match")
+            guard let localAci else {
+                owsAssertDebug(localNumber == nil && localPni == nil, "Phone identifiers require an ACI")
                 return nil
             }
             return LocalIdentifiers(aci: localAci, pni: localPni, phoneNumber: localNumber)

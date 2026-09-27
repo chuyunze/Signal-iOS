@@ -114,7 +114,7 @@ extension BackupArchive {
             return .init(
                 aci: localIdentifiers.aci,
                 pni: localIdentifiers.pni,
-                e164: E164(localIdentifiers.phoneNumber),
+                e164: localIdentifiers.phoneNumber.flatMap(E164.init),
             )
         }
 
@@ -153,7 +153,7 @@ extension BackupArchive {
             if let pni = localIdentifiers.pni {
                 contactPniMap[pni] = localRecipientId
             }
-            if let e164 = E164(localIdentifiers.phoneNumber) {
+            if let e164 = localIdentifiers.phoneNumber.flatMap(E164.init) {
                 contactE164Map[e164] = localRecipientId
             }
 

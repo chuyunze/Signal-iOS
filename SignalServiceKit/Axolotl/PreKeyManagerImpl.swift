@@ -172,6 +172,10 @@ public class PreKeyManagerImpl: PreKeyManager {
         return await taskManager.createForRegistration()
     }
 
+    public func createAciPreKeysForNumberlessRegistration() async -> RegistrationPreKeyUploadBundle {
+        return await taskManager.createAciForNumberlessRegistration()
+    }
+
     public func createPreKeysForProvisioning(
         aciIdentityKeyPair: ECKeyPair,
         pniIdentityKeyPair: ECKeyPair,
@@ -190,6 +194,16 @@ public class PreKeyManagerImpl: PreKeyManager {
         logger.info("Finalize registration prekeys")
         await taskManager.persistAfterRegistration(
             bundles: bundles,
+            uploadDidSucceed: uploadDidSucceed,
+        )
+    }
+
+    public func finalizeAciPreKeysForNumberlessRegistration(
+        _ bundle: RegistrationPreKeyUploadBundle,
+        uploadDidSucceed: Bool,
+    ) async {
+        await taskManager.persistAciAfterNumberlessRegistration(
+            bundle: bundle,
             uploadDidSucceed: uploadDidSucceed,
         )
     }

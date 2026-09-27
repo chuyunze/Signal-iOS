@@ -506,7 +506,19 @@ extension RegistrationNavigationController: RegistrationSplashPresenter {
         pushNextController(coordinator.setHasOldDevice(hasOldDevice))
     }
 
+    public func startNumberlessRegistration() {
+        pushViewController(NumberlessRegistrationViewController(presenter: self), animated: true)
+    }
+
+    public func startNumberlessRecovery() {
+        pushViewController(NumberlessRecoveryViewController(presenter: self), animated: true)
+    }
+
     public func switchToDeviceLinkingMode() {
+        guard BuildFlags.multiDevice else {
+            logger.warn("Ignoring device-linking request in single-device product variant")
+            return
+        }
         logger.info("Pushing device linking")
         let controller = RegistrationConfirmModeSwitchViewController(presenter: self)
         pushViewController(controller, animated: true)
@@ -516,10 +528,18 @@ extension RegistrationNavigationController: RegistrationSplashPresenter {
 extension RegistrationNavigationController: RegistrationConfimModeSwitchPresenter {
 
     public func confirmSwitchToDeviceLinkingMode() {
+        guard BuildFlags.multiDevice else {
+            logger.warn("Ignoring confirmed device-linking request in single-device product variant")
+            return
+        }
         beginSecondaryDeviceLinking(startingAtQRCode: false)
     }
 
     fileprivate func beginSecondaryDeviceLinking(startingAtQRCode: Bool) {
+        guard BuildFlags.multiDevice else {
+            logger.warn("Ignoring secondary-device provisioning in single-device product variant")
+            return
+        }
         guard coordinator.switchToSecondaryDeviceLinking() else {
             owsFailBeta("Can't switch to secondary device linking")
             return
@@ -539,6 +559,238 @@ extension RegistrationNavigationController: RegistrationPermissionsPresenter {
         let guarantee = coordinator.requestPermissions()
         pushNextController(guarantee, loadingMode: nil)
         await guarantee.asVoid().awaitable()
+    }
+}
+
+extension RegistrationNavigationController: NumberlessRegistrationPresenter {
+
+    func submitInvitationCode(_ code: String, from viewController: NumberlessRegistrationViewController) {
+        Task { @MainActor in
+            let bridge = DependenciesBridge.shared
+            let accountEntropyPool: AccountEntropyPool = bridge.db.write { tx in
+                let value = bridge.accountKeyStore.getAccountEntropyPool(tx: tx) ?? AccountEntropyPool()
+                bridge.accountKeyStore.setAccountEntropyPool(value, tx: tx)
+                if bridge.tsAccountManager.getRegistrationId(for: .aci, tx: tx) == nil {
+                    bridge.tsAccountManager.setRegistrationId(RegistrationIdGenerator.generate(), for: .aci, tx: tx)
+                }
+                if bridge.tsAccountManager.getRegistrationId(for: .pni, tx: tx) == nil {
+                    bridge.tsAccountManager.setRegistrationId(RegistrationIdGenerator.generate(), for: .pni, tx: tx)
+                }
+                bridge.tsAccountManager.setIsManualMessageFetchEnabled(true, tx: tx)
+                return value
+            }
+
+            let accountAttributes: AccountAttributes
+            do {
+                accountAttributes = try bridge.db.read { tx in
+                    guard
+                        let aciRegistrationId = bridge.tsAccountManager.getRegistrationId(for: .aci, tx: tx),
+                        let pniRegistrationId = bridge.tsAccountManager.getRegistrationId(for: .pni, tx: tx)
+                    else {
+                        throw OWSAssertionError("Missing registration IDs")
+                    }
+                    return AccountAttributes(
+                        isManualMessageFetchEnabled: true,
+                        registrationId: aciRegistrationId,
+                        pniRegistrationId: pniRegistrationId,
+                        unidentifiedAccessKey: nil,
+                        unrestrictedUnidentifiedAccess: false,
+                        reglockToken: nil,
+                        registrationRecoveryPassword: accountEntropyPool.getMasterKey()
+                            .deriveRegistrationRecoveryPassword().canonicalStringRepresentation,
+                        encryptedDeviceName: nil,
+                        discoverableByPhoneNumber: nil,
+                        capabilities: .init(hasSVRBackups: false),
+                    )
+                }
+            } catch {
+                viewController.registrationFailed(message: "无法准备账户数据，请重试。")
+                return
+            }
+
+            let aciPrekeyBundle = await bridge.preKeyManager.createAciPreKeysForNumberlessRegistration()
+            do {
+                let result = try await NumberlessRegistrationService(
+                    networkManager: SSKEnvironment.shared.networkManagerRef,
+                ).register(
+                    invitationCode: code,
+                    accountAttributes: accountAttributes,
+                    apnRegistrationId: nil,
+                    aciPrekeyBundle: aciPrekeyBundle,
+                )
+                await bridge.preKeyManager.finalizeAciPreKeysForNumberlessRegistration(
+                    aciPrekeyBundle,
+                    uploadDidSucceed: true,
+                )
+                bridge.db.write { tx in
+                    bridge.registrationStateChangeManager.didRegisterNumberlessPrimary(
+                        aci: result.identity.aci,
+                        authToken: result.authPassword,
+                        tx: tx,
+                    )
+                }
+                let completeController = NumberlessRegistrationCompleteViewController(
+                    accountId: result.identity.aci.serviceIdString,
+                    recoveryKey: accountEntropyPool.forDisplay.displayString,
+                    completion: { nickname in
+                        bridge.db.write { tx in
+                            _ = SSKEnvironment.shared.profileManagerRef.updateLocalProfile(
+                                profileGivenName: .setTo(nickname),
+                                profileFamilyName: .setTo(nil),
+                                profileBio: .setTo(nil),
+                                profileBioEmoji: .setTo(nil),
+                                profileAvatarData: .setTo(nil),
+                                visibleBadgeIds: .setTo([]),
+                                unsavedRotatedProfileKey: nil,
+                                userProfileWriter: .registration,
+                                authedAccount: .implicit(),
+                                tx: tx,
+                            )
+                        }
+                        SignalApp.shared.showConversationSplitView()
+                    },
+                    usernameSetup: { presentingViewController in
+                        UsernameSelectionCoordinator(
+                            currentUsername: nil,
+                            context: .init(
+                                databaseStorage: bridge.db,
+                                networkManager: SSKEnvironment.shared.networkManagerRef,
+                                storageServiceManager: SSKEnvironment.shared.storageServiceManagerRef,
+                                usernameEducationManager: bridge.usernameEducationManager,
+                                localUsernameManager: bridge.localUsernameManager,
+                            ),
+                        ).present(fromViewController: presentingViewController)
+                    },
+                )
+                self.pushViewController(completeController, animated: true)
+            } catch {
+                await bridge.preKeyManager.finalizeAciPreKeysForNumberlessRegistration(
+                    aciPrekeyBundle,
+                    uploadDidSucceed: false,
+                )
+                viewController.registrationFailed(message: "邀请码无效、已使用或网络暂时不可用。")
+            }
+        }
+    }
+}
+
+extension RegistrationNavigationController: NumberlessRecoveryPresenter {
+
+    func recoverNumberlessAccount(
+        _ input: NumberlessRecoveryInput,
+        from viewController: NumberlessRecoveryViewController,
+    ) {
+        Task { @MainActor in
+            let bridge = DependenciesBridge.shared
+            let accountAttributes: AccountAttributes
+            do {
+                accountAttributes = try bridge.db.write { tx in
+                    bridge.tsAccountManager.setRegistrationId(RegistrationIdGenerator.generate(), for: .aci, tx: tx)
+                    bridge.tsAccountManager.setRegistrationId(RegistrationIdGenerator.generate(), for: .pni, tx: tx)
+                    bridge.tsAccountManager.setIsManualMessageFetchEnabled(true, tx: tx)
+                    guard
+                        let aciRegistrationId = bridge.tsAccountManager.getRegistrationId(for: .aci, tx: tx),
+                        let pniRegistrationId = bridge.tsAccountManager.getRegistrationId(for: .pni, tx: tx)
+                    else {
+                        throw OWSAssertionError("Missing recovery registration IDs")
+                    }
+                    return AccountAttributes(
+                        isManualMessageFetchEnabled: true,
+                        registrationId: aciRegistrationId,
+                        pniRegistrationId: pniRegistrationId,
+                        unidentifiedAccessKey: nil,
+                        unrestrictedUnidentifiedAccess: false,
+                        reglockToken: nil,
+                        registrationRecoveryPassword: input.accountEntropyPool.getMasterKey()
+                            .deriveRegistrationRecoveryPassword().canonicalStringRepresentation,
+                        encryptedDeviceName: nil,
+                        discoverableByPhoneNumber: nil,
+                        capabilities: .init(hasSVRBackups: false),
+                    )
+                }
+            } catch {
+                viewController.recoveryFailed(message: "无法准备本机账户数据，请重试。")
+                return
+            }
+
+            let aciPrekeyBundle = await bridge.preKeyManager.createAciPreKeysForNumberlessRegistration()
+            do {
+                let result = try await NumberlessRecoveryService(
+                    networkManager: SSKEnvironment.shared.networkManagerRef,
+                ).recover(
+                    accountId: input.accountId,
+                    accountEntropyPool: input.accountEntropyPool,
+                    totp: input.totp,
+                    accountAttributes: accountAttributes,
+                    apnRegistrationId: nil,
+                    aciPrekeyBundle: aciPrekeyBundle,
+                )
+                await bridge.preKeyManager.finalizeAciPreKeysForNumberlessRegistration(
+                    aciPrekeyBundle,
+                    uploadDidSucceed: true,
+                )
+                bridge.db.write { tx in
+                    bridge.accountKeyStore.setAccountEntropyPool(input.accountEntropyPool, tx: tx)
+                    bridge.registrationStateChangeManager.didRegisterNumberlessPrimary(
+                        aci: result.identity.aci,
+                        authToken: result.authPassword,
+                        tx: tx,
+                    )
+                    if let username = result.identity.username {
+                        bridge.localUsernameManager.setLocalUsernameWithCorruptedLink(username: username, tx: tx)
+                    } else {
+                        bridge.localUsernameManager.clearLocalUsername(tx: tx)
+                    }
+                }
+
+                let completeController = NumberlessRecoveryCompleteViewController(
+                    accountId: result.identity.aci.serviceIdString,
+                    username: result.identity.username,
+                    completion: {
+                        SignalApp.shared.showConversationSplitView()
+                    },
+                    usernameSetup: { presentingViewController, currentUsername in
+                        UsernameSelectionCoordinator(
+                            currentUsername: currentUsername,
+                            isAttemptingRecovery: currentUsername != nil,
+                            context: .init(
+                                databaseStorage: bridge.db,
+                                networkManager: SSKEnvironment.shared.networkManagerRef,
+                                storageServiceManager: SSKEnvironment.shared.storageServiceManagerRef,
+                                usernameEducationManager: bridge.usernameEducationManager,
+                                localUsernameManager: bridge.localUsernameManager,
+                            ),
+                        ).present(fromViewController: presentingViewController)
+                    },
+                )
+                self.pushViewController(completeController, animated: true)
+            } catch let error as NumberlessRecoveryService.RecoveryError {
+                await bridge.preKeyManager.finalizeAciPreKeysForNumberlessRegistration(
+                    aciPrekeyBundle,
+                    uploadDidSucceed: false,
+                )
+                switch error {
+                case .invalidCredentials:
+                    viewController.recoveryFailed(message: "Account ID 或 Recovery Key 不正确。")
+                case .totpRequiredOrInvalid:
+                    viewController.recoveryFailed(
+                        message: "需要有效的二次验证码，请检查后重试。",
+                        focusTotp: true,
+                    )
+                case .rateLimited(let retryAfter):
+                    let suffix = retryAfter.map { " 请在 \(max(1, Int($0))) 秒后重试。" } ?? " 请稍后重试。"
+                    viewController.recoveryFailed(message: "恢复尝试过于频繁。\(suffix)")
+                case .rejected:
+                    viewController.recoveryFailed(message: "服务器拒绝了本次恢复请求。")
+                }
+            } catch {
+                await bridge.preKeyManager.finalizeAciPreKeysForNumberlessRegistration(
+                    aciPrekeyBundle,
+                    uploadDidSucceed: false,
+                )
+                viewController.recoveryFailed(message: "网络暂时不可用，请稍后重试。")
+            }
+        }
     }
 }
 

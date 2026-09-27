@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A1000013100000100000001 /* NumberlessRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1000013100000200000001 /* NumberlessRegistrationViewController.swift */; };
+		7A1000013100000100000002 /* InvitationCredentialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1000013100000200000002 /* InvitationCredentialService.swift */; };
+		7A1000013100000100000003 /* NumberlessRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1000013100000200000003 /* NumberlessRegistrationService.swift */; };
+		7A1000013100000100000004 /* NumberlessRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1000013100000200000004 /* NumberlessRecoveryViewController.swift */; };
+		7A1000013100000100000005 /* NumberlessRecoveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1000013100000200000005 /* NumberlessRecoveryService.swift */; };
+		7A1000013100000100000006 /* AppPasswordSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1000013100000200000006 /* AppPasswordSetupViewController.swift */; };
 		040277FA303DCFA6009C1468 /* LocalFileBackupAttachmentRestoreProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040277F9303DCF9B009C1468 /* LocalFileBackupAttachmentRestoreProgress.swift */; };
 		040277FE303DE4F2009C1468 /* ChatListViewController+LocalFileBackupRestoreProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040277FD303DE4F2009C1468 /* ChatListViewController+LocalFileBackupRestoreProgressView.swift */; };
 		040506F82F7EEF3B0078B769 /* RemoteReleaseNotesFetchingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040506F72F7EEF290078B769 /* RemoteReleaseNotesFetchingManager.swift */; };
@@ -1606,6 +1612,7 @@
 		880D902C2480889B003D2B14 /* EmojiPickerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880D902B2480889B003D2B14 /* EmojiPickerCollectionView.swift */; };
 		880D902E2480A23E003D2B14 /* EmojiPickerSectionToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880D902D2480A23E003D2B14 /* EmojiPickerSectionToolbar.swift */; };
 		880D90302481E617003D2B14 /* SignalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880D902F2481E617003D2B14 /* SignalApp.swift */; };
+		A671C00130A6000100000001 /* AccountAccessStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A671C00230A6000100000001 /* AccountAccessStateController.swift */; };
 		880FB3EE28CA53D400FA1C10 /* determinate_spinner_44.json in Resources */ = {isa = PBXBuildFile; fileRef = 880FB3EA28CA53D200FA1C10 /* determinate_spinner_44.json */; };
 		880FB3F028CA53D400FA1C10 /* determinate_spinner_56.json in Resources */ = {isa = PBXBuildFile; fileRef = 880FB3EC28CA53D300FA1C10 /* determinate_spinner_56.json */; };
 		880FB3F128CA53D400FA1C10 /* indeterminate_spinner_44.json in Resources */ = {isa = PBXBuildFile; fileRef = 880FB3ED28CA53D300FA1C10 /* indeterminate_spinner_44.json */; };
@@ -4244,6 +4251,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7A1000013100000200000001 /* NumberlessRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberlessRegistrationViewController.swift; sourceTree = "<group>"; };
+		7A1000013100000200000002 /* InvitationCredentialService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCredentialService.swift; sourceTree = "<group>"; };
+		7A1000013100000200000003 /* NumberlessRegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberlessRegistrationService.swift; sourceTree = "<group>"; };
+		7A1000013100000200000004 /* NumberlessRecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberlessRecoveryViewController.swift; sourceTree = "<group>"; };
+		7A1000013100000200000005 /* NumberlessRecoveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberlessRecoveryService.swift; sourceTree = "<group>"; };
+		7A1000013100000200000006 /* AppPasswordSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPasswordSetupViewController.swift; sourceTree = "<group>"; };
 		040277F9303DCF9B009C1468 /* LocalFileBackupAttachmentRestoreProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileBackupAttachmentRestoreProgress.swift; sourceTree = "<group>"; };
 		040277FD303DE4F2009C1468 /* ChatListViewController+LocalFileBackupRestoreProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatListViewController+LocalFileBackupRestoreProgressView.swift"; sourceTree = "<group>"; };
 		040506F72F7EEF290078B769 /* RemoteReleaseNotesFetchingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteReleaseNotesFetchingManager.swift; sourceTree = "<group>"; };
@@ -5893,6 +5906,7 @@
 		880D902B2480889B003D2B14 /* EmojiPickerCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerCollectionView.swift; sourceTree = "<group>"; };
 		880D902D2480A23E003D2B14 /* EmojiPickerSectionToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerSectionToolbar.swift; sourceTree = "<group>"; };
 		880D902F2481E617003D2B14 /* SignalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalApp.swift; sourceTree = "<group>"; };
+		A671C00230A6000100000001 /* AccountAccessStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAccessStateController.swift; sourceTree = "<group>"; };
 		880FB3EA28CA53D200FA1C10 /* determinate_spinner_44.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = determinate_spinner_44.json; sourceTree = "<group>"; };
 		880FB3EC28CA53D300FA1C10 /* determinate_spinner_56.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = determinate_spinner_56.json; sourceTree = "<group>"; };
 		880FB3ED28CA53D300FA1C10 /* indeterminate_spinner_44.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = indeterminate_spinner_44.json; sourceTree = "<group>"; };
@@ -9926,6 +9940,7 @@
 		5045F44129E0DAA400058E5F /* AppLaunch */ = {
 			isa = PBXGroup;
 			children = (
+				A671C00230A6000100000001 /* AccountAccessStateController.swift */,
 				F92074752888648A00B7F087 /* AppDelegate.swift */,
 				34D99CE3217509C1000AFB39 /* AppEnvironment.swift */,
 				349C3636233D198300D52012 /* LaunchJobs.swift */,
@@ -10259,11 +10274,22 @@
 		6600F352298C8FBB00B1EDB7 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				7A1000013100000300000001 /* Numberless */,
 				6600F353298C8FCA00B1EDB7 /* RegistrationSession.swift */,
 				6600F355298C903000B1EDB7 /* RegistrationSessionManager.swift */,
 				6600F357298D646E00B1EDB7 /* RegistrationSessionManagerImpl.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		7A1000013100000300000001 /* Numberless */ = {
+			isa = PBXGroup;
+			children = (
+				7A1000013100000200000002 /* InvitationCredentialService.swift */,
+				7A1000013100000200000005 /* NumberlessRecoveryService.swift */,
+				7A1000013100000200000003 /* NumberlessRegistrationService.swift */,
+			);
+			path = Numberless;
 			sourceTree = "<group>";
 		};
 		6600F365298D9D0000B1EDB7 /* Registration */ = {
@@ -10840,6 +10866,9 @@
 		66B35EA1299F077F00130204 /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
+				7A1000013100000200000006 /* AppPasswordSetupViewController.swift */,
+				7A1000013100000200000004 /* NumberlessRecoveryViewController.swift */,
+				7A1000013100000200000001 /* NumberlessRegistrationViewController.swift */,
 				F9480120299E89F8005442BE /* RegistrationCaptchaViewController.swift */,
 				66AAC2C329CB6F1100566AD6 /* RegistrationChangeNumberSplashViewController.swift */,
 				66AAC2C729CB9ED900566AD6 /* RegistrationChangePhoneNumberConfirmationViewController.swift */,
@@ -18388,6 +18417,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A1000013100000100000006 /* AppPasswordSetupViewController.swift in Sources */,
+				7A1000013100000100000004 /* NumberlessRecoveryViewController.swift in Sources */,
+				7A1000013100000100000001 /* NumberlessRegistrationViewController.swift in Sources */,
 				D91174562E8F35C1009EB756 /* AccountEntropyPoolTextView.swift in Sources */,
 				88E728FF25F0241100A2E4A4 /* AccountSettingsViewController.swift in Sources */,
 				349439D624360C30001045F7 /* AddGroupMembersViewController.swift in Sources */,
@@ -19104,6 +19136,7 @@
 				886BB3D325BA0CA400079781 /* SetWallpaperViewController.swift in Sources */,
 				F915A77029CB6D4C00EB6F68 /* ShareActivityUtil.swift in Sources */,
 				880D90302481E617003D2B14 /* SignalApp.swift in Sources */,
+				A671C00130A6000100000001 /* AccountAccessStateController.swift in Sources */,
 				50C861E62EC52CA90001A4FA /* SignalAttachmentCloner.swift in Sources */,
 				D9E43C2D2CC194140001536E /* SignalCall.swift in Sources */,
 				8822558D26B9D1D7001A33C4 /* SignalDotMePhoneNumberLink.swift in Sources */,
@@ -19291,6 +19324,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A1000013100000100000002 /* InvitationCredentialService.swift in Sources */,
+				7A1000013100000100000005 /* NumberlessRecoveryService.swift in Sources */,
+				7A1000013100000100000003 /* NumberlessRegistrationService.swift in Sources */,
 				6645F30829BF8D2000B58EBD /* AccountAttributes.swift in Sources */,
 				6645F30C29BFA28A00B58EBD /* AccountAttributesGenerator.swift in Sources */,
 				6645F30A29BF8DBC00B58EBD /* AccountAttributesRequestFactory.swift in Sources */,

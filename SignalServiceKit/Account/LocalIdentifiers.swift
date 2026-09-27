@@ -21,9 +21,9 @@ public final class LocalIdentifiers {
     ///
     /// - Note: This is a `String` because the phone number we've saved to disk
     /// in prior versions of the application may not be a valid E164.
-    public let phoneNumber: String
+    public let phoneNumber: String?
 
-    public init(aci: Aci, pni: Pni?, phoneNumber: String) {
+    public init(aci: Aci, pni: Pni?, phoneNumber: String?) {
         self.aci = aci
         self.pni = pni
         self.phoneNumber = phoneNumber
@@ -47,7 +47,7 @@ public final class LocalIdentifiers {
 
     /// Checks if `phoneNumber` refers to ourself.
     public func contains(phoneNumber: String) -> Bool {
-        return phoneNumber == self.phoneNumber
+        return self.phoneNumber.map { phoneNumber == $0 } ?? false
     }
 
     /// Checks if `address` refers to ourself.
@@ -86,7 +86,7 @@ public final class LocalIdentifiers {
         if let serviceId = address.serviceId {
             return serviceId == self.aci
         }
-        return address.phoneNumber == self.phoneNumber
+        return self.phoneNumber.map { address.phoneNumber == $0 } ?? false
     }
 }
 

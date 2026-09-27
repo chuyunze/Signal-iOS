@@ -1423,6 +1423,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Every time we become active...
         if registeredState != nil {
+            AccountAccessStateController.shared.refresh(
+                onRestricted: { [weak self] in self?.refreshConnection(isAppActive: false) },
+                onReactivated: { [weak self] in self?.refreshConnection(isAppActive: true) },
+            )
+
             // TODO: Should we run this immediately even if we would like to process already decrypted envelopes handed to us by the NSE?
             Task {
                 await SSKEnvironment.shared.groupMessageProcessorManagerRef.startAllProcessors()

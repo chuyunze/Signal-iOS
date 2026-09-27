@@ -35,7 +35,9 @@ public class PaymentsHelperImpl: PaymentsHelperSwift, PaymentsHelper {
         guard let registeredState = try? tsAccountManager.registeredStateWithMaybeSneakyTransaction() else {
             return false
         }
-        let localNumber = registeredState.localIdentifiers.phoneNumber
+        guard let localNumber = registeredState.localIdentifiers.phoneNumber else {
+            return false
+        }
         let paymentsDisabledRegions = RemoteConfig.current.paymentsDisabledRegions
         if paymentsDisabledRegions.isEmpty {
             return Self.isValidPhoneNumberForPayments_fixedAllowlist(localNumber)

@@ -26,6 +26,10 @@ private let build = FeatureBuild.current
 /// it's easier to review which feature flags are in play.
 public enum BuildFlags {
 
+    /// This private product variant is strictly single-device. Linking, device-to-device
+    /// transfer, and message-history synchronization are not permitted.
+    public static let multiDevice = false
+
     /// This product variant supports voice calls but does not expose video calling.
     /// Media capture and photo attachments are intentionally unaffected.
     public static let videoCalling = false
@@ -37,6 +41,9 @@ public enum BuildFlags {
     public static let shouldUseTestIntervals = build <= .beta
 
     public enum Backups {
+        /// This private product variant forbids exporting or restoring message history.
+        public static let enabled = false
+
         public static let showOptimizeMedia = build <= .dev
 
         public static let restoreFailOnAnyError = build <= .beta
@@ -75,7 +82,7 @@ public enum BuildFlags {
         public static let conservativeSelfCheck = build <= .internal
     }
 
-    public static let wifiAwareDeviceTransfer = build <= .internal
+    public static let wifiAwareDeviceTransfer = multiDevice && build <= .internal
 
     public enum ReleaseNotesChannel {
         public static let ignoreFetchDelay = build <= .internal

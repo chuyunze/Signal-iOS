@@ -296,8 +296,8 @@ public class SSKEnvironment: NSObject {
             guard let localIdentifiers = tsAccountManager.localIdentifiers(tx: tx) else {
                 return // Not registered yet.
             }
-            guard let phoneNumber = E164(localIdentifiers.phoneNumber) else {
-                return // Registered with an invalid phone number.
+            guard let phoneNumberString = localIdentifiers.phoneNumber, let phoneNumber = E164(phoneNumberString) else {
+                return // Numberless account, or registered with an invalid phone number.
             }
             let localRecipient = recipientMerger.applyMergeForLocalAccount(
                 aci: localIdentifiers.aci,

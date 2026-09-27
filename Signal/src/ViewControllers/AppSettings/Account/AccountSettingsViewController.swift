@@ -374,7 +374,8 @@ class AccountSettingsViewController: OWSTableViewController2 {
                 return .disallowed
             }
             guard
-                let localE164 = E164(registeredState.localIdentifiers.phoneNumber),
+                let localNumber = registeredState.localIdentifiers.phoneNumber,
+                let localE164 = E164(localNumber),
                 let authToken = tsAccountManager.storedServerAuthToken(tx: transaction),
                 let localDeviceId = tsAccountManager.storedDeviceId(tx: transaction).ifValid
             else {

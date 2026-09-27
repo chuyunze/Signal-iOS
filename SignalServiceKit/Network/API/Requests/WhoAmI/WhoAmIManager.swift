@@ -95,14 +95,31 @@ public enum WhoAmIRequestFactory {
             }
 
             @AciUuid public var aci: Aci
-            @PniUuid public var pni: Pni
-            public let e164: E164
+            public let pni: Pni?
+            public let e164: E164?
             public let usernameHash: String?
             public let entitlements: Entitlements
 
+            public init(from decoder: Decoder) throws {
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                self._aci = try container.decode(AciUuid.self, forKey: .aci)
+                self.pni = try container.decodeIfPresent(PniUuid.self, forKey: .pni)?.wrappedValue
+                self.e164 = try container.decodeIfPresent(E164.self, forKey: .e164)
+                self.usernameHash = try container.decodeIfPresent(String.self, forKey: .usernameHash)
+                self.entitlements = try container.decode(Entitlements.self, forKey: .entitlements)
+            }
+
+            private init(aci: Aci, pni: Pni?, e164: E164?, usernameHash: String?, entitlements: Entitlements) {
+                self._aci = aci.codableUuid
+                self.pni = pni
+                self.e164 = e164
+                self.usernameHash = usernameHash
+                self.entitlements = entitlements
+            }
+
 #if TESTABLE_BUILD
 
-            static func forUnitTest(aci: Aci, pni: Pni, e164: E164) -> Self {
+            static func forUnitTest(aci: Aci, pni: Pni?, e164: E164?) -> Self {
                 return Self(
                     aci: aci,
                     pni: pni,
@@ -113,7 +130,11 @@ public enum WhoAmIRequestFactory {
             }
 
             static func forUnitTest(localIdentifiers: LocalIdentifiers) -> Self {
-                return forUnitTest(aci: localIdentifiers.aci, pni: localIdentifiers.pni!, e164: E164(localIdentifiers.phoneNumber)!)
+                return forUnitTest(
+                    aci: localIdentifiers.aci,
+                    pni: localIdentifiers.pni,
+                    e164: localIdentifiers.phoneNumber.flatMap(E164.init),
+                )
             }
 
 #endif

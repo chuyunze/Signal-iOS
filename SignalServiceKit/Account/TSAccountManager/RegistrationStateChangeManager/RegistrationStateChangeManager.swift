@@ -46,6 +46,13 @@ public protocol RegistrationStateChangeManager {
         tx: DBWriteTransaction,
     )
 
+    /// Completes registration for an ACI-only primary account.
+    func didRegisterNumberlessPrimary(
+        aci: Aci,
+        authToken: String,
+        tx: DBWriteTransaction,
+    )
+
     /**
      * After linking, secondary devices sync storage service records and do other
      * setup before provisioning is finished, then this is called after its all done.

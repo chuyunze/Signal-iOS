@@ -150,7 +150,10 @@ class IdentityKeyMismatchManagerImpl: IdentityKeyMismatchManager {
             case .pni:
                 // Our PNI might change, and if it does, we might get errors when trying to
                 // fetch the identity key for the old one. Check for that here.
-                let remotePni = try await whoAmIManager.makeWhoAmIRequest().pni
+                guard let remotePni = try await whoAmIManager.makeWhoAmIRequest().pni else {
+                    // Numberless accounts have no PNI identity to validate.
+                    return false
+                }
                 guard try loadLocalIdentifiers().pni == remotePni else {
                     logger.warn("The PNI identity key isn't valid because the PNI isn't valid.")
                     return false

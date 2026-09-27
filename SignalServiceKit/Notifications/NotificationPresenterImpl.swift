@@ -287,7 +287,9 @@ public class NotificationPresenterImpl: NotificationPresenter {
     public init() {}
 
     func previewType(tx: DBReadTransaction) -> NotificationType {
-        return notificationPreferencesManager.previewType(tx: tx)
+        // This product never exposes sender names or message text outside the
+        // independently authenticated application UI.
+        return .noNameNoPreview
     }
 
     private static func shouldShowActions(for previewType: NotificationType, tx: DBReadTransaction) -> Bool {

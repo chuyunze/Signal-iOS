@@ -9,6 +9,8 @@ import UIKit
 @MainActor
 public protocol ScreenLockViewDelegate: AnyObject {
     func unlockButtonWasTapped()
+    func applicationPasswordWasSubmitted(_ password: String)
+    func forgotApplicationPasswordWasTapped()
 }
 
 open class ScreenLockViewController: UIViewController {
@@ -45,6 +47,27 @@ open class ScreenLockViewController: UIViewController {
             self?.unlockUIButtonTapped()
         },
     )
+    private lazy var passwordField: UITextField = {
+        let field = UITextField()
+        field.borderStyle = .roundedRect
+        field.placeholder = "应用密码"
+        field.isSecureTextEntry = true
+        field.textContentType = .password
+        field.autocorrectionType = .no
+        field.autocapitalizationType = .none
+        field.spellCheckingType = .no
+        field.returnKeyType = .go
+        field.addTarget(self, action: #selector(submitPassword), for: .editingDidEndOnExit)
+        return field
+    }()
+    private lazy var passwordUnlockButton = UIButton(
+        configuration: .largePrimary(title: "使用应用密码解锁"),
+        primaryAction: UIAction { [weak self] _ in self?.submitPassword() },
+    )
+    private lazy var forgotPasswordButton = UIButton(
+        configuration: .plain(title: "忘记应用密码"),
+        primaryAction: UIAction { [weak self] _ in self?.delegate?.forgotApplicationPasswordWasTapped() },
+    )
 
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -56,11 +79,20 @@ open class ScreenLockViewController: UIViewController {
         imageViewLogo.autoVCenterInSuperview()
         imageViewLogo.autoSetDimensions(to: .square(128))
 
+        buttonUnlockUI.configuration?.title = "使用 Face ID / Touch ID 解锁"
         buttonUnlockUI.configuration?.baseForegroundColor = .Signal.label
         buttonUnlockUI.configuration?.baseBackgroundColor = .Signal.tertiaryFill
-        view.addSubview(buttonUnlockUI)
-        buttonUnlockUI.autoPinWidthToSuperview(withMargin: 50)
-        buttonUnlockUI.autoPinBottomToSuperviewMargin(withInset: 65)
+        let unlockStack = UIStackView(arrangedSubviews: [
+            passwordField,
+            passwordUnlockButton,
+            buttonUnlockUI,
+            forgotPasswordButton,
+        ])
+        unlockStack.axis = .vertical
+        unlockStack.spacing = 12
+        view.addSubview(unlockStack)
+        unlockStack.autoPinWidthToSuperview(withMargin: 50)
+        unlockStack.autoPinBottomToSuperviewMargin(withInset: 65)
 
         updateUIWithState(.screenProtection)
     }
@@ -82,7 +114,10 @@ open class ScreenLockViewController: UIViewController {
         let shouldHaveScreenLock = uiState == .screenLock
 
         imageViewLogo.isHidden = !shouldShowBlockWindow
-        buttonUnlockUI.isHidden = !shouldHaveScreenLock
+        passwordField.isHidden = !shouldHaveScreenLock
+        passwordUnlockButton.isHidden = !shouldHaveScreenLock
+        buttonUnlockUI.isHidden = !shouldHaveScreenLock || !AppPasswordLock.shared.isBiometricUnlockEnabled
+        forgotPasswordButton.isHidden = !shouldHaveScreenLock
     }
 
     override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -91,6 +126,15 @@ open class ScreenLockViewController: UIViewController {
 
     private func unlockUIButtonTapped() {
         delegate?.unlockButtonWasTapped()
+    }
+
+    @objc private func submitPassword() {
+        guard let password = passwordField.text, !password.isEmpty else {
+            passwordField.becomeFirstResponder()
+            return
+        }
+        passwordField.text = nil
+        delegate?.applicationPasswordWasSubmitted(password)
     }
 }
 

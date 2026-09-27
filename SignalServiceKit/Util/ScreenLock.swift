@@ -5,6 +5,8 @@
 
 import Foundation
 import LocalAuthentication
+import CommonCrypto
+import Security
 
 public class ScreenLock: NSObject {
 
@@ -55,6 +57,9 @@ public class ScreenLock: NSObject {
     }
 
     public func isScreenLockEnabled(tx: DBReadTransaction) -> Bool {
+        if AppPasswordLock.shared.isConfigured {
+            return true
+        }
         return self.keyValueStore.getBool(
             ScreenLock.OWSScreenLock_Key_IsScreenLockEnabled,
             defaultValue: false,
@@ -73,6 +78,10 @@ public class ScreenLock: NSObject {
     }
 
     public func setIsScreenLockEnabled(_ value: Bool, tx: DBWriteTransaction) {
+        guard !AppPasswordLock.shared.isConfigured || value else {
+            Logger.warn("Ignoring attempt to disable mandatory application password lock")
+            return
+        }
         self.keyValueStore.setBool(
             value,
             key: ScreenLock.OWSScreenLock_Key_IsScreenLockEnabled,
@@ -89,6 +98,9 @@ public class ScreenLock: NSObject {
     }
 
     public func screenLockTimeout(tx: DBReadTransaction) -> TimeInterval {
+        if AppPasswordLock.shared.isConfigured {
+            return 0
+        }
         return self.keyValueStore.getDouble(
             ScreenLock.OWSScreenLock_Key_ScreenLockTimeoutSeconds,
             defaultValue: ScreenLock.screenLockTimeoutDefault,
@@ -182,7 +194,11 @@ public class ScreenLock: NSObject {
         let context = DeviceOwnerAuthenticationType.localAuthenticationContext()
 
         var authError: NSError?
-        let canEvaluatePolicy = context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError)
+        guard AppPasswordLock.shared.isBiometricUnlockEnabled else {
+            completion(.cancel)
+            return
+        }
+        let canEvaluatePolicy = context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError)
         if !canEvaluatePolicy || authError != nil {
             Logger.error("could not determine if local authentication is supported: \(String(describing: authError))")
 
@@ -200,7 +216,7 @@ public class ScreenLock: NSObject {
             return
         }
 
-        context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: localizedReason) { success, evaluateError in
+        context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: localizedReason) { success, evaluateError in
 
             if success {
                 Logger.info("local authentication succeeded.")
@@ -286,6 +302,207 @@ public class ScreenLock: NSObject {
             description: errorDescription,
             isRetryable: false,
         )
+    }
+}
+
+// MARK: - Mandatory independent application password
+
+public final class AppPasswordLock {
+    public enum VerificationResult: Equatable {
+        case success
+        case invalid(remainingAttemptsBeforeDelay: Int)
+        case delayed(until: Date)
+        case notConfigured
+    }
+
+    public static let shared = AppPasswordLock()
+
+    private enum Constants {
+        static let service = "org.signal.private.app-password.v1"
+        static let salt = "salt"
+        static let verifier = "verifier"
+        static let biometricEnabled = "biometric-enabled"
+        static let biometricDomainState = "biometric-domain-state"
+        static let failureState = "failure-state"
+        static let iterations: UInt32 = 310_000
+        static let minimumLength = 8
+        static let attemptsBeforeDelay = 5
+        static let maximumDelay: TimeInterval = 60 * 60
+    }
+
+    private struct FailureState: Codable {
+        var count: Int
+        var delayedUntil: Date?
+    }
+
+    private let keychain = KeychainStorageImpl(isUsingProductionService: TSConstants.isUsingProductionService)
+    private let lock = NSLock()
+
+    private init() {}
+
+    public var isConfigured: Bool {
+        (try? keychain.dataValue(service: Constants.service, key: Constants.verifier)) != nil
+    }
+
+    public var isBiometricUnlockEnabled: Bool {
+        guard isConfigured else { return false }
+        guard (try? keychain.dataValue(service: Constants.service, key: Constants.biometricEnabled)) == Data([1]) else {
+            return false
+        }
+        return biometricDomainStateIsCurrent()
+    }
+
+    public func setPassword(_ password: String, enableBiometrics: Bool) throws {
+        guard password.count >= Constants.minimumLength else {
+            throw OWSAssertionError("Application password must contain at least eight characters")
+        }
+        var salt = Data(count: 16)
+        let status = salt.withUnsafeMutableBytes { bytes in
+            SecRandomCopyBytes(kSecRandomDefault, 16, bytes.baseAddress!)
+        }
+        guard status == errSecSuccess else {
+            throw KeychainError.unknownError(status)
+        }
+        let verifier = try Self.derive(password: password, salt: salt)
+        try keychain.setDataValue(salt, service: Constants.service, key: Constants.salt)
+        try keychain.setDataValue(verifier, service: Constants.service, key: Constants.verifier)
+        if enableBiometrics {
+            do {
+                try setBiometricUnlockEnabled(true)
+            } catch {
+                Logger.warn("Biometric unlock could not be enabled; application password remains active")
+                try setBiometricUnlockEnabled(false)
+            }
+        } else {
+            try setBiometricUnlockEnabled(false)
+        }
+        try resetFailures()
+        ScreenLock.shared.setIsScreenLockEnabled(true)
+        ScreenLock.shared.setScreenLockTimeout(0)
+    }
+
+    public func verify(_ password: String, now: Date = Date()) -> VerificationResult {
+        lock.lock()
+        defer { lock.unlock() }
+
+        guard
+            let salt = try? keychain.dataValue(service: Constants.service, key: Constants.salt),
+            let storedVerifier = try? keychain.dataValue(service: Constants.service, key: Constants.verifier)
+        else {
+            return .notConfigured
+        }
+
+        var failureState = loadFailureState()
+        if let delayedUntil = failureState.delayedUntil, delayedUntil > now {
+            return .delayed(until: delayedUntil)
+        }
+
+        guard let candidate = try? Self.derive(password: password, salt: salt) else {
+            return .invalid(remainingAttemptsBeforeDelay: 0)
+        }
+        if candidate.ows_constantTimeIsEqual(to: storedVerifier) {
+            try? resetFailures()
+            return .success
+        }
+
+        failureState.count += 1
+        let attemptsInWindow = failureState.count % Constants.attemptsBeforeDelay
+        if attemptsInWindow == 0 {
+            let delayRound = max(0, failureState.count / Constants.attemptsBeforeDelay - 1)
+            let delay = min(Constants.maximumDelay, 30 * pow(2, Double(delayRound)))
+            failureState.delayedUntil = now.addingTimeInterval(delay)
+        } else {
+            failureState.delayedUntil = nil
+        }
+        saveFailureState(failureState)
+        if let delayedUntil = failureState.delayedUntil {
+            return .delayed(until: delayedUntil)
+        }
+        return .invalid(remainingAttemptsBeforeDelay: Constants.attemptsBeforeDelay - attemptsInWindow)
+    }
+
+    public func setBiometricUnlockEnabled(_ enabled: Bool) throws {
+        if enabled {
+            let context = DeviceOwnerAuthenticationType.localAuthenticationContext()
+            var error: NSError?
+            guard context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
+                throw error ?? OWSAssertionError("Biometric authentication is unavailable")
+            }
+            try keychain.setDataValue(Data([1]), service: Constants.service, key: Constants.biometricEnabled)
+            if let domainState = context.evaluatedPolicyDomainState {
+                try keychain.setDataValue(domainState, service: Constants.service, key: Constants.biometricDomainState)
+            }
+        } else {
+            try keychain.setDataValue(Data([0]), service: Constants.service, key: Constants.biometricEnabled)
+            try? keychain.removeValue(service: Constants.service, key: Constants.biometricDomainState)
+        }
+    }
+
+    public func clearLocalCredential() throws {
+        for key in [
+            Constants.salt,
+            Constants.verifier,
+            Constants.biometricEnabled,
+            Constants.biometricDomainState,
+            Constants.failureState,
+        ] {
+            try keychain.removeValue(service: Constants.service, key: key)
+        }
+    }
+
+    private func biometricDomainStateIsCurrent() -> Bool {
+        let context = DeviceOwnerAuthenticationType.localAuthenticationContext()
+        guard context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) else { return false }
+        guard
+            let currentState = context.evaluatedPolicyDomainState,
+            let storedState = try? keychain.dataValue(service: Constants.service, key: Constants.biometricDomainState)
+        else { return false }
+        return currentState.ows_constantTimeIsEqual(to: storedState)
+    }
+
+    private func loadFailureState() -> FailureState {
+        guard
+            let data = try? keychain.dataValue(service: Constants.service, key: Constants.failureState),
+            let state = try? JSONDecoder().decode(FailureState.self, from: data)
+        else { return FailureState(count: 0, delayedUntil: nil) }
+        return state
+    }
+
+    private func saveFailureState(_ state: FailureState) {
+        guard let data = try? JSONEncoder().encode(state) else { return }
+        try? keychain.setDataValue(data, service: Constants.service, key: Constants.failureState)
+    }
+
+    private func resetFailures() throws {
+        try keychain.removeValue(service: Constants.service, key: Constants.failureState)
+    }
+
+    private static func derive(password: String, salt: Data) throws -> Data {
+        var output = Data(count: 32)
+        let normalizedPassword = password.precomposedStringWithCompatibilityMapping
+        let passwordLength = normalizedPassword.lengthOfBytes(using: .utf8)
+        let outputLength = output.count
+        let result = normalizedPassword.withCString { passwordBytes in
+            output.withUnsafeMutableBytes { outputBytes in
+                salt.withUnsafeBytes { saltBytes in
+                    CCKeyDerivationPBKDF(
+                        CCPBKDFAlgorithm(kCCPBKDF2),
+                        passwordBytes,
+                        passwordLength,
+                        saltBytes.bindMemory(to: UInt8.self).baseAddress,
+                        salt.count,
+                        CCPseudoRandomAlgorithm(kCCPRFHmacAlgSHA256),
+                        Constants.iterations,
+                        outputBytes.bindMemory(to: UInt8.self).baseAddress,
+                        outputLength,
+                    )
+                }
+            }
+        }
+        guard result == kCCSuccess else {
+            throw OWSAssertionError("Unable to derive application password verifier")
+        }
+        return output
     }
 }
 

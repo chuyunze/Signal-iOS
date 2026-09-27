@@ -125,7 +125,7 @@ public class QuickRestoreManager {
         }
 
         let myAci = localIdentifiers.aci
-        guard let myPhoneNumber = E164(localIdentifiers.phoneNumber) else {
+        guard let localNumber = localIdentifiers.phoneNumber, let myPhoneNumber = E164(localNumber) else {
             owsFailDebug("Can't quick restore without e164")
             throw Error.missingRestoreInformation
         }

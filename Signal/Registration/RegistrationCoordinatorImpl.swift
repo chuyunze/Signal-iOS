@@ -2592,7 +2592,7 @@ public class RegistrationCoordinatorImpl: RegistrationCoordinator {
             ))
         }
 
-        if inMemoryState.needsToAskForDeviceTransfer, !persistedState.hasDeclinedTransfer {
+        if BuildFlags.multiDevice, inMemoryState.needsToAskForDeviceTransfer, !persistedState.hasDeclinedTransfer {
             return .chooseRestoreMethod(.unspecified)
         }
 
@@ -4343,6 +4343,9 @@ public class RegistrationCoordinatorImpl: RegistrationCoordinator {
     // MARK: Device Transfer
 
     private func shouldSkipDeviceTransfer() -> Bool {
+        guard BuildFlags.multiDevice else {
+            return true
+        }
         switch mode {
         case .registering:
             return persistedState.hasDeclinedTransfer
@@ -4667,14 +4670,17 @@ public class RegistrationCoordinatorImpl: RegistrationCoordinator {
         case .networkError, .genericError:
             return .showErrorSheet(.genericError)
         case .success(let whoAmIResponse):
-            if whoAmIResponse.e164 == pniState.newE164 {
+            if whoAmIResponse.e164 == pniState.newE164,
+               let servicePni = whoAmIResponse.pni,
+               let serviceE164 = whoAmIResponse.e164
+            {
                 // Success! Fake us getting the success response.
                 db.write { tx in
                     handleSuccessfulAccountResponse(
                         identity: AccountIdentity(
                             aci: whoAmIResponse.aci,
-                            pni: whoAmIResponse.pni,
-                            e164: whoAmIResponse.e164,
+                            pni: servicePni,
+                            e164: serviceE164,
                             hasPreviouslyUsedSVR: inMemoryState.didHaveSVRBackupsPriorToReg,
                             authPassword: changeNumberState.oldAuthToken,
                         ),

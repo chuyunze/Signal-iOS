@@ -243,7 +243,7 @@ public class PhoneNumberUtil: NSObject {
     }
 
     public func localCallingCode(localIdentifiers: LocalIdentifiers) -> Int? {
-        return parseE164(localIdentifiers.phoneNumber)?.getCallingCode()
+        return localIdentifiers.phoneNumber.flatMap(parseE164)?.getCallingCode()
     }
 
     private func _parsePhoneNumber(filteredValue: String, countryCode: String = defaultCountryCode()) -> PhoneNumber? {

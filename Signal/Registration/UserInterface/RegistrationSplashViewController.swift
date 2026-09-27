@@ -11,6 +11,8 @@ public import SignalUI
 public protocol RegistrationSplashPresenter: AnyObject {
     func continueFromSplash()
     func setHasOldDevice(_ hasOldDevice: Bool)
+    func startNumberlessRegistration()
+    func startNumberlessRecovery()
 
     func switchToDeviceLinkingMode()
 }
@@ -109,25 +111,20 @@ public class RegistrationSplashViewController: OWSViewController, OWSNavigationC
         tosPPButton.enableMultilineLabel()
 
         // Large buttons enclosed in a container with some extra horizontal padding.
-        let continueButton = UIButton(
-            configuration: .largePrimary(title: CommonStrings.continueButton),
+        let invitationButton = UIButton(
+            configuration: .largeSecondary(title: "使用邀请码创建账户"),
             primaryAction: UIAction { [weak self] _ in
-                self?.continuePressed()
+                self?.presenter?.startNumberlessRegistration()
+            },
+        )
+        let recoveryButton = UIButton(
+            configuration: .largeSecondary(title: "恢复已有账户"),
+            primaryAction: UIAction { [weak self] _ in
+                self?.presenter?.startNumberlessRecovery()
             },
         )
 
-        let restoreOrTransferButton = UIButton(
-            configuration: .largeSecondary(title: OWSLocalizedString(
-                "ONBOARDING_SPLASH_RESTORE_OR_TRANSFER_BUTTON_TITLE",
-                comment: "Button for restoring or transferring account in the 'onboarding splash' view.",
-            )),
-            primaryAction: UIAction { [weak self] _ in
-                self?.didTapRestoreOrTransfer()
-            },
-        )
-        restoreOrTransferButton.enableMultilineLabel()
-
-        let largeButtonsContainer = UIStackView.verticalButtonStack(buttons: [continueButton, restoreOrTransferButton])
+        let largeButtonsContainer = UIStackView.verticalButtonStack(buttons: [invitationButton, recoveryButton])
 
         // Main content view.
         let stackView = addStaticContentStackView(arrangedSubviews: [
@@ -247,6 +244,14 @@ private class PreviewRegistrationSplashPresenter: RegistrationSplashPresenter {
 
     func setHasOldDevice(_ hasOldDevice: Bool) {
         print("setHasOldDevice: \(hasOldDevice)")
+    }
+
+    func startNumberlessRegistration() {
+        print("startNumberlessRegistration")
+    }
+
+    func startNumberlessRecovery() {
+        print("startNumberlessRecovery")
     }
 
     func switchToDeviceLinkingMode() {

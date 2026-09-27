@@ -62,6 +62,9 @@ final class BackupEnablingManager {
         fromViewController: UIViewController,
         planSelection: PlanSelection,
     ) async throws(SheetDisplayableError) {
+        guard BuildFlags.Backups.enabled || CurrentAppContext().isRunningTests else {
+            throw ActionSheetDisplayableError(localizedMessage: "此版本不允许导出或恢复消息记录。")
+        }
         let (
             registrationState,
             localIdentifiers,

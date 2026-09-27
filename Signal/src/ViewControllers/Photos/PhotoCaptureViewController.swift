@@ -1700,7 +1700,7 @@ class PhotoCaptureViewController: OWSViewController, OWSNavigationChildControlle
 
                 showUsernameLinkSheet(username: username, aci: aci)
             }
-        } else if let provisioningURL = DeviceProvisioningURL(urlString: qrCodeString) {
+        } else if BuildFlags.multiDevice, let provisioningURL = DeviceProvisioningURL(urlString: qrCodeString) {
 
             let tsAccountManager = DependenciesBridge.shared.tsAccountManager
             let registeredState = try? tsAccountManager.registeredStateWithMaybeSneakyTransaction()

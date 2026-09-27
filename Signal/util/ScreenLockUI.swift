@@ -52,6 +52,7 @@ class ScreenLockUI {
 
     private var isShowingScreenLockUI: Bool = false
     private var didLastUnlockAttemptFail: Bool = false
+    private var isPresentingMandatoryPasswordSetup: Bool = false
 
     // We want to remain in "screen lock" mode while "local auth"
     // UI is dismissing. So we lazily clear isShowingScreenLockUI
@@ -176,6 +177,7 @@ class ScreenLockUI {
         // until the app is ready.
         appReadiness.runNowOrWhenAppWillBecomeReady {
             self.isScreenLockLocked = ScreenLock.shared.isScreenLockEnabled()
+            self.presentMandatoryPasswordSetupIfNecessary()
             self.ensureUI()
         }
     }
@@ -196,6 +198,32 @@ class ScreenLockUI {
     }
 
     // MARK: - UI
+
+    private func presentMandatoryPasswordSetupIfNecessary() {
+        guard !isPresentingMandatoryPasswordSetup else { return }
+        guard !AppPasswordLock.shared.isConfigured else { return }
+        guard DependenciesBridge.shared.tsAccountManager.registrationStateWithMaybeSneakyTransaction.isRegistered else {
+            return
+        }
+        guard let presentingViewController = CurrentAppContext().frontmostViewController() else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                self.presentMandatoryPasswordSetupIfNecessary()
+            }
+            return
+        }
+
+        isPresentingMandatoryPasswordSetup = true
+        let setupController = AppPasswordSetupViewController { [weak self] in
+            guard let self else { return }
+            presentingViewController.dismiss(animated: true)
+            self.isPresentingMandatoryPasswordSetup = false
+            self.isScreenLockLocked = false
+            self.ensureUI()
+        }
+        let navigationController = OWSNavigationController(rootViewController: setupController)
+        navigationController.isModalInPresentation = true
+        presentingViewController.present(navigationController, animated: true)
+    }
 
     private func updateScreenBlockingWindowWithUIState(_ uiState: ScreenLockViewController.UIState) {
         AssertIsOnMainThread()
@@ -272,13 +300,8 @@ class ScreenLockUI {
             !viewController.isViewLoaded || viewController.view.window == nil
         })
 
-        guard
-            SSKEnvironment.shared.preferencesRef.isScreenSecurityEnabled
-            || sensitiveContentViewControllers.elements.count > 0
-        else {
-            return .none
-        }
-
+        // Always obscure every screen in the app switcher, including registration
+        // and mandatory-password setup screens.
         return .screenProtection
     }
 
@@ -435,6 +458,9 @@ class ScreenLockUI {
     @objc
     private func applicationWillResignActive(_ notification: Notification) {
         appIsInactiveOrBackground = true
+        if AppPasswordLock.shared.isConfigured {
+            isScreenLockLocked = true
+        }
     }
 
     @objc
@@ -449,6 +475,45 @@ class ScreenLockUI {
 }
 
 extension ScreenLockUI: ScreenLockViewDelegate {
+
+    func forgotApplicationPasswordWasTapped() {
+        AssertIsOnMainThread()
+        guard !appIsInactiveOrBackground else { return }
+
+        let sheet = ActionSheetController(
+            title: "清除本机数据？",
+            message: "应用密码无法找回。继续将删除这台设备上的全部消息和账户数据；之后只能使用 Account ID 和 Recovery Key 恢复账户身份。",
+        )
+        sheet.addAction(ActionSheetAction(title: "清除本机数据", style: .destructive) { _ in
+            let keychain = KeychainStorageImpl(isUsingProductionService: TSConstants.isUsingProductionService)
+            SignalApp.shared.resetAppDataAndExit(keyFetcher: GRDBKeyFetcher(keychainStorage: keychain))
+        })
+        sheet.addAction(OWSActionSheets.cancelAction)
+        screenBlockingWindow.rootViewController?.present(sheet, animated: true)
+    }
+
+    func applicationPasswordWasSubmitted(_ password: String) {
+        AssertIsOnMainThread()
+        guard !appIsInactiveOrBackground else { return }
+
+        switch AppPasswordLock.shared.verify(password) {
+        case .success:
+            didLastUnlockAttemptFail = false
+            isShowingScreenLockUI = false
+            isScreenLockLocked = false
+            ensureUI()
+        case .invalid(let remainingAttempts):
+            didLastUnlockAttemptFail = true
+            showScreenLockFailureAlertWithMessage("应用密码不正确。再错误 \(remainingAttempts) 次后将暂时锁定。")
+        case .delayed(let until):
+            didLastUnlockAttemptFail = true
+            let seconds = max(1, Int(until.timeIntervalSinceNow.rounded(.up)))
+            showScreenLockFailureAlertWithMessage("尝试次数过多，请在 \(seconds) 秒后重试。")
+        case .notConfigured:
+            didLastUnlockAttemptFail = true
+            showScreenLockFailureAlertWithMessage("尚未设置应用密码，无法解锁。")
+        }
+    }
 
     func unlockButtonWasTapped() {
         AssertIsOnMainThread()

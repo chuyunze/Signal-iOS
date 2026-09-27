@@ -149,6 +149,7 @@ class BackupExportJobRunnerImpl: BackupExportJobRunner {
     // MARK: -
 
     func resumeIfNecessary() {
+        guard BuildFlags.Backups.enabled || CurrentAppContext().isRunningTests else { return }
         let resumptionPoint: BackupExportJobStore.ResumptionPoint? = db.read { tx in
             backupExportJobStore.lastReachedResumptionPoint(tx: tx)
         }
@@ -173,6 +174,9 @@ class BackupExportJobRunnerImpl: BackupExportJobRunner {
     // MARK: -
 
     func startIfNecessary(mode: BackupExportJobMode) -> Task<Void, Error> {
+        guard BuildFlags.Backups.enabled || CurrentAppContext().isRunningTests else {
+            return Task { throw OWSAssertionError("Message history export is disabled") }
+        }
         return _startIfNecessary(mode: mode, resumptionPoint: nil)
     }
 

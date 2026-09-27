@@ -7,6 +7,25 @@ import Foundation
 
 public enum RegistrationRequestFactory {
 
+    /// Exchanges a single-use invitation for an anonymous LOGIN receipt credential.
+    public static func claimInvitationRequest(
+        invitationCode: String,
+        receiptCredentialRequest: Data,
+        logger: PrefixedLogger,
+    ) -> TSRequest {
+        var result = TSRequest(
+            url: URL(string: "v1/invitations/claim")!,
+            method: "POST",
+            parameters: [
+                "invitationCode": invitationCode,
+                "receiptCredentialRequest": receiptCredentialRequest.base64EncodedString(),
+            ],
+            logger: logger,
+        )
+        result.auth = .registration(nil)
+        return result
+    }
+
     // MARK: - Session API
 
     /// See `RegistrationServiceResponses.BeginSessionResponseCodes` for possible responses.
@@ -209,6 +228,8 @@ public enum RegistrationRequestFactory {
         case sessionId(String)
         /// Base64 encoded registration recovery password (derived from KBS master secret).
         case recoveryPassword(RegistrationRecoveryPassword)
+        /// An anonymous LOGIN receipt issued after atomically claiming an invitation.
+        case invitationReceipt(Data)
     }
 
     public struct ApnRegistrationId: Codable {
@@ -277,6 +298,8 @@ public enum RegistrationRequestFactory {
             parameters["sessionId"] = sessionId
         case .recoveryPassword(let recoveryPassword):
             parameters["recoveryPassword"] = recoveryPassword.canonicalStringRepresentation
+        case .invitationReceipt(let presentation):
+            parameters["receiptCredentialPresentation"] = presentation.base64EncodedString()
         }
 
         if let apnRegistrationId {
@@ -288,6 +311,82 @@ public enum RegistrationRequestFactory {
         var result = TSRequest(url: url, method: "POST", parameters: parameters, logger: logger)
         // As odd as this is, it is to spec.
         result.auth = .registration((username: e164.stringValue, password: authPassword))
+        result.headers["X-Signal-Agent"] = "OWI"
+        return result
+    }
+
+    /// Creates an ACI-only account without assigning a phone number or PNI.
+    public static func createNumberlessAccountRequest(
+        receiptCredentialPresentation: Data,
+        authPassword: String,
+        accountAttributes: AccountAttributes,
+        apnRegistrationId: ApnRegistrationId?,
+        aciPrekeyBundle: RegistrationPreKeyUploadBundle,
+        logger: PrefixedLogger,
+    ) -> TSRequest {
+        owsAssertDebug((apnRegistrationId != nil) != accountAttributes.isManualMessageFetchEnabled)
+
+        let url = URL(string: "v1/registration")!
+        let jsonEncoder = JSONEncoder()
+        let attributesData = try! jsonEncoder.encode(accountAttributes)
+        let attributes = try! JSONSerialization.jsonObject(with: attributesData) as! [String: Any]
+        var parameters: [String: Any] = [
+            "accountAttributes": attributes,
+            "skipDeviceTransfer": true,
+            "aciIdentityKey": aciPrekeyBundle.identityKeyPair.keyPair.publicKey.serialize().base64EncodedStringWithoutPadding(),
+            "aciSignedPreKey": OWSRequestFactory.signedPreKeyRequestParameters(aciPrekeyBundle.signedPreKey),
+            "aciPqLastResortPreKey": OWSRequestFactory.pqPreKeyRequestParameters(aciPrekeyBundle.lastResortPreKey),
+            "receiptCredentialPresentation": receiptCredentialPresentation.base64EncodedString(),
+            "requireAtomic": true,
+        ]
+        if let apnRegistrationId {
+            let data = try! jsonEncoder.encode(apnRegistrationId)
+            parameters["apnToken"] = try! JSONSerialization.jsonObject(with: data) as! [String: Any]
+        }
+
+        var result = TSRequest(url: url, method: "POST", parameters: parameters, logger: logger)
+        // Numberless registration deliberately has no E164/basic-auth username.
+        result.auth = .registration((username: "__no_number__", password: authPassword))
+        result.headers["X-Signal-Agent"] = "OWI"
+        return result
+    }
+
+    /// Reclaims an existing ACI-only account using the recovery password derived
+    /// from its Account Entropy Pool. This path never consumes an invitation.
+    public static func recoverNumberlessAccountRequest(
+        accountId: Aci,
+        recoveryPassword: RegistrationRecoveryPassword,
+        newAuthPassword: String,
+        totp: UInt32?,
+        accountAttributes: AccountAttributes,
+        apnRegistrationId: ApnRegistrationId?,
+        aciPrekeyBundle: RegistrationPreKeyUploadBundle,
+        logger: PrefixedLogger,
+    ) -> TSRequest {
+        owsAssertDebug((apnRegistrationId != nil) != accountAttributes.isManualMessageFetchEnabled)
+
+        let jsonEncoder = JSONEncoder()
+        let attributesData = try! jsonEncoder.encode(accountAttributes)
+        let attributes = try! JSONSerialization.jsonObject(with: attributesData) as! [String: Any]
+        var parameters: [String: Any] = [
+            "accountAttributes": attributes,
+            "skipDeviceTransfer": true,
+            "recoveryPassword": recoveryPassword.canonicalStringRepresentation,
+            "aciIdentityKey": aciPrekeyBundle.identityKeyPair.keyPair.publicKey.serialize().base64EncodedStringWithoutPadding(),
+            "aciSignedPreKey": OWSRequestFactory.signedPreKeyRequestParameters(aciPrekeyBundle.signedPreKey),
+            "aciPqLastResortPreKey": OWSRequestFactory.pqPreKeyRequestParameters(aciPrekeyBundle.lastResortPreKey),
+            "requireAtomic": true,
+        ]
+        if let totp {
+            parameters["totp"] = totp
+        }
+        if let apnRegistrationId {
+            let data = try! jsonEncoder.encode(apnRegistrationId)
+            parameters["apnToken"] = try! JSONSerialization.jsonObject(with: data) as! [String: Any]
+        }
+
+        var result = TSRequest(url: URL(string: "v1/registration")!, method: "POST", parameters: parameters, logger: logger)
+        result.auth = .registration((username: accountId.serviceIdString, password: newAuthPassword))
         result.headers["X-Signal-Agent"] = "OWI"
         return result
     }
@@ -322,6 +421,8 @@ public enum RegistrationRequestFactory {
             parameters["sessionId"] = sessionId
         case .recoveryPassword(let recoveryPassword):
             parameters["recoveryPassword"] = recoveryPassword.canonicalStringRepresentation
+        case .invitationReceipt:
+            owsFail("Invitation receipts cannot authorize a phone-number change")
         }
         if let reglockToken {
             parameters["reglock"] = reglockToken.canonicalStringRepresentation

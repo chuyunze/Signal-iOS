@@ -316,10 +316,12 @@ public final class KeyTransparencyManager {
         }
 
         let e164Info: KeyTransparency.E164Info?
-        if let uak = udManager.udAccessKey(for: localIdentifiers.aci, tx: tx) {
+        if let uak = udManager.udAccessKey(for: localIdentifiers.aci, tx: tx),
+           let phoneNumber = localIdentifiers.phoneNumber
+        {
             if tsAccountManager.phoneNumberDiscoverability(tx: tx).orDefault.isDiscoverable {
                 e164Info = KeyTransparency.E164Info(
-                    e164: localIdentifiers.phoneNumber,
+                    e164: phoneNumber,
                     unidentifiedAccessKey: uak.keyData,
                 )
             } else {

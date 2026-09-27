@@ -155,7 +155,7 @@ class AppSettingsViewController: OWSTableViewController2 {
                 self?.navigationController?.pushViewController(vc, animated: true)
             },
         ))
-        if isPrimaryDevice {
+        if BuildFlags.multiDevice, isPrimaryDevice {
             section1.add(.disclosureItem(
                 icon: .settingsLinkedDevices,
                 withText: OWSLocalizedString("LINKED_DEVICES_TITLE", comment: "Menu item and navbar title for the device manager"),
@@ -215,7 +215,7 @@ class AppSettingsViewController: OWSTableViewController2 {
             },
         ))
 
-        if isPrimaryDevice {
+        if BuildFlags.Backups.enabled, isPrimaryDevice {
             section2.add(.disclosureItem(
                 icon: .backup,
                 withText: OWSLocalizedString(
@@ -254,7 +254,7 @@ class AppSettingsViewController: OWSTableViewController2 {
                     )
                 },
             ))
-        } else {
+        } else if BuildFlags.Backups.enabled {
             section2.add(.disclosureItem(
                 icon: .backup,
                 withText: OWSLocalizedString(

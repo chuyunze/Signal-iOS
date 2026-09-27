@@ -169,6 +169,13 @@ public protocol LocalIdentifiersSetter {
         tx: DBWriteTransaction,
     )
 
+    /// Initialize an ACI-only primary account created through numberless registration.
+    func initializeNumberlessLocalIdentifiers(
+        aci: Aci,
+        serverAuthToken: String,
+        tx: DBWriteTransaction,
+    )
+
     /// Change local identifiers after a change number operation.
     /// ACI provided for convenience; it should be unchanged.
     /// Server auth token is also assumed to be unchanged.

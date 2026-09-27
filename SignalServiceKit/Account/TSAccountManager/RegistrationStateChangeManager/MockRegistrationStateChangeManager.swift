@@ -39,6 +39,10 @@ open class MockRegistrationStateChangeManager: RegistrationStateChangeManager {
         didRegisterPrimaryMock(e164, aci, pni, authToken)
     }
 
+    open func didRegisterNumberlessPrimary(aci: Aci, authToken: String, tx: DBWriteTransaction) {
+        registrationStateMock = { .registered }
+    }
+
     public lazy var didProvisionSecondaryMock: (
         _ e164: E164,
         _ aci: Aci,

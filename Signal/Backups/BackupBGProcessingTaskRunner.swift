@@ -43,6 +43,9 @@ class BackupBGProcessingTaskRunner: BGProcessingTaskRunner {
     static let requiresExternalPower = true
 
     func run() async throws {
+        guard BuildFlags.Backups.enabled || CurrentAppContext().isRunningTests else {
+            throw OWSAssertionError("Message history export is disabled")
+        }
         try await runWithChatConnection(
             backgroundMessageFetcherFactory: backgroundMessageFetcherFactory(),
             operation: {
@@ -70,6 +73,7 @@ class BackupBGProcessingTaskRunner: BGProcessingTaskRunner {
     }
 
     func startCondition() -> BGProcessingTaskStartCondition {
+        guard BuildFlags.Backups.enabled || CurrentAppContext().isRunningTests else { return .never }
         return db.read { tx -> BGProcessingTaskStartCondition in
             guard tsAccountManager().registrationState(tx: tx).isRegisteredPrimaryDevice else {
                 return .never

@@ -136,6 +136,20 @@ final class SAEScreenLockViewController: ScreenLockViewController, ScreenLockVie
 
     // MARK: - ScreenLockViewDelegate:
 
+    func applicationPasswordWasSubmitted(_ password: String) {
+        switch AppPasswordLock.shared.verify(password) {
+        case .success:
+            invokeCompletion(didUnlock: true)
+        case .invalid, .delayed, .notConfigured:
+            showScreenLockFailureAlertWithMessage("应用密码不正确或当前暂时无法验证。")
+        }
+    }
+
+    func forgotApplicationPasswordWasTapped() {
+        // Extensions must never reset or mutate the main app's account state.
+        invokeCompletion(didUnlock: false)
+    }
+
     func unlockButtonWasTapped() {
         Logger.info("unlockButtonWasTapped")
 

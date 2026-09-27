@@ -9,6 +9,80 @@ public import XCTest
 
 public class RegistrationRequestFactoryTest: XCTestCase {
 
+    func test_claimInvitationUsesUnauthenticatedEndpoint() {
+        let credentialRequest = Data([0x01, 0x02, 0x03])
+        let request = RegistrationRequestFactory.claimInvitationRequest(
+            invitationCode: "single-use-code",
+            receiptCredentialRequest: credentialRequest,
+            logger: .empty(),
+        )
+
+        XCTAssertEqual(request.url.relativeString, "v1/invitations/claim")
+        XCTAssertEqual(request.method, "POST")
+        XCTAssertEqual(request.parameters["invitationCode"] as? String, "single-use-code")
+        XCTAssertEqual(
+            request.parameters["receiptCredentialRequest"] as? String,
+            credentialRequest.base64EncodedString(),
+        )
+    }
+
+    func test_recoverNumberlessAccountDoesNotSendInvitationOrPniKeys() {
+        let accountId = Aci.randomForTesting()
+        let accountEntropyPool = AccountEntropyPool()
+        let identityKeyPair = ECKeyPair.generateKeyPair()
+        let prekeyBundle = RegistrationPreKeyUploadBundle(
+            identity: .aci,
+            identityKeyPair: identityKeyPair,
+            signedPreKey: SignedPreKeyStoreImpl.generateSignedPreKey(
+                keyId: PreKeyId.random(),
+                signedBy: identityKeyPair.keyPair.privateKey,
+            ),
+            lastResortPreKey: KyberPreKeyStoreImpl.generatePreKeyRecord(
+                keyId: 0,
+                now: Date(),
+                signedBy: identityKeyPair.keyPair.privateKey,
+            ),
+        )
+        let attributes = AccountAttributes(
+            isManualMessageFetchEnabled: true,
+            registrationId: 1,
+            pniRegistrationId: 2,
+            unidentifiedAccessKey: nil,
+            unrestrictedUnidentifiedAccess: false,
+            reglockToken: nil,
+            registrationRecoveryPassword: accountEntropyPool.getMasterKey()
+                .deriveRegistrationRecoveryPassword().canonicalStringRepresentation,
+            encryptedDeviceName: nil,
+            discoverableByPhoneNumber: nil,
+            capabilities: .init(hasSVRBackups: false),
+        )
+
+        let request = RegistrationRequestFactory.recoverNumberlessAccountRequest(
+            accountId: accountId,
+            recoveryPassword: accountEntropyPool.getMasterKey().deriveRegistrationRecoveryPassword(),
+            newAuthPassword: "new-device-password",
+            totp: 123456,
+            accountAttributes: attributes,
+            apnRegistrationId: nil,
+            aciPrekeyBundle: prekeyBundle,
+            logger: .empty(),
+        )
+
+        XCTAssertEqual(request.url.relativeString, "v1/registration")
+        XCTAssertEqual(request.parameters["totp"] as? UInt32, 123456)
+        XCTAssertNotNil(request.parameters["recoveryPassword"])
+        XCTAssertNil(request.parameters["receiptCredentialPresentation"])
+        XCTAssertNil(request.parameters["pniIdentityKey"])
+        XCTAssertNil(request.parameters["pniSignedPreKey"])
+        switch request.auth {
+        case .registration(let credentials):
+            XCTAssertEqual(credentials?.username, accountId.serviceIdString)
+            XCTAssertEqual(credentials?.password, "new-device-password")
+        default:
+            XCTFail("Expected registration authentication")
+        }
+    }
+
     func test_requestVerificationCodeLocale() {
         // (languageCode, countryCode, expected header)
         let expectedValues: [(String?, String?, String)] = [

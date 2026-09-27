@@ -89,6 +89,15 @@ struct PreKeyTaskManager {
         return .init(aci: aciBundle, pni: pniBundle)
     }
 
+    func createAciForNumberlessRegistration() async -> RegistrationPreKeyUploadBundle {
+        logger.info("Create ACI keys for numberless registration")
+        return await db.awaitableWrite { tx in
+            let bundle = self.generateKeysForRegistration(identity: .aci, tx: tx)
+            self.persistKeysPriorToUpload(bundle: bundle, tx: tx)
+            return bundle
+        }
+    }
+
     /// When we provision, we use the primary's identity key to create other keys. So this variant:
     /// NEVER creates an identity key
     /// ALWAYS changes the targeted keys (regardless of current key state)
@@ -128,6 +137,19 @@ struct PreKeyTaskManager {
                 // Wipe the keys.
                 self.wipeKeysAfterFailedRegistration(bundle: bundles.aci, tx: tx)
                 self.wipeKeysAfterFailedRegistration(bundle: bundles.pni, tx: tx)
+            }
+        }
+    }
+
+    func persistAciAfterNumberlessRegistration(
+        bundle: RegistrationPreKeyUploadBundle,
+        uploadDidSucceed: Bool,
+    ) async {
+        await db.awaitableWrite { tx in
+            if uploadDidSucceed {
+                self.persistStateAfterUpload(bundle: bundle, tx: tx)
+            } else {
+                self.wipeKeysAfterFailedRegistration(bundle: bundle, tx: tx)
             }
         }
     }

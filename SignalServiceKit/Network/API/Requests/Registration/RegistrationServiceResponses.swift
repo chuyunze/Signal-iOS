@@ -301,6 +301,20 @@ public enum RegistrationServiceResponses {
             case username
             case hasPreviouslyUsedSVR = "storageCapable"
         }
+
+    }
+
+    /// ACI-only response returned by invitation-based registration.
+    public struct NumberlessAccountIdentityResponse: Decodable, Equatable {
+        @AciUuid public var aci: Aci
+        public let username: String?
+        public let hasPreviouslyUsedSVR: Bool
+
+        public enum CodingKeys: String, CodingKey {
+            case aci = "uuid"
+            case username
+            case hasPreviouslyUsedSVR = "storageCapable"
+        }
     }
 
     public struct RegistrationLockFailureResponse: Decodable {

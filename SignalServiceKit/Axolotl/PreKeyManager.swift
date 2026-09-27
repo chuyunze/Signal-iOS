@@ -17,6 +17,8 @@ public protocol PreKeyManager {
     /// should be taken to finalize the keys after the server accepts them.
     func createPreKeysForRegistration() async -> RegistrationPreKeyUploadBundles
 
+    func createAciPreKeysForNumberlessRegistration() async -> RegistrationPreKeyUploadBundle
+
     /// Creates a new set of prekeys for provisioning (linking a new secondary
     /// device), using the provided identity keys (which are delivered from the
     /// primary during linking). These keys are persisted before this method
@@ -32,6 +34,11 @@ public protocol PreKeyManager {
     /// marked current and accepted.
     func finalizeRegistrationPreKeys(
         _ bundles: RegistrationPreKeyUploadBundles,
+        uploadDidSucceed: Bool,
+    ) async
+
+    func finalizeAciPreKeysForNumberlessRegistration(
+        _ bundle: RegistrationPreKeyUploadBundle,
         uploadDidSucceed: Bool,
     ) async
 

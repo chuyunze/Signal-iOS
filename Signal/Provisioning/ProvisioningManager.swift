@@ -85,9 +85,10 @@ public class ProvisioningManager {
         }
 
         let myAci = provisioningState.localIdentifiers.aci
-        let myPhoneNumber = provisioningState.localIdentifiers.phoneNumber
-        guard let myPni = provisioningState.localIdentifiers.pni else {
-            owsFail("Can't provision without a pni.")
+        guard let myPhoneNumber = provisioningState.localIdentifiers.phoneNumber,
+              let myPni = provisioningState.localIdentifiers.pni
+        else {
+            owsFail("Legacy provisioning does not support a numberless account.")
         }
 
         let ephemeralBackupKey: MessageRootBackupKey?

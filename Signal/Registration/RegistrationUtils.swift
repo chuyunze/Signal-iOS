@@ -37,7 +37,8 @@ enum RegistrationUtils {
         let tsAccountManager = DependenciesBridge.shared.tsAccountManager
         guard
             let localIdentifiers = tsAccountManager.localIdentifiersWithMaybeSneakyTransaction,
-            let phoneNumber = E164(localIdentifiers.phoneNumber)
+            let localNumber = localIdentifiers.phoneNumber,
+            let phoneNumber = E164(localNumber)
         else {
             return nil
         }

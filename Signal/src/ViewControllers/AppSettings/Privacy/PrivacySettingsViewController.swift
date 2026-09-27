@@ -177,6 +177,31 @@ class PrivacySettingsViewController: OWSTableViewController2 {
                 self?.didToggleScreenSecurity(uiSwitch)
             },
         ))
+        if AppPasswordLock.shared.isConfigured {
+            appSecuritySection.footerTitle = "应用密码始终启用，应用进入后台后立即锁定。Face ID/Touch ID 仅用于快捷解锁，不会降级为 iPhone 系统密码。"
+            appSecuritySection.add(.disclosureItem(
+                withText: "修改应用密码",
+                actionBlock: { [weak self] in
+                    guard let self else { return }
+                    let controller = AppPasswordSetupViewController(requiresCurrentPassword: true) {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    self.navigationController?.pushViewController(controller, animated: true)
+                },
+            ))
+            appSecuritySection.add(.switch(
+                withText: "Face ID / Touch ID 快捷解锁",
+                isOn: { AppPasswordLock.shared.isBiometricUnlockEnabled },
+                actionBlock: { [weak self] uiSwitch in
+                    do {
+                        try AppPasswordLock.shared.setBiometricUnlockEnabled(uiSwitch.isOn)
+                    } catch {
+                        uiSwitch.setOn(false, animated: true)
+                    }
+                    self?.updateTableContents()
+                },
+            ))
+        }
         appSecuritySection.add(.switch(
             withText: OWSLocalizedString(
                 "SETTINGS_SCREEN_LOCK_SWITCH_LABEL",
@@ -187,7 +212,7 @@ class PrivacySettingsViewController: OWSTableViewController2 {
                 self?.didToggleScreenLock(uiSwitch)
             },
         ))
-        if ScreenLock.shared.isScreenLockEnabled() {
+        if ScreenLock.shared.isScreenLockEnabled(), !AppPasswordLock.shared.isConfigured {
             appSecuritySection.add(.disclosureItem(
                 withText: OWSLocalizedString(
                     "SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT",

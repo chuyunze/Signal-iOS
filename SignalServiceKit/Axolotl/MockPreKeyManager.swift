@@ -32,6 +32,10 @@ class MockPreKeyManager: PreKeyManager {
         )
     }
 
+    func createAciPreKeysForNumberlessRegistration() async -> RegistrationPreKeyUploadBundle {
+        return (await createPreKeysForRegistration()).aci
+    }
+
     func createPreKeysForProvisioning(
         aciIdentityKeyPair: ECKeyPair,
         pniIdentityKeyPair: ECKeyPair,
@@ -57,6 +61,13 @@ class MockPreKeyManager: PreKeyManager {
 
     func finalizeRegistrationPreKeys(
         _ bundles: RegistrationPreKeyUploadBundles,
+        uploadDidSucceed: Bool,
+    ) async {
+        didFinalizeRegistrationPrekeys = true
+    }
+
+    func finalizeAciPreKeysForNumberlessRegistration(
+        _ bundle: RegistrationPreKeyUploadBundle,
         uploadDidSucceed: Bool,
     ) async {
         didFinalizeRegistrationPrekeys = true

@@ -261,6 +261,9 @@ public class BackupArchiveManagerImpl: BackupArchiveManager {
         progress progressSink: OWSProgressSink?,
         logger: PrefixedLogger,
     ) async throws -> Upload.EncryptedBackupUploadMetadata {
+        guard BuildFlags.Backups.enabled || CurrentAppContext().isRunningTests else {
+            throw OWSAssertionError("Message history export is disabled")
+        }
         let attachmentByteCounter = BackupArchiveAttachmentByteCounter()
         let startDate = dateProvider()
 

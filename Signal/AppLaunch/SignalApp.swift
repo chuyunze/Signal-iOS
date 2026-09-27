@@ -295,6 +295,11 @@ public class SignalApp {
     @MainActor
     func resetAppData(keyFetcher: GRDBKeyFetcher) {
         do {
+            try AppPasswordLock.shared.clearLocalCredential()
+        } catch {
+            owsFailDebug("Could not clear application password credential: \(error)")
+        }
+        do {
             try keyFetcher.clear()
         } catch {
             owsFailDebug("Could not clear keychain: \(error)")
