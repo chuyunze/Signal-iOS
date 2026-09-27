@@ -39,14 +39,18 @@ final class NumberlessRegistrationViewController: OWSViewController {
         submitButton.configuration = .largePrimary(title: "继续")
         submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
 
+        var pasteButtonConfiguration = UIButton.Configuration.plain()
+        pasteButtonConfiguration.title = "从剪贴板粘贴"
         let pasteButton = UIButton(
-            configuration: .plain(title: "从剪贴板粘贴"),
+            configuration: pasteButtonConfiguration,
             primaryAction: UIAction { [weak self] _ in
                 self?.invitationField.text = UIPasteboard.general.string
             }
         )
+        var scanButtonConfiguration = UIButton.Configuration.plain()
+        scanButtonConfiguration.title = "扫描邀请码二维码"
         let scanButton = UIButton(
-            configuration: .plain(title: "扫描邀请码二维码"),
+            configuration: scanButtonConfiguration,
             primaryAction: UIAction { [weak self] _ in
                 self?.openScanner()
             }

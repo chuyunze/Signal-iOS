@@ -64,10 +64,14 @@ open class ScreenLockViewController: UIViewController {
         configuration: .largePrimary(title: "使用应用密码解锁"),
         primaryAction: UIAction { [weak self] _ in self?.submitPassword() },
     )
-    private lazy var forgotPasswordButton = UIButton(
-        configuration: .plain(title: "忘记应用密码"),
-        primaryAction: UIAction { [weak self] _ in self?.delegate?.forgotApplicationPasswordWasTapped() },
-    )
+    private lazy var forgotPasswordButton: UIButton = {
+        var configuration = UIButton.Configuration.plain()
+        configuration.title = "忘记应用密码"
+        return UIButton(
+            configuration: configuration,
+            primaryAction: UIAction { [weak self] _ in self?.delegate?.forgotApplicationPasswordWasTapped() },
+        )
+    }()
 
     override open func viewDidLoad() {
         super.viewDidLoad()

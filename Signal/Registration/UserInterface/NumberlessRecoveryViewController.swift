@@ -60,8 +60,10 @@ final class NumberlessRecoveryViewController: OWSViewController {
             keyboardType: .numberPad,
         )
 
+        var pasteButtonConfiguration = UIButton.Configuration.plain()
+        pasteButtonConfiguration.title = "从剪贴板粘贴 Recovery Key"
         let pasteButton = UIButton(
-            configuration: .plain(title: "从剪贴板粘贴 Recovery Key"),
+            configuration: pasteButtonConfiguration,
             primaryAction: UIAction { [weak self] _ in
                 self?.recoveryKeyField.text = UIPasteboard.general.string
             }
