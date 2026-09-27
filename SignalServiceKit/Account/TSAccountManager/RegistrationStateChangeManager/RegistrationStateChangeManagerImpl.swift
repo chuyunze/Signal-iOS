@@ -138,9 +138,9 @@ public class RegistrationStateChangeManagerImpl: RegistrationStateChangeManager 
     }
 
     public func didProvisionSecondary(
-        e164: E164?,
+        e164: E164,
         aci: Aci,
-        pni: Pni?,
+        pni: Pni,
         authToken: String,
         deviceId: DeviceId,
         tx: DBWriteTransaction,
