@@ -669,7 +669,25 @@ extension RegistrationNavigationController: NumberlessRegistrationPresenter {
                     uploadDidSucceed: false,
                 )
                 let message: String
-                if let httpError = error as? OWSHTTPError {
+                if let keychainError = error as? KeychainError {
+                    switch keychainError {
+                    case .notAllowed:
+                        message = "设备暂时不允许访问安全存储。请保持设备解锁后重试。"
+                    case .notFound:
+                        message = "无法读取设备安全存储，请重新打开应用后重试。"
+                    case .unknownError(let status):
+                        message = "无法写入设备安全存储（错误 \(status)）。"
+                    }
+                } else if let receiptError = error as? ReceiptCredentialRequestError {
+                    switch receiptError.errorCode {
+                    case .serverValidationFailed, .paymentNotFound, .paymentIntentRedeemed:
+                        message = "邀请码无效、已过期或已使用。"
+                    case .localValidationFailed:
+                        message = "无法验证服务器返回的注册凭证。"
+                    case .paymentStillProcessing, .paymentFailed:
+                        message = "服务器返回了不支持的注册凭证状态。"
+                    }
+                } else if let httpError = error as? OWSHTTPError {
                     switch httpError.responseStatusCode {
                     case 400:
                         // The service deliberately gives the same response for

@@ -40,26 +40,33 @@ public final class InvitationCredentialService {
         }
 
         let codeDigest = Data(SHA256.hash(data: Data(normalizedCode.utf8)))
-        let request: (context: ReceiptCredentialRequestContext, request: ReceiptCredentialRequest)
+        let prepared: (
+            context: ReceiptCredentialRequestContext,
+            request: ReceiptCredentialRequest,
+            pending: PendingClaim
+        )
         if let pending = try? loadPendingClaim(), pending.codeDigest == codeDigest {
-            request = (
-                try ReceiptCredentialRequestContext(contents: pending.context),
-                try ReceiptCredentialRequest(contents: pending.request)
-            )
+            do {
+                prepared = (
+                    try ReceiptCredentialRequestContext(contents: pending.context),
+                    try ReceiptCredentialRequest(contents: pending.request),
+                    pending
+                )
+                logger.info("Reusing the pending invitation credential request.")
+            } catch {
+                logger.warn("Discarding an unreadable pending invitation credential request: \(error)")
+                clearPendingClaim()
+                prepared = try generateAndPersistRequest(codeDigest: codeDigest)
+            }
         } else {
-            request = ReceiptCredentialManager.generateReceiptRequest()
-            try savePendingClaim(PendingClaim(
-                codeDigest: codeDigest,
-                context: request.context.serialize(),
-                request: request.request.serialize(),
-                authPassword: Randomness.generateRandomBytes(16).hexadecimalString,
-            ))
+            prepared = try generateAndPersistRequest(codeDigest: codeDigest)
         }
         let networkRequest = RegistrationRequestFactory.claimInvitationRequest(
             invitationCode: normalizedCode,
-            receiptCredentialRequest: request.request.serialize(),
+            receiptCredentialRequest: prepared.request.serialize(),
             logger: logger,
         )
+        logger.info("Requesting an invitation receipt credential.")
         let credential = try await ReceiptCredentialManager(
             dateProvider: Date.init,
             logger: logger,
@@ -67,13 +74,15 @@ public final class InvitationCredentialService {
         ).requestReceiptCredential(
             via: networkRequest,
             isValidReceiptLevelPredicate: { $0 == Self.loginReceiptLevel },
-            context: request.context,
+            context: prepared.context,
         )
+        logger.info("Received and validated the invitation receipt credential.")
         let presentation = try ReceiptCredentialManager.generateReceiptCredentialPresentation(
             receiptCredential: credential,
         )
-        let pending = try loadPendingClaim()
-        return ClaimedInvitation(presentation: presentation, authPassword: pending.authPassword)
+        // Use the in-memory password. Reading it from Keychain again here could
+        // strand a successfully claimed single-use invitation if the read fails.
+        return ClaimedInvitation(presentation: presentation, authPassword: prepared.pending.authPassword)
     }
 
     /// Clear only after account creation succeeds. Keeping the request context
@@ -103,5 +112,27 @@ public final class InvitationCredentialService {
             service: Self.keychainService,
             key: Self.pendingClaimKey
         )
+    }
+
+    private func generateAndPersistRequest(codeDigest: Data) throws -> (
+        context: ReceiptCredentialRequestContext,
+        request: ReceiptCredentialRequest,
+        pending: PendingClaim
+    ) {
+        let request = ReceiptCredentialManager.generateReceiptRequest()
+        let pending = PendingClaim(
+            codeDigest: codeDigest,
+            context: request.context.serialize(),
+            request: request.request.serialize(),
+            authPassword: Randomness.generateRandomBytes(16).hexadecimalString,
+        )
+        do {
+            try savePendingClaim(pending)
+        } catch {
+            logger.error("Failed to persist the pending invitation credential request: \(error)")
+            throw error
+        }
+        logger.info("Persisted a new pending invitation credential request.")
+        return (request.context, request.request, pending)
     }
 }
