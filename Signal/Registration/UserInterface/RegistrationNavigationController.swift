@@ -611,7 +611,7 @@ extension RegistrationNavigationController: NumberlessRegistrationPresenter {
             let aciPrekeyBundle = await bridge.preKeyManager.createAciPreKeysForNumberlessRegistration()
             do {
                 let result = try await NumberlessRegistrationService(
-                    networkManager: SSKEnvironment.shared.networkManagerRef,
+                    signalService: SSKEnvironment.shared.signalServiceRef,
                 ).register(
                     invitationCode: code,
                     accountAttributes: accountAttributes,

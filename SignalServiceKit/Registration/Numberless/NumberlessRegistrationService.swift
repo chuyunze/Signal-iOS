@@ -14,12 +14,12 @@ public final class NumberlessRegistrationService {
         public let authPassword: String
     }
     private let invitationCredentialService: InvitationCredentialService
-    private let networkManager: NetworkManager
+    private let signalService: OWSSignalServiceProtocol
     private let logger = PrefixedLogger(prefix: "[NumberlessRegistrationService]")
 
-    public init(networkManager: NetworkManager) {
-        self.networkManager = networkManager
-        self.invitationCredentialService = InvitationCredentialService(networkManager: networkManager)
+    public init(signalService: OWSSignalServiceProtocol) {
+        self.signalService = signalService
+        self.invitationCredentialService = InvitationCredentialService(signalService: signalService)
     }
 
     public func register(
@@ -37,7 +37,7 @@ public final class NumberlessRegistrationService {
             aciPrekeyBundle: aciPrekeyBundle,
             logger: logger,
         )
-        let response = try await networkManager.asyncRequest(request)
+        let response = try await signalService.urlSessionForMainSignalService().performRequest(request)
         guard response.responseStatusCode == 200, let body = response.responseBodyData else {
             throw response.asError()
         }

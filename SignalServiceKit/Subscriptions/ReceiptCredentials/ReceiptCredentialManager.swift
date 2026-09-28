@@ -10,7 +10,7 @@ public import LibSignalClient
 public struct ReceiptCredentialManager {
     private let dateProvider: DateProvider
     private let logger: PrefixedLogger
-    private let networkManager: NetworkManager
+    private let requestPerformer: (TSRequest) async throws -> HTTPResponse
 
     init(
         dateProvider: @escaping DateProvider,
@@ -19,7 +19,19 @@ public struct ReceiptCredentialManager {
     ) {
         self.dateProvider = dateProvider
         self.logger = logger
-        self.networkManager = networkManager
+        self.requestPerformer = { request in
+            try await networkManager.asyncRequest(request)
+        }
+    }
+
+    init(
+        dateProvider: @escaping DateProvider,
+        logger: PrefixedLogger,
+        requestPerformer: @escaping (TSRequest) async throws -> HTTPResponse,
+    ) {
+        self.dateProvider = dateProvider
+        self.logger = logger
+        self.requestPerformer = requestPerformer
     }
 
     public static func generateReceiptCredentialPresentation(
@@ -56,7 +68,7 @@ public struct ReceiptCredentialManager {
         context: ReceiptCredentialRequestContext,
     ) async throws -> ReceiptCredential {
         do {
-            let response = try await networkManager.asyncRequest(networkRequest)
+            let response = try await requestPerformer(networkRequest)
 
             return try self.parseReceiptCredentialResponse(
                 httpResponse: response,

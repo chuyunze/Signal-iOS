@@ -12,19 +12,19 @@ public import LibSignalClient
 public final class InvitationCredentialService {
     public static let loginReceiptLevel: UInt64 = 300
 
-    private let networkManager: NetworkManager
+    private let signalService: OWSSignalServiceProtocol
     private let keychainStorage: KeychainStorage
     private let logger = PrefixedLogger(prefix: "[InvitationCredentialService]")
     private static let keychainService = "org.signal.numberless-registration"
     private static let pendingClaimKey = "pending-invitation-claim"
 
     public init(
-        networkManager: NetworkManager,
+        signalService: OWSSignalServiceProtocol,
         keychainStorage: KeychainStorage = KeychainStorageImpl(
             isUsingProductionService: TSConstants.isUsingProductionService
         )
     ) {
-        self.networkManager = networkManager
+        self.signalService = signalService
         self.keychainStorage = keychainStorage
     }
 
@@ -70,7 +70,9 @@ public final class InvitationCredentialService {
         let credential = try await ReceiptCredentialManager(
             dateProvider: Date.init,
             logger: logger,
-            networkManager: networkManager,
+            requestPerformer: { [signalService] request in
+                try await signalService.urlSessionForMainSignalService().performRequest(request)
+            },
         ).requestReceiptCredential(
             via: networkRequest,
             isValidReceiptLevelPredicate: { $0 == Self.loginReceiptLevel },
