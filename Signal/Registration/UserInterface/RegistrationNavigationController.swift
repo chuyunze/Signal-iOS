@@ -668,7 +668,26 @@ extension RegistrationNavigationController: NumberlessRegistrationPresenter {
                     aciPrekeyBundle,
                     uploadDidSucceed: false,
                 )
-                viewController.registrationFailed(message: "邀请码无效、已使用或网络暂时不可用。")
+                let message: String
+                if let httpError = error as? OWSHTTPError {
+                    switch httpError.responseStatusCode {
+                    case 400:
+                        // The service deliberately gives the same response for
+                        // unknown, expired, revoked, and already-claimed codes.
+                        message = "邀请码无效、已过期或已使用。"
+                    case 429:
+                        message = "尝试次数过多，请稍后再试。"
+                    case 500..<600:
+                        message = "服务器暂时不可用，请稍后再试。"
+                    case 0:
+                        message = "无法安全连接服务器，请检查网络后重试。"
+                    default:
+                        message = "无法完成注册，请稍后再试。"
+                    }
+                } else {
+                    message = "无法完成注册，请稍后再试。"
+                }
+                viewController.registrationFailed(message: message)
             }
         }
     }
