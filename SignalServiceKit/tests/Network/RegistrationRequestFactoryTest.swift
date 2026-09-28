@@ -9,6 +9,40 @@ public import XCTest
 
 public class RegistrationRequestFactoryTest: XCTestCase {
 
+    private func numberlessPrekeyBundle() -> RegistrationPreKeyUploadBundle {
+        let identityKeyPair = ECKeyPair.generateKeyPair()
+        return RegistrationPreKeyUploadBundle(
+            identity: .aci,
+            identityKeyPair: identityKeyPair,
+            signedPreKey: SignedPreKeyStoreImpl.generateSignedPreKey(
+                keyId: PreKeyId.random(),
+                signedBy: identityKeyPair.keyPair.privateKey,
+            ),
+            lastResortPreKey: KyberPreKeyStoreImpl.generatePreKeyRecord(
+                keyId: 0,
+                now: Date(),
+                signedBy: identityKeyPair.keyPair.privateKey,
+            ),
+        )
+    }
+
+    private func numberlessAccountAttributes() -> AccountAttributes {
+        let accountEntropyPool = AccountEntropyPool()
+        return AccountAttributes(
+            isManualMessageFetchEnabled: true,
+            registrationId: 1,
+            pniRegistrationId: 2,
+            unidentifiedAccessKey: nil,
+            unrestrictedUnidentifiedAccess: false,
+            reglockToken: nil,
+            registrationRecoveryPassword: accountEntropyPool.getMasterKey()
+                .deriveRegistrationRecoveryPassword().canonicalStringRepresentation,
+            encryptedDeviceName: nil,
+            discoverableByPhoneNumber: nil,
+            capabilities: .init(hasSVRBackups: false),
+        )
+    }
+
     func test_claimInvitationUsesUnauthenticatedEndpoint() {
         let credentialRequest = Data([0x01, 0x02, 0x03])
         let request = RegistrationRequestFactory.claimInvitationRequest(
@@ -29,42 +63,15 @@ public class RegistrationRequestFactoryTest: XCTestCase {
     func test_recoverNumberlessAccountDoesNotSendInvitationOrPniKeys() {
         let accountId = Aci.randomForTesting()
         let accountEntropyPool = AccountEntropyPool()
-        let identityKeyPair = ECKeyPair.generateKeyPair()
-        let prekeyBundle = RegistrationPreKeyUploadBundle(
-            identity: .aci,
-            identityKeyPair: identityKeyPair,
-            signedPreKey: SignedPreKeyStoreImpl.generateSignedPreKey(
-                keyId: PreKeyId.random(),
-                signedBy: identityKeyPair.keyPair.privateKey,
-            ),
-            lastResortPreKey: KyberPreKeyStoreImpl.generatePreKeyRecord(
-                keyId: 0,
-                now: Date(),
-                signedBy: identityKeyPair.keyPair.privateKey,
-            ),
-        )
-        let attributes = AccountAttributes(
-            isManualMessageFetchEnabled: true,
-            registrationId: 1,
-            pniRegistrationId: 2,
-            unidentifiedAccessKey: nil,
-            unrestrictedUnidentifiedAccess: false,
-            reglockToken: nil,
-            registrationRecoveryPassword: accountEntropyPool.getMasterKey()
-                .deriveRegistrationRecoveryPassword().canonicalStringRepresentation,
-            encryptedDeviceName: nil,
-            discoverableByPhoneNumber: nil,
-            capabilities: .init(hasSVRBackups: false),
-        )
 
         let request = RegistrationRequestFactory.recoverNumberlessAccountRequest(
             accountId: accountId,
             recoveryPassword: accountEntropyPool.getMasterKey().deriveRegistrationRecoveryPassword(),
             newAuthPassword: "new-device-password",
             totp: 123456,
-            accountAttributes: attributes,
+            accountAttributes: numberlessAccountAttributes(),
             apnRegistrationId: nil,
-            aciPrekeyBundle: prekeyBundle,
+            aciPrekeyBundle: numberlessPrekeyBundle(),
             logger: .empty(),
         )
 
@@ -74,6 +81,9 @@ public class RegistrationRequestFactoryTest: XCTestCase {
         XCTAssertNil(request.parameters["receiptCredentialPresentation"])
         XCTAssertNil(request.parameters["pniIdentityKey"])
         XCTAssertNil(request.parameters["pniSignedPreKey"])
+        let requestAttributes = request.parameters["accountAttributes"] as? [String: Any]
+        XCTAssertNil(requestAttributes?["pniRegistrationId"])
+        XCTAssertEqual(requestAttributes?["unrestrictedUnidentifiedAccess"] as? Bool, true)
         switch request.auth {
         case .registration(let credentials):
             XCTAssertEqual(credentials?.username, accountId.serviceIdString)
@@ -81,6 +91,24 @@ public class RegistrationRequestFactoryTest: XCTestCase {
         default:
             XCTFail("Expected registration authentication")
         }
+    }
+
+    func test_createNumberlessAccountOmitsAllPniFields() {
+        let request = RegistrationRequestFactory.createNumberlessAccountRequest(
+            receiptCredentialPresentation: Data([0x01, 0x02, 0x03]),
+            authPassword: "new-device-password",
+            accountAttributes: numberlessAccountAttributes(),
+            apnRegistrationId: nil,
+            aciPrekeyBundle: numberlessPrekeyBundle(),
+            logger: .empty(),
+        )
+
+        let requestAttributes = request.parameters["accountAttributes"] as? [String: Any]
+        XCTAssertNil(requestAttributes?["pniRegistrationId"])
+        XCTAssertEqual(requestAttributes?["unrestrictedUnidentifiedAccess"] as? Bool, true)
+        XCTAssertNil(request.parameters["pniIdentityKey"])
+        XCTAssertNil(request.parameters["pniSignedPreKey"])
+        XCTAssertNil(request.parameters["pniPqLastResortPreKey"])
     }
 
     func test_requestVerificationCodeLocale() {

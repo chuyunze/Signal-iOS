@@ -329,8 +329,7 @@ public enum RegistrationRequestFactory {
 
         let url = URL(string: "v1/registration")!
         let jsonEncoder = JSONEncoder()
-        let attributesData = try! jsonEncoder.encode(accountAttributes)
-        let attributes = try! JSONSerialization.jsonObject(with: attributesData) as! [String: Any]
+        let attributes = numberlessAccountAttributes(accountAttributes, jsonEncoder: jsonEncoder)
         var parameters: [String: Any] = [
             "accountAttributes": attributes,
             "skipDeviceTransfer": true,
@@ -367,8 +366,7 @@ public enum RegistrationRequestFactory {
         owsAssertDebug((apnRegistrationId != nil) != accountAttributes.isManualMessageFetchEnabled)
 
         let jsonEncoder = JSONEncoder()
-        let attributesData = try! jsonEncoder.encode(accountAttributes)
-        let attributes = try! JSONSerialization.jsonObject(with: attributesData) as! [String: Any]
+        let attributes = numberlessAccountAttributes(accountAttributes, jsonEncoder: jsonEncoder)
         var parameters: [String: Any] = [
             "accountAttributes": attributes,
             "skipDeviceTransfer": true,
@@ -440,6 +438,27 @@ public enum RegistrationRequestFactory {
     }
 
     // MARK: - Helpers
+
+    private static func numberlessAccountAttributes(
+        _ accountAttributes: AccountAttributes,
+        jsonEncoder: JSONEncoder,
+    ) -> [String: Any] {
+        let attributesData = try! jsonEncoder.encode(accountAttributes)
+        var attributes = try! JSONSerialization.jsonObject(with: attributesData) as! [String: Any]
+
+        // A numberless account has no PNI. The server requires the PNI identity
+        // key, registration ID, signed pre-key, and PQ pre-key to be either all
+        // present or all absent.
+        attributes.removeValue(forKey: "pniRegistrationId")
+
+        // Before a profile-derived unidentified access key exists, the server
+        // requires unrestricted unidentified access to be enabled.
+        if attributes["unidentifiedAccessKey"] == nil {
+            attributes["unrestrictedUnidentifiedAccess"] = true
+        }
+
+        return attributes
+    }
 
     private static func redactSessionIdFromLogs(_ sessionId: String, in request: inout TSRequest) {
         request.applyRedactionStrategy(.redactURL(sensitiveValues: [sessionId]))
