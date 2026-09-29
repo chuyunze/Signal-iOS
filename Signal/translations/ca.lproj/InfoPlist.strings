@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "El Sixinnecessita usar l'Apple Music per a reproduir fitxers adjunts.";
 NSCameraUsageDescription = "El Sixinusa la càmera per a fer fotografies i per a trucades de vídeo.";
-NSContactsUsageDescription = "El Sixinusa els contactes per a trobar usuaris que coneixeu. No emmagatzemem els vostres contactes al servidor.";
 NSFaceIDUsageDescription = "El bloqueig de pantalla del Sixinusa el Face ID.";
 NSLocationWhenInUseUsageDescription = "El Sixinnecessita accés a la ubicació per a compartir l'actual.";
 NSMicrophoneUsageDescription = "El Sixinnecessita accés al micròfon per a fer i rebre trucades i enregistrar missatges de veu.";

@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "Ní mór do SixinApple Music a úsáid chun ceangaltáin mheáin a sheinm.";
 NSCameraUsageDescription = "Úsáideann Sixindo cheamara chun pictiúir a ghlacadh agus le haghaidh físghlaonna.";
-NSContactsUsageDescription = "Úsáideann Sixindo chuid teagmhálaithe chun teacht ar dhaoine a bhfuil aithne agat orthu. Ní stórálaimid do chuid teagmhálaithe ar an bhfreastalaí.";
 NSFaceIDUsageDescription = "Baineann an Scáileán Glasála in Sixinúsáid as Face ID.";
 NSLocationWhenInUseUsageDescription = "Caithfidh tú an áit ina bhfuil tú a nochtadh do Sixinchun í chomhroinnt.";
 NSMicrophoneUsageDescription = "Tá rochtain ar do mhicreafón de dhíth ar Sixinchun glaonna a chur nó a fháil, agus chun glórphoist a thaifeadadh.";

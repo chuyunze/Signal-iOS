@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "Το Sixinπρέπει να χρησιμοποιήσει το Apple Music για να αναπαράξει συνημμένα πολυμέσα.";
 NSCameraUsageDescription = "Το Sixinχρησιμοποιεί την κάμερά σου για φωτογραφίες και βιντεοκλήσεις.";
-NSContactsUsageDescription = "Το Sixinχρησιμοποιεί τις επαφές σου για να βρει χρήστες που γνωρίζεις. Δεν αποθηκεύουμε τις επαφές σου στο server.";
 NSFaceIDUsageDescription = "Το Κλείδωμα Οθόνης του Sixinχρησιμοποιεί το Face ID.";
 NSLocationWhenInUseUsageDescription = "Το Sixinχρειάζεται πρόσβαση στην τοποθεσία σου για να μοιραστεί την τρέχουσα τοποθεσία σου.";
 NSMicrophoneUsageDescription = "Το Sixinχρειάζεται πρόσβαση στο μικρόφωνό σου για να κάνει και λάβει τηλεφωνικές κλήσεις και να ηχογραφήσει ηχητικά μηνύματα.";

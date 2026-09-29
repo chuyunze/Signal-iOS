@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "Sixinperlu menggunakan Apple Music untuk memainkan lampiran media.";
 NSCameraUsageDescription = "Sixinmenggunakan kamera Anda untuk mengambil foto dan untuk panggilan video.";
-NSContactsUsageDescription = "Sixinmenggunakan kontak Anda untuk mencari pengguna yang Anda kenal. Kami tidak menyimpan kontak Anda di server.";
 NSFaceIDUsageDescription = "Fitur pengunci layar Sixinmenggunakan Face ID.";
 NSLocationWhenInUseUsageDescription = "Sixinperlu mengakses lokasi Anda untuk membagikan lokasi terkini Anda.";
 NSMicrophoneUsageDescription = "Sixinperlu mengakses mikrofon Anda untuk membuat dan menerima panggilan telepon dan merekam pesan suara.";

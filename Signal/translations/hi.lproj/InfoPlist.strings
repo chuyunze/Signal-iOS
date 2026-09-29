@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "मीडिया अटैचमेंट चलाने के लिए Sixinको Apple Music का इस्तेमाल करना होगा।";
 NSCameraUsageDescription = "Sixinआपके कैमरे का इस्तेमाल फ़ोटो लेने और वीडियो कॉल करने के लिए करता है।";
-NSContactsUsageDescription = "Sixinआपके कॉन्टैक्ट का इस्तेमाल यह पता लगाने के लिए करता है कि आपका संपर्क किन यूज़र के साथ है। हम आपके कॉन्टैक्ट की जानकारी सर्वर पर स्टोर करके नहीं रखते।";
 NSFaceIDUsageDescription = "Sixinके स्क्रीन लॉक में Face ID का इस्तेमाल किया जाता है।";
 NSLocationWhenInUseUsageDescription = "Sixinको आपका मौजूदा लोकेशन शेयर करने के लिए आपके लोकेशन का ऐक्सेस चाहिए।";
 NSMicrophoneUsageDescription = "कॉल करने और कॉल रिसीव करने या फिर वॉइस मैसेज रिकॉर्ड करने के लिए Sixinको आपके माइक्रोफ़ोन का ऐक्सेस चाहिए।";

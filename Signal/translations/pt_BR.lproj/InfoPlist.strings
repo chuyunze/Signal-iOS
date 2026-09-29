@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "O Sixinrequer acesso ao Apple Music para tocar anexos de mídia.";
 NSCameraUsageDescription = "O Sixinusa sua câmera para tirar fotos e realizar chamadas de vídeo.";
-NSContactsUsageDescription = "O Sixinutiliza sua lista de contatos para encontrar outros usuários que você conhece. Nós não armazenamos seus contatos em nossos servidores.";
 NSFaceIDUsageDescription = "A tela de bloqueio do Sixinusa Face ID.";
 NSLocationWhenInUseUsageDescription = "O Sixinrequer acesso à sua localização para poder compartilhar sua localização atual.";
 NSMicrophoneUsageDescription = "O Sixinrequer acesso ao microfone para realizar e receber chamadas e gravar mensagens de voz.";

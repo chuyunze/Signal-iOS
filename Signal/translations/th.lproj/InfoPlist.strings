@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "Sixinจำเป็นต้องใช้ Apple Music เพื่อเล่นสื่อแนบ";
 NSCameraUsageDescription = "Sixinใช้กล้องของคุณเพื่อถ่ายภาพและโทรแบบเห็นหน้า";
-NSContactsUsageDescription = "Sixinใช้รายชื่อผู้ติดต่อของคุณเพื่อค้นหาผู้ใช้ที่คุณรู้จัก เราไม่เก็บรายชื่อผู้ติดต่อของคุณไว้บนเซิร์ฟเวอร์ของเรา";
 NSFaceIDUsageDescription = "การล็อกหน้าจอของ Sixinใช้ Face ID";
 NSLocationWhenInUseUsageDescription = "Sixinจำเป็นต้องเข้าถึงตำแหน่งที่ตั้งของคุณสำหรับการแบ่งปันตำแหน่งปัจจุบันของคุณ";
 NSMicrophoneUsageDescription = "Sixinจำเป็นต้องเข้าถึงไมโครโฟนของคุณสำหรับการโทรออก รับสาย และอัดข้อความเสียง";

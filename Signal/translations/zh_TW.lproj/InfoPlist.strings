@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "私訊需要使用Apple Music播放媒體附檔。";
 NSCameraUsageDescription = "私訊使用你的相機拍照和進行視訊通話。";
-NSContactsUsageDescription = "私訊使用你的聯絡人搜尋你認識的聯絡人。 我們不會將你的聯絡人儲存在伺服器上。";
 NSFaceIDUsageDescription = "私訊的螢幕鎖定使用 Face ID。";
 NSLocationWhenInUseUsageDescription = "私訊需要連結你的位置才能分享你的當前位置。";
 NSMicrophoneUsageDescription = "私訊需要使用你的麥克風才能撥打和接聽電話並記錄語音訊息。";

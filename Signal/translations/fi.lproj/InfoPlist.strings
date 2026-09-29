@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "Sixintarvitsee Apple Music -käyttöoikeuden medialiitteiden toistamiseen.";
 NSCameraUsageDescription = "Sixinkäyttää kameraa kuvaamiseen ja videopuheluihin.";
-NSContactsUsageDescription = "Sixinkäyttää yhteystietoja tuntemiesi ihmisten löytämiseen. Yhteystietoja ei tallenneta Signalin palvelimelle.";
 NSFaceIDUsageDescription = "Signalin näytön lukitus käyttää Face ID:tä.";
 NSLocationWhenInUseUsageDescription = "Sixintarvitsee sijaintitietojen käyttöoikeuden sijaintisi jakamiseksi.";
 NSMicrophoneUsageDescription = "Sixintarvitsee mikrofonin käyttöoikeuden puheluihin ja ääniviesteihin.";

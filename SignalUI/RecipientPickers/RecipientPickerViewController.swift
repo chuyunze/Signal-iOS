@@ -110,7 +110,9 @@ public class RecipientPickerViewController: OWSViewController, OWSNavigationChil
         // Make sure we have requested contact access at this point if, e.g.
         // the user has no messages in their inbox and they choose to compose
         // a message.
-        SSKEnvironment.shared.contactManagerImplRef.requestSystemContactsOnce()
+        if SystemContactsFeature.isEnabled {
+            SSKEnvironment.shared.contactManagerImplRef.requestSystemContactsOnce()
+        }
 
         showContactAppropriateViews()
     }
@@ -307,7 +309,7 @@ public class RecipientPickerViewController: OWSViewController, OWSNavigationChil
 
         // App is killed and restarted when the user changes their contact
         // permissions, so no need to "observe" anything to re-render this.
-        if let reminderSection = contactAccessReminderSection() {
+        if SystemContactsFeature.isEnabled, let reminderSection = contactAccessReminderSection() {
             tableContents.add(reminderSection)
         }
 
@@ -424,7 +426,11 @@ public class RecipientPickerViewController: OWSViewController, OWSNavigationChil
         }
 
         // Invite Contacts
-        if shouldShowInvites, !isSearching, SSKEnvironment.shared.contactManagerImplRef.sharingAuthorization != .denied {
+        if SystemContactsFeature.isEnabled,
+           shouldShowInvites,
+           !isSearching,
+           SSKEnvironment.shared.contactManagerImplRef.sharingAuthorization != .denied
+        {
             let bottomSection = OWSTableSection(title: OWSLocalizedString(
                 "INVITE_FRIENDS_CONTACT_TABLE_HEADER",
                 comment: "Header label above a section for more options for adding contacts",
@@ -658,7 +664,7 @@ extension RecipientPickerViewController {
             )
         }
 
-        if shouldShowInvites {
+        if SystemContactsFeature.isEnabled, shouldShowInvites {
             addButton(
                 title: OWSLocalizedString(
                     "INVITE_FRIENDS_CONTACT_TABLE_BUTTON",

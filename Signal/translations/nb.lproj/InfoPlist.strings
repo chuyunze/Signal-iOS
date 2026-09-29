@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "Sixintrenger tilgang til Apple Music for å spille av mediavedlegg.";
 NSCameraUsageDescription = "Sixinbruker kameraet ditt til å ta bilder og i videosamtaler.";
-NSContactsUsageDescription = "Sixinbenytter kontaktene dine for å finne brukere du kjenner. Vi lagrer ikke kontaktene dine på våre servere.";
 NSFaceIDUsageDescription = "Sixinsin skjermlås benytter Face ID.";
 NSLocationWhenInUseUsageDescription = "Sixintrenger stedstilgang for å dele posisjonen din.";
 NSMicrophoneUsageDescription = "Sixintrenger tilgang til mikrofonen din for å kunne foreta anrop, motta telefonsamtaler og ta opp talemeldinger.";

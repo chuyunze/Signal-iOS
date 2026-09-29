@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 //
 
-import Contacts
 import Foundation
 import LibSignalClient
 public import SignalServiceKit
@@ -76,23 +75,10 @@ public class _RegistrationCoordinator_CNContactsStoreWrapper: _RegistrationCoord
     public init() {}
 
     public func needsContactsAuthorization() -> Bool {
-        return CNContactStore.authorizationStatus(for: .contacts) == .notDetermined
+        return false
     }
 
-    public func requestContactsAuthorization() async {
-        await withCheckedContinuation { continuation in
-            CNContactStore().requestAccess(for: CNEntityType.contacts) { granted, error -> Void in
-                if granted {
-                    Logger.info("contacts permission granted")
-                } else if let error, case CNError.authorizationDenied = error {
-                    Logger.info("contacts permission denied")
-                } else {
-                    Logger.warn("contacts permission unavailable: \(String(describing: error))")
-                }
-                continuation.resume()
-            }
-        }
-    }
+    public func requestContactsAuthorization() async {}
 }
 
 // MARK: - ExperienceManager

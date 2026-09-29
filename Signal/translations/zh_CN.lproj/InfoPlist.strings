@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "私信 需要使用 Apple Music 以播放媒体附件。";
 NSCameraUsageDescription = "私信 使用摄像头进行拍照和视频通话。";
-NSContactsUsageDescription = "私信 通过联系人列表来寻找您认识的 私信 用户。我们不会在服务器上存储您的联系人列表。";
 NSFaceIDUsageDescription = "私信 的屏幕锁定功能将使用面容 ID。";
 NSLocationWhenInUseUsageDescription = "私信 需要访问位置信息来分享您的当前位置。";
 NSMicrophoneUsageDescription = "私信 需要访问您的麦克风进行通话和录制语音信息。";

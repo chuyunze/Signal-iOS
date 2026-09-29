@@ -7,6 +7,12 @@ public import Contacts
 import ContactsUI
 import Foundation
 
+/// This distribution deliberately does not integrate with the device address book.
+/// Users discover each other through usernames, QR codes, and account identifiers.
+public enum SystemContactsFeature {
+    public static let isEnabled = false
+}
+
 protocol ContactStoreAdaptee {
     var rawAuthorizationStatus: RawContactAuthorizationStatus { get }
     func requestAccess(completionHandler: @escaping (Bool, Error?) -> Void)
@@ -42,6 +48,7 @@ public class ContactsFrameworkContactStoreAdaptee: ContactStoreAdaptee {
     ]
 
     var rawAuthorizationStatus: RawContactAuthorizationStatus {
+        guard SystemContactsFeature.isEnabled else { return .restricted }
         let authorizationStatus = CNContactStore.authorizationStatus(for: .contacts)
         switch authorizationStatus {
         case .notDetermined:
@@ -61,6 +68,7 @@ public class ContactsFrameworkContactStoreAdaptee: ContactStoreAdaptee {
     }
 
     func startObservingChanges(changeHandler: @escaping () -> Void) {
+        guard SystemContactsFeature.isEnabled else { return }
         // should only call once
         assert(self.changeHandler == nil)
         self.changeHandler = changeHandler
@@ -95,10 +103,12 @@ public class ContactsFrameworkContactStoreAdaptee: ContactStoreAdaptee {
     }
 
     func requestAccess(completionHandler: @escaping (Bool, Error?) -> Void) {
-        contactStoreForLargeRequests.requestAccess(for: .contacts, completionHandler: completionHandler)
+        // System contacts are intentionally unsupported in this distribution.
+        completionHandler(false, nil)
     }
 
     func fetchContacts() -> Result<[SystemContact], Error> {
+        guard SystemContactsFeature.isEnabled else { return .success([]) }
         do {
             var contacts = [SystemContact]()
             let contactFetchRequest = CNContactFetchRequest(keysToFetch: Self.discoveryContactKeys)
@@ -122,6 +132,7 @@ public class ContactsFrameworkContactStoreAdaptee: ContactStoreAdaptee {
     }
 
     func fetchCNContact(contactId: String) -> CNContact? {
+        guard SystemContactsFeature.isEnabled else { return nil }
         do {
             owsAssertDebug(!CurrentAppContext().isNSE)
             let contactFetchRequest = CNContactFetchRequest(keysToFetch: ContactsFrameworkContactStoreAdaptee.fullContactKeys)
@@ -213,6 +224,12 @@ public class SystemContactsFetcher {
     public func requestOnce(completion completionParam: ((Error?) -> Void)?) {
         AssertIsOnMainThread()
 
+        guard SystemContactsFeature.isEnabled else {
+            systemContactsHaveBeenRequestedAtLeastOnce = true
+            completionParam?(nil)
+            return
+        }
+
         // Ensure completion is invoked on main thread.
         let completion = { error in
             DispatchMainThreadSafe({
@@ -266,6 +283,8 @@ public class SystemContactsFetcher {
     public func fetchOnceIfAlreadyAuthorized() {
         AssertIsOnMainThread()
 
+        guard SystemContactsFeature.isEnabled else { return }
+
         guard !CurrentAppContext().isNSE else {
             Logger.info("Skipping contacts fetch in NSE.")
             return
@@ -283,6 +302,11 @@ public class SystemContactsFetcher {
 
     public func userRequestedRefresh(completion: @escaping (Error?) -> Void) {
         AssertIsOnMainThread()
+
+        guard SystemContactsFeature.isEnabled else {
+            completion(nil)
+            return
+        }
 
         guard !CurrentAppContext().isNSE else {
             let error = OWSAssertionError("Skipping contacts fetch in NSE.")
@@ -305,6 +329,8 @@ public class SystemContactsFetcher {
 
     public func refreshAfterContactsChange() {
         AssertIsOnMainThread()
+
+        guard SystemContactsFeature.isEnabled else { return }
 
         guard !CurrentAppContext().isNSE else {
             Logger.info("Skipping contacts fetch in NSE.")
@@ -408,6 +434,7 @@ public class SystemContactsFetcher {
     }
 
     public func fetchCNContact(contactId: String) -> CNContact? {
+        guard SystemContactsFeature.isEnabled else { return nil }
         guard canReadSystemContacts else {
             Logger.error("contact fetch failed; no access.")
             return nil

@@ -366,13 +366,15 @@ class AppSettingsViewController: OWSTableViewController2 {
                 self?.navigationController?.pushViewController(vc, animated: true)
             },
         ))
-        section3.add(.item(
-            icon: .settingsInvite,
-            name: OWSLocalizedString("SETTINGS_INVITE_TITLE", comment: "Settings table view cell label"),
-            actionBlock: { [weak self] in
-                self?.showInviteFlow()
-            },
-        ))
+        if SystemContactsFeature.isEnabled {
+            section3.add(.item(
+                icon: .settingsInvite,
+                name: OWSLocalizedString("SETTINGS_INVITE_TITLE", comment: "Settings table view cell label"),
+                actionBlock: { [weak self] in
+                    self?.showInviteFlow()
+                },
+            ))
+        }
         contents.add(section3)
 
         if DebugFlags.internalSettings {

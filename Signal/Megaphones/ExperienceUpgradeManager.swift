@@ -514,6 +514,7 @@ class ExperienceUpgradeManager {
     }
 
     private func checkPreconditionsForContactsPermissionReminder() -> Bool {
+        guard SystemContactsFeature.isEnabled else { return false }
         switch CNContactStore.authorizationStatus(for: .contacts) {
         case .authorized, .limited:
             return false

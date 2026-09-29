@@ -3,8 +3,6 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 //
 
-import Contacts
-import ContactsUI
 import LibSignalClient
 import SafariServices
 public import SignalServiceKit
@@ -122,6 +120,8 @@ public extension ContactsViewHelper {
     ) {
         AssertIsOnMainThread()
 
+        guard SystemContactsFeature.isEnabled else { return }
+
         switch SSKEnvironment.shared.contactManagerImplRef.editingAuthorization {
         case .notAllowed:
             Self.presentContactAccessNotAllowedAlert(from: viewController)
@@ -137,26 +137,8 @@ public extension ContactsViewHelper {
         performWhenAllowed: @escaping () -> Void,
         presentErrorFrom viewController: UIViewController,
     ) {
-        let deniedBlock = {
-            Self.presentContactAccessDeniedAlert(from: viewController, access: .read(purpose))
-        }
-
-        switch SSKEnvironment.shared.contactManagerImplRef.sharingAuthorization {
-        case .notDetermined:
-            CNContactStore().requestAccess(for: .contacts) { granted, error in
-                DispatchQueue.main.async {
-                    if granted {
-                        performWhenAllowed()
-                    } else {
-                        deniedBlock()
-                    }
-                }
-            }
-        case .authorized:
-            performWhenAllowed()
-        case .denied:
-            deniedBlock()
-        }
+        // System contacts are intentionally unsupported in this distribution.
+        return
     }
 
     private static func presentContactAccessDeniedAlert(from viewController: UIViewController, access: Access) {

@@ -86,6 +86,7 @@ public class OWSContactsManager: NSObject, ContactsManagerProtocol {
     }
 
     public var isSyncingAllowed: Bool {
+        guard SystemContactsFeature.isEnabled else { return false }
         let tsAccountManager = DependenciesBridge.shared.tsAccountManager
         return tsAccountManager.registrationStateWithMaybeSneakyTransaction.isPrimaryDevice ?? false
     }

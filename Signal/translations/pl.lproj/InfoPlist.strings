@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "Aby odtworzyć załącznik multimedialny, Sixinmusi użyć aplikacji Apple Music.";
 NSCameraUsageDescription = "Sixinużywa aparatu podczas połączeń wideo oraz robienia zdjęć.";
-NSContactsUsageDescription = "Sixinwykorzystuje Twoje kontakty do wyszukiwania użytkowników, których znasz. Nie przechowujemy kontaktów na naszych serwerach.";
 NSFaceIDUsageDescription = "Blokada ekranu Sixinwykorzystuje funkcję Face ID.";
 NSLocationWhenInUseUsageDescription = "Aby udostępnić, gdzie obecnie się znajdujesz, Sixinpotrzebuje dostępu do Twojej lokalizacji.";
 NSMicrophoneUsageDescription = "Aby wykonywać i odbierać połączenia oraz nagrywać wiadomości głosowe, Sixinpotrzebuje dostępu do mikrofonu.";

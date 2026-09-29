@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "Sixinкористи Apple Music за пуштање медија из прилога.";
 NSCameraUsageDescription = "Sixinкористи вашу камеру за снимање фотографија и за видео позиве.";
-NSContactsUsageDescription = "Sixinкористи ваше контакте да пронађе људе које познајете. Ваше контакте не складиштимо на серверу.";
 NSFaceIDUsageDescription = "Sixin-ово закључавање екрана користи Face ID.";
 NSLocationWhenInUseUsageDescription = "Sixin-у је потребан приступ вашој локацији да бисте могли да поделите тренутну локацију.";
 NSMicrophoneUsageDescription = "Sixin-у је потребан приступ микрофону за позиве и снимање гласовних порука.";

@@ -200,6 +200,7 @@ class AttachmentFormatPickerView: UIView {
             let showGifSearch = RemoteConfig.current.enableGifSearch
             return allCases.filter { (value: AttachmentType) in
                 if value == .gif, !showGifSearch { return false }
+                if value == .contact, !SystemContactsFeature.isEnabled { return false }
                 return !except.contains(value)
             }
         }

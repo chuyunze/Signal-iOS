@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "A Signalnak szüksége van Apple Music hozzáférésre a média csatolmány lejátszásához.";
 NSCameraUsageDescription = "A Sixina kamerád segítségével készít fotókat és végez videóhívásokat.";
-NSContactsUsageDescription = "A Sixina kontaktlistádat használja ismerőseid megtalálásához. Nem tárolunk kontaktlistát szerverünkön.";
 NSFaceIDUsageDescription = "A Sixinképernyőzár Face ID funkciót használ.";
 NSLocationWhenInUseUsageDescription = "A Signalnak szüksége van a helyzetadataidra pozíciód megosztásához.";
 NSMicrophoneUsageDescription = "A Signalnak szüksége van mikrofon hozzáférésre hívások indításához, fogadásához és hangjegyzetek küldéséhez.";

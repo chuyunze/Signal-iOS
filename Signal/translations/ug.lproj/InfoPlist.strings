@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "Sixinۋاسىتە قوشۇمچىسىنى قويۇشتا Apple Music نى ئىشلىتىشى لازىم.";
 NSCameraUsageDescription = "‫Sixinسۈرەت تارتىش ۋە سىنلىق پاراڭلىشىشتا كامېرايىڭىزنى ئىشلىتىدۇ.";
-NSContactsUsageDescription = "Sixinسىز تونۇيدىغانلارنى ئىزدەش ئۈچۈن ئالاقىداشلىرىڭىزنى ئىشلىتىدۇ. ئالاقىداشلىرىڭىزنى مۇلازىمېتىردا ساقلىمايمىز.";
 NSFaceIDUsageDescription = "Sixinنىڭ ئېكران قۇلۇپى چىراي ID سىنى ئىشلىتىدۇ.";
 NSLocationWhenInUseUsageDescription = "‫Sixinھازىرقى ئورنىڭىزنى ھەمبەھىرلەش ئۈچۈن ئورۇن ئۇچۇرىڭىزنى زىيارەت قىلىشى لازىم.";
 NSMicrophoneUsageDescription = "‫Sixinتېلېفوندىن چاقىرىش ۋە قوبۇل قىلىش، ھەم ئۈن ئۈچۇرنى خاتىرىلەش ئۈچۈن مىكروفونىڭىزنى زىيارەت قىلىشى لازىم.";

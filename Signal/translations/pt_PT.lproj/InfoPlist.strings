@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "O Sixinnecessita de utilizar a aplicação Apple Music para reproduzir anexos multimédia.";
 NSCameraUsageDescription = "O Sixinutiliza a sua câmara para tirar fotografias e fazer vídeochamadas.";
-NSContactsUsageDescription = "O Sixinacede aos seus contactos para encontrar utilizadores que você conhece. Não armazenamos os seus contactos no servidor.";
 NSFaceIDUsageDescription = "O bloqueio de ecrã do Sixinutiliza o Face ID.";
 NSLocationWhenInUseUsageDescription = "O Sixinnecessita de aceder à sua localização para poder partilhar a sua localização atual.";
 NSMicrophoneUsageDescription = "O Sixinnecessita de ter acesso ao seu microfone para fazer e receber chamadas telefónicas e gravar mensagens de voz.";

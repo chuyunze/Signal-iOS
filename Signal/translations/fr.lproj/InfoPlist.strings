@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "Pour lire les médias en pièce jointe, Sixindoit utiliser Apple Music.";
 NSCameraUsageDescription = "Sixinutilise votre appareil photo lorsque vous prenez des photos et passez des appels vidéo.";
-NSContactsUsageDescription = "Sixinaccède à vos contacts pour trouver des utilisateurs que vous connaissez. Nous n'enregistrons pas vos contacts sur le serveur.";
 NSFaceIDUsageDescription = "Le verrouillage d'écran de Sixinutilise la technologie Face ID.";
 NSLocationWhenInUseUsageDescription = "Pour partager votre position actuelle, Sixindoit accéder à votre position.";
 NSMicrophoneUsageDescription = "Pour passer et recevoir des appels téléphoniques, et enregistrer des messages vocaux, Sixindoit accéder à votre microphone.";

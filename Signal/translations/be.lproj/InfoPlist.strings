@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "Sixinнеабходна выкарыстоўваць Apple Music, каб прайграваць далучаныя медыяфайлы.";
 NSCameraUsageDescription = "Sixinвыкарыстоўвае вашу камеру, каб рабіць фота і для відэазванкоў.";
-NSContactsUsageDescription = "Sixinвыкарыстоўвае вашы кантакты, каб знайсці знаёмых сярод карыстальнікаў. Мы не захоўваем вашы кантакты на серверы.";
 NSFaceIDUsageDescription = "Для блакіроўкі экрана Sixinвыкарыстоўвае Face ID.";
 NSLocationWhenInUseUsageDescription = "Sixinпатрабуе доступу да вашага месцазнаходжання, каб паказаць карыстальнікам месца, дзе вы знаходзіцеся.";
 NSMicrophoneUsageDescription = "Sixinпатрабуе доступу да вашага мікрафона, каб тэлефанаваць і прымаць тэлефонныя званкі, а таксама каб запісваць галасавыя паведамленні.";

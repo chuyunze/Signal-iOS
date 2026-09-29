@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "Sixin은 미디어 첨부 파일을 재생하기 위해 Apple Music을 사용합니다.";
 NSCameraUsageDescription = "Sixin은 사진 촬영과 영상 통화를 위해 카메라를 사용합니다.";
-NSContactsUsageDescription = "Sixin은 사용자가 알고 있는 다른 사용자를 찾기 위해 연락처를 사용합니다. 연락처 정보는 서버에 저장되지 않습니다.";
 NSFaceIDUsageDescription = "Sixin의 화면 잠금 기능은 Face ID를 사용합니다.";
 NSLocationWhenInUseUsageDescription = "Sixin에서 현재 위치를 공유하기 위해 위치 접근 권한이 필요합니다.";
 NSMicrophoneUsageDescription = "Sixin은 음성 통화를 하고 음성 메시지를 녹음하기 위해 마이크 접근 권한이 필요합니다.";

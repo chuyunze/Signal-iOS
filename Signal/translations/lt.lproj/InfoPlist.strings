@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "Norint paleisti medijos priedus, „Sixin“ reikalinga „Apple Music“.";
 NSCameraUsageDescription = "Norint daryti nuotraukas ir skambinti su vaizdu, „Sixin“ reikalingas jūsų fotoaparatas.";
-NSContactsUsageDescription = "„Sixin“ naudoja jūsų adresatus, kad rastų jūsų pažįstamus naudotojus. Jūsų adresatų neišsaugome serveryje.";
 NSFaceIDUsageDescription = "„Sixin“ ekrano užraktas naudoja veido ID.";
 NSLocationWhenInUseUsageDescription = "Norint bendrinti jūsų dabartinę vietovę, „Sixin“ reikia prieigos prie vietovės.";
 NSMicrophoneUsageDescription = "Tam, kad būtų galima skambinti ir gauti skambučius bei įrašyti balso žinutes, „Sixin“ reikalinga prieiga prie jūsų mikrofono.";

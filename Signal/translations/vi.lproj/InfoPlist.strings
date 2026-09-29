@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "Sixincần dùng Apple Music để phát tập đa phương tiện đính kèm.";
 NSCameraUsageDescription = "Sixinsử dụng camera của bạn để chụp ảnh và cho cuộc gọi video.";
-NSContactsUsageDescription = "Sixindùng danh bạ của bạn để tìm người dùng bạn biết. Chúng tôi không lưu trữ danh bạ của bạn trên máy chủ.";
 NSFaceIDUsageDescription = "Khoá Màn hình của Sixinsử dụng Face ID.";
 NSLocationWhenInUseUsageDescription = "Sixincần truy cập địa điểm của bạn để chia sẻ địa điểm hiện tại của bạn.";
 NSMicrophoneUsageDescription = "Sixincần truy cập micro của bạn để thực hiện và nhận cuộc gọi và lưu tin nhắn âm thanh.";

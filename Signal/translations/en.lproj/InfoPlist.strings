@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "Sixin needs to use Apple Music to play media attachments.";
 NSCameraUsageDescription = "Sixin uses your camera to take photos and for video calls.";
-NSContactsUsageDescription = "Sixin uses your contacts to find users you know. We do not store your contacts on the server.";
 NSFaceIDUsageDescription = "Sixin's Screen Lock uses Face ID.";
 NSLocationWhenInUseUsageDescription = "Sixin needs access to your location in order to share your current location.";
 NSMicrophoneUsageDescription = "Sixin needs access to your microphone to make and receive phone calls and record voice messages.";

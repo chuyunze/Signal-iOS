@@ -110,6 +110,10 @@ open class ContactPickerViewController: OWSViewController, OWSNavigationChildCon
     private var selectedContacts = [SystemContact]()
 
     private func updateTableContents() {
+        guard SystemContactsFeature.isEnabled else {
+            tableViewController.contents = OWSTableContents()
+            return
+        }
         guard SSKEnvironment.shared.contactManagerImplRef.sharingAuthorization == .authorized else {
             return owsFailDebug("Not authorized.")
         }

@@ -93,8 +93,6 @@
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>Sixin uses your camera to take photos, start or join a video call and to scan QR codes.</string>
-	<key>NSContactsUsageDescription</key>
-	<string>Sixin uses your contacts to find users you know. We do not store your contacts on the server.</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Sixin uses Face ID to confirm it's you.</string>
 	<key>NSLocalNetworkUsageDescription</key>

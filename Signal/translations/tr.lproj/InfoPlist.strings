@@ -1,6 +1,5 @@
 NSAppleMusicUsageDescription = "Sixin'in içerik eklentilerini oynatması için Apple Music'e ihtiyacı var.";
 NSCameraUsageDescription = "Sixinfotoğraf çekmek ve görüntülü aramalar gerçekleştirmek için kameranızı kullanır.";
-NSContactsUsageDescription = "Sixintanıdığınız kullanıcıları bulmak için rehberinizi kullanır. Kişilerinizi sunuclarımızda saklamamaktayız.";
 NSFaceIDUsageDescription = "Sixin'in Ekran Kilidi Face ID kullanır.";
 NSLocationWhenInUseUsageDescription = "Sixin'in mevcut konumunuzu paylaşmak için konum erişimine ihtiyacı var.";
 NSMicrophoneUsageDescription = "Sixin'in sesli aramalar gerçekleştirmek ve sesli iletiler gönderebilmek için mikrofonunuza erişime ihtiyacı var.";
