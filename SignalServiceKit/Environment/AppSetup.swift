@@ -1293,7 +1293,7 @@ extension AppSetup.GlobalsContinuation {
         )
 
         let usernameApiClient = UsernameApiClientImpl(
-            networkManager: networkManager,
+            signalService: signalService,
             chatConnectionManager: chatConnectionManager,
         )
         let usernameEducationManager = UsernameEducationManagerImpl()

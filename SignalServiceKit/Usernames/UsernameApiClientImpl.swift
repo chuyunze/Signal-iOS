@@ -6,21 +6,21 @@
 public import LibSignalClient
 
 public class UsernameApiClientImpl: UsernameApiClient {
-    private let networkManager: NetworkManager
+    private let signalService: OWSSignalServiceProtocol
     private let chatConnectionManager: ChatConnectionManager
 
     init(
-        networkManager: NetworkManager,
+        signalService: OWSSignalServiceProtocol,
         chatConnectionManager: ChatConnectionManager,
     ) {
-        self.networkManager = networkManager
+        self.signalService = signalService
         self.chatConnectionManager = chatConnectionManager
     }
 
     private func performRequest(
         request: TSRequest,
     ) async throws -> HTTPResponse {
-        try await networkManager.asyncRequest(request)
+        try await signalService.urlSessionForMainSignalService().performRequest(request)
     }
 
     // MARK: Selection
