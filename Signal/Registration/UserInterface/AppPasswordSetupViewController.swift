@@ -7,9 +7,10 @@ import LocalAuthentication
 import SignalServiceKit
 import SignalUI
 
-final class AppPasswordSetupViewController: OWSViewController {
+final class AppPasswordSetupViewController: OWSViewController, UITextFieldDelegate {
     private let completion: () -> Void
     private let requiresCurrentPassword: Bool
+    private let scrollView = UIScrollView()
     private let currentPasswordField = UITextField()
     private let passwordField = UITextField()
     private let confirmationField = UITextField()
@@ -27,6 +28,17 @@ final class AppPasswordSetupViewController: OWSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .Signal.background
+
+        scrollView.alwaysBounceVertical = true
+        scrollView.keyboardDismissMode = .interactive
+        view.addSubview(scrollView)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
 
         let titleLabel = UILabel.titleLabelForRegistration(text: "保护当前设备")
         let explanation = UILabel.explanationLabelForRegistration(
@@ -63,13 +75,27 @@ final class AppPasswordSetupViewController: OWSViewController {
         let stack = UIStackView(arrangedSubviews: arrangedSubviews)
         stack.axis = .vertical
         stack.spacing = 18
-        view.addSubview(stack)
+        scrollView.addSubview(stack)
         stack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stack.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-            stack.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
-            stack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stack.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor, constant: 16),
+            stack.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -16),
+            stack.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 32),
+            stack.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -32),
         ])
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardFrameWillChange),
+            name: UIResponder.keyboardWillChangeFrameNotification,
+            object: nil,
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil,
+        )
     }
 
     private func configurePasswordField(_ field: UITextField, placeholder: String) {
@@ -80,6 +106,61 @@ final class AppPasswordSetupViewController: OWSViewController {
         field.autocorrectionType = .no
         field.autocapitalizationType = .none
         field.spellCheckingType = .no
+        field.delegate = self
+        field.returnKeyType = field === confirmationField ? .done : .next
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case currentPasswordField:
+            passwordField.becomeFirstResponder()
+        case passwordField:
+            confirmationField.becomeFirstResponder()
+        case confirmationField:
+            confirmationField.resignFirstResponder()
+        default:
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+
+    @objc
+    private func keyboardFrameWillChange(_ notification: Notification) {
+        guard let endFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
+            return
+        }
+        let keyboardFrame = view.convert(endFrame, from: nil)
+        let overlap = max(0, view.bounds.maxY - keyboardFrame.minY - view.safeAreaInsets.bottom)
+        updateKeyboardInset(overlap, notification: notification)
+    }
+
+    @objc
+    private func keyboardWillHide(_ notification: Notification) {
+        updateKeyboardInset(0, notification: notification)
+    }
+
+    private func updateKeyboardInset(_ bottomInset: CGFloat, notification: Notification) {
+        let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval ?? 0.25
+        let curveValue = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt ?? 7
+        let options = UIView.AnimationOptions(rawValue: curveValue << 16)
+
+        UIView.animate(withDuration: duration, delay: 0, options: options) {
+            self.scrollView.contentInset.bottom = bottomInset
+            self.scrollView.verticalScrollIndicatorInsets.bottom = bottomInset
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            guard let firstResponder = [
+                self.currentPasswordField,
+                self.passwordField,
+                self.confirmationField,
+            ].first(where: { $0.isFirstResponder }) else {
+                return
+            }
+            self.scrollView.scrollRectToVisible(
+                firstResponder.convert(firstResponder.bounds, to: self.scrollView).insetBy(dx: 0, dy: -16),
+                animated: true,
+            )
+        }
     }
 
     private var canUseBiometrics: Bool {
