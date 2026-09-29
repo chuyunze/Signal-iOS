@@ -149,8 +149,32 @@ public class UsernameApiClientImpl: UsernameApiClient {
     public func lookupAci(
         forHashedUsername hashedUsername: Usernames.HashedUsername,
     ) async throws -> Aci? {
-        try await chatConnectionManager.withUnauthService(.usernames) {
-            try await $0.lookUpUsernameHash(hashedUsername.rawHash)
+        let request = OWSRequestFactory.lookupAciUsernameRequest(
+            usernameHashToLookup: hashedUsername.hashString,
+        )
+
+        do {
+            let response = try await performRequest(request: request)
+
+            switch response.responseStatusCode {
+            case 200:
+                guard let parser = response.responseBodyParamParser else {
+                    throw OWSAssertionError("Unexpectedly missing JSON response body!")
+                }
+
+                let accountIdentifier: UUID = try parser.required(key: "uuid")
+                return Aci(fromUUID: accountIdentifier)
+            case 404:
+                return nil
+            default:
+                throw response.asError()
+            }
+        } catch {
+            if error.httpStatusCode == 404 {
+                return nil
+            }
+
+            throw error
         }
     }
 
