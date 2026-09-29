@@ -116,7 +116,7 @@ extension NumberlessRegistrationViewController: QRCodeScanDelegate {
     }
 }
 
-final class NumberlessRegistrationCompleteViewController: OWSViewController {
+final class NumberlessRegistrationCompleteViewController: OWSViewController, UITextFieldDelegate {
     private let accountId: String
     private let recoveryKey: String
     private let completion: (OWSUserProfile.NameComponent) -> Void
@@ -152,10 +152,14 @@ final class NumberlessRegistrationCompleteViewController: OWSViewController {
         nicknameField.autocapitalizationType = .words
         nicknameField.autocorrectionType = .yes
         nicknameField.textContentType = .name
+        nicknameField.returnKeyType = .next
+        nicknameField.delegate = self
         confirmationField.borderStyle = .roundedRect
         confirmationField.placeholder = "再次输入 Recovery Key 以确认"
         confirmationField.autocapitalizationType = .allCharacters
         confirmationField.autocorrectionType = .no
+        confirmationField.returnKeyType = .done
+        confirmationField.delegate = self
         let usernameButton = UIButton(
             configuration: .largeSecondary(title: "创建 Username（可选）"),
             primaryAction: UIAction { [weak self] _ in
@@ -179,13 +183,38 @@ final class NumberlessRegistrationCompleteViewController: OWSViewController {
         ])
         stack.axis = .vertical
         stack.spacing = 20
-        view.addSubview(stack)
+
+        let scrollView = UIScrollView()
+        scrollView.alwaysBounceVertical = true
+        scrollView.keyboardDismissMode = .interactive
+        view.addSubview(scrollView)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            scrollView.frameLayoutGuide.topAnchor.constraint(equalTo: contentLayoutGuide.topAnchor),
+            scrollView.frameLayoutGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.frameLayoutGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.frameLayoutGuide.bottomAnchor.constraint(equalTo: keyboardLayoutGuide.topAnchor),
+        ])
+
+        scrollView.addSubview(stack)
         stack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stack.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-            stack.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
-            stack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stack.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 32),
+            stack.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor, constant: 24),
+            stack.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor, constant: -24),
+            stack.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -32),
+            stack.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor, constant: -48),
         ])
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField === nicknameField {
+            confirmationField.becomeFirstResponder()
+        } else if textField === confirmationField {
+            textField.resignFirstResponder()
+            confirmRecoveryKey()
+        }
+        return false
     }
 
     private func selectableLabel(title: String, value: String) -> UIButton {
