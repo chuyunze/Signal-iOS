@@ -1707,6 +1707,7 @@ private final class LuminousNavigationTitleView: UIView {
 
 private final class LuminousComposeButton: UIButton {
     private let gradientLayer = CAGradientLayer()
+    private let plusLayer = CAShapeLayer()
     private let action: () -> Void
 
     init(action: @escaping () -> Void) {
@@ -1722,10 +1723,12 @@ private final class LuminousComposeButton: UIButton {
         layer.insertSublayer(gradientLayer, at: 0)
         updateGradientColors()
 
-        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 19, weight: .semibold)
-        setImage(UIImage(systemName: "plus", withConfiguration: symbolConfiguration), for: .normal)
-        tintColor = .ows_white
-        imageView?.contentMode = .scaleAspectFit
+        plusLayer.fillColor = UIColor.clear.cgColor
+        plusLayer.strokeColor = UIColor.ows_white.cgColor
+        plusLayer.lineWidth = 2.5
+        plusLayer.lineCap = .round
+        layer.addSublayer(plusLayer)
+
         addTarget(self, action: #selector(didTap), for: .touchUpInside)
         autoSetDimensions(to: CGSize(square: 42))
     }
@@ -1733,6 +1736,16 @@ private final class LuminousComposeButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientLayer.frame = bounds
+
+        let center = CGPoint(x: bounds.midX, y: bounds.midY)
+        let armLength: CGFloat = 8
+        let plusPath = UIBezierPath()
+        plusPath.move(to: CGPoint(x: center.x - armLength, y: center.y))
+        plusPath.addLine(to: CGPoint(x: center.x + armLength, y: center.y))
+        plusPath.move(to: CGPoint(x: center.x, y: center.y - armLength))
+        plusPath.addLine(to: CGPoint(x: center.x, y: center.y + armLength))
+        plusLayer.frame = bounds
+        plusLayer.path = plusPath.cgPath
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
