@@ -1722,7 +1722,8 @@ private final class LuminousComposeButton: UIButton {
         layer.insertSublayer(gradientLayer, at: 0)
         updateGradientColors()
 
-        setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
+        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 19, weight: .semibold)
+        setImage(UIImage(systemName: "plus", withConfiguration: symbolConfiguration), for: .normal)
         tintColor = .ows_white
         imageView?.contentMode = .scaleAspectFit
         addTarget(self, action: #selector(didTap), for: .touchUpInside)
