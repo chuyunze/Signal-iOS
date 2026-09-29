@@ -38,6 +38,12 @@ jobs:
         path: libsignal
         fetch-depth: 1
 
+    # The libsignal fork still contains the certificate used by the former Caddy
+    # internal-CA deployment. The public endpoint now uses an automatically renewed
+    # publicly trusted certificate, so chat connections must use the platform roots.
+    - name: Apply self-hosted public certificate patch
+      run: git -C libsignal apply ../app/.github/patches/libsignal-public-cert.patch
+
     - name: Select Xcode
       uses: maxim-lobanov/setup-xcode@v1
       with:
@@ -56,7 +62,7 @@ jobs:
           libsignal/target/aarch64-apple-ios/release
           ~/.cargo/registry
           ~/.cargo/git
-        key: libsignal-v1-${{ runner.os }}-xcode-26.6-${{ steps.libsignal-revision.outputs.sha }}-${{ hashFiles('libsignal/Cargo.lock', 'libsignal/rust-toolchain') }}
+        key: libsignal-v2-${{ runner.os }}-xcode-26.6-${{ steps.libsignal-revision.outputs.sha }}-${{ hashFiles('libsignal/Cargo.lock', 'libsignal/rust-toolchain', 'app/.github/patches/libsignal-public-cert.patch') }}
 
     # libsignal 的 Rust 依赖（spqr / prost-build）在构建时需要 protoc
     - name: Install protoc
