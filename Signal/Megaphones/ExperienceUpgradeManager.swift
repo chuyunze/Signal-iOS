@@ -378,6 +378,10 @@ class ExperienceUpgradeManager {
     private func checkPreconditionsForIntroducingPins(
         tx: DBReadTransaction,
     ) -> Bool {
+        guard tsAccountManager.localIdentifiers(tx: tx)?.pni != nil else {
+            return false
+        }
+
         // The PIN setup flow requires an internet connection and you to not already have a PIN
         if
             reachabilityManager.isReachable,
@@ -510,6 +514,10 @@ class ExperienceUpgradeManager {
     private func checkPreconditionsForPinReminder(
         tx: DBReadTransaction,
     ) -> Bool {
+        guard tsAccountManager.localIdentifiers(tx: tx)?.pni != nil else {
+            return false
+        }
+
         return ows2FAManager.isDueForV2Reminder(transaction: tx)
     }
 

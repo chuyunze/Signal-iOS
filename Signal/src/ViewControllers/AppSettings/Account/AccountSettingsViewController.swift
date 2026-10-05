@@ -37,8 +37,13 @@ class AccountSettingsViewController: OWSTableViewController2 {
     func updateTableContents() {
         let contents = OWSTableContents()
 
-        // Show the change pin and reglock sections
-        if DependenciesBridge.shared.tsAccountManager.registrationStateWithMaybeSneakyTransaction.isRegisteredPrimaryDevice {
+        let tsAccountManager = DependenciesBridge.shared.tsAccountManager
+        let registrationState = tsAccountManager.registrationStateWithMaybeSneakyTransaction
+        let hasPhoneNumberIdentity = tsAccountManager.localIdentifiersWithMaybeSneakyTransaction?.pni != nil
+
+        // Signal PIN and registration lock protect phone-number re-registration and SVR-backed settings.
+        // Numberless accounts use Account ID + Recovery Key and must not be prompted to configure these features.
+        if registrationState.isRegisteredPrimaryDevice, hasPhoneNumberIdentity {
             let pinSection = OWSTableSection()
             let isPinEnabled = SSKEnvironment.shared.ows2FAManagerRef.isPinEnabledWithSneakyTransaction
 
@@ -124,7 +129,7 @@ class AccountSettingsViewController: OWSTableViewController2 {
             contents.add(advancedSection)
         }
 
-        let tsRegistrationState = DependenciesBridge.shared.tsAccountManager.registrationStateWithMaybeSneakyTransaction
+        let tsRegistrationState = registrationState
 
         if let deregistrationState = tsRegistrationState.deregistrationState {
             let accountSection = OWSTableSection()

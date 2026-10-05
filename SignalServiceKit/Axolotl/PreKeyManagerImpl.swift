@@ -97,12 +97,17 @@ public class PreKeyManagerImpl: PreKeyManager {
     }
 
     public func isAppLockedDueToPreKeyUpdateFailures(tx: DBReadTransaction) -> Bool {
-        return
+        let needsAciRotation =
             needsSignedPreKeyRotation(identity: .aci, tx: tx)
-                || needsSignedPreKeyRotation(identity: .pni, tx: tx)
                 || needsLastResortPreKeyRotation(identity: .aci, tx: tx)
-                || needsLastResortPreKeyRotation(identity: .pni, tx: tx)
 
+        guard hasPniIdentityKey(tx: tx) else {
+            return needsAciRotation
+        }
+
+        return needsAciRotation
+            || needsSignedPreKeyRotation(identity: .pni, tx: tx)
+            || needsLastResortPreKeyRotation(identity: .pni, tx: tx)
     }
 
     private func refreshOneTimePreKeysCheckDidSucceed() {
@@ -132,14 +137,16 @@ public class PreKeyManagerImpl: PreKeyManager {
         // If we can throttle this check, and if we're changing our number, assume
         // that the change number will refresh our pre keys. (This check is
         // optional, so it's fine to skip it.)
-        let shouldSkipPniPreKeyCheck = shouldThrottle && changeNumberState.update(block: { $0.isChangingNumber })
-        if shouldSkipPniPreKeyCheck {
+        let shouldCheckPniIdentity = db.read(block: hasPniIdentityKey(tx:))
+        let shouldSkipPniDueToChangeNumber =
+            shouldThrottle && changeNumberState.update(block: { $0.isChangingNumber })
+        if shouldCheckPniIdentity, shouldSkipPniDueToChangeNumber {
             logger.warn("Skipping PNI pre key check due to change number.")
         }
 
         try await self._checkPreKeys(
             shouldCheckOneTimePreKeys: shouldCheckOneTimePreKeys,
-            shouldCheckPniPreKeys: !shouldSkipPniPreKeyCheck,
+            shouldCheckPniPreKeys: shouldCheckPniIdentity && !shouldSkipPniDueToChangeNumber,
         )
     }
 
@@ -222,7 +229,11 @@ public class PreKeyManagerImpl: PreKeyManager {
 
     public func rotateSignedPreKeysIfNeeded() async throws {
         logger.info("Rotating signed prekeys if needed")
-        try await _checkPreKeys(shouldCheckOneTimePreKeys: false, shouldCheckPniPreKeys: true)
+        let shouldCheckPniPreKeys = db.read(block: hasPniIdentityKey(tx:))
+        try await _checkPreKeys(
+            shouldCheckOneTimePreKeys: false,
+            shouldCheckPniPreKeys: shouldCheckPniPreKeys,
+        )
     }
 
     /// Refresh one-time pre-keys for the given identity, and optionally refresh
