@@ -10145,7 +10145,7 @@
 "STORY_VIEWER_ONBOARDING_CONFIRMATION" = "知道了";
 
 /* Text indicating that the user has views turned off */
-"STORY_VIEWS_OFF" = "查看功能关闭";
+"STORY_VIEWS_OFF" = "查看回执已关闭";
 
 /* Toast indicating that the user has copied their subscriber ID. (Externally referred to as donor ID) */
 "SUBSCRIPTION_SUBSCRIBER_ID_COPIED_TO_CLIPBOARD" = "已复制捐款人 ID 到剪贴板";
