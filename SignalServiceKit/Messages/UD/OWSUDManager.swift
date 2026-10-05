@@ -284,6 +284,15 @@ public class OWSUDManagerImpl: OWSUDManager {
 
     private func _fetchSenderCertificates(forceRefresh: Bool) async throws -> SenderCertificates {
         _ = try self.tsAccountManager.registeredStateWithMaybeSneakyTransaction()
+
+        // Numberless accounts don't have an E164, so they can only request an ACI-only
+        // sender certificate. Use that certificate for both sharing modes; attempting to
+        // fetch the legacy E164-bearing certificate would fail before message submission.
+        if self.tsAccountManager.localIdentifiersWithMaybeSneakyTransaction?.phoneNumber == nil {
+            let aciOnlyCert = try await fetchSenderCertificate(aciOnly: true, forceRefresh: forceRefresh)
+            return SenderCertificates(defaultCert: aciOnlyCert, uuidOnlyCert: aciOnlyCert)
+        }
+
         async let defaultCert = fetchSenderCertificate(aciOnly: false, forceRefresh: forceRefresh)
         async let aciOnlyCert = fetchSenderCertificate(aciOnly: true, forceRefresh: forceRefresh)
         return SenderCertificates(
