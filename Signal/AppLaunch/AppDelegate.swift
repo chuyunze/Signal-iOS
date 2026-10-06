@@ -931,6 +931,22 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             )
         }
 
+        let isNumberlessPrimary = SSKEnvironment.shared.databaseStorageRef.read { tx in
+            guard let identifiers = DependenciesBridge.shared.tsAccountManager.localIdentifiers(tx: tx) else {
+                return false
+            }
+            return identifiers.phoneNumber == nil
+        }
+        if case .deregistered = tsRegistrationState, isNumberlessPrimary {
+            return .registration(regLoader, .registering)
+        }
+        // An already-registered invitation account must never resume a stale phone flow.
+        if case .registered = tsRegistrationState,
+           let lastMode,
+           case .registering = lastMode {
+            Logger.warn("Ignoring stale registration mode for an already registered account")
+            return .chatList
+        }
         if let lastMode {
             Logger.info("Found ongoing registration; continuing")
             return .registration(regLoader, lastMode)

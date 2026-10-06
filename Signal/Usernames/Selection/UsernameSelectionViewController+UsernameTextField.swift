@@ -122,6 +122,9 @@ extension UsernameSelectionViewController {
                 textField.placeholder = "00"
                 textField.delegate = self
                 textField.keyboardType = .numberPad
+                // Keep the generated two-digit suffix visible on narrow devices.
+                textField.setContentCompressionResistancePriority(.required, for: .horizontal)
+                textField.autoSetDimension(.width, toSize: 30, relation: .greaterThanOrEqual)
                 return textField
             }()
 

@@ -998,8 +998,10 @@ extension UsernameSelectionViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let usernameTextField = textField as? UsernameTextField else { return true }
-        usernameTextField.discriminatorView.becomeFirstResponder()
-        return true
+        // Return/Done ends editing. Moving focus to the generated numeric suffix
+        // can make an accidental deletion look like the suffix changed on submit.
+        usernameTextField.resignFirstResponder()
+        return false
     }
 }
 

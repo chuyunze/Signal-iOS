@@ -1698,6 +1698,13 @@ public class RegistrationCoordinatorImpl: RegistrationCoordinator {
         self.loader.clearPersistedMode(transaction: tx)
     }
 
+    /// The invitation flow registers outside this coordinator. Its successful completion
+    /// must still clear any phone-registration state saved by the coordinator.
+    public func completeNumberlessRegistration(tx: DBWriteTransaction) {
+        self.inMemoryState = InMemoryState()
+        self.wipePersistedState(tx)
+    }
+
     // MARK: - Pathway
 
     /// A pathway is a (internal to this class) way of splitting up the distinct sections

@@ -256,8 +256,12 @@ public class SSKEnvironment: NSObject {
             mustHavePni = true
             mustHavePniIdentityKey = true
         case .registered:
-            mustHavePni = true
-            mustHavePniIdentityKey = true
+            // Invitation-based primary accounts have an ACI but deliberately no phone number or PNI.
+            let hasPhoneNumber = databaseStorage.read { tx in
+                tsAccountManager.localIdentifiers(tx: tx)?.phoneNumber != nil
+            }
+            mustHavePni = hasPhoneNumber
+            mustHavePniIdentityKey = hasPhoneNumber
         default:
             mustHavePni = false
             mustHavePniIdentityKey = false

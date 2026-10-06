@@ -37,7 +37,18 @@ public class RegistrationNavigationController: OWSNavigationController {
 
         if viewControllers.isEmpty, !isLoading {
             logger.info("Performing initial load")
-            pushNextController(Guarantee.wrapAsync { await self.coordinator.nextStep() })
+            let needsNumberlessRecovery = SSKEnvironment.shared.databaseStorageRef.read { tx in
+                guard case .deregistered = DependenciesBridge.shared.tsAccountManager.registrationState(tx: tx),
+                      let identifiers = DependenciesBridge.shared.tsAccountManager.localIdentifiers(tx: tx) else {
+                    return false
+                }
+                return identifiers.phoneNumber == nil
+            }
+            if needsNumberlessRecovery {
+                setViewControllers([NumberlessRecoveryViewController(presenter: self)], animated: false)
+            } else {
+                pushNextController(Guarantee.wrapAsync { await self.coordinator.nextStep() })
+            }
         }
 
         // Self-host debrand: hidden 8-tap debug log gesture disabled for test users.
@@ -628,6 +639,7 @@ extension RegistrationNavigationController: NumberlessRegistrationPresenter {
                         authToken: result.authPassword,
                         tx: tx,
                     )
+                    (self.coordinator as? RegistrationCoordinatorImpl)?.completeNumberlessRegistration(tx: tx)
                 }
                 let completeController = NumberlessRegistrationCompleteViewController(
                     accountId: result.identity.aci.serviceIdString,
@@ -773,6 +785,7 @@ extension RegistrationNavigationController: NumberlessRecoveryPresenter {
                         authToken: result.authPassword,
                         tx: tx,
                     )
+                    (self.coordinator as? RegistrationCoordinatorImpl)?.completeNumberlessRegistration(tx: tx)
                     if let username = result.identity.username {
                         bridge.localUsernameManager.setLocalUsernameWithCorruptedLink(username: username, tx: tx)
                     } else {
